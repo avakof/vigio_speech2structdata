@@ -1,6 +1,12 @@
-# Extraction status (Gate A feasibility: BLOCKED on model transfer; implementation: unit-tested with a fake backend)
+# Local extractor verification
 
-## Gate A — real-model feasibility: BLOCKED
+The installed CLI ran the pinned qwen3:8b on the M3 Max. On the 15 curated restaurant transcript fixtures, 16/16 gold observations were covered and all accepted fields matched. The validator routed three extra candidates to review. Both the original failure and the passing 17-call run are retained. [Final reference evaluation](../evaluation/reference-final.json) · [Initial reference evaluation](../evaluation/reference-baseline.json)
+
+The local feasibility experiment covered French counts, two kinds of correction and both packaging forms. Pydantic and deterministic evidence checks ran on actual saved model replies. Schema probes found a counterexample for `uniqueItems`. The production validator checks evidence independently and retains both attempts when it uses a repair. [Raw experiment and runner metrics](run-001/summary.json) · [Offline validation of saved replies](run-001/revalidation.json) · [Pinned bytes](../integration/ollama-artifacts.json)
+
+The notes below record the specialist's earlier transfer and mock-backed implementation work.
+
+## Initial transfer blocker
 - Ollama 0.40.16 on 127.0.0.1:11434; `qwen3:8b` absent at start; no other local model used.
 - `ollama pull qwen3:8b` (PID 98476, started 2026-11-25 ~15:18) is network-bound: 5.2 GB layer a3de86cd1c13,
   ~325 MB done at last check; speed swings 25 KB/s–2.7 MB/s (general link also slow: 12 KB/s Cloudflare test while pulling).
@@ -81,3 +87,7 @@ idle_confirmed}, separate from `errors`/status. Caller-injected backends are nev
 so fixtures stay warm and the probe unloads explicitly once.
 **Commands/results.** `.venv/bin/python -m pytest -q tools/extraction/tests tests/persistence_own` = 196 passed; `tests/qa` = 40 passed;
 `tests -m "not real_models and not microphone"` = 100 passed, 12 deselected; R05 reproducer exit 0. No failures.
+
+The second pinned production probe passed all five required cases with prompt 4 and generation schema 4. Both flour corrections preserve the earlier count and link the revised observation. Two unspecified cartons keep their contents unknown, while two cartons of twelve bottles yield 24 bottles. The local runner unloaded. [Raw generation and production records](run-002/summary.json)
+
+The separate installed-CLI evaluation and its independent QA rerun matched all 15 observation sets. The curated reference set had 16 gold observations and three additional reviewable candidates. [Independent QA evidence](../qa/real-qwen-independent.md)

@@ -1,0 +1,168 @@
+{
+  "observations": [
+    {
+      "product_spoken": "bouteilles",
+      "quantity_text": "douze",
+      "quantity": "12",
+      "quantity_max": null,
+      "qualifier": "exact",
+      "unit_spoken": "bouteilles",
+      "unit": "bouteille",
+      "packaging": {
+        "count": "12",
+        "unit": "bouteille",
+        "per_package_quantity": null,
+        "per_package_unit": null,
+        "total": null,
+        "total_unit": null
+      },
+      "location": null,
+      "operation": "count",
+      "evidence": [
+        {
+          "segment_id": "cartons_explicit_contents_S1",
+          "start": 0,
+          "end": 33,
+          "quote": "Deux cartons de douze bouteilles."
+        }
+      ],
+      "correction_of": null,
+      "observation_id": "obs_59304c88f6ee9387aebef7aaa67863cf630617bc8fdf525412f0e60dc8cdaad8",
+      "catalog_match": null,
+      "revision": 1,
+      "status": "needs_review",
+      "errors": [
+        "package_contents_not_explicit_in_evidence"
+      ]
+    }
+  ],
+  "status": "needs_review",
+  "errors": [],
+  "attempts": [
+    {
+      "window": 0,
+      "run_id": "probe_cartons_explicit_contents",
+      "model": "qwen3:8b",
+      "extractor": {
+        "backend": "ollama",
+        "model": "qwen3:8b",
+        "digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+        "details": {
+          "parent_model": "",
+          "format": "gguf",
+          "family": "qwen3",
+          "families": [
+            "qwen3"
+          ],
+          "parameter_size": "8.2B",
+          "quantization_level": "Q4_K_M",
+          "context_length": 40960,
+          "embedding_length": 4096,
+          "runner": "ggml"
+        },
+        "size": 5225388164
+      },
+      "prompt_version": "inventory.v1.prompt2",
+      "schema_version": "inventory.v1.gen2",
+      "options": {
+        "temperature": 0,
+        "seed": 0,
+        "top_k": 1,
+        "top_p": 1.0,
+        "num_ctx": 8192,
+        "num_predict": 2048
+      },
+      "segment_ids": [
+        "cartons_explicit_contents_S1"
+      ],
+      "labels": {
+        "S1": "cartons_explicit_contents_S1"
+      },
+      "known": {},
+      "system_prompt_sha256": "c6ecc67b74c0c648253cdd949f7357cb7165b26c469cbd679d8d195dc13fb72f",
+      "user_message": "<transcript>\nSegments to extract:\n[S1] Deux cartons de douze bouteilles.\n</transcript>",
+      "attempt": 1,
+      "kind": "initial",
+      "estimate_tokens": 1696,
+      "repair_message": null,
+      "content": "{\"language\":\"fr\",\"observations\":[{\"segment\":\"S1\",\"quote\":\"Deux cartons de douze bouteilles.\",\"operation\":\"count\",\"product_spoken\":\"bouteilles\",\"quantity_text\":\"douze\",\"quantity\":\"12\",\"qualifier\":\"exact\",\"unit_spoken\":\"bouteilles\",\"package\":{\"per_package_text\":\"douze\",\"per_package_unit_spoken\":\"bouteilles\"},\"location\":null,\"ref\":\"o1\",\"correction_of\":null}]}",
+      "done_reason": "stop",
+      "wall_s": 1.847273999999743,
+      "timings_ns": {
+        "total_duration": 1837314167,
+        "load_duration": 1339125,
+        "prompt_eval_duration": 80421000,
+        "eval_duration": 1750840000
+      },
+      "prompt_tokens": 872,
+      "output_tokens": 99,
+      "response_raw": {
+        "model": "qwen3:8b",
+        "created_at": "2026-11-25T17:12:26.005256Z",
+        "message": {
+          "role": "assistant",
+          "content": "{\"language\":\"fr\",\"observations\":[{\"segment\":\"S1\",\"quote\":\"Deux cartons de douze bouteilles.\",\"operation\":\"count\",\"product_spoken\":\"bouteilles\",\"quantity_text\":\"douze\",\"quantity\":\"12\",\"qualifier\":\"exact\",\"unit_spoken\":\"bouteilles\",\"package\":{\"per_package_text\":\"douze\",\"per_package_unit_spoken\":\"bouteilles\"},\"location\":null,\"ref\":\"o1\",\"correction_of\":null}]}"
+        },
+        "done": true,
+        "done_reason": "stop",
+        "total_duration": 1837314167,
+        "load_duration": 1339125,
+        "prompt_eval_count": 872,
+        "prompt_eval_cached_count": 849,
+        "prompt_eval_duration": 80421000,
+        "eval_count": 99,
+        "eval_duration": 1750840000
+      },
+      "errors": []
+    }
+  ],
+  "metrics": {
+    "extractor": {
+      "backend": "ollama",
+      "model": "qwen3:8b",
+      "digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": [
+          "qwen3"
+        ],
+        "parameter_size": "8.2B",
+        "quantization_level": "Q4_K_M",
+        "context_length": 40960,
+        "embedding_length": 4096,
+        "runner": "ggml"
+      },
+      "size": 5225388164
+    },
+    "windows": 1,
+    "failed_windows": 0,
+    "attempts": 1,
+    "repairs": 0,
+    "model_wall_s": 1.8473,
+    "total_wall_s": 1.8477,
+    "prompt_tokens": 872,
+    "output_tokens": 99,
+    "load_duration_ns": 1339125,
+    "duplicates_skipped": 0,
+    "context_only_dropped": 0,
+    "unit_conversions": [],
+    "estimate_misses": 0,
+    "max_actual_to_estimate_ratio": 0.514,
+    "options": {
+      "temperature": 0,
+      "seed": 0,
+      "top_k": 1,
+      "top_p": 1.0,
+      "num_ctx": 8192,
+      "num_predict": 2048
+    },
+    "prompt_version": "inventory.v1.prompt2",
+    "schema_version": "inventory.v1.gen2",
+    "unload": {
+      "attempted": false,
+      "reason": "caller-owned backend"
+    }
+  }
+}

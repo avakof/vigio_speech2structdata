@@ -1,0 +1,27 @@
+{
+  "inventory": {
+    "file": "fixture_inventory.json",
+    "valid": true,
+    "semantic_failures": []
+  },
+  "correction_same_segment": {
+    "file": "fixture_correction_same_segment_repair.json",
+    "valid": true,
+    "semantic_failures": []
+  },
+  "correction_next_segment": {
+    "file": "fixture_correction_next_segment_repair.json",
+    "valid": true,
+    "semantic_failures": []
+  },
+  "cartons_unknown_contents": {
+    "file": "fixture_cartons_unknown_contents.json",
+    "valid": true,
+    "semantic_failures": []
+  },
+  "cartons_explicit_contents": {
+    "file": "fixture_cartons_explicit_contents.json",
+    "valid": true,
+    "semantic_failures": []
+  }
+}

@@ -57,17 +57,34 @@ def _new_item(left, right):
         _NEGATED_ITEM.search(left) or any(is_known_unit(normalize_unit(word)) for word in left.split()))
 
 
-def _source_clauses(text, focus_start, focus_end):
+def _clause_ranges(text):
     start = 0
     for boundary in _BOUNDARY.finditer(text):
         if boundary.group().casefold() == "et":
             if not _new_item(text[start:boundary.start()], text[boundary.end():boundary.end() + 180]):
                 continue
-        if start < focus_end and focus_start < boundary.start():
-            yield _words(text[start:boundary.start()])
+        if start < boundary.start():
+            yield start, boundary.start()
         start = boundary.end()
-    if start < focus_end and focus_start < len(text):
-        yield _words(text[start:])
+    if start < len(text):
+        yield start, len(text)
+
+
+def narrow_count_quote(span: EvidenceSpan, terms) -> EvidenceSpan:
+    """Retain one independently supported clause when the model quotes several items."""
+    parts = list(_clause_ranges(span.quote))
+    if len(parts) <= 1:
+        return span
+    patterns = [_term(term) for term in terms if term]
+    supported = [(a, b) for a, b in parts
+                 if all(pattern.search(_words(span.quote[a:b])) for pattern in patterns)]
+    if len(supported) != 1:
+        return span
+    a, b = supported[0]
+    text = span.quote[a:b]
+    left = span.start + a + len(text) - len(text.lstrip())
+    quote = text.strip()
+    return EvidenceSpan(segment_id=span.segment_id, start=left, end=left + len(quote), quote=quote)
 
 
 def _quantities_at_unit(clause, unit):
@@ -109,7 +126,10 @@ def check_quantity_scope(
     claimed = parse_quantity(quantity_text)
     fields = [_term(term) for term in (quantity_text, unit, product) if term]
     problems = []
-    for clause in _source_clauses(source, start, end):
+    for a, b in _clause_ranges(source):
+        if a >= end or b <= start:
+            continue
+        clause = _words(source[a:b])
         if not all(field.search(clause) for field in fields):
             continue
         if operation == "count" and negation_cue(clause):

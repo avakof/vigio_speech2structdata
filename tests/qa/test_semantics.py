@@ -316,3 +316,146 @@ def test_evidence_scope_preserves_valid_counts(texts, candidate, expected):
     assert (observation.product_spoken, observation.quantity, observation.quantity_max,
             observation.unit, observation.qualifier) == expected
     assert len(observation.evidence) == len(texts)
+
+
+def _inventory_reply(*candidates):
+    return reply(*({"more_evidence": [], **candidate} for candidate in candidates))
+
+
+def _run_inventory_context_case(text, *scripted):
+    segments = transcript(text)
+    result, calls = run(segments, *scripted)
+    assert 1 <= len(calls) <= 2
+    assert [attempt["content"] for attempt in result.attempts] == [
+        response.content for response in scripted[:len(calls)]
+    ]
+    for observation in result.observations:
+        for span in observation.evidence:
+            assert span.segment_id == segments[0].segment_id
+            assert text[span.start:span.end] == span.quote
+    print(json.dumps({
+        "transcript": text, "status": result.status, "errors": result.errors,
+        "attempts": [{key: attempt[key] for key in ("kind", "content", "errors")}
+                     for attempt in result.attempts],
+        "observations": [obs.model_dump(mode="json") for obs in result.observations],
+    }, ensure_ascii=False))
+    return result
+
+
+@pytest.mark.parametrize("contents, product", [
+    ("douze bouteilles", "bouteilles"),
+    ("douze bouteilles d’eau", "eau"),
+], ids=["unnamed", "named-water"])
+def test_inventory_context_inner_count_cannot_hide_the_outer_package(contents, product):
+    candidate = _inventory_reply(item(contents, product, "douze", "12", "bouteilles"))
+    result = _run_inventory_context_case(f"Deux cartons de {contents}.", candidate, candidate)
+    accepted = [obs for obs in result.observations if obs.status == "ok"]
+    if not accepted:
+        assert result.status in {"needs_review", "error"}
+    for observation in accepted:
+        assert (observation.quantity, observation.unit) == ("2", "carton")
+        assert observation.packaging is not None
+        assert (observation.packaging.per_package_quantity, observation.packaging.total) == ("12", "24")
+
+
+def test_inventory_context_lone_count_cannot_hide_a_spoken_correction():
+    candidate = _inventory_reply(item("deux kilos de farine", "farine", "deux", "2", "kilos"))
+    result = _run_inventory_context_case("Trois kilos de farine, pardon, deux kilos de farine.",
+                                         candidate, candidate)
+    accepted = [obs for obs in result.observations if obs.status == "ok"]
+    corrected = [obs for obs in accepted if (obs.product_spoken, obs.quantity) == ("farine", "2")]
+    if not corrected:
+        assert result.status in {"needs_review", "error"}
+    for observation in corrected:
+        assert observation.operation == "correction" and observation.revision == 2
+        prior, = [obs for obs in accepted if obs.observation_id == observation.correction_of]
+        assert (prior.product_spoken, prior.quantity, prior.unit) == ("farine", "3", "kg")
+
+
+def test_inventory_context_explicit_package_and_named_contents_are_retained():
+    quote = "Deux cartons de douze bouteilles d’eau"
+    candidate = _inventory_reply(item(
+        quote, "eau", "Deux", "2", "cartons",
+        package={"per_package_text": "douze", "per_package_unit_spoken": "bouteilles"},
+    ))
+    result = _run_inventory_context_case(f"{quote}.", candidate, candidate)
+    assert result.status == "ok"
+    observation, = result.observations
+    assert (observation.product_spoken, observation.quantity, observation.unit) == ("eau", "2", "carton")
+    assert observation.packaging is not None
+    assert (observation.packaging.count, observation.packaging.per_package_quantity,
+            observation.packaging.per_package_unit, observation.packaging.total,
+            observation.packaging.total_unit) == ("2", "12", "bouteille", "24", "bouteille")
+
+
+def test_inventory_context_unrelated_adjacent_count_does_not_supply_package_size():
+    package = "Deux cartons de lait"
+    separate = "Douze bouteilles d’eau"
+    candidate = _inventory_reply(
+        item(package, "lait", "Deux", "2", "cartons"),
+        item(separate, "eau", "Douze", "12", "bouteilles", ref="o2"),
+    )
+    result = _run_inventory_context_case(f"{package}. {separate}.", candidate, candidate)
+    assert result.status == "ok"
+    milk, water = result.observations
+    assert (milk.product_spoken, milk.quantity, milk.unit) == ("lait", "2", "carton")
+    assert milk.packaging is not None
+    assert milk.packaging.per_package_quantity is None and milk.packaging.total is None
+    assert (water.product_spoken, water.quantity, water.unit) == ("eau", "12", "bouteille")
+
+
+def test_inventory_context_explicit_correction_keeps_one_unique_prior_revision():
+    before, after = "Trois kilos de farine", "pardon, deux kilos de farine"
+    candidate = _inventory_reply(
+        item(before, "farine", "Trois", "3", "kilos"),
+        item(after, "farine", "deux", "2", "kilos", ref="o2", operation="correction", correction_of="o1"),
+    )
+    result = _run_inventory_context_case(f"{before}, {after}.", candidate, candidate)
+    assert result.status == "ok"
+    old, new = result.observations
+    assert (old.operation, old.quantity, old.revision) == ("count", "3", 1)
+    assert (new.operation, new.quantity, new.revision) == ("correction", "2", 2)
+    assert new.correction_of == old.observation_id
+
+
+def test_inventory_context_negation_does_not_become_a_correction():
+    before, negation = "Trois kilos de farine", "Il ne reste pas de sucre"
+    candidate = _inventory_reply(
+        item(before, "farine", "Trois", "3", "kilos"),
+        item(negation, "sucre", None, None, None, ref="o2", operation="negation", qualifier="unknown"),
+    )
+    result = _run_inventory_context_case(f"{before}. {negation}.", candidate, candidate)
+    assert result.status == "ok"
+    flour, sugar = result.observations
+    assert flour.operation == "count" and flour.quantity == "3"
+    assert sugar.operation == "negation" and sugar.quantity is None and sugar.correction_of is None
+
+
+@pytest.mark.parametrize("repair_content", ["empty", "only-fixed-flour", "full"])
+def test_inventory_context_repair_cannot_silently_drop_a_valid_neighbor(repair_content):
+    text = "Trois bouteilles d’eau. Deux kilos de farine."
+    water = item("Trois bouteilles d’eau", "eau", "Trois", "3", "bouteilles")
+    flour = item("Deux kilos de farine", "farine", "Deux", "2", "kilos", ref="o2")
+    invalid_flour = {**flour, "quote": "Deux kilos de farine complète"}
+    initial = _inventory_reply(water, invalid_flour)
+    repaired = {
+        "empty": _inventory_reply(),
+        "only-fixed-flour": _inventory_reply(flour),
+        "full": _inventory_reply(water, flour),
+    }[repair_content]
+    control = _run_inventory_context_case(text, _inventory_reply(water))
+    assert control.status == "ok"
+    valid_neighbor, = control.observations
+    assert (valid_neighbor.product_spoken, valid_neighbor.quantity, valid_neighbor.unit) == (
+        "eau", "3", "bouteille")
+    result = _run_inventory_context_case(text, initial, repaired)
+    assert [attempt["kind"] for attempt in result.attempts] == ["initial", "repair"]
+    assert result.attempts[0]["errors"]
+    if repair_content == "full":
+        assert result.status == "ok"
+        assert [(obs.product_spoken, obs.quantity, obs.unit) for obs in result.observations] == [
+            ("eau", "3", "bouteille"), ("farine", "2", "kg"),
+        ]
+    else:
+        assert result.status in {"needs_review", "error"}
+        assert any(obs.observation_id == valid_neighbor.observation_id for obs in result.observations) or result.errors

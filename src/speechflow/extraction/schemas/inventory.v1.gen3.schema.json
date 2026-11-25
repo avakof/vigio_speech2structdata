@@ -1,0 +1,219 @@
+{
+  "$defs": {
+    "LLMObservation": {
+      "additionalProperties": false,
+      "properties": {
+        "correction_of": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Correction Of"
+        },
+        "location": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Location"
+        },
+        "more_evidence": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/LLMSpan"
+          },
+          "title": "More Evidence",
+          "type": "array"
+        },
+        "operation": {
+          "enum": [
+            "count",
+            "correction",
+            "negation",
+            "unknown"
+          ],
+          "title": "Operation",
+          "type": "string"
+        },
+        "package": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/LLMPackage"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "product_spoken": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Product Spoken"
+        },
+        "qualifier": {
+          "enum": [
+            "exact",
+            "approximate",
+            "range",
+            "unknown"
+          ],
+          "title": "Qualifier",
+          "type": "string"
+        },
+        "quantity": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Quantity"
+        },
+        "quantity_text": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Quantity Text"
+        },
+        "quote": {
+          "title": "Quote",
+          "type": "string"
+        },
+        "ref": {
+          "title": "Ref",
+          "type": "string"
+        },
+        "segment": {
+          "title": "Segment",
+          "type": "string"
+        },
+        "unit_spoken": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Unit Spoken"
+        }
+      },
+      "required": [
+        "segment",
+        "quote",
+        "operation",
+        "product_spoken",
+        "quantity_text",
+        "quantity",
+        "qualifier",
+        "unit_spoken",
+        "package",
+        "location",
+        "ref",
+        "correction_of",
+        "more_evidence"
+      ],
+      "title": "LLMObservation",
+      "type": "object"
+    },
+    "LLMPackage": {
+      "additionalProperties": false,
+      "properties": {
+        "per_package_text": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Per Package Text"
+        },
+        "per_package_unit_spoken": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Per Package Unit Spoken"
+        }
+      },
+      "required": [
+        "per_package_text",
+        "per_package_unit_spoken"
+      ],
+      "title": "LLMPackage",
+      "type": "object"
+    },
+    "LLMSpan": {
+      "additionalProperties": false,
+      "properties": {
+        "quote": {
+          "title": "Quote",
+          "type": "string"
+        },
+        "segment": {
+          "title": "Segment",
+          "type": "string"
+        }
+      },
+      "required": [
+        "segment",
+        "quote"
+      ],
+      "title": "LLMSpan",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "language": {
+      "enum": [
+        "fr",
+        "en",
+        "other"
+      ],
+      "title": "Language",
+      "type": "string"
+    },
+    "observations": {
+      "items": {
+        "$ref": "#/$defs/LLMObservation"
+      },
+      "title": "Observations",
+      "type": "array"
+    }
+  },
+  "required": [
+    "language",
+    "observations"
+  ],
+  "title": "LLMOutput",
+  "type": "object"
+}

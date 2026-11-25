@@ -1,0 +1,53 @@
+{
+  "request": {
+    "model": "qwen3:8b",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Return k='a' and also an extra field named extra='b'. Output JSON only."
+      }
+    ],
+    "stream": false,
+    "think": false,
+    "format": {
+      "type": "object",
+      "properties": {
+        "k": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "k"
+      ],
+      "additionalProperties": false
+    },
+    "options": {
+      "temperature": 0,
+      "seed": 42,
+      "top_k": 1,
+      "top_p": 1.0,
+      "num_ctx": 4096,
+      "num_predict": 128
+    },
+    "keep_alive": "10m"
+  },
+  "http_status": 200,
+  "wall_s": 0.32033062502159737,
+  "response": {
+    "model": "qwen3:8b",
+    "created_at": "2026-11-25T17:31:05.328551Z",
+    "message": {
+      "role": "assistant",
+      "content": "{\"k\": \"a', \" }"
+    },
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 319722042,
+    "load_duration": 1676875,
+    "prompt_eval_count": 35,
+    "prompt_eval_cached_count": 3,
+    "prompt_eval_duration": 85688000,
+    "eval_count": 10,
+    "eval_duration": 229031000
+  }
+}

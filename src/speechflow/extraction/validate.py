@@ -19,8 +19,9 @@ from decimal import Decimal
 
 from ..contracts import EvidenceSpan, Packaging, TranscriptSegment, ValidatedObservation, stable_id
 from .language import assess as assess_language
-from .numbers import dec_str, parse_quantity
-from .scope import check_quantity_scope, negation_cue
+from .numbers import APPROX_WORDS, dec_str, parse_quantity
+from .relations import complete_split_measure, source_relation_problems
+from .scope import check_quantity_scope, narrow_count_quote, negation_cue
 from .schema import LLMObservation, LLMOutput
 from .text import fold, locate
 from .units import PACKAGE_UNITS, compatible, convert, dimension, is_known_unit, normalize_unit
@@ -30,6 +31,7 @@ from .units import PACKAGE_UNITS, compatible, convert, dimension, is_known_unit,
 class ReplyCheck:
     observations: list[ValidatedObservation] = field(default_factory=list)
     repairable: list[str] = field(default_factory=list)
+    semantic_repair: list[str] = field(default_factory=list)
     reply_errors: list[str] = field(default_factory=list)  # reviewable window-level notes
     skipped_duplicates: int = 0
     context_only_dropped: int = 0
@@ -136,6 +138,12 @@ def check_reply(
                                          quote=seg.normalized_text[span[0]:span[1]]))
         if failed:
             continue
+        item = complete_split_measure(item, evidence, segment_index)
+        if len(evidence) == 1 and item.operation == "count" and item.quantity_text and item.product_spoken:
+            terms = [item.quantity_text, item.unit_spoken, item.product_spoken, item.location]
+            if item.package:
+                terms += [item.package.per_package_text, item.package.per_package_unit_spoken]
+            evidence[0] = narrow_count_quote(evidence[0], terms)
         contiguous = all(b - a == 1 for a, b in zip(numbers, numbers[1:]))
         first_seg = segment_index[evidence[0].segment_id]
         position = (first_seg.ordinal, evidence[0].start, index)
@@ -173,6 +181,13 @@ def check_reply(
         positions[item.ref] = position
         out.conversions += item_conversions
         out.observations.append(built)
+    for message, involved in source_relation_problems(labels, context_labels, [*already, *out.observations]):
+        out.semantic_repair.append(message)
+        out.reply_errors.append(message)
+        for observation in involved:
+            if observation in out.observations:
+                observation.status = "needs_review"
+                observation.errors.append(message)
     return out
 
 
@@ -227,6 +242,14 @@ def _build(item: LLMObservation, evidence: list[EvidenceSpan], contiguous: bool,
             errors.append(f"quantity_text {quantity_text!r} not in evidence")
             quantity_text = None
         else:
+            if item.qualifier == "approximate":
+                cited = " ".join(e.quote for e in evidence)
+                for modifier in APPROX_WORDS:
+                    phrase = f"{modifier} {quantity_text}"
+                    span = locate(cited, phrase)
+                    if span is not None and _in(phrase, joined):
+                        quantity_text = cited[span[0]:span[1]]
+                        break
             parsed = parse_quantity(quantity_text)
             if parsed is None:
                 errors.append(f"quantity_text {quantity_text!r} not understood")
@@ -249,9 +272,17 @@ def _build(item: LLMObservation, evidence: list[EvidenceSpan], contiguous: bool,
     unit_spoken, unit = item.unit_spoken, None
     if unit_spoken is not None:
         if not _in(unit_spoken, joined):
-            errors.append(f"unit_spoken {unit_spoken!r} not in evidence")
-            unit_spoken = None
-        else:
+            # Recover inflection only when one explicit spelling in the cited text
+            # denotes exactly the same unit. Preserve the actual spoken form.
+            wanted = normalize_unit(unit_spoken)
+            variants = {w for e in evidence for w in re.findall(r"\b[^\W\d_]+\b", e.quote)
+                        if is_known_unit(wanted) and normalize_unit(w) == wanted}
+            if len(variants) == 1:
+                unit_spoken = next(iter(variants))
+            else:
+                errors.append(f"unit_spoken {unit_spoken!r} not in evidence")
+                unit_spoken = None
+        if unit_spoken is not None:
             unit = normalize_unit(unit_spoken)
             if not is_known_unit(unit):
                 errors.append(f"unit_not_recognized:{unit}")  # kept as spoken-normalized, never converted
@@ -259,7 +290,7 @@ def _build(item: LLMObservation, evidence: list[EvidenceSpan], contiguous: bool,
     # --- product / location must be words of the evidence ---
     product = item.product_spoken
     product_in_evidence = product is not None and _in(product, joined)
-    if product is not None and not product_in_evidence:
+    if product is not None and not product_in_evidence and item.operation != "correction":
         errors.append(f"product_spoken {product!r} not in evidence")
     location = item.location
     if location is not None and not _in(location, joined):
@@ -293,8 +324,6 @@ def _build(item: LLMObservation, evidence: list[EvidenceSpan], contiguous: bool,
     if operation == "unknown":
         errors.append("operation_unknown")
     if operation == "count":
-        if product is None:
-            errors.append("product_missing")
         if quantity is None:
             errors.append("quantity_missing")
     if quantity is not None and unit is None and operation != "negation":
@@ -302,6 +331,20 @@ def _build(item: LLMObservation, evidence: list[EvidenceSpan], contiguous: bool,
 
     # --- packaging: only from explicit "<package> de <n> <unit>" syntax; totals derived deterministically ---
     packaging = _packaging(item, joined, quantity, qualifier, unit, errors)
+    # A speaker can count containers and their contents without naming a product.
+    if operation == "count" and product is None and not (packaging and packaging.total is not None):
+        errors.append("product_missing")
+    if packaging and packaging.per_package_unit:
+        if not is_known_unit(packaging.per_package_unit):
+            errors.append("unrecognized_package_contents_unit")
+        if product and normalize_unit(product) == packaging.per_package_unit:
+            tail = segment_index[evidence[-1].segment_id].normalized_text[evidence[-1].end:]
+            last_unit = _words(item.package.per_package_unit_spoken or "")
+            if (packaging.total is not None and joined.rstrip(" .!?,;:").endswith(last_unit)
+                    and not tail.lstrip(" .!?,;:").strip()):
+                product = None  # the sole terminal noun denotes the verified inner unit
+            else:
+                errors.append("package_contents_unit_used_as_product")
 
     # --- correction target ---
     correction_of, revision = None, 1
@@ -312,10 +355,15 @@ def _build(item: LLMObservation, evidence: list[EvidenceSpan], contiguous: bool,
             errors.append(why)
         else:
             correction_of, revision = target.observation_id, target.revision + 1
+            if product and not product_in_evidence and fold(product) != fold(target.product_spoken or ""):
+                errors.append("correction_product_not_in_evidence_or_target")
+            if (product and not product_in_evidence and not re.search(
+                    r"\b(non|pardon|plutot|rectification|corrige)\b", joined)):
+                errors.append("correction_cue_missing_from_evidence_for_inherited_product")
             quantity, maximum, unit, note = _harmonize_unit(quantity, maximum, unit, target)
             if note:
                 conversions.append(note)
-            if product is None:
+            if not product_in_evidence:
                 product = target.product_spoken  # bare "non, deux kilos" keeps the corrected product
         if quantity is None:
             errors.append("correction_without_quantity")

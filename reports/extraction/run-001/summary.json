@@ -1,0 +1,1003 @@
+{
+  "model": "qwen3:8b",
+  "options": {
+    "temperature": 0,
+    "seed": 42,
+    "top_k": 1,
+    "top_p": 1.0,
+    "num_ctx": 4096,
+    "num_predict": 1024
+  },
+  "endpoint": "http://127.0.0.1:11434",
+  "started": "2026-11-25T18:11:38+0100",
+  "ollama_version": {
+    "version": "0.40.16"
+  },
+  "artifacts": {
+    "manifest_sha256": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+    "local_descriptor_sha256": "b3d9ba7c899cfd112df2574c6a91458a70b724c5e4e50dfffd75574b2d1648e7",
+    "blobs": {
+      "application/vnd.docker.container.image.v1+json": {
+        "sha256": "05a61d37b08453e59290add468e3bb2f688e23a01e967fecb0e2fa41218cea76",
+        "size": 487
+      },
+      "application/vnd.ollama.image.model": {
+        "sha256": "a3de86cd1c132c822487ededd47a324c50491393e6565cd14bafa40d0b8e686f",
+        "size": 5225374496
+      },
+      "application/vnd.ollama.image.template": {
+        "sha256": "ae370d884f108d16e7cc8fd5259ebc5773a0afa6e078b11f4ed7e39a27e0dfc4",
+        "size": 1723
+      },
+      "application/vnd.ollama.image.license": {
+        "sha256": "d18a5cc71b84bc4af394a31116bd3932b42241de70c77d2b76d69a314ec8aa12",
+        "size": 11338
+      },
+      "application/vnd.ollama.image.params": {
+        "sha256": "cff3f395ef3756ab63e58b0ad1b32bb6f802905cae1472e6a12034e4246fbbdb",
+        "size": 120
+      }
+    }
+  },
+  "fixtures": {
+    "inventory": {
+      "wall_s": 6.569405499991262,
+      "done_reason": "stop",
+      "timings_ns": {
+        "total_duration": 6568047125,
+        "load_duration": 783199292,
+        "prompt_eval_duration": 645544000,
+        "eval_duration": 5132808000
+      },
+      "tokens": {
+        "prompt_eval_count": 454,
+        "eval_count": 302
+      },
+      "attempts": [
+        {
+          "validation": {
+            "json_ok": true,
+            "pydantic_ok": true,
+            "pydantic_errors": null,
+            "independent_errors": []
+          }
+        }
+      ],
+      "valid": true,
+      "semantic_failures": [],
+      "parsed": {
+        "observations": [
+          {
+            "obs_id": "o1",
+            "product_as_spoken": "tomates",
+            "quantity_text": "deux virgule cinq",
+            "quantity": "2.5",
+            "unit_text": "kilos",
+            "unit": "kg",
+            "package_contents_quantity": null,
+            "package_contents_unit": null,
+            "location": null,
+            "operation": "stock_count",
+            "corrects": null,
+            "superseded": false,
+            "segment_ids": [
+              "S1"
+            ],
+            "evidence_text": "Il reste deux virgule cinq kilos de tomates et douze bouteilles de lait."
+          },
+          {
+            "obs_id": "o2",
+            "product_as_spoken": "lait",
+            "quantity_text": "douze",
+            "quantity": "12",
+            "unit_text": "bouteilles",
+            "unit": "bouteille",
+            "package_contents_quantity": null,
+            "package_contents_unit": null,
+            "location": null,
+            "operation": "stock_count",
+            "corrects": null,
+            "superseded": false,
+            "segment_ids": [
+              "S1"
+            ],
+            "evidence_text": "Il reste deux virgule cinq kilos de tomates et douze bouteilles de lait."
+          }
+        ]
+      }
+    },
+    "correction_same_segment": {
+      "wall_s": 4.878725916001713,
+      "done_reason": "stop",
+      "timings_ns": {
+        "total_duration": 4878130750,
+        "load_duration": 1985333,
+        "prompt_eval_duration": 173426000,
+        "eval_duration": 4694239000
+      },
+      "tokens": {
+        "prompt_eval_count": 445,
+        "eval_count": 273
+      },
+      "attempts": [
+        {
+          "validation": {
+            "json_ok": true,
+            "pydantic_ok": true,
+            "pydantic_errors": null,
+            "independent_errors": [
+              "o1: superseded=False inconsistent with corrects graph"
+            ]
+          }
+        },
+        {
+          "repair": true,
+          "wall_s": 5.253125165996607,
+          "validation": {
+            "json_ok": true,
+            "pydantic_ok": true,
+            "pydantic_errors": null,
+            "independent_errors": []
+          }
+        }
+      ],
+      "valid": true,
+      "semantic_failures": [],
+      "parsed": {
+        "observations": [
+          {
+            "obs_id": "o1",
+            "product_as_spoken": "farine",
+            "quantity_text": "trois",
+            "quantity": "3",
+            "unit_text": "kilos",
+            "unit": "kg",
+            "package_contents_quantity": null,
+            "package_contents_unit": null,
+            "location": null,
+            "operation": "remove",
+            "corrects": null,
+            "superseded": true,
+            "segment_ids": [
+              "S1"
+            ],
+            "evidence_text": "Trois kilos de farine… non, deux kilos."
+          },
+          {
+            "obs_id": "o2",
+            "product_as_spoken": "farine",
+            "quantity_text": "deux",
+            "quantity": "2",
+            "unit_text": "kilos",
+            "unit": "kg",
+            "package_contents_quantity": null,
+            "package_contents_unit": null,
+            "location": null,
+            "operation": "stock_count",
+            "corrects": "o1",
+            "superseded": false,
+            "segment_ids": [
+              "S1"
+            ],
+            "evidence_text": "Trois kilos de farine… non, deux kilos."
+          }
+        ]
+      }
+    },
+    "correction_next_segment": {
+      "wall_s": 4.5666458750201855,
+      "done_reason": "stop",
+      "timings_ns": {
+        "total_duration": 4566093333,
+        "load_duration": 868833,
+        "prompt_eval_duration": 69135000,
+        "eval_duration": 4485098000
+      },
+      "tokens": {
+        "prompt_eval_count": 448,
+        "eval_count": 260
+      },
+      "attempts": [
+        {
+          "validation": {
+            "json_ok": true,
+            "pydantic_ok": true,
+            "pydantic_errors": null,
+            "independent_errors": [
+              "o1: superseded=False inconsistent with corrects graph"
+            ]
+          }
+        },
+        {
+          "repair": true,
+          "wall_s": 5.011361874989234,
+          "validation": {
+            "json_ok": true,
+            "pydantic_ok": true,
+            "pydantic_errors": null,
+            "independent_errors": []
+          }
+        }
+      ],
+      "valid": true,
+      "semantic_failures": [],
+      "parsed": {
+        "observations": [
+          {
+            "obs_id": "o1",
+            "product_as_spoken": "farine",
+            "quantity_text": "trois",
+            "quantity": "3",
+            "unit_text": "kilos",
+            "unit": "kg",
+            "package_contents_quantity": null,
+            "package_contents_unit": null,
+            "location": null,
+            "operation": "stock_count",
+            "corrects": null,
+            "superseded": true,
+            "segment_ids": [
+              "S1"
+            ],
+            "evidence_text": "Trois kilos de farine."
+          },
+          {
+            "obs_id": "o2",
+            "product_as_spoken": "farine",
+            "quantity_text": "deux",
+            "quantity": "2",
+            "unit_text": "kilos",
+            "unit": "kg",
+            "package_contents_quantity": null,
+            "package_contents_unit": null,
+            "location": null,
+            "operation": "stock_count",
+            "corrects": "o1",
+            "superseded": false,
+            "segment_ids": [
+              "S2"
+            ],
+            "evidence_text": "Non, deux kilos."
+          }
+        ]
+      }
+    },
+    "cartons_unknown_contents": {
+      "wall_s": 2.4300261669850443,
+      "done_reason": "stop",
+      "timings_ns": {
+        "total_duration": 2429342000,
+        "load_duration": 543125,
+        "prompt_eval_duration": 70114000,
+        "eval_duration": 2350992000
+      },
+      "tokens": {
+        "prompt_eval_count": 439,
+        "eval_count": 136
+      },
+      "attempts": [
+        {
+          "validation": {
+            "json_ok": true,
+            "pydantic_ok": true,
+            "pydantic_errors": null,
+            "independent_errors": []
+          }
+        }
+      ],
+      "valid": true,
+      "semantic_failures": [],
+      "parsed": {
+        "observations": [
+          {
+            "obs_id": "o1",
+            "product_as_spoken": "lait",
+            "quantity_text": "deux",
+            "quantity": "2",
+            "unit_text": "carton",
+            "unit": "carton",
+            "package_contents_quantity": null,
+            "package_contents_unit": null,
+            "location": null,
+            "operation": "stock_count",
+            "corrects": null,
+            "superseded": false,
+            "segment_ids": [
+              "S1"
+            ],
+            "evidence_text": "Deux cartons de lait."
+          }
+        ]
+      }
+    },
+    "cartons_explicit_contents": {
+      "wall_s": 2.585363915975904,
+      "done_reason": "stop",
+      "timings_ns": {
+        "total_duration": 2584163084,
+        "load_duration": 677500,
+        "prompt_eval_duration": 68708000,
+        "eval_duration": 2511484000
+      },
+      "tokens": {
+        "prompt_eval_count": 442,
+        "eval_count": 144
+      },
+      "attempts": [
+        {
+          "validation": {
+            "json_ok": true,
+            "pydantic_ok": true,
+            "pydantic_errors": null,
+            "independent_errors": []
+          }
+        }
+      ],
+      "valid": true,
+      "semantic_failures": [],
+      "parsed": {
+        "observations": [
+          {
+            "obs_id": "o1",
+            "product_as_spoken": "cartons",
+            "quantity_text": "deux",
+            "quantity": "2",
+            "unit_text": "carton",
+            "unit": "carton",
+            "package_contents_quantity": "12",
+            "package_contents_unit": "bouteille",
+            "location": null,
+            "operation": "stock_count",
+            "corrects": null,
+            "superseded": false,
+            "segment_ids": [
+              "S1"
+            ],
+            "evidence_text": "Deux cartons de douze bouteilles."
+          }
+        ]
+      }
+    }
+  },
+  "subset": {
+    "enum": {
+      "http_error": null,
+      "content": "{\"v\": \"b\"}",
+      "constraint_enforced": true
+    },
+    "integer_maximum": {
+      "http_error": null,
+      "content": "{\"n\": 5}",
+      "constraint_enforced": true
+    },
+    "integer_minimum": {
+      "http_error": null,
+      "content": "{\"n\": 10}",
+      "constraint_enforced": true
+    },
+    "string_pattern": {
+      "http_error": null,
+      "content": "{\"c\": \"HEL\"}",
+      "constraint_enforced": true
+    },
+    "string_maxLength": {
+      "http_error": null,
+      "content": "{\"s\": \"exa\"}",
+      "constraint_enforced": true
+    },
+    "array_maxItems": {
+      "http_error": null,
+      "content": "{\"a\": [1, 2\n  ] }",
+      "constraint_enforced": true
+    },
+    "array_minItems": {
+      "http_error": null,
+      "content": "{\"a\": [1, 2, 3]}",
+      "constraint_enforced": true
+    },
+    "anyOf_nullable": {
+      "http_error": null,
+      "content": "{\"x\": null}",
+      "constraint_enforced": true
+    },
+    "additionalProperties_false": {
+      "http_error": null,
+      "content": "{\"k\": \"a', \" }",
+      "constraint_enforced": true
+    },
+    "ref_defs": {
+      "http_error": null,
+      "content": "{\"p\": {\"q\": 7}}",
+      "constraint_enforced": true
+    },
+    "const": {
+      "http_error": null,
+      "content": "{\"v\": \"fixed\"}",
+      "constraint_enforced": true
+    },
+    "string_format_date": {
+      "http_error": null,
+      "content": "{\"d\": \"2023-10-10\"}",
+      "constraint_enforced": true
+    },
+    "optional_property_with_default": {
+      "http_error": null,
+      "content": "{\"a\": 1}",
+      "constraint_enforced": true
+    },
+    "uniqueItems": {
+      "http_error": null,
+      "content": "{\"a\": [1, 1, 1, 1]}",
+      "constraint_enforced": false
+    }
+  },
+  "pre_ps": {
+    "ts": 1795626698.181679,
+    "ps_api": {
+      "models": []
+    },
+    "os_processes": [
+      {
+        "pid": 28546,
+        "parent_pid": 1,
+        "name": "ollama",
+        "rss_bytes": 61079552
+      }
+    ],
+    "system_available_bytes": 27378401280
+  },
+  "show_details": {
+    "parent_model": "",
+    "format": "gguf",
+    "family": "qwen3",
+    "families": [
+      "qwen3"
+    ],
+    "parameter_size": "8.2B",
+    "quantization_level": "Q4_K_M"
+  },
+  "show_capabilities": [
+    "completion",
+    "tools",
+    "thinking"
+  ],
+  "post_first_ps": {
+    "ts": 1795626704.8820028,
+    "ps_api": {
+      "models": [
+        {
+          "name": "qwen3:8b",
+          "model": "qwen3:8b",
+          "size": 4795903507,
+          "digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+          "details": {
+            "parent_model": "",
+            "format": "gguf",
+            "family": "qwen3",
+            "families": [
+              "qwen3"
+            ],
+            "parameter_size": "8.2B",
+            "quantization_level": "Q4_K_M"
+          },
+          "expires_at": "2026-11-25T18:21:44.808642+01:00",
+          "size_vram": 4795903507,
+          "context_length": 4096,
+          "runner": "llamacpp"
+        }
+      ]
+    },
+    "os_processes": [
+      {
+        "pid": 28546,
+        "parent_pid": 1,
+        "name": "ollama",
+        "rss_bytes": 61915136
+      }
+    ],
+    "system_available_bytes": 20912373760
+  },
+  "production": {
+    "inventory": {
+      "status": "ok",
+      "errors": [],
+      "metrics": {
+        "extractor": {
+          "backend": "ollama",
+          "model": "qwen3:8b",
+          "digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+          "details": {
+            "parent_model": "",
+            "format": "gguf",
+            "family": "qwen3",
+            "families": [
+              "qwen3"
+            ],
+            "parameter_size": "8.2B",
+            "quantization_level": "Q4_K_M",
+            "context_length": 40960,
+            "embedding_length": 4096,
+            "runner": "ggml"
+          },
+          "size": 5225388164
+        },
+        "windows": 1,
+        "failed_windows": 0,
+        "attempts": 1,
+        "repairs": 0,
+        "model_wall_s": 5.1025,
+        "total_wall_s": 5.1063,
+        "prompt_tokens": 884,
+        "output_tokens": 161,
+        "load_duration_ns": 822498709,
+        "duplicates_skipped": 0,
+        "context_only_dropped": 0,
+        "unit_conversions": [],
+        "estimate_misses": 0,
+        "max_actual_to_estimate_ratio": 0.515,
+        "options": {
+          "temperature": 0,
+          "seed": 0,
+          "top_k": 1,
+          "top_p": 1.0,
+          "num_ctx": 8192,
+          "num_predict": 2048
+        },
+        "prompt_version": "inventory.v1.prompt2",
+        "schema_version": "inventory.v1.gen2",
+        "unload": {
+          "attempted": false,
+          "reason": "caller-owned backend"
+        }
+      },
+      "observations": [
+        {
+          "product_spoken": "tomates",
+          "quantity_text": "deux virgule cinq",
+          "quantity": "2.5",
+          "quantity_max": null,
+          "qualifier": "exact",
+          "unit_spoken": "kilos",
+          "unit": "kg",
+          "packaging": null,
+          "location": null,
+          "operation": "count",
+          "correction_of": null,
+          "observation_id": "obs_c63f404b8653a95536c921d6ac111c29efaf4eb21bbb6dcd8755b322b9897f92",
+          "catalog_match": null,
+          "revision": 1,
+          "status": "ok",
+          "errors": [],
+          "evidence": [
+            "Il reste deux virgule cinq kilos de tomates"
+          ]
+        },
+        {
+          "product_spoken": "lait",
+          "quantity_text": "douze",
+          "quantity": "12",
+          "quantity_max": null,
+          "qualifier": "exact",
+          "unit_spoken": "bouteilles",
+          "unit": "bouteille",
+          "packaging": null,
+          "location": null,
+          "operation": "count",
+          "correction_of": null,
+          "observation_id": "obs_0fc5f274063b6cb659cb5a8b86d870701240b24c42c3d5d6bf7309d984b77312",
+          "catalog_match": null,
+          "revision": 1,
+          "status": "ok",
+          "errors": [],
+          "evidence": [
+            "douze bouteilles de lait"
+          ]
+        }
+      ]
+    },
+    "correction_same_segment": {
+      "status": "needs_review",
+      "errors": [],
+      "metrics": {
+        "extractor": {
+          "backend": "ollama",
+          "model": "qwen3:8b",
+          "digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+          "details": {
+            "parent_model": "",
+            "format": "gguf",
+            "family": "qwen3",
+            "families": [
+              "qwen3"
+            ],
+            "parameter_size": "8.2B",
+            "quantization_level": "Q4_K_M",
+            "context_length": 40960,
+            "embedding_length": 4096,
+            "runner": "ggml"
+          },
+          "size": 5225388164
+        },
+        "windows": 1,
+        "failed_windows": 0,
+        "attempts": 1,
+        "repairs": 0,
+        "model_wall_s": 1.6104,
+        "total_wall_s": 1.6111,
+        "prompt_tokens": 875,
+        "output_tokens": 83,
+        "load_duration_ns": 1279959,
+        "duplicates_skipped": 0,
+        "context_only_dropped": 0,
+        "unit_conversions": [],
+        "estimate_misses": 0,
+        "max_actual_to_estimate_ratio": 0.515,
+        "options": {
+          "temperature": 0,
+          "seed": 0,
+          "top_k": 1,
+          "top_p": 1.0,
+          "num_ctx": 8192,
+          "num_predict": 2048
+        },
+        "prompt_version": "inventory.v1.prompt2",
+        "schema_version": "inventory.v1.gen2",
+        "unload": {
+          "attempted": false,
+          "reason": "caller-owned backend"
+        }
+      },
+      "observations": [
+        {
+          "product_spoken": "farine",
+          "quantity_text": "deux",
+          "quantity": "2",
+          "quantity_max": null,
+          "qualifier": "exact",
+          "unit_spoken": "kilos",
+          "unit": "kg",
+          "packaging": null,
+          "location": null,
+          "operation": "correction",
+          "correction_of": null,
+          "observation_id": "obs_4b530ada88800254440cb6289ae0a6cf2f9e5fa1241d145b85e9cc555f5060c5",
+          "catalog_match": null,
+          "revision": 1,
+          "status": "needs_review",
+          "errors": [
+            "quantity_unit_and_product_not_in_one_source_clause",
+            "correction_target_missing"
+          ],
+          "evidence": [
+            "Trois kilos de farine… non, deux kilos."
+          ]
+        }
+      ]
+    },
+    "correction_next_segment": {
+      "status": "ok",
+      "errors": [],
+      "metrics": {
+        "extractor": {
+          "backend": "ollama",
+          "model": "qwen3:8b",
+          "digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+          "details": {
+            "parent_model": "",
+            "format": "gguf",
+            "family": "qwen3",
+            "families": [
+              "qwen3"
+            ],
+            "parameter_size": "8.2B",
+            "quantization_level": "Q4_K_M",
+            "context_length": 40960,
+            "embedding_length": 4096,
+            "runner": "ggml"
+          },
+          "size": 5225388164
+        },
+        "windows": 1,
+        "failed_windows": 0,
+        "attempts": 1,
+        "repairs": 0,
+        "model_wall_s": 2.5982,
+        "total_wall_s": 2.6003,
+        "prompt_tokens": 878,
+        "output_tokens": 142,
+        "load_duration_ns": 751375,
+        "duplicates_skipped": 0,
+        "context_only_dropped": 0,
+        "unit_conversions": [],
+        "estimate_misses": 0,
+        "max_actual_to_estimate_ratio": 0.516,
+        "options": {
+          "temperature": 0,
+          "seed": 0,
+          "top_k": 1,
+          "top_p": 1.0,
+          "num_ctx": 8192,
+          "num_predict": 2048
+        },
+        "prompt_version": "inventory.v1.prompt2",
+        "schema_version": "inventory.v1.gen2",
+        "unload": {
+          "attempted": false,
+          "reason": "caller-owned backend"
+        }
+      },
+      "observations": [
+        {
+          "product_spoken": "farine",
+          "quantity_text": "trois",
+          "quantity": "3",
+          "quantity_max": null,
+          "qualifier": "exact",
+          "unit_spoken": "kilos",
+          "unit": "kg",
+          "packaging": null,
+          "location": null,
+          "operation": "count",
+          "correction_of": null,
+          "observation_id": "obs_0bbdc1671fe8a251ba66fa9af10423552b96c7c3ff387a8406e2bb18ec8933b6",
+          "catalog_match": null,
+          "revision": 1,
+          "status": "ok",
+          "errors": [],
+          "evidence": [
+            "Trois kilos de farine."
+          ]
+        },
+        {
+          "product_spoken": "farine",
+          "quantity_text": "deux",
+          "quantity": "2",
+          "quantity_max": null,
+          "qualifier": "exact",
+          "unit_spoken": "kilos",
+          "unit": "kg",
+          "packaging": null,
+          "location": null,
+          "operation": "correction",
+          "correction_of": "obs_0bbdc1671fe8a251ba66fa9af10423552b96c7c3ff387a8406e2bb18ec8933b6",
+          "observation_id": "obs_a4261fb431b9d4a102788241336e8efa4615b8d8a2fb4dc33de3366382c6bfe9",
+          "catalog_match": null,
+          "revision": 2,
+          "status": "ok",
+          "errors": [],
+          "evidence": [
+            "Non, deux kilos."
+          ]
+        }
+      ]
+    },
+    "cartons_unknown_contents": {
+      "status": "ok",
+      "errors": [],
+      "metrics": {
+        "extractor": {
+          "backend": "ollama",
+          "model": "qwen3:8b",
+          "digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+          "details": {
+            "parent_model": "",
+            "format": "gguf",
+            "family": "qwen3",
+            "families": [
+              "qwen3"
+            ],
+            "parameter_size": "8.2B",
+            "quantization_level": "Q4_K_M",
+            "context_length": 40960,
+            "embedding_length": 4096,
+            "runner": "ggml"
+          },
+          "size": 5225388164
+        },
+        "windows": 1,
+        "failed_windows": 0,
+        "attempts": 1,
+        "repairs": 0,
+        "model_wall_s": 1.4563,
+        "total_wall_s": 1.4571,
+        "prompt_tokens": 869,
+        "output_tokens": 76,
+        "load_duration_ns": 830083,
+        "duplicates_skipped": 0,
+        "context_only_dropped": 0,
+        "unit_conversions": [],
+        "estimate_misses": 0,
+        "max_actual_to_estimate_ratio": 0.514,
+        "options": {
+          "temperature": 0,
+          "seed": 0,
+          "top_k": 1,
+          "top_p": 1.0,
+          "num_ctx": 8192,
+          "num_predict": 2048
+        },
+        "prompt_version": "inventory.v1.prompt2",
+        "schema_version": "inventory.v1.gen2",
+        "unload": {
+          "attempted": false,
+          "reason": "caller-owned backend"
+        }
+      },
+      "observations": [
+        {
+          "product_spoken": "lait",
+          "quantity_text": "Deux",
+          "quantity": "2",
+          "quantity_max": null,
+          "qualifier": "exact",
+          "unit_spoken": "cartons",
+          "unit": "carton",
+          "packaging": {
+            "count": "2",
+            "unit": "carton",
+            "per_package_quantity": null,
+            "per_package_unit": null,
+            "total": null,
+            "total_unit": null
+          },
+          "location": null,
+          "operation": "count",
+          "correction_of": null,
+          "observation_id": "obs_5709cdf11a0102cb7939c7715ba0751cce79922200a887e3bcec15e082f66bd9",
+          "catalog_match": null,
+          "revision": 1,
+          "status": "ok",
+          "errors": [],
+          "evidence": [
+            "Deux cartons de lait."
+          ]
+        }
+      ]
+    },
+    "cartons_explicit_contents": {
+      "status": "needs_review",
+      "errors": [],
+      "metrics": {
+        "extractor": {
+          "backend": "ollama",
+          "model": "qwen3:8b",
+          "digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+          "details": {
+            "parent_model": "",
+            "format": "gguf",
+            "family": "qwen3",
+            "families": [
+              "qwen3"
+            ],
+            "parameter_size": "8.2B",
+            "quantization_level": "Q4_K_M",
+            "context_length": 40960,
+            "embedding_length": 4096,
+            "runner": "ggml"
+          },
+          "size": 5225388164
+        },
+        "windows": 1,
+        "failed_windows": 0,
+        "attempts": 1,
+        "repairs": 0,
+        "model_wall_s": 1.8473,
+        "total_wall_s": 1.8477,
+        "prompt_tokens": 872,
+        "output_tokens": 99,
+        "load_duration_ns": 1339125,
+        "duplicates_skipped": 0,
+        "context_only_dropped": 0,
+        "unit_conversions": [],
+        "estimate_misses": 0,
+        "max_actual_to_estimate_ratio": 0.514,
+        "options": {
+          "temperature": 0,
+          "seed": 0,
+          "top_k": 1,
+          "top_p": 1.0,
+          "num_ctx": 8192,
+          "num_predict": 2048
+        },
+        "prompt_version": "inventory.v1.prompt2",
+        "schema_version": "inventory.v1.gen2",
+        "unload": {
+          "attempted": false,
+          "reason": "caller-owned backend"
+        }
+      },
+      "observations": [
+        {
+          "product_spoken": "bouteilles",
+          "quantity_text": "douze",
+          "quantity": "12",
+          "quantity_max": null,
+          "qualifier": "exact",
+          "unit_spoken": "bouteilles",
+          "unit": "bouteille",
+          "packaging": {
+            "count": "12",
+            "unit": "bouteille",
+            "per_package_quantity": null,
+            "per_package_unit": null,
+            "total": null,
+            "total_unit": null
+          },
+          "location": null,
+          "operation": "count",
+          "correction_of": null,
+          "observation_id": "obs_59304c88f6ee9387aebef7aaa67863cf630617bc8fdf525412f0e60dc8cdaad8",
+          "catalog_match": null,
+          "revision": 1,
+          "status": "needs_review",
+          "errors": [
+            "package_contents_not_explicit_in_evidence"
+          ],
+          "evidence": [
+            "Deux cartons de douze bouteilles."
+          ]
+        }
+      ]
+    }
+  },
+  "pre_unload_ps": {
+    "ts": 1795626746.061155,
+    "ps_api": {
+      "models": [
+        {
+          "name": "qwen3:8b",
+          "model": "qwen3:8b",
+          "size": 5238423551,
+          "digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+          "details": {
+            "parent_model": "",
+            "format": "gguf",
+            "family": "qwen3",
+            "families": [
+              "qwen3"
+            ],
+            "parameter_size": "8.2B",
+            "quantization_level": "Q4_K_M"
+          },
+          "expires_at": "2026-11-25T18:17:26.005349+01:00",
+          "size_vram": 5238423551,
+          "context_length": 8192,
+          "runner": "llamacpp"
+        }
+      ]
+    },
+    "os_processes": [
+      {
+        "pid": 28546,
+        "parent_pid": 1,
+        "name": "ollama",
+        "rss_bytes": 62128128
+      }
+    ],
+    "system_available_bytes": 21655633920
+  },
+  "unload_response": {
+    "model": "qwen3:8b",
+    "created_at": "2026-11-25T17:12:26.07041Z",
+    "response": "",
+    "done": true,
+    "done_reason": "unload"
+  },
+  "post_unload_ps": {
+    "ts": 1795626747.1681752,
+    "ps_api": {
+      "models": []
+    },
+    "os_processes": [
+      {
+        "pid": 28546,
+        "parent_pid": 1,
+        "name": "ollama",
+        "rss_bytes": 62128128
+      }
+    ],
+    "system_available_bytes": 23870947328
+  },
+  "runner_idle_after_unload": true,
+  "finished": "2026-11-25T18:12:27+0100"
+}

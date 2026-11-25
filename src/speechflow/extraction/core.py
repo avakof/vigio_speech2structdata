@@ -25,7 +25,6 @@ CONTEXT_SEGMENTS = 1  # previous target segments re-shown (read-only) at the sta
 MAX_KNOWN = 30  # earlier observations offered as correction targets; overflow is reported, not hidden
 PROMPT_OVERHEAD_TOKENS = 128
 UNLOAD_POLL_SECONDS = 5.0  # bounded /api/ps confirmation after unloading an internally created runner
-KNOWN_RESERVE_TOKENS = 40  # planning reserve per carried observation; the real prompt is re-measured before sending
 
 
 def generation_options(settings: Settings) -> dict:
@@ -47,8 +46,9 @@ def plan_windows(segments: list[TranscriptSegment], settings: Settings) -> tuple
     `context` here is the worst case (previous window's tail); `extract` drops it when the previous
     window failed, so a failed window's text is never presented as "already processed".
     """
-    base = (settings.context_tokens - settings.output_tokens - estimate_tokens(SYSTEM_PROMPT)
-            - PROMPT_OVERHEAD_TOKENS - MAX_KNOWN * KNOWN_RESERVE_TOKENS)
+    # _fit measures and shrinks actual carry. Reserving for every hypothetical
+    # prior observation would reject short inputs even in the first window.
+    base = settings.context_tokens - settings.output_tokens - estimate_tokens(SYSTEM_PROMPT) - PROMPT_OVERHEAD_TOKENS
     windows: list[_Window] = []
     errors: list[str] = []
     cur: list[TranscriptSegment] = []
@@ -212,6 +212,7 @@ def _extract(segments, *, run_id, settings, backend, expected_digest) -> Extract
                 errors=errors + [f"extractor digest mismatch: expected {expected_digest}, found {found or 'none'}; "
                                  "run `speechflow models prepare`. No transcript was sent."])
     schema = generation_json_schema()
+    schema_sha256 = hashlib.sha256(json.dumps(schema, sort_keys=True).encode()).hexdigest()
     options = generation_options(settings)
     windows, plan_errors = plan_windows(usable, settings)
     errors += plan_errors
@@ -234,6 +235,7 @@ def _extract(segments, *, run_id, settings, backend, expected_digest) -> Extract
         messages, known, dropped, est = _fit(SYSTEM_PROMPT, labels, ctx_labels, target_map, accepted, settings)
         base_rec = {"window": win.index, "run_id": run_id, "model": settings.ollama_model, "extractor": identity,
                     "prompt_version": PROMPT_VERSION, "schema_version": GENERATION_SCHEMA_VERSION,
+                    "generation_schema_sha256": schema_sha256,
                     "options": options, "segment_ids": [s.segment_id for s in win.targets],
                     "labels": {k: s.segment_id for k, s in labels.items()},
                     "known": {k: o.observation_id for k, o in known.items()},
@@ -244,6 +246,7 @@ def _extract(segments, *, run_id, settings, backend, expected_digest) -> Extract
                           "(prompt budget / carry limit)")
         problems: list[str] = []
         check = None
+        partial = None
         if est + settings.output_tokens > settings.context_tokens:
             problems = [f"prompt upper bound {est} + output budget {settings.output_tokens} exceeds num_ctx "
                         f"{settings.context_tokens}; request not sent, nothing truncated"]
@@ -275,6 +278,16 @@ def _extract(segments, *, run_id, settings, backend, expected_digest) -> Extract
                                       f"{reply.prompt_tokens}; estimator must be recalibrated")
                 problems, check = _validate_reply(reply, settings, run_id, labels, ctx_labels, known, accepted,
                                                   segment_index)
+                if check is not None:
+                    problems = [*problems, *check.semantic_repair]
+                if attempt_no == 1 and problems and check is not None and (check.observations or check.semantic_repair):
+                    partial = check
+                if attempt_no == 2 and partial is not None and check is not None:
+                    kept = {o.observation_id for o in check.observations if o.status == "ok"}
+                    missing_valid = [o for o in partial.observations if o.status == "ok" and o.observation_id not in kept]
+                    if missing_valid:
+                        problems.append("repair omitted previously grounded observations: " +
+                                        ", ".join(o.observation_id for o in missing_valid))
                 rec["errors"] = problems
                 attempts.append(rec)
                 if not problems:
@@ -293,6 +306,9 @@ def _extract(segments, *, run_id, settings, backend, expected_digest) -> Extract
                         break
                     totals["repairs"] += 1
                     messages, est = repaired, r_est
+        if problems and partial is not None:
+            partial.reply_errors.append(f"Unresolved validation after the bounded repair: {problems[:6]}")
+            check, problems = partial, []
         if problems:
             failed_windows += 1
             previous_ok = False

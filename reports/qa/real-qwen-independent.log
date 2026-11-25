@@ -1,0 +1,19 @@
+Started 2026-11-25T17:27:42Z
+
+$ curl -fsS --noproxy "*" --max-time 5 http://127.0.0.1:11434/api/ps
+{"models":[]}
+
+$ SPEECHFLOW_QA_MODEL_SLOT=1 .venv/bin/python -m pytest -q tests/real_models/test_runtime.py::test_real_extractor_installed_cli_exact_transcript --basetemp outputs/qa-independent-qwen-5252b986aa1e
+.                                                                        [100%]
+1 passed in 93.98s (0:01:33)
+SPEECHFLOW_QA_MODEL_SLOT=1 .venv/bin/python -m pytest -q  --basetemp "$qa_dir  0.90s user 0.10s system 1% cpu 1:34.10 total
+pytest exit 0
+Finished 2026-11-25T17:29:16Z
+
+$ curl -fsS --noproxy "*" --max-time 5 http://127.0.0.1:11434/api/ps
+{"models":[]}
+Ollama idle verified
+
+Slot release check 2026-11-25T17:30:07Z
+$ curl -fsS --noproxy "*" --max-time 5 http://127.0.0.1:11434/api/ps
+{"models":[]}

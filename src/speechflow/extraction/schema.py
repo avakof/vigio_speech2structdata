@@ -10,9 +10,9 @@ from __future__ import annotations
 
 from typing import Literal
 
-from pydantic import BaseModel, ConfigDict
+from pydantic import BaseModel, ConfigDict, Field
 
-GENERATION_SCHEMA_VERSION = "inventory.v1.gen2"
+GENERATION_SCHEMA_VERSION = "inventory.v1.gen4"
 
 
 class _Strict(BaseModel):
@@ -39,7 +39,7 @@ class LLMObservation(_Strict):
     operation: Literal["count", "correction", "negation", "unknown"]
     product_spoken: str | None
     quantity_text: str | None
-    quantity: str | None  # decimal string with a dot, cross-checked deterministically
+    quantity: str | None = Field(pattern=r"^[0-9]+(?:\.[0-9]+)?$")
     qualifier: Literal["exact", "approximate", "range", "unknown"]
     unit_spoken: str | None
     package: LLMPackage | None
@@ -54,4 +54,9 @@ class LLMOutput(_Strict):
 
 
 def generation_json_schema() -> dict:
-    return LLMOutput.model_json_schema()
+    schema = LLMOutput.model_json_schema()
+    observation = schema["$defs"]["LLMObservation"]
+    # New generation explicitly chooses [] or continuation spans. The reader
+    # still accepts saved gen2 replies which omitted the default empty array.
+    observation["required"].append("more_evidence")
+    return schema

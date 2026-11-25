@@ -1,0 +1,65 @@
+{
+  "request": {
+    "model": "qwen3:8b",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Set p.q to 7. Output JSON only."
+      }
+    ],
+    "stream": false,
+    "think": false,
+    "format": {
+      "type": "object",
+      "properties": {
+        "p": {
+          "$ref": "#/$defs/P"
+        }
+      },
+      "required": [
+        "p"
+      ],
+      "$defs": {
+        "P": {
+          "type": "object",
+          "properties": {
+            "q": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "q"
+          ]
+        }
+      }
+    },
+    "options": {
+      "temperature": 0,
+      "seed": 42,
+      "top_k": 1,
+      "top_p": 1.0,
+      "num_ctx": 4096,
+      "num_predict": 128
+    },
+    "keep_alive": "10m"
+  },
+  "http_status": 200,
+  "wall_s": 0.27899591700406745,
+  "response": {
+    "model": "qwen3:8b",
+    "created_at": "2026-11-25T17:31:05.608476Z",
+    "message": {
+      "role": "assistant",
+      "content": "{\"p\": {\"q\": 7}}"
+    },
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 278421291,
+    "load_duration": 518291,
+    "prompt_eval_count": 27,
+    "prompt_eval_cached_count": 3,
+    "prompt_eval_duration": 79833000,
+    "eval_count": 11,
+    "eval_duration": 196705000
+  }
+}

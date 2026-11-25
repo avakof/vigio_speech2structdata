@@ -1,0 +1,196 @@
+{
+  "$defs": {
+    "Observation": {
+      "additionalProperties": false,
+      "properties": {
+        "obs_id": {
+          "pattern": "^o[0-9]+$",
+          "title": "Obs Id",
+          "type": "string"
+        },
+        "product_as_spoken": {
+          "minLength": 1,
+          "title": "Product As Spoken",
+          "type": "string"
+        },
+        "quantity_text": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Quantity Text"
+        },
+        "quantity": {
+          "anyOf": [
+            {
+              "pattern": "^-?[0-9]+(\\.[0-9]+)?$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Quantity"
+        },
+        "unit_text": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Unit Text"
+        },
+        "unit": {
+          "anyOf": [
+            {
+              "enum": [
+                "kg",
+                "g",
+                "l",
+                "ml",
+                "cl",
+                "bouteille",
+                "carton",
+                "boite",
+                "sac",
+                "paquet",
+                "piece"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Unit"
+        },
+        "package_contents_quantity": {
+          "anyOf": [
+            {
+              "pattern": "^-?[0-9]+(\\.[0-9]+)?$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Package Contents Quantity"
+        },
+        "package_contents_unit": {
+          "anyOf": [
+            {
+              "enum": [
+                "kg",
+                "g",
+                "l",
+                "ml",
+                "cl",
+                "bouteille",
+                "carton",
+                "boite",
+                "sac",
+                "paquet",
+                "piece"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Package Contents Unit"
+        },
+        "location": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Location"
+        },
+        "operation": {
+          "enum": [
+            "stock_count",
+            "add",
+            "remove",
+            "unknown"
+          ],
+          "title": "Operation",
+          "type": "string"
+        },
+        "corrects": {
+          "anyOf": [
+            {
+              "pattern": "^o[0-9]+$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Corrects"
+        },
+        "superseded": {
+          "title": "Superseded",
+          "type": "boolean"
+        },
+        "segment_ids": {
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1,
+          "title": "Segment Ids",
+          "type": "array"
+        },
+        "evidence_text": {
+          "minLength": 1,
+          "title": "Evidence Text",
+          "type": "string"
+        }
+      },
+      "required": [
+        "obs_id",
+        "product_as_spoken",
+        "quantity_text",
+        "quantity",
+        "unit_text",
+        "unit",
+        "package_contents_quantity",
+        "package_contents_unit",
+        "location",
+        "operation",
+        "corrects",
+        "superseded",
+        "segment_ids",
+        "evidence_text"
+      ],
+      "title": "Observation",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "observations": {
+      "items": {
+        "$ref": "#/$defs/Observation"
+      },
+      "title": "Observations",
+      "type": "array"
+    }
+  },
+  "required": [
+    "observations"
+  ],
+  "title": "Extraction",
+  "type": "object"
+}

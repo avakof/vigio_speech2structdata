@@ -79,9 +79,22 @@ def extractor_digest(settings):
 def verify_ollama_files(root: Path) -> dict:
     """Independently hash a local Ollama model and all configuration/template layers."""
     manifest = root / "manifests/registry.ollama.ai/library/qwen3/8b"
-    if file_digest(manifest) != DIGEST:
-        raise ValueError("Local qwen3:8b manifest differs from pinned digest")
-    data = json.loads(manifest.read_bytes())
+    raw = manifest.read_bytes()
+    tag_sha = hashlib.sha256(raw).hexdigest()
+    data = json.loads(raw)
+    if tag_sha != DIGEST:
+        # Ollama 0.40.16 stores the exact registry manifest as one extra layer
+        # and reports that layer's digest through /api/tags.
+        pinned = (root / "blobs" / f"sha256-{DIGEST}").read_bytes()
+        if hashlib.sha256(pinned).hexdigest() != DIGEST:
+            raise ValueError("Stored Ollama registry manifest differs from pinned digest")
+        registry = json.loads(pinned)
+        reference = {"mediaType": registry["mediaType"], "digest": "sha256:" + DIGEST,
+                     "size": len(pinned)}
+        expected_local = {**registry, "layers": [*registry["layers"], reference]}
+        if data != expected_local:
+            raise ValueError("Local qwen3:8b descriptor differs from the pinned registry manifest")
+        data = registry
     verified = {}
     for item in [data["config"], *data["layers"]]:
         digest = item["digest"].removeprefix("sha256:")
@@ -89,7 +102,7 @@ def verify_ollama_files(root: Path) -> dict:
         if not path.is_file() or path.stat().st_size != item["size"] or file_digest(path) != digest:
             raise ValueError(f"Missing, incomplete or corrupt Ollama blob {digest}")
         verified[item["mediaType"]] = {"sha256": digest, "size": item["size"]}
-    return {"manifest_sha256": DIGEST, "blobs": verified}
+    return {"manifest_sha256": DIGEST, "local_descriptor_sha256": tag_sha, "blobs": verified}
 
 
 def doctor(settings: Settings) -> dict:

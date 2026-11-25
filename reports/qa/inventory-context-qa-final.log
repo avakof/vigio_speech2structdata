@@ -1,0 +1,11 @@
+b05e6d9e13eeaacccdb962cdee58427420897ba56cae7c6103dd064695e194a0  src/speechflow/extraction/core.py
+b79434749c2716a91339a2b59c542e9d546a9317c05395b7cc8ee7f42c7ba4c3  src/speechflow/extraction/prompt.py
+65543ca6b4b2945106a3b9682c0f6b542f50c9d719e2a7ef5a30ae4289123733  src/speechflow/extraction/relations.py
+7ef9b1f73a4a177141ca7d0d384a6839045ba18248e822b50eb0aa5e900ffdd3  src/speechflow/extraction/schema.py
+35e258165ce789736c405eef94eb5a1819a35c7e5c4fa87879451e6dc5b8b79b  src/speechflow/extraction/scope.py
+73947ae5ca64b12cc3016d5151f13ecc13a6f518a52cbce6888c6614534b0499  src/speechflow/extraction/validate.py
+
+$ .venv/bin/python -m pytest -q tests/qa
+................................................................         [100%]
+64 passed in 0.43s
+exit 0

@@ -217,10 +217,11 @@ def test_second_correction_following_a_stale_target_is_chained_not_reapplied():
 @pytest.mark.parametrize("package,unit_spoken,text,product,needs", [
     ({"per_package_text": "deux", "per_package_unit_spoken": "bouteilles"}, "cartons", "Deux cartons de lait", "lait", True),
     ({"per_package_text": "douze", "per_package_unit_spoken": "bouteilles"}, "kilos", "Deux kilos de douze bouteilles", "bouteilles", True),
-    (None, "cartons", "Deux cartons de douze bouteilles", "bouteilles", False),
+    (None, "cartons", "Deux cartons de douze bouteilles", "bouteilles", True),
 ])
 def test_package_totals_need_explicit_syntax_consistent_with_evidence(package, unit_spoken, text, product, needs):
-    r = run([seg(0, text)], Fake(reply(obs("S1", text, product=product, qtext="Deux", unit=unit_spoken, package=package))))
+    candidate = reply(obs("S1", text, product=product, qtext="Deux", unit=unit_spoken, package=package))
+    r = run([seg(0, text)], Fake(candidate, candidate))
     o = r.observations[0]
     assert (o.status == "needs_review") == needs
     assert o.packaging is None or o.packaging.total is None
@@ -268,10 +269,14 @@ def test_repair_that_would_exceed_context_is_not_sent_and_first_reply_is_retaine
 
 
 def test_carry_shrinks_openly_instead_of_overflowing(one_per_window, monkeypatch):
-    settings = Settings(context_tokens=2048, output_tokens=1800)  # only ~248 tokens of prompt room
+    # Permit one target plus its previous context, with insufficient room for all carried facts.
+    from speechflow.extraction.prompt import PromptSegment, render_user
+    speech = "Deux kilos de sucre. " * 4
+    rendered = render_user([PromptSegment("S1", speech)], [PromptSegment("S2", speech)], [])
+    room = estimate_messages([{"content": "Extract."}, {"content": rendered}]) + 24
+    settings = Settings(context_tokens=2048, output_tokens=2048 - room)
     monkeypatch.setattr(core, "SYSTEM_PROMPT", "Extract.")
     monkeypatch.setattr(core, "PROMPT_OVERHEAD_TOKENS", 0)  # planning reserves off: exercise the send-time fit
-    monkeypatch.setattr(core, "KNOWN_RESERVE_TOKENS", 0)
     o = obs("S1", "Deux kilos de sucre", product="sucre", qtext="Deux", unit="kilos")
     o2 = obs("S2", "Deux kilos de sucre", product="sucre", qtext="Deux", unit="kilos")
     segs = [seg(i, "Deux kilos de sucre. " * 4) for i in range(4)]
@@ -676,3 +681,20 @@ def test_ollama_backend_unload_and_ps_use_the_shared_loopback_request(monkeypatc
     assert b.loaded_models() == ["qwen3:8b"]
     assert calls[0] == ("http://127.0.0.1:11434", "/api/generate", {"model": "qwen3:8b", "keep_alive": 0})
     assert calls[1][1] == "/api/ps"
+
+
+def test_incomplete_model_number_recovers_only_from_uninterrupted_cited_spans():
+    first, second = "Il reste quatre virgule", "deux litres de jus."
+    candidate = obs("S1", first, more=[{"segment": "S2", "quote": second}],
+                    product="jus", qtext="quatre virgule", qty=None, qual="unknown", unit=None)
+    result = run([seg(0, first), seg(1, second)], Fake(reply(candidate)))
+    observation, = result.observations
+    assert (observation.quantity_text, observation.quantity, observation.unit_spoken) == ("quatre virgule deux", "4.2", "litres")
+    assert [e.quote for e in observation.evidence] == [first, second]
+    assert json.loads(result.attempts[0]["content"])["observations"][0]["quantity"] is None
+
+
+@pytest.mark.parametrize("text", ["0" * 1000, "e\u0301" * 100, "🍋𐍈" * 30])
+def test_byte_bound_covers_unmerged_tokens(text):
+    from speechflow.extraction.prompt import estimate_tokens
+    assert estimate_tokens(text) >= len(text.encode("utf-8"))

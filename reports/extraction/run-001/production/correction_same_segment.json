@@ -1,0 +1,162 @@
+{
+  "observations": [
+    {
+      "product_spoken": "farine",
+      "quantity_text": "deux",
+      "quantity": "2",
+      "quantity_max": null,
+      "qualifier": "exact",
+      "unit_spoken": "kilos",
+      "unit": "kg",
+      "packaging": null,
+      "location": null,
+      "operation": "correction",
+      "evidence": [
+        {
+          "segment_id": "correction_same_segment_S1",
+          "start": 0,
+          "end": 39,
+          "quote": "Trois kilos de farine… non, deux kilos."
+        }
+      ],
+      "correction_of": null,
+      "observation_id": "obs_4b530ada88800254440cb6289ae0a6cf2f9e5fa1241d145b85e9cc555f5060c5",
+      "catalog_match": null,
+      "revision": 1,
+      "status": "needs_review",
+      "errors": [
+        "quantity_unit_and_product_not_in_one_source_clause",
+        "correction_target_missing"
+      ]
+    }
+  ],
+  "status": "needs_review",
+  "errors": [],
+  "attempts": [
+    {
+      "window": 0,
+      "run_id": "probe_correction_same_segment",
+      "model": "qwen3:8b",
+      "extractor": {
+        "backend": "ollama",
+        "model": "qwen3:8b",
+        "digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+        "details": {
+          "parent_model": "",
+          "format": "gguf",
+          "family": "qwen3",
+          "families": [
+            "qwen3"
+          ],
+          "parameter_size": "8.2B",
+          "quantization_level": "Q4_K_M",
+          "context_length": 40960,
+          "embedding_length": 4096,
+          "runner": "ggml"
+        },
+        "size": 5225388164
+      },
+      "prompt_version": "inventory.v1.prompt2",
+      "schema_version": "inventory.v1.gen2",
+      "options": {
+        "temperature": 0,
+        "seed": 0,
+        "top_k": 1,
+        "top_p": 1.0,
+        "num_ctx": 8192,
+        "num_predict": 2048
+      },
+      "segment_ids": [
+        "correction_same_segment_S1"
+      ],
+      "labels": {
+        "S1": "correction_same_segment_S1"
+      },
+      "known": {},
+      "system_prompt_sha256": "c6ecc67b74c0c648253cdd949f7357cb7165b26c469cbd679d8d195dc13fb72f",
+      "user_message": "<transcript>\nSegments to extract:\n[S1] Trois kilos de farine… non, deux kilos.\n</transcript>",
+      "attempt": 1,
+      "kind": "initial",
+      "estimate_tokens": 1700,
+      "repair_message": null,
+      "content": "{\"language\":\"fr\",\"observations\":[{\"segment\":\"S1\",\"quote\":\"Trois kilos de farine… non, deux kilos.\",\"operation\":\"correction\",\"product_spoken\":\"farine\",\"quantity_text\":\"deux\",\"quantity\":\"2\",\"qualifier\":\"exact\",\"unit_spoken\":\"kilos\",\"package\":null,\"location\":null,\"ref\":\"o1\",\"correction_of\":null}]}",
+      "done_reason": "stop",
+      "wall_s": 1.6104375419963617,
+      "timings_ns": {
+        "total_duration": 1601976292,
+        "load_duration": 1279959,
+        "prompt_eval_duration": 73961000,
+        "eval_duration": 1522332000
+      },
+      "prompt_tokens": 875,
+      "output_tokens": 83,
+      "response_raw": {
+        "model": "qwen3:8b",
+        "created_at": "2026-11-25T17:12:20.003752Z",
+        "message": {
+          "role": "assistant",
+          "content": "{\"language\":\"fr\",\"observations\":[{\"segment\":\"S1\",\"quote\":\"Trois kilos de farine… non, deux kilos.\",\"operation\":\"correction\",\"product_spoken\":\"farine\",\"quantity_text\":\"deux\",\"quantity\":\"2\",\"qualifier\":\"exact\",\"unit_spoken\":\"kilos\",\"package\":null,\"location\":null,\"ref\":\"o1\",\"correction_of\":null}]}"
+        },
+        "done": true,
+        "done_reason": "stop",
+        "total_duration": 1601976292,
+        "load_duration": 1279959,
+        "prompt_eval_count": 875,
+        "prompt_eval_cached_count": 844,
+        "prompt_eval_duration": 73961000,
+        "eval_count": 83,
+        "eval_duration": 1522332000
+      },
+      "errors": []
+    }
+  ],
+  "metrics": {
+    "extractor": {
+      "backend": "ollama",
+      "model": "qwen3:8b",
+      "digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": [
+          "qwen3"
+        ],
+        "parameter_size": "8.2B",
+        "quantization_level": "Q4_K_M",
+        "context_length": 40960,
+        "embedding_length": 4096,
+        "runner": "ggml"
+      },
+      "size": 5225388164
+    },
+    "windows": 1,
+    "failed_windows": 0,
+    "attempts": 1,
+    "repairs": 0,
+    "model_wall_s": 1.6104,
+    "total_wall_s": 1.6111,
+    "prompt_tokens": 875,
+    "output_tokens": 83,
+    "load_duration_ns": 1279959,
+    "duplicates_skipped": 0,
+    "context_only_dropped": 0,
+    "unit_conversions": [],
+    "estimate_misses": 0,
+    "max_actual_to_estimate_ratio": 0.515,
+    "options": {
+      "temperature": 0,
+      "seed": 0,
+      "top_k": 1,
+      "top_p": 1.0,
+      "num_ctx": 8192,
+      "num_predict": 2048
+    },
+    "prompt_version": "inventory.v1.prompt2",
+    "schema_version": "inventory.v1.gen2",
+    "unload": {
+      "attempted": false,
+      "reason": "caller-owned backend"
+    }
+  }
+}

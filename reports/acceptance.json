@@ -32,12 +32,14 @@
     },
     "independent_qa": {
       "status": "PASS",
-      "detail": "Semantic and storage regressions reproduced, fixed and rerun. Real-model integration is tracked separately.",
+      "detail": "Independent GPT QA reproduced semantic and storage defects, reran the fixes, and matched all 15 real local Qwen reference-case outputs against the integrated CLI run.",
       "evidence": [
         "reports/qa/initial-semantics.log",
         "reports/qa/initial-storage.log",
         "reports/integration/post-extraction-fixes.txt",
-        "reports/integration/storage-fixes.txt"
+        "reports/integration/storage-fixes.txt",
+        "reports/qa/inventory-context.md",
+        "reports/qa/real-qwen-independent.md"
       ]
     },
     "independent_review": {
@@ -73,7 +75,7 @@
     },
     "complete_pinned_assets": {
       "status": "BLOCKED",
-      "detail": "Hojo merged weights and local qwen3:8b pull incomplete",
+      "detail": "The entire qwen3:8b artifact and publisher manifest verified on the Mac. Only Hojo merged_full_model.safetensors is still being acquired.",
       "evidence": [
         "src/speechflow/model_manifest.json",
         "reports/integration/offline-prepare.txt"
@@ -123,10 +125,16 @@
       ]
     },
     "local_schema_extraction": {
-      "status": "BLOCKED",
+      "status": "PASS",
+      "detail": "Pinned local Ollama generated schema-constrained replies on all five required French probe cases. Final production observations cover both correction paths, unknown carton contents and the explicit 24-bottle total. Independent validation remains necessary for uniqueItems and semantic constraints.",
       "evidence": [
-        "reports/extraction/status.md",
-        "reports/qa/reference.cli.json"
+        "reports/integration/ollama-artifacts.json",
+        "reports/integration/ollama-registration.json",
+        "reports/extraction/run-001/summary.json",
+        "reports/extraction/run-001/production/inventory.json",
+        "reports/extraction/run-001/revalidation.json",
+        "reports/extraction/run-002/summary.json",
+        "reports/extraction/run-002/revalidation.json"
       ]
     },
     "validated_exports_and_replay": {
@@ -201,15 +209,36 @@
       ]
     },
     "field_scores": {
-      "status": "BLOCKED",
-      "detail": "Real extractor unavailable",
+      "status": "PASS",
+      "detail": "Reference transcripts: field precision and recall were 1.0 for all 15 scored fields with positive denominators, including 15 quantities, 15 units, one negation and two correction links. Abstention was 3/19. The curated set was used in development. ASR-derived field scoring is a separate gate.",
       "evidence": [
-        "reports/qa/reference.cli.json"
+        "reports/evaluation/reference-final.json",
+        "reports/evaluation/reference-prompt4.json",
+        "reports/evaluation/reference-baseline.json"
       ]
     },
     "runtime_performance": {
       "status": "NOT RUN",
       "evidence": []
+    },
+    "production_reference_acceptance": {
+      "status": "PASS",
+      "detail": "The installed offline CLI evaluated all 15 French transcript fixtures twice with real qwen3:8b, once under independent QA. Each run represented all 16 gold observations and marked three additional candidates for review. Independent QA matched all 15 full observation sets and confirmed the runner unloaded.",
+      "evidence": [
+        "reports/evaluation/reference-final.json",
+        "reports/evaluation/reference-baseline.json",
+        "reports/qa/inventory-context.md",
+        "reports/qa/real-qwen-independent.md",
+        "reports/qa/real-qwen-independent-comparison.json",
+        "reports/extraction/run-002/summary.json"
+      ]
+    },
+    "end_to_end_field_scores": {
+      "status": "BLOCKED",
+      "detail": "Actual Hojo transcripts required.",
+      "evidence": [
+        "reports/qa/synthetic.cli.json"
+      ]
     }
   }
 }

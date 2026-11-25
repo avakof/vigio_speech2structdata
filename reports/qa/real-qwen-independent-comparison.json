@@ -1,0 +1,169 @@
+{
+  "baseline_sha256": "662d3b49be67de43afe39c2fa4cb576799b82f6951c6fa83e6829534c956852f",
+  "independent_sha256": "4807e8eea9d46d10cea8912539c3d918130d93ead72e62b4a3cb96455058eaaa",
+  "fixture_sha256": "1423b90929bafaa7e09243ddb09556abfbc2f1eb178bbbed73663774e7ca23d3",
+  "cases": 15,
+  "covered_gold_mentions": 16,
+  "review_candidates": 3,
+  "review_decisions_correct": 15,
+  "evaluation_elapsed_s": 93.76613,
+  "baseline_elapsed_s": 70.5877,
+  "attempts": 17,
+  "repairs": 2,
+  "pinned_model": "qwen3:8b",
+  "pinned_digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+  "prompt_versions": [
+    "inventory.v1.prompt4"
+  ],
+  "schema_versions": [
+    "inventory.v1.gen4"
+  ],
+  "initial_load_s": 0.530991959,
+  "confirmed_idle_case_count": 15,
+  "case_comparisons": [
+    {
+      "id": "decimal-and-bottles",
+      "status_matches": true,
+      "observation_fields_match": true,
+      "full_observations_match": true
+    },
+    {
+      "id": "cross-segment-quantity",
+      "status_matches": true,
+      "observation_fields_match": true,
+      "full_observations_match": true
+    },
+    {
+      "id": "same-segment-correction",
+      "status_matches": true,
+      "observation_fields_match": true,
+      "full_observations_match": true
+    },
+    {
+      "id": "cross-segment-correction",
+      "status_matches": true,
+      "observation_fields_match": true,
+      "full_observations_match": true
+    },
+    {
+      "id": "unknown-carton-contents",
+      "status_matches": true,
+      "observation_fields_match": true,
+      "full_observations_match": true
+    },
+    {
+      "id": "explicit-carton-contents",
+      "status_matches": true,
+      "observation_fields_match": true,
+      "full_observations_match": true
+    },
+    {
+      "id": "missing-unit",
+      "status_matches": true,
+      "observation_fields_match": true,
+      "full_observations_match": true
+    },
+    {
+      "id": "approximate-accented-product",
+      "status_matches": true,
+      "observation_fields_match": true,
+      "full_observations_match": true
+    },
+    {
+      "id": "range",
+      "status_matches": true,
+      "observation_fields_match": true,
+      "full_observations_match": true
+    },
+    {
+      "id": "negation",
+      "status_matches": true,
+      "observation_fields_match": true,
+      "full_observations_match": true
+    },
+    {
+      "id": "ambiguous-correction",
+      "status_matches": true,
+      "observation_fields_match": true,
+      "full_observations_match": true
+    },
+    {
+      "id": "unsupported-language",
+      "status_matches": true,
+      "observation_fields_match": true,
+      "full_observations_match": true
+    },
+    {
+      "id": "transcript-injection",
+      "status_matches": true,
+      "observation_fields_match": true,
+      "full_observations_match": true
+    },
+    {
+      "id": "location",
+      "status_matches": true,
+      "observation_fields_match": true,
+      "full_observations_match": true
+    },
+    {
+      "id": "non-inventory",
+      "status_matches": true,
+      "observation_fields_match": true,
+      "full_observations_match": true
+    }
+  ],
+  "inventory": [
+    {
+      "product_spoken": "tomates",
+      "catalog_match": null,
+      "quantity_text": "deux virgule cinq",
+      "quantity": "2.5",
+      "quantity_max": null,
+      "qualifier": "exact",
+      "unit_spoken": "kilos",
+      "unit": "kg",
+      "packaging": null,
+      "location": null,
+      "operation": "count",
+      "revision": 1,
+      "status": "ok",
+      "correction_target_index": null
+    },
+    {
+      "product_spoken": "lait",
+      "catalog_match": null,
+      "quantity_text": "douze",
+      "quantity": "12",
+      "quantity_max": null,
+      "qualifier": "exact",
+      "unit_spoken": "bouteilles",
+      "unit": "bouteille",
+      "packaging": null,
+      "location": null,
+      "operation": "count",
+      "revision": 1,
+      "status": "ok",
+      "correction_target_index": null
+    }
+  ],
+  "explicit_carton": {
+    "count": "2",
+    "unit": "carton",
+    "per_package_quantity": "12",
+    "per_package_unit": "bouteille",
+    "total": "24",
+    "total_unit": "bouteille"
+  },
+  "corrections": {
+    "same-segment-correction": {
+      "prior_id": "obs_c00b049d9ac350e2fb4e688eeb3c1977a61b42514f6676f43ce289e4482c7199",
+      "correction_id": "obs_e6fb5f8665ccdef6956e9d549881bbd622da747e85b16e5dc6a77426f48dee5e",
+      "same_segment": true
+    },
+    "cross-segment-correction": {
+      "prior_id": "obs_00948b0b67811e950c3415c1f77bd9b8b48fb5c0f48393c836177dc9663c7f62",
+      "correction_id": "obs_a7b56bd695e7b719e5f0283232d6bb9bd6900dcf78d89213fb4b8fadefdd8e25",
+      "same_segment": false
+    }
+  }
+}

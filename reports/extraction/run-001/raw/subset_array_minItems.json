@@ -1,0 +1,56 @@
+{
+  "request": {
+    "model": "qwen3:8b",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Set a to the empty list. Output JSON only."
+      }
+    ],
+    "stream": false,
+    "think": false,
+    "format": {
+      "type": "object",
+      "properties": {
+        "a": {
+          "type": "array",
+          "items": {
+            "type": "integer"
+          },
+          "minItems": 3
+        }
+      },
+      "required": [
+        "a"
+      ]
+    },
+    "options": {
+      "temperature": 0,
+      "seed": 42,
+      "top_k": 1,
+      "top_p": 1.0,
+      "num_ctx": 4096,
+      "num_predict": 128
+    },
+    "keep_alive": "10m"
+  },
+  "http_status": 200,
+  "wall_s": 0.31739741700585,
+  "response": {
+    "model": "qwen3:8b",
+    "created_at": "2026-11-25T17:12:11.346222Z",
+    "message": {
+      "role": "assistant",
+      "content": "{\"a\": [1, 2, 3]}"
+    },
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 316838625,
+    "load_duration": 555833,
+    "prompt_eval_count": 27,
+    "prompt_eval_cached_count": 7,
+    "prompt_eval_duration": 65128000,
+    "eval_count": 14,
+    "eval_duration": 249637000
+  }
+}

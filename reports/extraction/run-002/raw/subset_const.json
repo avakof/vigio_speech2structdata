@@ -1,0 +1,52 @@
+{
+  "request": {
+    "model": "qwen3:8b",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Set v to 'other'. Output JSON only."
+      }
+    ],
+    "stream": false,
+    "think": false,
+    "format": {
+      "type": "object",
+      "properties": {
+        "v": {
+          "const": "fixed"
+        }
+      },
+      "required": [
+        "v"
+      ]
+    },
+    "options": {
+      "temperature": 0,
+      "seed": 42,
+      "top_k": 1,
+      "top_p": 1.0,
+      "num_ctx": 4096,
+      "num_predict": 128
+    },
+    "keep_alive": "10m"
+  },
+  "http_status": 200,
+  "wall_s": 0.28929533399059437,
+  "response": {
+    "model": "qwen3:8b",
+    "created_at": "2026-11-25T17:31:05.898552Z",
+    "message": {
+      "role": "assistant",
+      "content": "{\"v\": \"fixed\"}"
+    },
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 288829292,
+    "load_duration": 669208,
+    "prompt_eval_count": 26,
+    "prompt_eval_cached_count": 4,
+    "prompt_eval_duration": 79798000,
+    "eval_count": 10,
+    "eval_duration": 206856000
+  }
+}
