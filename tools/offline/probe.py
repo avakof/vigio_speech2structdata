@@ -18,11 +18,11 @@ def check(ip, loopback):
     with socket.socket(socket.AF_INET6, socket.SOCK_STREAM) as candidate:
         candidate.settimeout(3)
         v6_errno = candidate.connect_ex((ipv6, 443, 0, 0))
-    if v6_errno == 0:
-        raise RuntimeError("Unexpected external IPv6 connection")
+    if v6_errno not in (errno.EPERM, errno.EACCES):
+        raise RuntimeError(f"External IPv6 probe did not return a network policy denial (errno {v6_errno})")
     with urllib.request.build_opener(urllib.request.ProxyHandler({})).open(loopback, timeout=3) as response:
         loop = {"url": loopback, "status": response.status, "body": json.load(response)}
-    return {"pid": os.getpid(), "denied": blocked, "ipv6": {"address": ipv6, "errno": v6_errno},
+    return {"pid": os.getpid(), "parent_pid": os.getppid(), "denied": blocked, "ipv6": {"address": ipv6, "errno": v6_errno},
             "allowed": loop}
 
 

@@ -15,6 +15,8 @@ import threading
 import time
 from urllib.request import ProxyHandler, build_opener
 
+import psutil
+
 
 class Control(BaseHTTPRequestHandler):
     def do_GET(self):
@@ -24,6 +26,56 @@ class Control(BaseHTTPRequestHandler):
 
     def log_message(self, *args):
         pass
+
+
+def observe_processes(root, role, samples):
+    try:
+        processes = [root, *root.children(recursive=True)]
+    except psutil.NoSuchProcess:
+        return
+    for process in processes:
+        try:
+            with process.oneshot():
+                rss = process.memory_info().rss
+                row = samples.setdefault(process.pid, {
+                    "pid": process.pid, "parent_pid": process.ppid(),
+                    "process": process.name(), "tree": role, "max_sampled_rss_bytes": 0,
+                })
+                row["max_sampled_rss_bytes"] = max(row["max_sampled_rss_bytes"], rss)
+        except (psutil.AccessDenied, psutil.NoSuchProcess):
+            continue
+
+
+def run_observed(command, env, work, server_pid, opener, url, report):
+    samples, models = {}, {}
+    server = psutil.Process(server_pid)
+    available = psutil.virtual_memory().available
+    report["system_available_before_bytes"] = available
+    with (work / "app.stdout").open("w") as stdout, (work / "app.stderr").open("w") as stderr:
+        with subprocess.Popen(command, env=env, stdout=stdout, stderr=stderr) as launched:
+            report["app_pid"] = launched.pid
+            app = psutil.Process(launched.pid)
+            while launched.poll() is None:
+                observe_processes(server, "dedicated_ollama", samples)
+                observe_processes(app, "speechflow", samples)
+                available = min(available, psutil.virtual_memory().available)
+                try:
+                    with opener.open(url + "/api/ps", timeout=.5) as response:
+                        for model in json.load(response).get("models", []):
+                            digest = model["digest"]
+                            models[digest] = {field: model.get(field) for field in
+                                              ("name", "digest", "size", "size_vram", "context_length")}
+                except (OSError, ValueError, KeyError):
+                    pass
+                try:
+                    launched.wait(timeout=.75)
+                except subprocess.TimeoutExpired:
+                    continue
+            code = launched.returncode
+    report["system_min_sampled_available_bytes"] = available
+    report["process_samples"] = list(samples.values())
+    report["resident_model_samples"] = list(models.values())
+    return code
 
 
 def main():
@@ -103,20 +155,23 @@ def main():
                                             "doctor", "--json", "--offline"], env=env, text=True,
                                            capture_output=True)
                 report["preflight"] = json.loads(preflight.stdout)
-                with (work / "app.stdout").open("w") as stdout, (work / "app.stderr").open("w") as stderr:
-                    result = subprocess.run(app_command, env=app_env, stdout=stdout, stderr=stderr)
-                report["exit_code"] = result.returncode
+                report["exit_code"] = run_observed(
+                    app_command, app_env, work, server.pid, opener, url, report)
                 report["result"] = "FAIL" if report["preflight"]["ready"] else "BLOCKED"
                 report["app_control"] = json.loads((work / "app.stdout").read_text().splitlines()[0])
+                if report["app_control"]["pid"] != report["app_pid"]:
+                    raise RuntimeError("App control PID does not match the installed CLI")
                 if child_proof.exists():
                     report["asr_child_control"] = json.loads(child_proof.read_text())
+                    if report["asr_child_control"]["parent_pid"] != report["app_pid"]:
+                        raise RuntimeError("ASR child control did not come from the installed CLI")
                 manifest_path = work / "output/run.json"
                 if manifest_path.exists():
                     manifest = json.loads(manifest_path.read_text())
                     report["run_id"] = manifest["run_id"]
                     report["transcription_status"] = manifest["transcription_status"]
                     report["extraction_status"] = manifest["extraction_status"]
-                    if (child_proof.exists() and result.returncode == 0 and manifest["status"] == "ok" and
+                    if (child_proof.exists() and report["exit_code"] == 0 and manifest["status"] == "ok" and
                             any(s["raw"].get("text") for s in manifest["segments"]) and
                             manifest["observations"] and manifest["attempts"] and
                             manifest["provenance"].get("extractor_digest")):

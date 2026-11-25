@@ -64,3 +64,20 @@ optional property is unmeasured until the real run (probe has a subset case for 
   flagged; other languages (e.g. Dutch) are not detected; lexicons are curated, not trained or benchmarked on real transcripts. Added no packages.
 - Evidence: `.venv/bin/python -m pytest -q tools/extraction/tests tests/persistence_own` = 175 passed; `tests/qa` = 39 passed;
   R05 rerun saved to `reports/extraction/r05_after.out` (reviewer's original output left untouched).
+
+## Update — finding 11 (deterministic unit conversion) and runner lifetime; mock-backed, no model loaded, no downloads, no commits
+**Decision (finding 11).** On a *resolved* correction (target linked, not ambiguous/mismatched) whose unit is a verified physical unit of the SAME
+dimension as the corrected observation (mass g/kg, volume ml/cl/l) but differs, `quantity` and `quantity_max` are converted with exact Decimal arithmetic
+into the corrected observation's unit (`validate._harmonize_unit`, `units.convert`) and `unit` becomes that unit. `quantity_text` and `unit_spoken` keep the exact
+spoken words, qualifier (range/approximate) is kept, the earlier observation is untouched (e.g. 3 kg retained; "Non, cinq cents grammes" -> 0.5 kg, unit_spoken
+"grammes"). Chains follow the head unit; replays are idempotent (same evidence => same ids; already-extracted evidence is skipped, so nothing converts twice).
+Nothing is converted for counts, packages (carton/bouteille/...), unknown or missing units, or across dimensions (carton vs kg, l vs kg stay unlinked
+`correction_target_unit_mismatch` + needs_review). Original error statuses are preserved (e.g. model quantity disagreement still needs_review). Each applied
+conversion is listed in `ExtractionResult.metrics["unit_conversions"]` (not an error). Ordinary non-correction observations keep their spoken unit.
+**Runner lifetime.** `extract()` unloads (keep_alive 0) a runner it created itself when the call ends (normal, error, or exception, with a note on the exception),
+only if a chat request was attempted, then polls /api/ps for up to 5 s (`UNLOAD_POLL_SECONDS`); outcome in `metrics["unload"]` = {attempted, ok, error,
+idle_confirmed}, separate from `errors`/status. Caller-injected backends are never unloaded; no chat sent (no_speech, digest mismatch, model missing, nothing fits)
+=> no unload call. The model stays warm across all windows/repairs of one call. `tools/extraction/probe.py` now injects a shared backend (with `expected_digest`)
+so fixtures stay warm and the probe unloads explicitly once.
+**Commands/results.** `.venv/bin/python -m pytest -q tools/extraction/tests tests/persistence_own` = 196 passed; `tests/qa` = 40 passed;
+`tests -m "not real_models and not microphone"` = 100 passed, 12 deselected; R05 reproducer exit 0. No failures.

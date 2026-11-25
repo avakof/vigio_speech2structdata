@@ -1,0 +1,46 @@
+{
+  "source": {
+    "source_id": "file_081cedff95932cf2e117e5627dbf2262305c929ed6f31cf74ba3ed403945907f",
+    "kind": "file",
+    "digest": "a9f2f1630034aae5bbe5273a25166d9ed1e92bedf4d613c7398fbda92b65ed12",
+    "name": "10198958753510138668.wav",
+    "native_rate": 16000,
+    "native_channels": 1,
+    "sample_rate": 16000,
+    "sample_count": 96000,
+    "channel_mix": "mono"
+  },
+  "segments": [
+    {
+      "segment_id": "segment_4afd22aaf9ad97350bf7c2c2334972e579ea90e0ea63eb7f2b83e090de478c22",
+      "ordinal": 0,
+      "input_start": 11648,
+      "core_start": 14848,
+      "core_end": 89600,
+      "input_end": 92800,
+      "status": "error"
+    }
+  ],
+  "metrics": {
+    "decoder": {
+      "sha256": "6d175a4743ca50256e89a8cdd731100f9cee33bd79aeea46894d209410dc6617",
+      "version": "7.1"
+    },
+    "decode_seconds": 0.057014041987713426,
+    "decoded_seconds": 6.0,
+    "normalized_spool_bytes": 384000,
+    "requested_backend": "cpu",
+    "silero": {
+      "version": "6.2.0",
+      "artifact": "silero_vad/data/silero_vad.jit",
+      "sha256": "e1122837f4154c511485fe0b9c64455f7b929c96fbb8d79fbdb336383ebd3720"
+    },
+    "vad_seconds": 0.6609389999939594,
+    "asr_chunk_sample_counts": [
+      81152
+    ],
+    "audio_total_seconds": 0.73065441698418
+  },
+  "transcription_status": "error",
+  "extraction_status": "not_run"
+}

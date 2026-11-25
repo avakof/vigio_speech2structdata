@@ -190,14 +190,17 @@ def production_phase(out: Path) -> dict:
     """Run the PRODUCTION extract() (real Ollama backend) on every fixture while the model is resident."""
     from speechflow.config import Settings
     from speechflow.contracts import TranscriptSegment
-    from speechflow.extraction import extract
+    from speechflow.assets import DIGEST
+    from speechflow.extraction import OllamaBackend, extract
+    # Caller-owned backend: stays warm across fixtures; the probe unloads explicitly at the end of the slot.
+    shared = OllamaBackend(Settings().ollama_url, Settings().ollama_model)
     res = {}
     (out / "production").mkdir(exist_ok=True)
     for name, fx in FIXTURES.items():
         segs = [TranscriptSegment(segment_id=f"{name}_{k}", source_id=name, ordinal=i, input_start=i * 1000,
                                   core_start=i * 1000, core_end=i * 1000 + 900, input_end=i * 1000 + 1000,
                                   raw={"text": v}, normalized_text=v) for i, (k, v) in enumerate(fx["segments"].items())]
-        r = extract(segs, run_id=f"probe_{name}", settings=Settings(), )
+        r = extract(segs, run_id=f"probe_{name}", settings=Settings(), backend=shared, expected_digest=DIGEST)
         (out / "production" / f"{name}.json").write_text(r.model_dump_json(indent=2))
         res[name] = {"status": r.status, "errors": r.errors, "metrics": r.metrics,
                      "observations": [o.model_dump(exclude={"evidence"}) | {"evidence": [e.quote for e in o.evidence]} for o in r.observations]}

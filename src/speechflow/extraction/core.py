@@ -24,6 +24,7 @@ MAX_WINDOW_CHARS = 1600
 CONTEXT_SEGMENTS = 1  # previous target segments re-shown (read-only) at the start of the next window
 MAX_KNOWN = 30  # earlier observations offered as correction targets; overflow is reported, not hidden
 PROMPT_OVERHEAD_TOKENS = 128
+UNLOAD_POLL_SECONDS = 5.0  # bounded /api/ps confirmation after unloading an internally created runner
 KNOWN_RESERVE_TOKENS = 40  # planning reserve per carried observation; the real prompt is re-measured before sending
 
 
@@ -110,6 +111,46 @@ def _fit(system, labels, ctx_labels, target_map, accepted, settings):
         recent, dropped = recent[1:], dropped + 1
 
 
+class _Tracked:
+    """Delegating wrapper that records whether any chat request was attempted (a request may load the model)."""
+
+    def __init__(self, inner):
+        self._inner, self.sent = inner, False
+        self.name = getattr(inner, "name", "backend")
+
+    def identify(self):
+        return self._inner.identify()
+
+    def chat(self, *args, **kwargs):
+        self.sent = True  # set before the call: a timed-out request can still have started the runner
+        return self._inner.chat(*args, **kwargs)
+
+
+def _release(backend, model: str) -> dict:
+    """Unload a runner this module created and confirm via /api/ps. Errors are reported, never raised."""
+    report = {"attempted": True, "ok": False, "error": None, "idle_confirmed": None}
+    try:
+        backend.unload()
+        report["ok"] = True
+    except Exception as exc:  # noqa: BLE001 - reported separately from extraction errors
+        report["error"] = f"{type(exc).__name__}: {exc}"
+    if hasattr(backend, "loaded_models"):
+        deadline = time.monotonic() + UNLOAD_POLL_SECONDS
+        try:
+            while True:
+                if model not in backend.loaded_models():
+                    report["idle_confirmed"] = True
+                    break
+                if time.monotonic() >= deadline:
+                    report["idle_confirmed"] = False
+                    break
+                time.sleep(0.25)
+        except Exception as exc:  # noqa: BLE001
+            report["idle_confirmed"] = None
+            report["error"] = (report["error"] + "; " if report["error"] else "") + f"ps poll: {type(exc).__name__}: {exc}"
+    return report
+
+
 def extract(segments: list[TranscriptSegment], *, run_id: str, settings: Settings,
             backend: ChatBackend | None = None, expected_digest: str | None = None) -> ExtractionResult:
     """Extract observations from ordered transcript segments (see docs/contracts.md).
@@ -117,7 +158,33 @@ def extract(segments: list[TranscriptSegment], *, run_id: str, settings: Setting
     Default backend: loopback Ollama, whose model manifest digest must equal the pinned digest
     (`assets.DIGEST`) before any transcript is sent. An injected `backend` (tests, other runtimes)
     is checked only when `expected_digest` is given.
+
+    Runner lifetime: the model stays warm across all windows/repairs of ONE call. A runner this
+    function created is unloaded (keep_alive 0) when the call ends, also on exceptions, but only if a
+    chat request was attempted; the outcome is in `metrics["unload"]` (separate from `errors`/status).
+    A caller-injected backend is never unloaded here.
     """
+    owned = backend is None
+    if owned:
+        backend = OllamaBackend(settings.ollama_url, settings.ollama_model)  # loopback-validated
+        expected_digest = expected_digest or DIGEST
+    tracked = _Tracked(backend)
+    try:
+        result = _extract(segments, run_id=run_id, settings=settings, backend=tracked, expected_digest=expected_digest)
+    except BaseException as exc:
+        if owned and tracked.sent:
+            exc.add_note(f"extractor unload after exception: {_release(backend, settings.ollama_model)}")
+        raise
+    if not owned:
+        result.metrics["unload"] = {"attempted": False, "reason": "caller-owned backend"}
+    elif not tracked.sent:
+        result.metrics["unload"] = {"attempted": False, "reason": "no chat request was sent"}
+    else:
+        result.metrics["unload"] = _release(backend, settings.ollama_model)
+    return result
+
+
+def _extract(segments, *, run_id, settings, backend, expected_digest) -> ExtractionResult:
     ordinals = [s.ordinal for s in segments]
     if ordinals != sorted(set(ordinals)) or len({s.source_id for s in segments}) > 1:
         raise ValueError("segments must belong to one source and have strictly increasing ordinals")
@@ -132,9 +199,6 @@ def extract(segments: list[TranscriptSegment], *, run_id: str, settings: Setting
         return ExtractionResult(observations=[], status="error" if errors else "no_speech", errors=errors,
                                 metrics={"windows": 0, "reason": "no extractable transcript text"})
 
-    if backend is None:
-        backend = OllamaBackend(settings.ollama_url, settings.ollama_model)  # loopback-validated
-        expected_digest = expected_digest or DIGEST
     try:
         identity = backend.identify()
     except BackendError as exc:
@@ -157,7 +221,7 @@ def extract(segments: list[TranscriptSegment], *, run_id: str, settings: Setting
     attempts: list[dict] = []
     failed_windows = 0
     totals = {"wall_s": 0.0, "prompt_tokens": 0, "output_tokens": 0, "load_ns": 0, "repairs": 0,
-              "duplicates_skipped": 0, "context_only_dropped": 0, "estimate_misses": 0, "max_estimate_ratio": 0.0}
+              "duplicates_skipped": 0, "context_only_dropped": 0, "conversions": [], "estimate_misses": 0, "max_estimate_ratio": 0.0}
     t_start = time.perf_counter()
     previous_ok = False
 
@@ -240,6 +304,7 @@ def extract(segments: list[TranscriptSegment], *, run_id: str, settings: Setting
         previous_ok = True
         totals["duplicates_skipped"] += check.skipped_duplicates
         totals["context_only_dropped"] += check.context_only_dropped
+        totals["conversions"] += check.conversions
         errors += [f"window {win.index}: {e}" for e in check.reply_errors + check.replaced_notes]
         if check.replaced:
             accepted = [o for o in accepted if o.observation_id not in set(check.replaced)]
@@ -257,7 +322,7 @@ def extract(segments: list[TranscriptSegment], *, run_id: str, settings: Setting
                "total_wall_s": round(time.perf_counter() - t_start, 4), "prompt_tokens": totals["prompt_tokens"],
                "output_tokens": totals["output_tokens"], "load_duration_ns": totals["load_ns"],
                "duplicates_skipped": totals["duplicates_skipped"],
-               "context_only_dropped": totals["context_only_dropped"],
+               "context_only_dropped": totals["context_only_dropped"], "unit_conversions": totals["conversions"],
                "estimate_misses": totals["estimate_misses"], "max_actual_to_estimate_ratio": round(totals["max_estimate_ratio"], 3),
                "options": options, "prompt_version": PROMPT_VERSION, "schema_version": GENERATION_SCHEMA_VERSION}
     return ExtractionResult(observations=accepted, status=status, errors=errors, attempts=attempts, metrics=metrics)

@@ -22,7 +22,7 @@ from .language import assess as assess_language
 from .numbers import dec_str, parse_quantity
 from .schema import LLMObservation, LLMOutput
 from .text import fold, locate
-from .units import PACKAGE_UNITS, compatible, dimension, is_known_unit, normalize_unit
+from .units import PACKAGE_UNITS, compatible, convert, dimension, is_known_unit, normalize_unit
 
 
 @dataclass
@@ -34,6 +34,7 @@ class ReplyCheck:
     context_only_dropped: int = 0
     replaced: list[str] = field(default_factory=list)  # ids of earlier partial observations completed here
     replaced_notes: list[str] = field(default_factory=list)
+    conversions: list[str] = field(default_factory=list)  # deterministic unit normalizations applied to corrections
 
 
 def _words(text: str) -> str:
@@ -158,8 +159,9 @@ def check_reply(
         contiguous = all(b - a == 1 for a, b in zip(numbers, numbers[1:]))
         first_seg = segment_index[evidence[0].segment_id]
         position = (first_seg.ordinal, evidence[0].start, index)
+        item_conversions: list[str] = []
         built = _build(item, evidence, contiguous, reply.language, known, created, positions, position,
-                       run_id, tie, already, segment_index, labels, seg_lang)
+                       run_id, tie, already, segment_index, labels, seg_lang, item_conversions)
         # --- relation to observations extracted earlier (previous windows or this reply) ---
         skip = False
         for other in list(already) + list(created.values()):
@@ -189,6 +191,7 @@ def check_reply(
             built = built.model_copy(update={"status": "needs_review"})
         created[item.ref] = built
         positions[item.ref] = position
+        out.conversions += item_conversions
         out.observations.append(built)
     return out
 
@@ -213,7 +216,8 @@ def _padding_overlap_duplicate(new: ValidatedObservation, old: ValidatedObservat
 
 
 def _build(item: LLMObservation, evidence: list[EvidenceSpan], contiguous: bool, language: str, known, created,
-           positions, position, run_id, tie, already, segment_index, labels, seg_lang) -> ValidatedObservation:
+           positions, position, run_id, tie, already, segment_index, labels, seg_lang,
+           conversions) -> ValidatedObservation:
     errors: list[str] = []
     joined = " ".join(_words(e.quote) for e in evidence)
     if language != "fr":
@@ -322,6 +326,9 @@ def _build(item: LLMObservation, evidence: list[EvidenceSpan], contiguous: bool,
             errors.append(why)
         else:
             correction_of, revision = target.observation_id, target.revision + 1
+            quantity, maximum, unit, note = _harmonize_unit(quantity, maximum, unit, target)
+            if note:
+                conversions.append(note)
             if product is None:
                 product = target.product_spoken  # bare "non, deux kilos" keeps the corrected product
         if quantity is None:
@@ -426,6 +433,26 @@ def _resolve_target(item, product, unit, known, created, positions, position, al
     if len(pool) > 1:
         return None, f"correction_target_ambiguous:{label}:candidates {sorted(pool.values())}"
     return target, ""
+
+
+def _harmonize_unit(quantity, maximum, unit, target: ValidatedObservation):
+    """Resolved correction in another unit of the SAME physical dimension (g vs kg, ml/cl vs l):
+    express quantity/quantity_max in the corrected observation's unit with exact decimal arithmetic.
+    The spoken words (`quantity_text`, `unit_spoken`) are untouched, so the original is recoverable.
+    Counts, packages and unknown units have no dimension and are never converted."""
+    if quantity is None or unit is None or target.unit is None or unit == target.unit:
+        return quantity, maximum, unit, None
+    dim = dimension(unit)
+    if dim is None or dim != dimension(target.unit):
+        return quantity, maximum, unit, None
+    new_q = convert(Decimal(quantity), unit, target.unit)
+    new_max = convert(Decimal(maximum), unit, target.unit) if maximum is not None else None
+    if new_q is None or (maximum is not None and new_max is None):  # unreachable for same dimension; stay safe
+        return quantity, maximum, unit, None
+    note = (f"{dec_str(Decimal(quantity))}{'-' + maximum if maximum else ''} {unit} -> "
+            f"{dec_str(new_q)}{'-' + dec_str(new_max) if new_max is not None else ''} {target.unit} "
+            f"(correction of {target.observation_id})")
+    return dec_str(new_q), (dec_str(new_max) if new_max is not None else None), target.unit, note
 
 
 def _target_mismatch(product: str | None, unit: str | None, target: ValidatedObservation) -> str | None:

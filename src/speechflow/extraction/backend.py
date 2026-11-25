@@ -91,5 +91,9 @@ class OllamaBackend:
                         "details": m.get("details"), "size": m.get("size")}
         raise BackendError("model_missing", f"{self.model} is not installed locally; run `speechflow models prepare`")
 
+    def loaded_models(self) -> list[str]:
+        """Names of models currently resident in the local runner (/api/ps)."""
+        return [m.get("name") or m.get("model") for m in self._call("/api/ps", None, 5).get("models", [])]
+
     def unload(self) -> None:
         self._call("/api/generate", {"model": self.model, "keep_alive": 0}, 30)

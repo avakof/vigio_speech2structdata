@@ -438,3 +438,241 @@ def test_unknown_unit_stays_reviewable_and_unconverted():
     r = run([seg(0, "Il reste trois zorgs de sucre.")], Fake(reply(obs("S1", "trois zorgs de sucre", product="sucre", qtext="trois", unit="zorgs"))))
     o = r.observations[0]
     assert o.unit == "zorgs" and o.status == "needs_review" and "unit_not_recognized:zorgs" in o.errors
+
+
+# ---------------------------------------------------------------- finding 11: deterministic unit normalization on corrections
+def _flour(*extra, text="Trois kilos de farine. Non, cinq cents grammes.", segs=None):
+    first = obs("S1", "Trois kilos de farine", product="farine", qtext="Trois", unit="kilos")
+    return run(segs or [seg(0, text)], Fake(reply(first, *extra)))
+
+
+def _corr(quote, qtext, unit, ref="o2", target="o1", segment="S1", **kw):
+    return obs(segment, quote, ref, operation="correction", qtext=qtext, unit=unit, correction_of=target, **kw)
+
+
+def test_cross_unit_correction_is_normalized_to_the_corrected_unit_and_keeps_spoken_evidence():
+    r = _flour(_corr("Non, cinq cents grammes", "cinq cents", "grammes"))
+    old, new = r.observations
+    assert r.status == "ok", r.errors
+    assert (old.quantity, old.unit) == ("3", "kg")  # superseded value retained untouched
+    assert (new.quantity, new.unit) == ("0.5", "kg") and new.revision == 2 and new.correction_of == old.observation_id
+    assert (new.quantity_text, new.unit_spoken) == ("cinq cents", "grammes")  # exact source spelling kept
+    assert new.evidence[0].quote == "Non, cinq cents grammes"
+    assert any("500 g -> 0.5 kg" in c for c in r.metrics["unit_conversions"])
+
+
+def test_reverse_direction_and_volume_units():
+    r = run([seg(0, "Trois cents grammes de farine. Non, un kilo.")], Fake(reply(
+        obs("S1", "Trois cents grammes de farine", product="farine", qtext="Trois cents", unit="grammes"),
+        _corr("Non, un kilo", "un", "kilo"))))
+    assert [(o.quantity, o.unit) for o in r.observations] == [("300", "g"), ("1000", "g")]
+    r = run([seg(0, "Deux litres de lait. Non, cinquante centilitres.")], Fake(reply(
+        obs("S1", "Deux litres de lait", product="lait", qtext="Deux", unit="litres"),
+        _corr("Non, cinquante centilitres", "cinquante", "centilitres"))))
+    assert [(o.quantity, o.unit) for o in r.observations] == [("2", "l"), ("0.5", "l")]
+
+
+def test_range_and_approximate_corrections_convert_both_bounds_and_keep_qualifier():
+    r = _flour(_corr("Non, entre cinq cents et six cents grammes", "entre cinq cents et six cents", "grammes"),
+               text="Trois kilos de farine. Non, entre cinq cents et six cents grammes.")
+    new = r.observations[1]
+    assert (new.quantity, new.quantity_max, new.unit, new.qualifier) == ("0.5", "0.6", "kg", "range")
+    r = _flour(_corr("Non, environ cinq cents grammes", "environ cinq cents", "grammes"),
+               text="Trois kilos de farine. Non, environ cinq cents grammes.")
+    assert (r.observations[1].quantity, r.observations[1].qualifier) == ("0.5", "approximate")
+
+
+def test_same_unit_correction_and_plain_counts_are_untouched():
+    r = _flour(_corr("Non, deux kilos", "deux", "kilos"), text="Trois kilos de farine. Non, deux kilos.")
+    assert (r.observations[1].quantity, r.observations[1].unit) == ("2", "kg") and r.metrics["unit_conversions"] == []
+    r = run([seg(0, "Douze bouteilles de lait. Non, dix bouteilles.")], Fake(reply(
+        obs("S1", "Douze bouteilles de lait", product="lait", qtext="Douze", unit="bouteilles"),
+        _corr("Non, dix bouteilles", "dix", "bouteilles"))))
+    assert [(o.quantity, o.unit) for o in r.observations] == [("12", "bouteille"), ("10", "bouteille")]
+    assert r.metrics["unit_conversions"] == []
+
+
+@pytest.mark.parametrize("old,new,old_q,old_u,new_q,new_u", [
+    ("Deux cartons de farine", "Non, trois kilos", "Deux", "cartons", "trois", "kilos"),
+    ("Trois kilos de farine", "Non, deux cartons", "Trois", "kilos", "deux", "cartons"),
+    ("Deux litres de lait", "Non, deux kilos", "Deux", "litres", "deux", "kilos"),
+])
+def test_incompatible_dimensions_are_never_converted_or_linked(old, new, old_q, old_u, new_q, new_u):
+    r = run([seg(0, f"{old}. {new}.")], Fake(reply(
+        obs("S1", old, product=old.split(" de ")[-1], qtext=old_q, unit=old_u),
+        _corr(new, new_q, new_u))))
+    first, second = r.observations
+    assert second.correction_of is None and second.status == "needs_review"
+    assert any("correction_target_unit_mismatch" in e for e in second.errors)
+    assert (second.quantity, second.unit) == (_dec(new_q), second.unit) and r.metrics["unit_conversions"] == []
+    assert (first.quantity, first.unit) == (_dec(old_q), first.unit)
+
+
+def _dec(word):
+    return {"trois": "3", "Trois": "3", "Deux": "2", "deux": "2"}[word]
+
+
+def test_unknown_and_missing_units_are_not_converted():
+    r = run([seg(0, "Trois kilos de farine. Non, cinq zorgs.")], Fake(reply(
+        obs("S1", "Trois kilos de farine", product="farine", qtext="Trois", unit="kilos"),
+        _corr("Non, cinq zorgs", "cinq", "zorgs"))))
+    assert r.observations[1].correction_of is None and r.observations[1].quantity == "5"  # kept as spoken, reviewable
+    r = run([seg(0, "Trois kilos de farine. Non, cinq.")], Fake(reply(
+        obs("S1", "Trois kilos de farine", product="farine", qtext="Trois", unit="kilos"),
+        _corr("Non, cinq", "cinq", None))))
+    new = r.observations[1]
+    assert new.unit is None and "unit_missing" in new.errors and new.status == "needs_review" and new.quantity == "5"
+
+
+def test_conversion_chain_and_idempotent_replay():
+    t = "Trois kilos de farine. Non, cinq cents grammes. Non, deux kilos."
+    items = lambda: [obs("S1", "Trois kilos de farine", product="farine", qtext="Trois", unit="kilos"),
+                     _corr("Non, cinq cents grammes", "cinq cents", "grammes"),
+                     _corr("Non, deux kilos", "deux", "kilos", ref="o3", target="o2")]
+    r1 = run([seg(0, t)], Fake(reply(*items())))
+    r2 = run([seg(0, t)], Fake(reply(*items())))
+    a, b, c = r1.observations
+    assert [(o.quantity, o.unit, o.revision) for o in (a, b, c)] == [("3", "kg", 1), ("0.5", "kg", 2), ("2", "kg", 3)]
+    assert c.correction_of == b.observation_id and b.correction_of == a.observation_id
+    assert [o.model_dump() for o in r1.observations] == [o.model_dump() for o in r2.observations]  # same run => same result
+    # replaying the correction with the earlier result as `already` neither duplicates nor converts twice
+    from speechflow.extraction.schema import LLMOutput
+    from speechflow.extraction.validate import check_reply
+    labels = {"S1": seg(0, t)}
+    out = check_reply(LLMOutput.model_validate({"language": "fr", "observations": [dict(items()[1])]}), run_id="run",
+                      labels=labels, context_labels=set(), known={"k1": a}, already=list(r1.observations))
+    assert out.observations == [] and out.skipped_duplicates == 1 and out.conversions == []
+
+
+def test_conversion_across_windows_uses_the_carried_target_unit(one_per_window):
+    first = obs("S1", "Trois kilos de farine", product="farine", qtext="Trois", unit="kilos")
+    fix = obs("S2", "Non, cinq cents grammes", operation="correction", qtext="cinq cents", unit="grammes", correction_of="k1")
+    r = run([seg(0, "Trois kilos de farine."), seg(1, "Non, cinq cents grammes.")], Fake(reply(first), reply(fix)))
+    assert [(o.quantity, o.unit) for o in r.observations] == [("3", "kg"), ("0.5", "kg")] and r.status == "ok"
+
+
+def test_conversion_keeps_error_statuses():
+    r = _flour(_corr("Non, cinq cents grammes", "cinq cents", "grammes", qty="7"))  # model disagrees with spoken value
+    new = r.observations[1]
+    assert (new.quantity, new.unit) == ("0.5", "kg") and new.status == "needs_review"
+    assert any("model quantity 7 != derived 500" in e for e in new.errors)
+
+
+# ---------------------------------------------------------------- runner lifetime: unload what extract() created
+class Owned(Fake):
+    """Stands in for the internally created OllamaBackend (records unload and /api/ps)."""
+
+    def __init__(self, *contents, digest=None, unload_error=None, stays_resident=False, chat_error=None):
+        super().__init__(*contents, digest=digest)
+        self.events, self.unload_error, self.stays, self.chat_error = [], unload_error, stays_resident, chat_error
+        self.resident = False
+
+    def chat(self, *a, **k):
+        self.events.append("chat")
+        self.resident = True
+        if self.chat_error:
+            raise self.chat_error
+        return super().chat(*a, **k)
+
+    def unload(self):
+        self.events.append("unload")
+        if self.unload_error:
+            raise self.unload_error
+        self.resident = self.stays
+
+    def loaded_models(self):
+        return [S.ollama_model] if self.resident else []
+
+
+@pytest.fixture
+def owned(monkeypatch):
+    monkeypatch.setattr(core, "UNLOAD_POLL_SECONDS", 0.0)
+
+    def install(backend):
+        monkeypatch.setattr(core, "OllamaBackend", lambda url, model: backend)
+        return backend
+
+    return install
+
+
+def _pinned(*contents, **kw):
+    return Owned(*contents, digest=core.DIGEST, **kw)
+
+
+def test_owned_runner_is_unloaded_once_after_all_windows_and_confirmed_idle(owned, one_per_window):
+    b = owned(_pinned(reply(obs("S1", "Deux kilos de sucre", **SUGAR)), reply(obs("S2", "Deux kilos de sucre", **SUGAR)),
+                      reply(obs("S2", "Deux kilos de sucre", **SUGAR))))  # S2 = the segment to extract once S1 is context
+    r = extract([seg(0, "Deux kilos de sucre."), seg(1, "Deux kilos de sucre."), seg(2, "Deux kilos de sucre.")],
+                run_id="r", settings=S)
+    assert b.events == ["chat", "chat", "chat", "unload"]  # warm across windows, released at the end
+    assert r.metrics["unload"] == {"attempted": True, "ok": True, "error": None, "idle_confirmed": True}
+    assert r.status == "ok" and r.errors == []  # unload outcome is not an extraction error
+
+
+def test_owned_runner_is_unloaded_after_a_failed_request_and_failed_repair(owned):
+    b = owned(_pinned(chat_error=BackendError("timeout", "slow")))
+    r = extract([seg(0, "Deux kilos de sucre.")], run_id="r", settings=S)
+    assert r.status == "error" and b.events == ["chat", "unload"] and r.metrics["unload"]["idle_confirmed"] is True
+    b = owned(_pinned("{bad", "{still bad"))
+    r = extract([seg(0, "Deux kilos de sucre.")], run_id="r", settings=S)
+    assert r.status == "error" and b.events == ["chat", "chat", "unload"]
+
+
+def test_owned_runner_is_unloaded_when_extraction_raises_and_the_exception_survives(owned, monkeypatch):
+    b = owned(_pinned(reply()))
+    monkeypatch.setattr(core, "_validate_reply", lambda *a, **k: (_ for _ in ()).throw(RuntimeError("boom")))
+    with pytest.raises(RuntimeError) as info:
+        extract([seg(0, "Deux kilos de sucre.")], run_id="r", settings=S)
+    assert b.events == ["chat", "unload"]
+    assert any("extractor unload after exception" in n and "'ok': True" in n for n in info.value.__notes__)
+
+
+@pytest.mark.parametrize("scenario", ["no_speech", "digest_mismatch", "model_missing", "nothing_fits"])
+def test_no_unload_and_no_activation_when_no_chat_was_sent(owned, scenario):
+    segs = [seg(0, "Deux kilos de sucre.")]
+    settings = S
+    if scenario == "no_speech":
+        b, segs = owned(_pinned()), [seg(0, "", status="no_speech")]
+    elif scenario == "digest_mismatch":
+        b = owned(Owned(reply(), digest="deadbeef"))
+    elif scenario == "model_missing":
+        b = owned(_pinned())
+        b.identify = lambda: (_ for _ in ()).throw(BackendError("model_missing", "qwen3:8b"))
+    else:
+        b, settings = owned(_pinned()), Settings(context_tokens=2048, output_tokens=1900)
+    r = extract(segs, run_id="r", settings=settings)
+    assert b.events == [] and r.metrics["unload"] == {"attempted": False, "reason": "no chat request was sent"}
+
+
+def test_caller_injected_backend_is_never_unloaded():
+    b = Owned(reply(obs("S1", "Deux kilos de sucre", **SUGAR)))
+    r = extract([seg(0, "Deux kilos de sucre.")], run_id="r", settings=S, backend=b)
+    assert b.events == ["chat"] and r.metrics["unload"] == {"attempted": False, "reason": "caller-owned backend"}
+
+
+def test_unload_failure_and_stuck_runner_are_reported_separately(owned):
+    b = owned(_pinned(reply(obs("S1", "Deux kilos de sucre", **SUGAR)), unload_error=BackendError("unreachable", "gone"),
+                      stays_resident=True))
+    r = extract([seg(0, "Deux kilos de sucre.")], run_id="r", settings=S)
+    u = r.metrics["unload"]
+    assert r.status == "ok" and r.errors == [] and r.observations  # extraction result unaffected
+    assert u["ok"] is False and "unreachable" in u["error"] and u["idle_confirmed"] is False
+    b = owned(_pinned(reply(obs("S1", "Deux kilos de sucre", **SUGAR)), stays_resident=True))
+    r = extract([seg(0, "Deux kilos de sucre.")], run_id="r", settings=S)
+    assert r.metrics["unload"] == {"attempted": True, "ok": True, "error": None, "idle_confirmed": False}
+
+
+def test_ollama_backend_unload_and_ps_use_the_shared_loopback_request(monkeypatch):
+    calls = []
+    import speechflow.extraction.backend as be
+
+    def fake(url, route, body=None, timeout=5):
+        calls.append((url, route, body))
+        return {"models": [{"name": "qwen3:8b"}]} if route == "/api/ps" else {"done": True}
+
+    monkeypatch.setattr(be, "loopback_request", fake)
+    b = OllamaBackend("http://127.0.0.1:11434", "qwen3:8b")
+    b.unload()
+    assert b.loaded_models() == ["qwen3:8b"]
+    assert calls[0] == ("http://127.0.0.1:11434", "/api/generate", {"model": "qwen3:8b", "keep_alive": 0})
+    assert calls[1][1] == "/api/ps"
