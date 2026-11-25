@@ -1,0 +1,407 @@
+{
+  "observations": [
+    {
+      "product_spoken": "tomates",
+      "quantity_text": "huit",
+      "quantity": "8",
+      "quantity_max": null,
+      "qualifier": "exact",
+      "unit_spoken": "kilos",
+      "unit": "kg",
+      "packaging": null,
+      "location": null,
+      "operation": "count",
+      "evidence": [
+        {
+          "segment_id": "segment_5b5d9adb73ad8d209e4fd6cab6a3bd143d65d4e96251133e3037348e4b612756",
+          "start": 0,
+          "end": 62,
+          "quote": "je compte huit kilos de tomates pour continuer la vérification"
+        }
+      ],
+      "correction_of": null,
+      "observation_id": "obs_32564a878b6a8efa9e0da9c296d9f5f47b939487801e3b828eaedfa462e8e5c7",
+      "catalog_match": null,
+      "revision": 1,
+      "status": "ok",
+      "errors": []
+    },
+    {
+      "product_spoken": "carottes",
+      "quantity_text": "quatre",
+      "quantity": "4",
+      "quantity_max": null,
+      "qualifier": "exact",
+      "unit_spoken": "kilos",
+      "unit": "kg",
+      "packaging": null,
+      "location": null,
+      "operation": "count",
+      "evidence": [
+        {
+          "segment_id": "segment_5b5d9adb73ad8d209e4fd6cab6a3bd143d65d4e96251133e3037348e4b612756",
+          "start": 194,
+          "end": 259,
+          "quote": "je compte quatre kilos de carottes pour continuer la vérification"
+        }
+      ],
+      "correction_of": null,
+      "observation_id": "obs_77315fadcc2a43fc1c21fd5ef68e4277476d06f4cd34786fcb0da841fdc41f66",
+      "catalog_match": null,
+      "revision": 1,
+      "status": "ok",
+      "errors": []
+    },
+    {
+      "product_spoken": "courgettes",
+      "quantity_text": "six",
+      "quantity": "6",
+      "quantity_max": null,
+      "qualifier": "exact",
+      "unit_spoken": "kilos",
+      "unit": "kg",
+      "packaging": null,
+      "location": null,
+      "operation": "count",
+      "evidence": [
+        {
+          "segment_id": "segment_5b5d9adb73ad8d209e4fd6cab6a3bd143d65d4e96251133e3037348e4b612756",
+          "start": 391,
+          "end": 455,
+          "quote": "je compte six kilos de courgettes pour continuer la vérification"
+        }
+      ],
+      "correction_of": null,
+      "observation_id": "obs_47eb9e32318d20e1295869f24393c51ab66f61fd52611e6f5cd12d112e26d5e2",
+      "catalog_match": null,
+      "revision": 1,
+      "status": "ok",
+      "errors": []
+    },
+    {
+      "product_spoken": "poissons",
+      "quantity_text": "cinq",
+      "quantity": "5",
+      "quantity_max": null,
+      "qualifier": "exact",
+      "unit_spoken": "kilos",
+      "unit": "kg",
+      "packaging": null,
+      "location": null,
+      "operation": "count",
+      "evidence": [
+        {
+          "segment_id": "segment_9bd583b00f28866c5256bfa8af86c9f3536a0e27265d8027497ee1ce4159bdd2",
+          "start": 116,
+          "end": 179,
+          "quote": "je compte cinq kilos de poissons pour continuer la vérification"
+        }
+      ],
+      "correction_of": null,
+      "observation_id": "obs_e4256188a9fc5658622601f039bb6d32542a1a2c7bab7ef9877117e0d5ce5083",
+      "catalog_match": null,
+      "revision": 1,
+      "status": "needs_review",
+      "errors": [
+        "asr_needs_review:segment_9bd583b00f28866c5256bfa8af86c9f3536a0e27265d8027497ee1ce4159bdd2: hojo_possible_generation_loop: 200 retokenized tokens near the configured 200-token cap and at least 3 consecutive copies of a 48-token block"
+      ]
+    },
+    {
+      "product_spoken": "citron",
+      "quantity_text": "quatre",
+      "quantity": "4",
+      "quantity_max": null,
+      "qualifier": "exact",
+      "unit_spoken": "kilos",
+      "unit": "kg",
+      "packaging": null,
+      "location": null,
+      "operation": "count",
+      "evidence": [
+        {
+          "segment_id": "segment_89b3416ca81cf5051f53aa9a7c91620b2c6ae8646b772e0bc949ac01300ec0e2",
+          "start": 0,
+          "end": 63,
+          "quote": "je compte quatre kilos de citron pour continuer la vérification"
+        }
+      ],
+      "correction_of": null,
+      "observation_id": "obs_6fd0daa8043c467bf6f7e0d726591493739d61ad7f8a95f292a93d00b00ae7d3",
+      "catalog_match": null,
+      "revision": 1,
+      "status": "ok",
+      "errors": []
+    },
+    {
+      "product_spoken": null,
+      "quantity_text": "sept",
+      "quantity": "7",
+      "quantity_max": null,
+      "qualifier": "exact",
+      "unit_spoken": "kilos",
+      "unit": "kg",
+      "packaging": null,
+      "location": null,
+      "operation": "correction",
+      "evidence": [
+        {
+          "segment_id": "segment_89b3416ca81cf5051f53aa9a7c91620b2c6ae8646b772e0bc949ac01300ec0e2",
+          "start": 186,
+          "end": 247,
+          "quote": "je compte sept kilos de citron pour continuer la vérification"
+        }
+      ],
+      "correction_of": null,
+      "observation_id": "obs_50b0bce19ca6c64eb16c1fa13be1472c2e773712c5b044acddbf1ddc1a01922c",
+      "catalog_match": null,
+      "revision": 1,
+      "status": "needs_review",
+      "errors": [
+        "correction_target_ambiguous:o1:candidates ['k4', 'o1']"
+      ]
+    },
+    {
+      "product_spoken": "gingembre",
+      "quantity_text": "deux",
+      "quantity": "2",
+      "quantity_max": null,
+      "qualifier": "exact",
+      "unit_spoken": "kilos",
+      "unit": "kg",
+      "packaging": null,
+      "location": null,
+      "operation": "count",
+      "evidence": [
+        {
+          "segment_id": "segment_89b3416ca81cf5051f53aa9a7c91620b2c6ae8646b772e0bc949ac01300ec0e2",
+          "start": 370,
+          "end": 403,
+          "quote": "je compte deux kilos de gingembre"
+        }
+      ],
+      "correction_of": null,
+      "observation_id": "obs_5fef2290e56276f1b4e64e6a116150c247ddb1a13fc28bb6e4c7f384f8c237b4",
+      "catalog_match": null,
+      "revision": 1,
+      "status": "ok",
+      "errors": []
+    }
+  ],
+  "status": "needs_review",
+  "errors": [],
+  "attempts": [
+    {
+      "window": 0,
+      "run_id": "qa-real-long-clip",
+      "model": "qwen3:8b",
+      "extractor": {
+        "backend": "ollama",
+        "model": "qwen3:8b",
+        "digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+        "details": {
+          "parent_model": "",
+          "format": "gguf",
+          "family": "qwen3",
+          "families": [
+            "qwen3"
+          ],
+          "parameter_size": "8.2B",
+          "quantization_level": "Q4_K_M",
+          "context_length": 40960,
+          "embedding_length": 4096,
+          "runner": "ggml"
+        },
+        "size": 5225388164
+      },
+      "prompt_version": "inventory.v1.prompt4",
+      "schema_version": "inventory.v1.gen4",
+      "generation_schema_sha256": "7221e6d629ab44e994e4c8638a4765c0edfc626974d9cb78314f616490d16a48",
+      "options": {
+        "temperature": 0,
+        "seed": 0,
+        "top_k": 1,
+        "top_p": 1.0,
+        "num_ctx": 8192,
+        "num_predict": 2048
+      },
+      "segment_ids": [
+        "segment_5b5d9adb73ad8d209e4fd6cab6a3bd143d65d4e96251133e3037348e4b612756",
+        "segment_9bd583b00f28866c5256bfa8af86c9f3536a0e27265d8027497ee1ce4159bdd2"
+      ],
+      "labels": {
+        "S1": "segment_5b5d9adb73ad8d209e4fd6cab6a3bd143d65d4e96251133e3037348e4b612756",
+        "S2": "segment_9bd583b00f28866c5256bfa8af86c9f3536a0e27265d8027497ee1ce4159bdd2"
+      },
+      "known": {},
+      "system_prompt_sha256": "a3441774732bf5a1c64619e8b1c0d694c786702ced2414f066b4b768c4b66064",
+      "user_message": "<transcript>\nSegments to extract:\n[S1] je compte huit kilos de tomates pour continuer la vérification je retourne vers les étages de la réserve pendant que mon collègue termine tranquillement la vérification du potager réfrigérateur je compte quatre kilos de carottes pour continuer la vérification je retourne vers les étages de la réserve pendant que mon collègue termine tranquillement la vérification du potager réfrigérateur je compte six kilos de courgettes pour continuer la vérification je retourne vers les étages de la réserve pendant que mon collègue termine tranquillement la vérification du potager réfrigérateur\n[S2] les étagères de la réserve pendant que mon collègue termine tranquillement la vérification du poisson réfrigérateur je compte cinq kilos de poissons pour continuer la vérification je retourne vers les étagères de la réserve pendant que mon collègue termine tranquillement la vérification du poisson réfrigérateur je compte cinq kilos de poissons pour continuer la vérification je retourne vers les étagères de la réserve pendant que mon collègue termine tranquillement la vérification du poisson réfrigérateur je compte cinq kilos de poissons pour continuer la vérification je retourne vers les étagères de la réserve pendant que mon collègue termine tranquillement la vérification du poisson réfrigérateur je compte cinq kilos de poissons pour continuer la vérification je retourne vers les étagères de la réserve pendant\n</transcript>",
+      "attempt": 1,
+      "kind": "initial",
+      "estimate_tokens": 4355,
+      "repair_message": null,
+      "content": "{\n  \"language\": \"fr\",\n  \"observations\": [\n    {\n      \"segment\": \"S1\",\n      \"quote\": \"je compte huit kilos de tomates pour continuer la vérification\",\n      \"more_evidence\": [],\n      \"operation\": \"count\",\n      \"product_spoken\": \"tomates\",\n      \"quantity_text\": \"huit\",\n      \"quantity\": \"8\",\n      \"qualifier\": \"exact\",\n      \"unit_spoken\": \"kilos\",\n      \"package\": null,\n      \"location\": null,\n      \"ref\": \"o1\",\n      \"correction_of\": null\n    },\n    {\n      \"segment\": \"S1\",\n      \"quote\": \"je compte quatre kilos de carottes pour continuer la vérification\",\n      \"more_evidence\": [],\n      \"operation\": \"count\",\n      \"product_spoken\": \"carottes\",\n      \"quantity_text\": \"quatre\",\n      \"quantity\": \"4\",\n      \"qualifier\": \"exact\",\n      \"unit_spoken\": \"kilos\",\n      \"package\": null,\n      \"location\": null,\n      \"ref\": \"o2\",\n      \"correction_of\": null\n    },\n    {\n      \"segment\": \"S1\",\n      \"quote\": \"je compte six kilos de courgettes pour continuer la vérification\",\n      \"more_evidence\": [],\n      \"operation\": \"count\",\n      \"product_spoken\": \"courgettes\",\n      \"quantity_text\": \"six\",\n      \"quantity\": \"6\",\n      \"qualifier\": \"exact\",\n      \"unit_spoken\": \"kilos\",\n      \"package\": null,\n      \"location\": null,\n      \"ref\": \"o3\",\n      \"correction_of\": null\n    },\n    {\n      \"segment\": \"S2\",\n      \"quote\": \"je compte cinq kilos de poissons pour continuer la vérification\",\n      \"more_evidence\": [],\n      \"operation\": \"count\",\n      \"product_spoken\": \"poissons\",\n      \"quantity_text\": \"cinq\",\n      \"quantity\": \"5\",\n      \"qualifier\": \"exact\",\n      \"unit_spoken\": \"kilos\",\n      \"package\": null,\n      \"location\": null,\n      \"ref\": \"o4\",\n      \"correction_of\": null\n    }\n  ]\n}",
+      "done_reason": "stop",
+      "wall_s": 27.765825290989596,
+      "timings_ns": {
+        "total_duration": 27760570792,
+        "load_duration": 4325433750,
+        "prompt_eval_duration": 3197860000,
+        "eval_duration": 20227348000
+      },
+      "prompt_tokens": 998,
+      "output_tokens": 493,
+      "response_raw": {
+        "model": "qwen3:8b",
+        "created_at": "2026-11-25T18:35:25.309399Z",
+        "message": {
+          "role": "assistant",
+          "content": "{\n  \"language\": \"fr\",\n  \"observations\": [\n    {\n      \"segment\": \"S1\",\n      \"quote\": \"je compte huit kilos de tomates pour continuer la vérification\",\n      \"more_evidence\": [],\n      \"operation\": \"count\",\n      \"product_spoken\": \"tomates\",\n      \"quantity_text\": \"huit\",\n      \"quantity\": \"8\",\n      \"qualifier\": \"exact\",\n      \"unit_spoken\": \"kilos\",\n      \"package\": null,\n      \"location\": null,\n      \"ref\": \"o1\",\n      \"correction_of\": null\n    },\n    {\n      \"segment\": \"S1\",\n      \"quote\": \"je compte quatre kilos de carottes pour continuer la vérification\",\n      \"more_evidence\": [],\n      \"operation\": \"count\",\n      \"product_spoken\": \"carottes\",\n      \"quantity_text\": \"quatre\",\n      \"quantity\": \"4\",\n      \"qualifier\": \"exact\",\n      \"unit_spoken\": \"kilos\",\n      \"package\": null,\n      \"location\": null,\n      \"ref\": \"o2\",\n      \"correction_of\": null\n    },\n    {\n      \"segment\": \"S1\",\n      \"quote\": \"je compte six kilos de courgettes pour continuer la vérification\",\n      \"more_evidence\": [],\n      \"operation\": \"count\",\n      \"product_spoken\": \"courgettes\",\n      \"quantity_text\": \"six\",\n      \"quantity\": \"6\",\n      \"qualifier\": \"exact\",\n      \"unit_spoken\": \"kilos\",\n      \"package\": null,\n      \"location\": null,\n      \"ref\": \"o3\",\n      \"correction_of\": null\n    },\n    {\n      \"segment\": \"S2\",\n      \"quote\": \"je compte cinq kilos de poissons pour continuer la vérification\",\n      \"more_evidence\": [],\n      \"operation\": \"count\",\n      \"product_spoken\": \"poissons\",\n      \"quantity_text\": \"cinq\",\n      \"quantity\": \"5\",\n      \"qualifier\": \"exact\",\n      \"unit_spoken\": \"kilos\",\n      \"package\": null,\n      \"location\": null,\n      \"ref\": \"o4\",\n      \"correction_of\": null\n    }\n  ]\n}"
+        },
+        "done": true,
+        "done_reason": "stop",
+        "total_duration": 27760570792,
+        "load_duration": 4325433750,
+        "prompt_eval_count": 998,
+        "prompt_eval_cached_count": 0,
+        "prompt_eval_duration": 3197860000,
+        "eval_count": 493,
+        "eval_duration": 20227348000
+      },
+      "errors": []
+    },
+    {
+      "window": 1,
+      "run_id": "qa-real-long-clip",
+      "model": "qwen3:8b",
+      "extractor": {
+        "backend": "ollama",
+        "model": "qwen3:8b",
+        "digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+        "details": {
+          "parent_model": "",
+          "format": "gguf",
+          "family": "qwen3",
+          "families": [
+            "qwen3"
+          ],
+          "parameter_size": "8.2B",
+          "quantization_level": "Q4_K_M",
+          "context_length": 40960,
+          "embedding_length": 4096,
+          "runner": "ggml"
+        },
+        "size": 5225388164
+      },
+      "prompt_version": "inventory.v1.prompt4",
+      "schema_version": "inventory.v1.gen4",
+      "generation_schema_sha256": "7221e6d629ab44e994e4c8638a4765c0edfc626974d9cb78314f616490d16a48",
+      "options": {
+        "temperature": 0,
+        "seed": 0,
+        "top_k": 1,
+        "top_p": 1.0,
+        "num_ctx": 8192,
+        "num_predict": 2048
+      },
+      "segment_ids": [
+        "segment_89b3416ca81cf5051f53aa9a7c91620b2c6ae8646b772e0bc949ac01300ec0e2"
+      ],
+      "labels": {
+        "S1": "segment_9bd583b00f28866c5256bfa8af86c9f3536a0e27265d8027497ee1ce4159bdd2",
+        "S2": "segment_89b3416ca81cf5051f53aa9a7c91620b2c6ae8646b772e0bc949ac01300ec0e2"
+      },
+      "known": {
+        "k1": "obs_32564a878b6a8efa9e0da9c296d9f5f47b939487801e3b828eaedfa462e8e5c7",
+        "k2": "obs_77315fadcc2a43fc1c21fd5ef68e4277476d06f4cd34786fcb0da841fdc41f66",
+        "k3": "obs_47eb9e32318d20e1295869f24393c51ab66f61fd52611e6f5cd12d112e26d5e2",
+        "k4": "obs_e4256188a9fc5658622601f039bb6d32542a1a2c7bab7ef9877117e0d5ce5083"
+      },
+      "system_prompt_sha256": "a3441774732bf5a1c64619e8b1c0d694c786702ced2414f066b4b768c4b66064",
+      "user_message": "Earlier observations you may correct (reference by label only):\n- k1: tomates huit kilos  [\"je compte huit kilos de tomates pour continuer la vérification\"]\n- k2: carottes quatre kilos  [\"je compte quatre kilos de carottes pour continuer la vérification\"]\n- k3: courgettes six kilos  [\"je compte six kilos de courgettes pour continuer la vérification\"]\n- k4: poissons cinq kilos  [\"je compte cinq kilos de poissons pour continuer la vérification\"]\n<transcript>\nContext (already processed, do not extract):\n[S1] les étagères de la réserve pendant que mon collègue termine tranquillement la vérification du poisson réfrigérateur je compte cinq kilos de poissons pour continuer la vérification je retourne vers les étagères de la réserve pendant que mon collègue termine tranquillement la vérification du poisson réfrigérateur je compte cinq kilos de poissons pour continuer la vérification je retourne vers les étagères de la réserve pendant que mon collègue termine tranquillement la vérification du poisson réfrigérateur je compte cinq kilos de poissons pour continuer la vérification je retourne vers les étagères de la réserve pendant que mon collègue termine tranquillement la vérification du poisson réfrigérateur je compte cinq kilos de poissons pour continuer la vérification je retourne vers les étagères de la réserve pendant\nSegments to extract:\n[S2] je compte quatre kilos de citron pour continuer la vérification je retourne vers les étagères de la réserve pendant que mon collègue termine tranquillement la vérification du frigidaire je compte sept kilos de citron pour continuer la vérification je retourne vers les étagères de la réserve pendant que mon collègue termine tranquillement la vérification du frigidaire je compte deux kilos de gingembre\n</transcript>",
+      "attempt": 1,
+      "kind": "initial",
+      "estimate_tokens": 4660,
+      "repair_message": null,
+      "content": "{\"language\":\"fr\",\"observations\":[{\"segment\":\"S2\",\"quote\":\"je compte quatre kilos de citron pour continuer la vérification\",\"more_evidence\":[],\"operation\":\"count\",\"product_spoken\":\"citron\",\"quantity_text\":\"quatre\",\"quantity\":\"4\",\"qualifier\":\"exact\",\"unit_spoken\":\"kilos\",\"package\":null,\"location\":null,\"ref\":\"o1\",\"correction_of\":null},{\"segment\":\"S2\",\"quote\":\"je compte sept kilos de citron pour continuer la vérification\",\"more_evidence\":[],\"operation\":\"correction\",\"product_spoken\":null,\"quantity_text\":\"sept\",\"quantity\":\"7\",\"qualifier\":\"exact\",\"unit_spoken\":\"kilos\",\"package\":null,\"location\":null,\"ref\":\"o2\",\"correction_of\":\"o1\"},{\"segment\":\"S2\",\"quote\":\"je compte deux kilos de gingembre\",\"more_evidence\":[],\"operation\":\"count\",\"product_spoken\":\"gingembre\",\"quantity_text\":\"deux\",\"quantity\":\"2\",\"qualifier\":\"exact\",\"unit_spoken\":\"kilos\",\"package\":null,\"location\":null,\"ref\":\"o3\",\"correction_of\":null}]}",
+      "done_reason": "stop",
+      "wall_s": 10.02889720897656,
+      "timings_ns": {
+        "total_duration": 10022385125,
+        "load_duration": 902250,
+        "prompt_eval_duration": 918331000,
+        "eval_duration": 9088350000
+      },
+      "prompt_tokens": 1082,
+      "output_tokens": 241,
+      "response_raw": {
+        "model": "qwen3:8b",
+        "created_at": "2026-11-25T18:35:35.415809Z",
+        "message": {
+          "role": "assistant",
+          "content": "{\"language\":\"fr\",\"observations\":[{\"segment\":\"S2\",\"quote\":\"je compte quatre kilos de citron pour continuer la vérification\",\"more_evidence\":[],\"operation\":\"count\",\"product_spoken\":\"citron\",\"quantity_text\":\"quatre\",\"quantity\":\"4\",\"qualifier\":\"exact\",\"unit_spoken\":\"kilos\",\"package\":null,\"location\":null,\"ref\":\"o1\",\"correction_of\":null},{\"segment\":\"S2\",\"quote\":\"je compte sept kilos de citron pour continuer la vérification\",\"more_evidence\":[],\"operation\":\"correction\",\"product_spoken\":null,\"quantity_text\":\"sept\",\"quantity\":\"7\",\"qualifier\":\"exact\",\"unit_spoken\":\"kilos\",\"package\":null,\"location\":null,\"ref\":\"o2\",\"correction_of\":\"o1\"},{\"segment\":\"S2\",\"quote\":\"je compte deux kilos de gingembre\",\"more_evidence\":[],\"operation\":\"count\",\"product_spoken\":\"gingembre\",\"quantity_text\":\"deux\",\"quantity\":\"2\",\"qualifier\":\"exact\",\"unit_spoken\":\"kilos\",\"package\":null,\"location\":null,\"ref\":\"o3\",\"correction_of\":null}]}"
+        },
+        "done": true,
+        "done_reason": "stop",
+        "total_duration": 10022385125,
+        "load_duration": 902250,
+        "prompt_eval_count": 1082,
+        "prompt_eval_cached_count": 625,
+        "prompt_eval_duration": 918331000,
+        "eval_count": 241,
+        "eval_duration": 9088350000
+      },
+      "errors": []
+    }
+  ],
+  "metrics": {
+    "extractor": {
+      "backend": "ollama",
+      "model": "qwen3:8b",
+      "digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": [
+          "qwen3"
+        ],
+        "parameter_size": "8.2B",
+        "quantization_level": "Q4_K_M",
+        "context_length": 40960,
+        "embedding_length": 4096,
+        "runner": "ggml"
+      },
+      "size": 5225388164
+    },
+    "windows": 2,
+    "failed_windows": 0,
+    "attempts": 2,
+    "repairs": 0,
+    "model_wall_s": 37.7947,
+    "total_wall_s": 37.9505,
+    "prompt_tokens": 2080,
+    "output_tokens": 734,
+    "load_duration_ns": 4326336000,
+    "duplicates_skipped": 0,
+    "context_only_dropped": 0,
+    "unit_conversions": [],
+    "estimate_misses": 0,
+    "max_actual_to_estimate_ratio": 0.232,
+    "options": {
+      "temperature": 0,
+      "seed": 0,
+      "top_k": 1,
+      "top_p": 1.0,
+      "num_ctx": 8192,
+      "num_predict": 2048
+    },
+    "prompt_version": "inventory.v1.prompt4",
+    "schema_version": "inventory.v1.gen4",
+    "unload": {
+      "attempted": true,
+      "ok": true,
+      "error": null,
+      "idle_confirmed": true
+    }
+  }
+}

@@ -1,0 +1,22 @@
+$ .venv/bin/python -m pytest --collect-only -q tests/real_models
+tests/real_models/test_file_replay.py::test_real_file_installed_cli_replay
+tests/real_models/test_runtime.py::test_codec_decodes_right_channel_and_preserves_source[wav]
+tests/real_models/test_runtime.py::test_codec_decodes_right_channel_and_preserves_source[flac]
+tests/real_models/test_runtime.py::test_codec_decodes_right_channel_and_preserves_source[mp3]
+tests/real_models/test_runtime.py::test_codec_decodes_right_channel_and_preserves_source[m4a]
+tests/real_models/test_runtime.py::test_codec_corrupt_wav_and_spool_limit
+tests/real_models/test_runtime.py::test_real_silero_silence_and_speech_active_at_eof
+tests/real_models/test_runtime.py::test_real_silero_long_fixture_exercises_forced_chunk_boundaries
+tests/real_models/test_runtime.py::test_real_hojo_long_audio_boundary_content_and_tail
+tests/real_models/test_runtime.py::test_real_extractor_long_hojo_outputs_have_no_duplicate_observations
+tests/real_models/test_runtime.py::test_real_extractor_installed_cli_exact_transcript
+tests/real_models/test_runtime.py::test_real_file_installed_cli_offline_both_processes
+
+12/13 tests collected (1 deselected) in 0.06s
+
+$ .venv/bin/python -m pytest --collect-only -q tests/real_models/test_file_replay.py::test_real_file_installed_cli_replay
+tests/real_models/test_file_replay.py::test_real_file_installed_cli_replay
+
+1 test collected in 0.06s
+d92c0759b7d4d3e03ae22eb3c47aa97ef7122789eac187c7cf42e8e6035d1330  /Users/vakof/.cache/speechflow/hojo-jacques.wav
+No model inference was started.

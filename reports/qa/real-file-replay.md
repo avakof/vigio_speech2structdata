@@ -1,5 +1,13 @@
 # Installed CLI file replay acceptance
 
+The [final real-model QA report](final-real-suite.md) records the frozen-source
+CPU and MPS runs and links the actual SQL, process and export receipts.
+
+| Backend | Final result | Evidence |
+| --- | --- | --- |
+| CPU | PASS as part of the independent CPU suite | [Command and SQL receipts](final-real-cpu-replay-evidence.json) |
+| MPS | PASS in a separate 87.74 s pytest run | [Command and SQL receipts](final-real-mps-replay-evidence.json) |
+
 The test uses the pinned synthetic Jacques recording
 `~/.cache/speechflow/hojo-jacques.wav`. It is 57,142 samples of mono PCM at
 16 kHz with SHA-256
@@ -32,6 +40,8 @@ receipt digest. The first run, replay, and fresh database exports must produce
 byte-identical JSON, observation and segment CSVs, and observation and segment
 tables. The test checks the committed JSON bytes and compares the CSV and table
 content with direct SQL rows.
+
+## Historical pre-provisioning checks
 
 | Check | Status | Evidence |
 | --- | --- | --- |

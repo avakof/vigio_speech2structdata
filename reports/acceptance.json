@@ -10,7 +10,8 @@
     "distinct_astra_xhigh": {
       "status": "PASS",
       "evidence": [
-        "docs/agent-routing.md"
+        "docs/agent-routing.md",
+        "reports/integration/astra-routing.json"
       ]
     },
     "mixed_provider_specialists": {
@@ -32,14 +33,19 @@
     },
     "independent_qa": {
       "status": "PASS",
-      "detail": "Independent GPT QA reproduced semantic and storage defects, reran the fixes, and matched all 15 real local Qwen reference-case outputs against the integrated CLI run.",
+      "detail": "Independent GPT QA reproduced extraction and persistence defects with scripted generation and reran its fixes. On frozen source it executed the full native CPU real-model suite and the separate MPS replay. The two retained CPU failures both concern long-file recognition and inventory content.",
       "evidence": [
         "reports/qa/initial-semantics.log",
         "reports/qa/initial-storage.log",
         "reports/integration/post-extraction-fixes.txt",
         "reports/integration/storage-fixes.txt",
         "reports/qa/inventory-context.md",
-        "reports/qa/real-qwen-independent.md"
+        "reports/qa/real-qwen-independent.md",
+        "reports/qa/decimal-fragment.md",
+        "reports/integration/final-qa-tests.txt",
+        "reports/qa/final-real-suite.md",
+        "reports/qa/final-real-cpu.log",
+        "reports/qa/final-real-mps.log"
       ]
     },
     "independent_review": {
@@ -61,7 +67,11 @@
     "installed_cli": {
       "status": "PASS",
       "evidence": [
-        "reports/integration/installed-help.txt"
+        "reports/integration/installed-help.txt",
+        "reports/integration/doctor-final.json",
+        "reports/integration/final-build.log",
+        "reports/integration/final-wheel.json",
+        "reports/integration/final-default-tests.txt"
       ]
     },
     "arm64_dependency_install": {
@@ -81,7 +91,8 @@
         "reports/hojo/weight-stage-40.log",
         "reports/integration/doctor-provisioned.json",
         "reports/integration/prepare-provisioned-offline.json",
-        "reports/integration/prepare-provisioned.json"
+        "reports/integration/prepare-provisioned.json",
+        "reports/integration/prepare-final.json"
       ]
     },
     "missing_assets_offline": {
@@ -149,14 +160,16 @@
     },
     "validated_exports_and_replay": {
       "status": "PASS",
-      "detail": "Fixture observations exercise transactional history and correction replay. Two actual installed-CLI silence imports produced a single stored generation and byte-identical CSV. Speech-bearing model outputs are tracked separately. Concurrent saves and explicit exports targeting one directory also passed process and race regressions, including interrupted-writer recovery.",
+      "detail": "On real speech, two fresh CLI processes per backend independently produced inserted then duplicate at generation 1 on both CPU and MPS. SQLite retained 1 run, 1 segment, 2 accepted observations and 2 evidence rows per backend. JSON, CSV, and terminal views matched the original files byte for byte after replay and explicit export. Unit tests cover correction replays, recovery and concurrent writers.",
       "evidence": [
         "reports/integration/storage-fixes.txt",
         "reports/integration/silence-replay.json",
         "reports/integration/partial-retry.txt",
         "reports/persistence/out-dir-lock.md",
         "reports/integration/output-lock-suite.txt",
-        "reports/examples/jacques/sqlite-export-check.json"
+        "reports/examples/jacques/sqlite-export-check.json",
+        "reports/qa/final-real-cpu-replay-evidence.json",
+        "reports/qa/final-real-mps-replay-evidence.json"
       ]
     },
     "reference_semantics": {
@@ -190,7 +203,14 @@
         "reports/qa/real-full-long-analysis.json",
         "reports/qa/real-full-long-hojo.json",
         "reports/qa/real-full-long-extraction.json",
-        "reports/qa/real-full-suite.log"
+        "reports/qa/real-full-suite.log",
+        "reports/hojo/long-cpu-bisection.jsonl",
+        "reports/hojo/long-cpu-bisection.log",
+        "reports/evaluation/synthetic-real.json",
+        "reports/hojo/generation-loop.md",
+        "reports/qa/final-real-long-analysis.json",
+        "reports/qa/final-real-long-hojo.json",
+        "reports/qa/final-real-long-qwen.json"
       ]
     },
     "offline_control_app_and_daemon": {
@@ -208,7 +228,8 @@
       "evidence": [
         "reports/offline/positive-file-receipt.json",
         "reports/offline/positive-file.json",
-        "reports/offline/positive-file-manifest.json"
+        "reports/offline/positive-file-manifest.json",
+        "reports/qa/final-real-offline-file.json"
       ]
     },
     "microphone_and_backpressure": {
@@ -271,10 +292,68 @@
       ]
     },
     "end_to_end_field_scores": {
-      "status": "BLOCKED",
-      "detail": "Actual Hojo transcripts required.",
+      "status": "PASS",
+      "detail": "Installed CPU evaluation completed the unchanged 72.46 s synthetic eight-count file on frozen source. Products, quantities and units each had 4 true positives, 1 false positive, 4 false negatives (precision 0.80 and recall 0.50). Two of seven candidates abstained. The same source reference yielded 8/8 with no abstentions. No negation or correction appeared in this gold. This gate records measurement; the separate content gate failed.",
+      "synthetic_long": {
+        "gold_mentions": 8,
+        "returned_candidates": 7,
+        "accepted_candidates": 5,
+        "review_candidates": 2,
+        "covered_gold_mentions": 4,
+        "abstention_rate": 0.2857142857142857,
+        "gold_coverage": 0.5,
+        "fields": {
+          "product_spoken": {
+            "tp": 4,
+            "fp": 1,
+            "fn": 4,
+            "predicted": 5,
+            "expected": 8,
+            "precision": 0.8,
+            "recall": 0.5
+          },
+          "quantity": {
+            "tp": 4,
+            "fp": 1,
+            "fn": 4,
+            "predicted": 5,
+            "expected": 8,
+            "precision": 0.8,
+            "recall": 0.5
+          },
+          "unit": {
+            "tp": 4,
+            "fp": 1,
+            "fn": 4,
+            "predicted": 5,
+            "expected": 8,
+            "precision": 0.8,
+            "recall": 0.5
+          },
+          "negation": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 0,
+            "predicted": 0,
+            "expected": 0,
+            "precision": null,
+            "recall": null
+          },
+          "correction": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 0,
+            "predicted": 0,
+            "expected": 0,
+            "precision": null,
+            "recall": null
+          }
+        }
+      },
       "evidence": [
-        "reports/qa/synthetic.cli.json"
+        "reports/evaluation/synthetic-real.json",
+        "reports/evaluation/synthetic-real-cli.json",
+        "reports/qa/real-full-long-analysis.json"
       ]
     },
     "positive_inventory_file": {
@@ -305,9 +384,113 @@
       ]
     },
     "fixture_microphone_real_models": {
-      "status": "NOT RUN",
-      "detail": "Fixture-based callback transport using real local models is being prepared.",
-      "evidence": []
+      "status": "PASS",
+      "detail": "An 8 s digital 48 kHz callback session on the installed mic path passed under process-scoped egress denial. The ASR child verified fixture identity and absence of native PortAudio. Genuine Silero, Hojo and Qwen returned 2.5 kg tomatoes and 12 bottles of milk. Zero known lost frames and 128,000 normalized samples. Timings describe injected transport only.",
+      "evidence": [
+        "reports/offline/fixture-mic.json",
+        "reports/offline/fixture-mic-cli.json",
+        "reports/offline/fixture-mic-manifest.json",
+        "reports/hojo/fixture-input-self-test.json"
+      ]
+    },
+    "m4a_installed_commands": {
+      "status": "PASS",
+      "detail": "Installed CPU run decoded compressed AAC/M4A and committed 2.5 kg tomatoes and 12 bottles of milk. Re-export matched saved CSV. A separate 26.048 s MPS M4A transcription produced two keyed raw outputs with 397312 and 25856 samples. These commands establish the input and output paths. The repeated courgette phrase remains visible in the MPS raw reply.",
+      "evidence": [
+        "reports/integration/m4a-run-cli.json",
+        "reports/integration/m4a-run-manifest.json",
+        "reports/integration/m4a-exports.json",
+        "reports/integration/m4a-mps-cli.json",
+        "reports/integration/m4a-mps-manifest.json"
+      ]
+    },
+    "source_sample_coverage": {
+      "status": "PASS",
+      "detail": "On the 72.46 s continuous fixture, all 1159360 normalized source samples were submitted in three bounded inputs; the first begins at 0, adjacent padded inputs overlap, and the last ends at source EOF. The two forced core boundaries and all raw keys matched. The separate long-content gate failed.",
+      "evidence": [
+        "reports/qa/real-full-long-analysis.json",
+        "reports/qa/real-full-long-hojo.json",
+        "reports/evaluation/synthetic-real.json"
+      ]
     }
+  },
+  "verification_commands": [
+    {
+      "command": "uv sync --frozen --offline && uv pip check --python .venv/bin/python && uv lock --offline --check",
+      "exit": 0,
+      "result": "71 installed packages compatible on native ARM64 Python 3.12.16.",
+      "evidence": "reports/integration/frozen-environment.txt"
+    },
+    {
+      "command": ".venv/bin/speechflow --offline --json doctor",
+      "exit": 0,
+      "evidence": "reports/integration/doctor-final.json"
+    },
+    {
+      "command": ".venv/bin/speechflow --offline --json models prepare",
+      "exit": 0,
+      "evidence": "reports/integration/prepare-final.json"
+    },
+    {
+      "command": ".venv/bin/python -m pytest -q",
+      "exit": 0,
+      "result": "286 passed, 13 deselected",
+      "evidence": "reports/integration/final-default-tests.txt"
+    },
+    {
+      "command": ".venv/bin/python -m pytest -q tests/qa",
+      "exit": 0,
+      "result": "67 passed",
+      "evidence": "reports/integration/final-qa-tests.txt"
+    },
+    {
+      "command": ".venv/bin/speechflow --offline --json --backend cpu run outputs/acceptance-inputs/jacques-inventory.m4a --out outputs/m4a-inventory --database outputs/m4a-inventory.sqlite3",
+      "exit": 0,
+      "evidence": "reports/integration/m4a-run-cli.json"
+    },
+    {
+      "command": "PYTORCH_ENABLE_MPS_FALLBACK=0 .venv/bin/speechflow --offline --json --backend mps transcribe outputs/acceptance-inputs/jacques-near-cap.m4a --out outputs/m4a-near-cap-mps --database outputs/m4a-near-cap.sqlite3",
+      "exit": 0,
+      "evidence": "reports/integration/m4a-mps-cli.json"
+    },
+    {
+      "command": ".venv/bin/speechflow --offline --json --backend cpu evaluate evaluation/fleurs-fr/manifest.jsonl --out outputs/fleurs-real",
+      "exit": 0,
+      "result": "2 edits on 61 human-reference words",
+      "evidence": "reports/evaluation/fleurs-real.json"
+    },
+    {
+      "command": ".venv/bin/speechflow --offline --json --backend cpu evaluate outputs/qa-fixtures/long-jacques.manifest.jsonl --out outputs/synthetic-real",
+      "exit": 11,
+      "result": "Needs review. 4/8 accepted gold mentions, 2/7 candidates held for review.",
+      "evidence": "reports/evaluation/synthetic-real.json"
+    },
+    {
+      "command": ".venv/bin/python tools/offline/verify.py fixture-mic --audio \"$HOME/.cache/speechflow/hojo-jacques.wav\" --seconds 8 --out outputs/accepted-offline --backend cpu",
+      "exit": 0,
+      "result": "File-fed callback transport, real models, physical input disabled.",
+      "evidence": "reports/offline/fixture-mic.json"
+    },
+    {
+      "command": "SPEECHFLOW_QA_MODEL_SLOT=1 .venv/bin/python -m pytest -q -s tests/real_models --basetemp outputs/qa-final-real-002",
+      "exit": 1,
+      "result": "10 passed, 2 failed, 1 deselected in 690.03 s. Both failures are long-file content assertions.",
+      "evidence": "reports/qa/final-real-cpu.log"
+    },
+    {
+      "command": "SPEECHFLOW_QA_MODEL_SLOT=1 SPEECHFLOW_CONFIG=<TOML with backend=\"mps\" and offline=true> .venv/bin/python -m pytest -q -s tests/real_models/test_file_replay.py::test_real_file_installed_cli_replay --basetemp outputs/qa-final-mps-replay-002",
+      "exit": 0,
+      "result": "1 passed in 87.74 s. Positive inventory, same-backend replay, committed records and exports.",
+      "evidence": "reports/qa/final-real-mps.log"
+    }
+  ],
+  "evaluation_scope": {
+    "hardware": "All application tests ran locally on the recorded target Mac.",
+    "human_french_wer": "Two preselected corpus-verified FLEURS dev recordings, 20.46 s.",
+    "reference_inventory": "15 curated French transcript cases used during development.",
+    "long_inventory": "Synthetic macOS Jacques, 72.46 s; eight predeclared timed phrases.",
+    "file_fed_microphone": "Digital fixture, real inference, no hardware access.",
+    "physical_device": "User selected file input only.",
+    "private_audio": "At the time of this snapshot no user recording had arrived."
   }
 }

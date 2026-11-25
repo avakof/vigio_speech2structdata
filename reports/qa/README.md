@@ -1,5 +1,21 @@
 # Independent QA on the target Mac
 
+The [final serial CPU suite and MPS replay report](final-real-suite.md) records
+the current real-model outcome, including the raw long-file and replay
+evidence. See the [acceptance register](../acceptance.json) for the broader
+integration results and the [real file replay page](real-file-replay.md) for
+the CLI and SQLite acceptance procedure.
+
+The CPU suite recorded 10 passes and two long-file content failures. The
+CPU and MPS short-file replays, exact-transcript evaluation and sandboxed
+file run passed. The historical sections below preserve the original
+provisioning and QA record.
+
+## Historical pre-provisioning evidence
+
+This table records the initial QA state before the pinned runtime and model
+weights were provisioned. Later real-model results are linked above.
+
 | Gate | Status | Evidence |
 | --- | --- | --- |
 | Independent QA | PASS | 40 independent and 215 combined Python checks passed. [Command transcript](commands.log), [combined run](integrated-python-tests.log) |
