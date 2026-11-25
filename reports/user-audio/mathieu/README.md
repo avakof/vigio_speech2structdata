@@ -4,6 +4,19 @@
 
 [Download the rows as CSV](observations.csv) · [Original CLI observation table](observations.txt) · [Verification receipt](verification.json)
 
+## Comparison with the supplied script
+
+**Hojo’s word error rate against the supplied script was 18.18%** on this 127.399-second synthetic recording. The two saved runs had identical transcripts. Across 275 reference words and 279 hypothesis words, one minimum-edit alignment counted 40 substitutions, 3 deletions and 7 insertions. The comparison removed 15 bracketed performance cues and retained the standalone “18”. The project’s word normalization preserves accents and number spellings, so a change from a spoken number to digits can contribute an edit. The project’s human-recorded French benchmark retains its original score. [Score and method](script-comparison.json)
+
+The reference contains **29 final product-and-location entries**. A compound amount, such as packages plus loose units, belongs to one entry. A spoken correction changes the final amount for that product at that site. Only rows accepted by the validator can match a final reference entry.
+
+| Saved extraction | Rows accepted | Rows held for review | Correct final entries | Precision of accepted entries | Recall |
+|---|---:|---:|---:|---:|---:|
+| Project defaults | 1 | 10 of 11 (90.91%) | 0 of 29 | 0% | 0% |
+| Larger bounded budgets | 0 | 27 of 27 (100%) | 0 of 29 | Undefined (zero accepted) | 0% |
+
+The default run’s single accepted bottle count was assigned to the wrong product. Every row from the larger-budget run omitted the location. Its rows cited only segments 1–9 of the 13 when numbered from one. The transcript contained the last site and the closing correction, but the exported rows did not cite either passage. The private comparison preserves the script, word alignment and expected counts for each site.
+
 ## Results on the same recording
 
 | CPU run | Context / output token limits | Extraction windows returning candidates | Rows | Accepted by validator | Held for review | Pipeline time |
@@ -11,7 +24,7 @@
 | Project defaults | 8,192 / 2,048 | 1 of 2 | 11 | 1 | 10 | 305.11 s |
 | Larger bounded budgets | 32,768 / 6,144 | 2 of 2 | 27 | 0 | 27 | 963.54 s |
 
-The default run filled its output budget on the first window. The prior reply and proposed repair exceeded the available context. Its only accepted row assigned one bottle to *vodka zéro*. That assignment has no human confirmation. [Default rows](default/observations.csv) · [Default receipt](default/verification.json)
+The default run filled its output budget on the first window. The prior reply and proposed repair exceeded the available context. Its only accepted row assigned one bottle to *vodka zéro*. The supplied script assigns the bottle to another product and gives vodka a final count of zero at that site. [Default rows](default/observations.csv) · [Default receipt](default/verification.json)
 
 The second run used the same model revisions, CPU backend and audio. All 13 raw Hojo replies matched the first run exactly. Qwen returned complete responses for both windows and made one repair per window. The corrections still lacked a reliable prior observation, and several proposed evidence spans could not be matched to the cited segment. The two runs therefore represent separate extraction attempts. Their rows cannot be added together. [Rerun settings](settings.toml)
 
@@ -53,11 +66,11 @@ The row numbers below start at 1. The CLI and CSV ordinals start at 0. Each row 
 
 The source was a user-supplied MP3 labeled ElevenLabs Mathieu, a French Canadian narrator. It decoded to 127.399 seconds from 44.1 kHz mono. Speechflow ran on an Apple M3 Max with the CPU backend, Silero VAD, HojoAI/Hojo-ASR-Multi-V1 and loopback Ollama qwen3:8b. The offline flag was enabled for both runs. Process-level egress blocking was tested separately in the [release verification](../../integration/release-verification.json).
 
-Both runs used the supplied audio as input. There is no human reference transcript or expected inventory. Quantities and statuses below are application output. Word error rate, field precision and field recall are **NOT MEASURED** for this file. The recording, verbatim transcript, quoted evidence and database are held locally. The public CSV contains the observation fields, including unit, packaging, location, correction references, evidence coordinates and validation errors. The public CSV omits the verbatim evidence-quote column and source excerpts embedded in diagnostic messages.
+Both runs used the supplied audio as input. The user supplied the script after both runs. The verification receipts describe the evidence available at inference time. The comparison above uses the saved output and the subsequently supplied reference. The inventory table preserves the original model output and review status. The recording, verbatim transcript, quoted evidence and database are held locally. The public CSV contains the observation fields, including unit, packaging, location, correction references, evidence coordinates and validation errors. The public CSV omits the verbatim evidence-quote column and source excerpts embedded in diagnostic messages.
 
 The rerun spent 490.35 s on ASR and 457.60 s on extraction. All ASR inputs stayed within 400,000 samples (25 s at 16 kHz), including padding and overlap. Both CLI invocations returned exit 11 for a saved result requiring review. SQLite integrity and foreign-key checks passed. For each run, a fresh CLI export read the saved run from SQLite and reproduced the original table and full local CSV byte for byte. Each ordered observation matched its database fields, status and correction link. The local manifest matched the database copy. [Validation hashes and timings](verification.json)
 
-This is a follow-up to the [signed release assessment](../../review/architect-final.md). That assessment predates receipt of this file. The follow-up verifies file processing and export, and adds no reference-based accuracy result.
+This is a follow-up to the [signed release assessment](../../review/architect-final.md). That assessment predates receipt of this file. The follow-up verifies file processing and export. The subsequent script comparison measures recognition and final inventory agreement for this single synthetic recording.
 
 ## Reproduce with a local copy
 

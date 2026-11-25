@@ -1,0 +1,73 @@
+{
+  "source": "User-provided script for the previously tested 127.399-second synthetic MP3. Script delivery followed inference. No independent audio-to-script attestation.",
+  "script_comparison": {
+    "kind": "user-supplied script agreement on one synthetic recording",
+    "duration_s": 127.3991875,
+    "reference_tokens": 275,
+    "hypothesis_tokens": 279,
+    "edits": 50,
+    "substitutions": 40,
+    "deletions": 3,
+    "insertions": 7,
+    "matches": 232,
+    "wer": 0.18181818181818182,
+    "removed_bracketed_cues": 15,
+    "policy": "NFC, casefold, curly apostrophe to straight. Keep accents. Split on punctuation and whitespace except internal apostrophes and decimal separators. Keep number surface forms without expanding words or equating decimal comma and point. Concatenate ordered normalized segments. Repetitions count as insertions.",
+    "alignment_tie_break": "Backtrack diagonal, then deletion, then insertion; ties can change the edit mix.",
+    "raw_and_normalized_segments_identical_across_runs": true,
+    "segments": 13,
+    "source_sha256": "b07e5161d00355518adccf0d6b2b9b74aa87ca80ff0928010b2567d7e9c90cb8"
+  },
+  "inventory_policy": "One final fact per named product and site, retaining loose amounts, packaging, qualifiers and corrections within that fact. Only validator-accepted rows can score. Missing locations cannot match. The standalone 18 and an unnamed repeated correction do not add product-site facts. The supplied reference was manually annotated for this comparison.",
+  "expected_final_product_site_facts": 29,
+  "runs": {
+    "default": {
+      "run_id": "run_b2e104454c5add42ce4fcecfc3ade4610cd02b08fc52dd0306b8900e803e9ac2",
+      "emitted_rows": 11,
+      "accepted_rows": 1,
+      "review_rows": 10,
+      "abstention_rate": 0.9090909090909091,
+      "rows_with_location": 2,
+      "accepted_exact_final_facts": {
+        "tp": 0,
+        "fp": 1,
+        "fn": 29,
+        "precision": 0.0,
+        "recall": 0.0
+      },
+      "segment_ordinals_cited_by_any_row": [
+        8,
+        10,
+        11,
+        12
+      ]
+    },
+    "expanded": {
+      "run_id": "run_82959e61a849b2cf75cf7e26ece02331475da0412ab63e187b1fa74a3f858f9a",
+      "emitted_rows": 27,
+      "accepted_rows": 0,
+      "review_rows": 27,
+      "abstention_rate": 1.0,
+      "rows_with_location": 0,
+      "accepted_exact_final_facts": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 29,
+        "precision": null,
+        "recall": 0.0
+      },
+      "segment_ordinals_cited_by_any_row": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ]
+    }
+  },
+  "release_corpus_wer_updated": false
+}

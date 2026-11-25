@@ -763,13 +763,14 @@
       "post_release_test": {
         "file_processing_and_export": "PASS",
         "extraction_status": "needs_review",
-        "reference_accuracy": "NOT MEASURED",
+        "reference_accuracy": "Subsequent comparison to the user-supplied script for this synthetic file: 50 edits across 275 reference words (18.18% WER). Both saved runs recovered 0 of 29 validated final product-and-location entries.",
         "observations": 27,
         "accepted_observations": 0,
         "evidence": [
           "reports/user-audio/mathieu/README.md",
           "reports/user-audio/mathieu/verification.json",
-          "reports/user-audio/mathieu/observations.csv"
+          "reports/user-audio/mathieu/observations.csv",
+          "reports/user-audio/mathieu/script-comparison.json"
         ]
       }
     },
