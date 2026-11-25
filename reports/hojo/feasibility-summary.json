@@ -1,0 +1,172 @@
+{
+  "status": "PASS",
+  "model_repository": "HojoAI/Hojo-ASR-Multi-V1",
+  "model_revision": "aa1d0dfc369deb3b3235572fa151acd7b498481f",
+  "weight": {
+    "event": "published",
+    "sha256": "c046a5a26c142f5aded7331d36892293a025f579e342a27861e80509afaca88d",
+    "bytes": 11956909856,
+    "path": "/Users/vakof/.cache/speechflow/assets/hojo/merged_full_model.safetensors"
+  },
+  "backends": {
+    "cpu": {
+      "status": "PASS",
+      "model_load_s": 7.369784540991532,
+      "asset_verification_s": 4.986804665997624,
+      "actual_parameter_placements": {
+        "decoder_model": [
+          "cpu:torch.bfloat16"
+        ],
+        "speech_encoder": [
+          "cpu:torch.float32"
+        ],
+        "bottleneck": [
+          "cpu:torch.float32"
+        ],
+        "ln_speech": [
+          "cpu:torch.float32"
+        ]
+      },
+      "decoder_attention": "sdpa",
+      "process_elapsed_s": 32.35,
+      "process_peak_footprint_bytes": 3598379040,
+      "process_peak_rss_bytes": 12767412224,
+      "warm_realtime_factor": 2.450361823943317,
+      "inference_records": [
+        {
+          "event": "inference",
+          "iteration": 1,
+          "seconds": 6.8081245420034975,
+          "realtime_factor": 1.9063034663129739,
+          "result": {
+            "key": "hojo-jacques",
+            "text": "il reste deux virgule cinq kilos de tomates et douze bouteilles de lait"
+          },
+          "adapter_hooks": {
+            "autocast_context": 2,
+            "encode_speech": 1
+          },
+          "memory": {
+            "process_rss_bytes": 12662292480,
+            "process_peak_rss_bytes": 12767412224,
+            "system_available_bytes": 25461915648
+          }
+        },
+        {
+          "event": "inference",
+          "iteration": 2,
+          "seconds": 8.751160958985565,
+          "realtime_factor": 2.450361823943317,
+          "result": {
+            "key": "hojo-jacques",
+            "text": "il reste deux virgule cinq kilos de tomates et douze bouteilles de lait"
+          },
+          "adapter_hooks": {
+            "autocast_context": 2,
+            "encode_speech": 1
+          },
+          "memory": {
+            "process_rss_bytes": 12277891072,
+            "process_peak_rss_bytes": 12767412224,
+            "system_available_bytes": 23543922688
+          }
+        }
+      ],
+      "raw_logs": [
+        "cpu.jsonl",
+        "cpu.log"
+      ]
+    },
+    "mps": {
+      "status": "PASS",
+      "model_load_s": 16.526170791999903,
+      "asset_verification_s": 5.386220042011701,
+      "actual_parameter_placements": {
+        "decoder_model": [
+          "mps:0:torch.bfloat16"
+        ],
+        "speech_encoder": [
+          "mps:0:torch.float32"
+        ],
+        "bottleneck": [
+          "mps:0:torch.float32"
+        ],
+        "ln_speech": [
+          "mps:0:torch.float32"
+        ]
+      },
+      "decoder_attention": "eager",
+      "process_elapsed_s": 59.07,
+      "process_peak_footprint_bytes": 15132298840,
+      "process_peak_rss_bytes": 3745595392,
+      "warm_realtime_factor": 1.8930764761481684,
+      "inference_records": [
+        {
+          "event": "inference",
+          "iteration": 1,
+          "seconds": 27.33866633399157,
+          "realtime_factor": 7.654941397638603,
+          "result": {
+            "key": "hojo-jacques",
+            "text": "Présence de deux virgule cinq kilos de tomates et douze bouteilles de lait"
+          },
+          "adapter_hooks": {
+            "autocast_context": 2,
+            "encode_speech": 1
+          },
+          "memory": {
+            "process_rss_bytes": 1246904320,
+            "process_peak_rss_bytes": 3745595392,
+            "system_available_bytes": 16539467776,
+            "mps_current_allocated_bytes": 11964466944,
+            "mps_driver_allocated_bytes": 12791005184
+          }
+        },
+        {
+          "event": "inference",
+          "iteration": 2,
+          "seconds": 6.760886000003666,
+          "realtime_factor": 1.8930764761481684,
+          "result": {
+            "key": "hojo-jacques",
+            "text": "Présence de deux virgule cinq kilos de tomates et douze bouteilles de lait"
+          },
+          "adapter_hooks": {
+            "autocast_context": 2,
+            "encode_speech": 1
+          },
+          "memory": {
+            "process_rss_bytes": 1255915520,
+            "process_peak_rss_bytes": 3745595392,
+            "system_available_bytes": 16605347840,
+            "mps_current_allocated_bytes": 11964466944,
+            "mps_driver_allocated_bytes": 12791005184
+          }
+        }
+      ],
+      "raw_logs": [
+        "mps.jsonl",
+        "mps.log"
+      ]
+    }
+  },
+  "french_recognition_accuracy": "NOT MEASURED by synthetic feasibility",
+  "initial_mps_failure": {
+    "process_exit": 134,
+    "failure": "PyTorch 2.5.1 MPS grouped-query SDPA abort with 32 query heads and eight KV heads",
+    "stderr": "mps-sdpa-failed.log",
+    "records": "mps-sdpa-failed.jsonl",
+    "operator_stderr": "mps-gqa-grouped-sdpa.log",
+    "operator_corrected": "mps-gqa-repeated-kv-eager.jsonl"
+  },
+  "fixture": {
+    "file": "/Users/vakof/.cache/speechflow/hojo-jacques.wav",
+    "sha256": "d92c0759b7d4d3e03ae22eb3c47aa97ef7122789eac187c7cf42e8e6035d1330",
+    "sample_rate": 16000,
+    "frames": 57142,
+    "duration_seconds": 3.571375,
+    "reference": "Il reste deux virgule cinq kilos de tomates et douze bouteilles de lait.",
+    "provenance": "Synthetic macOS say Jacques fr_FR",
+    "chunk_limit_seconds": 25.0
+  }
+}

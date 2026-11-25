@@ -1,0 +1,21 @@
+{
+  "wheel": "speechflow-0.1.0-py3-none-any.whl",
+  "size": 93756,
+  "sha256": "ffdf79f8a8934829e95a3974253838376c91cd5aa243cc7db28a813f5dd9b4e1",
+  "python_sources_match_checkout": true,
+  "required_files": [
+    "speechflow/cli.py",
+    "speechflow/audio/microphone.py",
+    "speechflow/audio/resampling.py",
+    "speechflow/audio/hojo.py",
+    "speechflow/model_manifest.json",
+    "speechflow/migrations/0001_initial.sql",
+    "speechflow/evaluation.py"
+  ],
+  "entry_point": "speechflow.cli:main",
+  "schema_files": [
+    "speechflow/extraction/schemas/inventory.v1.gen2.schema.json",
+    "speechflow/extraction/schemas/inventory.v1.gen3.schema.json",
+    "speechflow/extraction/schemas/inventory.v1.gen4.schema.json"
+  ]
+}

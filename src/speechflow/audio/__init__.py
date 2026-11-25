@@ -11,8 +11,8 @@ import unicodedata
 from ..config import Settings
 from ..contracts import AudioResult, AudioSegment, AudioSource, TranscriptSegment
 from .decoding import SAMPLE_BYTES, decode_file
-from .hojo import SAMPLE_RATE, infer_wav, load_local_model, verify_local_bundle
-from .segmentation import segment_pcm, silero_provenance
+from .hojo import SAMPLE_RATE, generation_loop_warning, infer_wav, load_local_model, verify_local_bundle
+from .segmentation import VAD_MIN_SILENCE_MS, segment_pcm, silero_provenance
 
 log = logging.getLogger(__name__)
 WORD = re.compile(r"[^\W_]+(?:['-][^\W_]+)*")
@@ -45,12 +45,19 @@ def _infer_segment(model, source_pcm, segment: AudioSegment, work: Path, max_sec
         wav.unlink(missing_ok=True)
 
     text = " ".join(unicodedata.normalize("NFC", raw["text"]).split())
+    warning = "Hojo returned empty text for a detected speech segment" if not text else None
+    if text:
+        try:
+            warning = generation_loop_warning(model, raw["text"])
+        except Exception:
+            log.warning("Could not check Hojo output for repetition in %s", segment.segment_id,
+                        exc_info=True)
     return TranscriptSegment(
         **segment.model_dump(),
         raw=raw,
         normalized_text=text,
-        status="ok" if text else "needs_review",
-        errors=[] if text else ["Hojo returned empty text for a detected speech segment"],
+        status="needs_review" if warning else "ok",
+        errors=[warning] if warning else [],
     )
 
 
@@ -73,10 +80,19 @@ def _flag_reemissions(segments: list[TranscriptSegment]) -> None:
                 break
 
 
+def _model_placement(model) -> tuple[str, str]:
+    encoder = next(model.speech_encoder.parameters())
+    decoder = model.decoder_model.get_input_embeddings().weight
+    encoder_dtype = str(encoder.dtype).removeprefix("torch.")
+    decoder_dtype = str(decoder.dtype).removeprefix("torch.")
+    return model.device.type, f"encoder={encoder_dtype},decoder={decoder_dtype}"
+
+
 def _transcribe_pcm(
     pcm: Path, source: AudioSource, settings: Settings, metrics: dict
 ) -> AudioResult:
     start = time.perf_counter()
+    metrics["vad_min_silence_ms"] = VAD_MIN_SILENCE_MS
     try:
         segments = segment_pcm(pcm, source, settings.max_chunk_seconds, settings.padding_ms)
         metrics["silero"] = silero_provenance()
@@ -112,10 +128,7 @@ def _transcribe_pcm(
             metrics=metrics,
         )
     metrics["model_load_seconds"] = time.perf_counter() - start
-    encoder = next(model.speech_encoder.parameters())
-    decoder = model.decoder_model.get_input_embeddings().weight
-    backend = model.device.type
-    dtype = f"encoder={str(encoder.dtype).removeprefix('torch.')},decoder={str(decoder.dtype).removeprefix('torch.')}"
+    backend, dtype = _model_placement(model)
 
     transcripts = []
     start = time.perf_counter()
@@ -166,4 +179,10 @@ def transcribe_file(path: Path, settings: Settings) -> AudioResult:
     return result
 
 
-__all__ = ["transcribe_file"]
+def capture_microphone(settings: Settings, spool: Path) -> AudioResult:
+    from .microphone import capture_microphone as capture
+
+    return capture(settings, spool)
+
+
+__all__ = ["capture_microphone", "transcribe_file"]

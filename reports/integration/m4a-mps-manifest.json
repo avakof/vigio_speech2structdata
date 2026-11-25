@@ -1,0 +1,125 @@
+{
+  "run_id": "run_8e28f7bf2ce16361312b740a12a59fcf6b9296373cd1408162c886c096662535",
+  "processing_version": "processing_931f841349e306f8a48cf61007d81f425f406c2e8482bfab127d1b6a5d6074d8",
+  "schema_version": "inventory.v1",
+  "mode": "transcribe",
+  "status": "ok",
+  "transcription_status": "ok",
+  "extraction_status": "not_run",
+  "source": {
+    "source_id": "file_87d58ea4b4b3d4b9548c4fe2cd5c1ec02f50f42cf1f9c445d2817d77912ab450",
+    "kind": "file",
+    "digest": "b76bf204ad5832e5d44a53b0662676ec0c50dcb3b14f881ac0a652e4fa7cc714",
+    "name": "jacques-near-cap.m4a",
+    "native_rate": 16000,
+    "native_channels": 1,
+    "sample_rate": 16000,
+    "sample_count": 416768,
+    "channel_mix": "mono"
+  },
+  "segments": [
+    {
+      "segment_id": "segment_2f54f16f18efd82255a7cbffc9456b306371169375654e8ae7fd1991b5cb429f",
+      "source_id": "file_87d58ea4b4b3d4b9548c4fe2cd5c1ec02f50f42cf1f9c445d2817d77912ab450",
+      "ordinal": 0,
+      "input_start": 0,
+      "core_start": 512,
+      "core_end": 394112,
+      "input_end": 397312,
+      "raw": {
+        "key": "segment_2f54f16f18efd82255a7cbffc9456b306371169375654e8ae7fd1991b5cb429f",
+        "text": "bfs pour continuer la vérification je retourne vers les étages de la réserve pendant que mon collègue termine tranquillement la vérification du condenseur frigorateur je compte six kilos de courgettes pour continuer la vérification je retourne vers les étages de la réserve pendant que mon collègue termine tranquillement la vérification du condenseur frigorateur je compte six kilos de courgettes pour continuer la vérification je retourne vers les étages de la réserve"
+      },
+      "normalized_text": "bfs pour continuer la vérification je retourne vers les étages de la réserve pendant que mon collègue termine tranquillement la vérification du condenseur frigorateur je compte six kilos de courgettes pour continuer la vérification je retourne vers les étages de la réserve pendant que mon collègue termine tranquillement la vérification du condenseur frigorateur je compte six kilos de courgettes pour continuer la vérification je retourne vers les étages de la réserve",
+      "status": "ok",
+      "errors": []
+    },
+    {
+      "segment_id": "segment_7bdc13154d17023fcd6b2ad3070ebad5be95cdf48e6a5c8c9ea43328e5a41883",
+      "source_id": "file_87d58ea4b4b3d4b9548c4fe2cd5c1ec02f50f42cf1f9c445d2817d77912ab450",
+      "ordinal": 1,
+      "input_start": 390912,
+      "core_start": 394112,
+      "core_end": 416768,
+      "input_end": 416768,
+      "raw": {
+        "key": "segment_7bdc13154d17023fcd6b2ad3070ebad5be95cdf48e6a5c8c9ea43328e5a41883",
+        "text": "Présentement que mon collègue termine"
+      },
+      "normalized_text": "Présentement que mon collègue termine",
+      "status": "ok",
+      "errors": []
+    }
+  ],
+  "observations": [],
+  "provenance": {
+    "speechflow_version": "0.1.0",
+    "implementation_sha256": "f4744f576ab739a2d0cb030f1e227d3949306b9282ef500127a8da85f144d1b8",
+    "schema_version": "inventory.v1",
+    "config": {
+      "backend": "mps",
+      "ollama_model": "qwen3:8b",
+      "max_chunk_seconds": 25.0,
+      "padding_ms": 200,
+      "max_spool_bytes": 1073741824,
+      "extraction_timeout": 120.0,
+      "context_tokens": 8192,
+      "output_tokens": 2048
+    },
+    "silero_sha256": "e1122837f4154c511485fe0b9c64455f7b929c96fbb8d79fbdb336383ebd3720",
+    "hojo_revision": "aa1d0dfc369deb3b3235572fa151acd7b498481f",
+    "expected_extractor_digest": null,
+    "backend": "mps",
+    "dtype": "encoder=float32,decoder=bfloat16",
+    "packages": {
+      "torch": "2.5.1",
+      "torchaudio": "2.5.1",
+      "transformers": "4.57.3",
+      "hojo-asr": "0.1.3",
+      "silero-vad": "6.2.0",
+      "numpy": "1.26.4",
+      "soundfile": "0.14.0",
+      "imageio-ffmpeg": "0.6.0",
+      "pydantic": "2.14.4"
+    },
+    "decoder": {
+      "sha256": "6d175a4743ca50256e89a8cdd731100f9cee33bd79aeea46894d209410dc6617",
+      "version": "7.1"
+    }
+  },
+  "metrics": {
+    "audio": {
+      "decoder": {
+        "sha256": "6d175a4743ca50256e89a8cdd731100f9cee33bd79aeea46894d209410dc6617",
+        "version": "7.1"
+      },
+      "decode_seconds": 0.06817700000829063,
+      "decoded_seconds": 26.048,
+      "normalized_spool_bytes": 1667072,
+      "requested_backend": "mps",
+      "vad_min_silence_ms": 350,
+      "silero": {
+        "version": "6.2.0",
+        "artifact": "silero_vad/data/silero_vad.jit",
+        "sha256": "e1122837f4154c511485fe0b9c64455f7b929c96fbb8d79fbdb336383ebd3720"
+      },
+      "vad_seconds": 0.8528321249759756,
+      "asr_chunk_sample_counts": [
+        397312,
+        25856
+      ],
+      "model_asset_verification_seconds": 5.757673166983295,
+      "model_load_seconds": 19.169094957993366,
+      "asr_seconds": 54.280827000009594,
+      "process_peak_rss_bytes": 3719675904,
+      "asr_realtime_factor": 2.0838769579242014,
+      "audio_total_seconds": 80.13610629198956
+    },
+    "extraction": {},
+    "duration_s": 26.048,
+    "pipeline_seconds": 80.82810474999133,
+    "pipeline_rtf": 3.103044561962198
+  },
+  "attempts": [],
+  "errors": []
+}

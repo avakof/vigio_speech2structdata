@@ -1,6 +1,7 @@
 """Scripted chat replies exercise the real extraction and validation code."""
 
 import json
+from pathlib import Path
 
 import pytest
 
@@ -459,3 +460,88 @@ def test_inventory_context_repair_cannot_silently_drop_a_valid_neighbor(repair_c
     else:
         assert result.status in {"needs_review", "error"}
         assert any(obs.observation_id == valid_neighbor.observation_id for obs in result.observations) or result.errors
+
+
+def _run_decimal_fragment_case(segments, response):
+    original = [segment.model_dump(mode="json") for segment in segments]
+    result, calls = run(segments, response, response)
+    assert 1 <= len(calls) <= 2
+    assert [record["content"] for record in result.attempts if "content" in record] == [
+        response.content
+    ] * len(calls)
+    assert [segment.model_dump(mode="json") for segment in segments] == original
+    sources = {segment.segment_id: segment.normalized_text for segment in segments}
+    for observation in result.observations:
+        for span in observation.evidence:
+            assert sources[span.segment_id][span.start:span.end] == span.quote
+    print(json.dumps({
+        "segments": original,
+        "scripted_reply": response.content,
+        "status": result.status,
+        "errors": result.errors,
+        "attempts": [{k: v for k, v in record.items() if k in {"kind", "labels", "errors"}}
+                     for record in result.attempts],
+        "observations": [obs.model_dump(mode="json") for obs in result.observations],
+    }, ensure_ascii=False))
+    return result
+
+
+def test_decimal_fragment_archived_qwen_cannot_accept_five_kilos_of_tomatoes():
+    archive = Path(__file__).resolve().parents[2] / "reports/integration/jacques-short-pause-before.json"
+    recorded = json.loads(archive.read_text(encoding="utf-8"))
+    segments = [TranscriptSegment.model_validate(segment) for segment in recorded["segments"]]
+    assert [segment.normalized_text for segment in segments] == [
+        "il me reste douze virgules",
+        "cinq kilos de tomates et douze bouteilles de lait",
+    ]
+    initial = recorded["attempts"][0]
+    assert initial["kind"] == "initial"
+    assert initial["labels"] == {f"S{i}": segment.segment_id for i, segment in enumerate(segments, 1)}
+    assert initial["response_raw"]["message"]["content"] == initial["content"]
+    response = BackendReply(content=initial["content"], done_reason=initial["done_reason"],
+                            raw=initial["response_raw"])
+
+    result = _run_decimal_fragment_case(segments, response)
+    assert result.status == "needs_review"
+    assert result.attempts[0]["labels"] == initial["labels"]
+    assert result.attempts[0]["response_raw"] == initial["response_raw"]
+    assert all(obs.quantity not in {"2.5", "12.5"} for obs in result.observations)
+    milk, = [obs for obs in result.observations if obs.product_spoken == "lait"]
+    assert (milk.status, milk.quantity, milk.unit) == ("ok", "12", "bouteille")
+    assert milk.evidence and all(
+        span.segment_id == segments[1].segment_id and "douze bouteilles de lait" in span.quote
+        for span in milk.evidence)
+    assert [(obs.product_spoken, obs.quantity, obs.unit) for obs in result.observations if obs.status == "ok"] == [
+        ("lait", "12", "bouteille"),
+    ]
+
+
+def test_decimal_fragment_singular_with_two_evidence_spans_preserves_decimal_and_milk():
+    segments = transcript("il me reste deux virgule", "cinq kilos de tomates et douze bouteilles de lait")
+    response = _inventory_reply(
+        item("deux virgule", "tomates", "deux virgule cinq", "2.5", "kilos",
+             more_evidence=[{"segment": "S2", "quote": "cinq kilos de tomates"}]),
+        item("douze bouteilles de lait", "lait", "douze", "12", "bouteilles", segment="S2", ref="o2"),
+    )
+    result = _run_decimal_fragment_case(segments, response)
+    assert result.status == "ok"
+    tomato, milk = result.observations
+    assert (tomato.product_spoken, tomato.quantity, tomato.unit) == ("tomates", "2.5", "kg")
+    assert [span.segment_id for span in tomato.evidence] == [s.segment_id for s in segments]
+    assert [span.quote for span in tomato.evidence] == ["deux virgule", "cinq kilos de tomates"]
+    assert (milk.product_spoken, milk.quantity, milk.unit) == ("lait", "12", "bouteille")
+    assert [span.segment_id for span in milk.evidence] == [segments[1].segment_id]
+
+
+def test_decimal_fragment_complete_previous_utterance_leaves_the_next_count_independent():
+    segments = transcript("Douze bouteilles d’eau.", "cinq kilos de tomates et douze bouteilles de lait")
+    response = _inventory_reply(
+        item("Douze bouteilles d’eau", "eau", "Douze", "12", "bouteilles"),
+        item("cinq kilos de tomates", "tomates", "cinq", "5", "kilos", segment="S2", ref="o2"),
+        item("douze bouteilles de lait", "lait", "douze", "12", "bouteilles", segment="S2", ref="o3"),
+    )
+    result = _run_decimal_fragment_case(segments, response)
+    assert result.status == "ok"
+    assert [(obs.product_spoken, obs.quantity, obs.unit) for obs in result.observations] == [
+        ("eau", "12", "bouteille"), ("tomates", "5", "kg"), ("lait", "12", "bouteille"),
+    ]

@@ -36,6 +36,22 @@ def _measures(text):
                 break
 
 
+def ambiguous_decimal_continuations(segments):
+    """Locate a measured suffix after a malformed, unfinished spoken decimal."""
+    result = {}
+    segments = list(segments)
+    for left, right in zip(segments, segments[1:]):
+        if left.ordinal + 1 != right.ordinal:
+            continue
+        tail = fold(left.normalized_text).split()
+        if len(tail) < 2 or tail[-1] != "virgules" or parse_quantity(tail[-2]) is None:
+            continue
+        first = next(_measures(right.normalized_text), None)
+        if first and not right.normalized_text[:first.start].strip(" ,:…"):
+            result[right.segment_id] = first
+    return result
+
+
 def complete_split_measure(item, evidence, segments):
     """Complete a partially copied number only from uninterrupted, model-cited speech."""
     if len(evidence) < 2 or item.operation not in ("count", "correction"):

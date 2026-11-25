@@ -20,7 +20,7 @@ from decimal import Decimal
 from ..contracts import EvidenceSpan, Packaging, TranscriptSegment, ValidatedObservation, stable_id
 from .language import assess as assess_language
 from .numbers import APPROX_WORDS, dec_str, parse_quantity
-from .relations import complete_split_measure, source_relation_problems
+from .relations import ambiguous_decimal_continuations, complete_split_measure, source_relation_problems
 from .scope import check_quantity_scope, narrow_count_quote, negation_cue
 from .schema import LLMObservation, LLMOutput
 from .text import fold, locate, term_spans
@@ -90,6 +90,7 @@ def check_reply(
     """Validate `reply`. `labels` maps every prompt label (context + extract) to its segment."""
     out = ReplyCheck()
     segment_index = segment_index or {s.segment_id: s for s in labels.values()}
+    uncertain_numbers = ambiguous_decimal_continuations(labels.values())
     refs = [o.ref for o in reply.observations]
     if len(set(refs)) != len(refs):
         out.repairable.append(f"duplicate ref labels: {refs}")
@@ -164,6 +165,11 @@ def check_reply(
         item_conversions: list[str] = []
         built = _build(item, evidence, contiguous, reply.language, known, created, positions, position,
                        run_id, tie, already, segment_index, labels, seg_lang, item_conversions)
+        for span in evidence:
+            measure = uncertain_numbers.get(span.segment_id)
+            if (measure and span.start < measure.end and measure.start < span.end
+                    and built.quantity == measure.quantity and built.unit == measure.unit):
+                built.errors.append("quantity_follows_unresolved_decimal_fragment")
         # --- relation to observations extracted earlier (previous windows or this reply) ---
         skip = False
         for other in list(already) + list(created.values()):

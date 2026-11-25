@@ -1,0 +1,291 @@
+{
+  "run_id": "run_5a760bd90cc9e249054f3a118eb8b57a5aa44c815994ae2f091c9ef1554b96ff",
+  "processing_version": "processing_a879d4be0a0486c28fa420f796ea62e310e6a2c5c33bdefc78a21a344a6ea045",
+  "schema_version": "inventory.v1",
+  "mode": "run",
+  "status": "ok",
+  "transcription_status": "ok",
+  "extraction_status": "ok",
+  "source": {
+    "source_id": "file_3a54aa1b11cec5f409edb1c9de937da8f6c70092a617600356003e4c381a0759",
+    "kind": "file",
+    "digest": "ffcc4b11d60fb3a623bbe2fa9e77354c52152508845b347eb1b03260bf8fde55",
+    "name": "jacques-inventory.m4a",
+    "native_rate": 16000,
+    "native_channels": 1,
+    "sample_rate": 16000,
+    "sample_count": 57344,
+    "channel_mix": "mono"
+  },
+  "segments": [
+    {
+      "segment_id": "segment_0c1f55bd5ff6f2c997e86974fbf9f76f449071ef1d6ea39b0fdae52d8d4db853",
+      "source_id": "file_3a54aa1b11cec5f409edb1c9de937da8f6c70092a617600356003e4c381a0759",
+      "ordinal": 0,
+      "input_start": 0,
+      "core_start": 1024,
+      "core_end": 57344,
+      "input_end": 57344,
+      "raw": {
+        "key": "segment_0c1f55bd5ff6f2c997e86974fbf9f76f449071ef1d6ea39b0fdae52d8d4db853",
+        "text": "il reste deux virgule cinq kilos de tomates et douze bouteilles de lait"
+      },
+      "normalized_text": "il reste deux virgule cinq kilos de tomates et douze bouteilles de lait",
+      "status": "ok",
+      "errors": []
+    }
+  ],
+  "observations": [
+    {
+      "product_spoken": "tomates",
+      "quantity_text": "deux virgule cinq",
+      "quantity": "2.5",
+      "quantity_max": null,
+      "qualifier": "exact",
+      "unit_spoken": "kilos",
+      "unit": "kg",
+      "packaging": null,
+      "location": null,
+      "operation": "count",
+      "evidence": [
+        {
+          "segment_id": "segment_0c1f55bd5ff6f2c997e86974fbf9f76f449071ef1d6ea39b0fdae52d8d4db853",
+          "start": 0,
+          "end": 43,
+          "quote": "il reste deux virgule cinq kilos de tomates"
+        }
+      ],
+      "correction_of": null,
+      "observation_id": "obs_1bad90396acfe796a51faaae18d75019045a4dc3a6f91f061551a9134f6f3af0",
+      "catalog_match": null,
+      "revision": 1,
+      "status": "ok",
+      "errors": []
+    },
+    {
+      "product_spoken": "lait",
+      "quantity_text": "douze",
+      "quantity": "12",
+      "quantity_max": null,
+      "qualifier": "exact",
+      "unit_spoken": "bouteilles",
+      "unit": "bouteille",
+      "packaging": null,
+      "location": null,
+      "operation": "count",
+      "evidence": [
+        {
+          "segment_id": "segment_0c1f55bd5ff6f2c997e86974fbf9f76f449071ef1d6ea39b0fdae52d8d4db853",
+          "start": 47,
+          "end": 71,
+          "quote": "douze bouteilles de lait"
+        }
+      ],
+      "correction_of": null,
+      "observation_id": "obs_de113987ef54e550ef929c2b05ceb769a0b76d6af4ef4fbcaff64d8bbf57ac99",
+      "catalog_match": null,
+      "revision": 1,
+      "status": "ok",
+      "errors": []
+    }
+  ],
+  "provenance": {
+    "speechflow_version": "0.1.0",
+    "implementation_sha256": "009762f4d731ddb6103b15cc1270c626e294fa7534b0188fd3d9210fb5ca32e5",
+    "schema_version": "inventory.v1",
+    "config": {
+      "backend": "cpu",
+      "ollama_model": "qwen3:8b",
+      "max_chunk_seconds": 25.0,
+      "padding_ms": 200,
+      "max_spool_bytes": 1073741824,
+      "extraction_timeout": 120.0,
+      "context_tokens": 8192,
+      "output_tokens": 2048
+    },
+    "silero_sha256": "e1122837f4154c511485fe0b9c64455f7b929c96fbb8d79fbdb336383ebd3720",
+    "hojo_revision": "aa1d0dfc369deb3b3235572fa151acd7b498481f",
+    "expected_extractor_digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+    "backend": "cpu",
+    "dtype": "encoder=float32,decoder=bfloat16",
+    "packages": {
+      "torch": "2.5.1",
+      "torchaudio": "2.5.1",
+      "transformers": "4.57.3",
+      "hojo-asr": "0.1.3",
+      "silero-vad": "6.2.0",
+      "numpy": "1.26.4",
+      "soundfile": "0.14.0",
+      "imageio-ffmpeg": "0.6.0",
+      "pydantic": "2.14.4"
+    },
+    "decoder": {
+      "sha256": "6d175a4743ca50256e89a8cdd731100f9cee33bd79aeea46894d209410dc6617",
+      "version": "7.1"
+    },
+    "ollama_version": "0.40.16",
+    "extractor_digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41"
+  },
+  "metrics": {
+    "audio": {
+      "decoder": {
+        "sha256": "6d175a4743ca50256e89a8cdd731100f9cee33bd79aeea46894d209410dc6617",
+        "version": "7.1"
+      },
+      "decode_seconds": 0.06307674999698065,
+      "decoded_seconds": 3.584,
+      "normalized_spool_bytes": 229376,
+      "requested_backend": "cpu",
+      "vad_min_silence_ms": 350,
+      "silero": {
+        "version": "6.2.0",
+        "artifact": "silero_vad/data/silero_vad.jit",
+        "sha256": "e1122837f4154c511485fe0b9c64455f7b929c96fbb8d79fbdb336383ebd3720"
+      },
+      "vad_seconds": 0.6246172499959357,
+      "asr_chunk_sample_counts": [
+        57344
+      ],
+      "model_asset_verification_seconds": 5.2796833330066875,
+      "model_load_seconds": 10.172956416994566,
+      "asr_seconds": 9.465455041005043,
+      "process_peak_rss_bytes": 12768165888,
+      "asr_realtime_factor": 2.641030982423282,
+      "audio_total_seconds": 25.657555708981818
+    },
+    "extraction": {
+      "extractor": {
+        "backend": "ollama",
+        "model": "qwen3:8b",
+        "digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+        "details": {
+          "parent_model": "",
+          "format": "gguf",
+          "family": "qwen3",
+          "families": [
+            "qwen3"
+          ],
+          "parameter_size": "8.2B",
+          "quantization_level": "Q4_K_M",
+          "context_length": 40960,
+          "embedding_length": 4096,
+          "runner": "ggml"
+        },
+        "size": 5225388164
+      },
+      "windows": 1,
+      "failed_windows": 0,
+      "attempts": 1,
+      "repairs": 0,
+      "model_wall_s": 15.1843,
+      "total_wall_s": 15.1891,
+      "prompt_tokens": 676,
+      "output_tokens": 257,
+      "load_duration_ns": 4057016500,
+      "duplicates_skipped": 0,
+      "context_only_dropped": 0,
+      "unit_conversions": [],
+      "estimate_misses": 0,
+      "max_actual_to_estimate_ratio": 0.229,
+      "options": {
+        "temperature": 0,
+        "seed": 0,
+        "top_k": 1,
+        "top_p": 1.0,
+        "num_ctx": 8192,
+        "num_predict": 2048
+      },
+      "prompt_version": "inventory.v1.prompt4",
+      "schema_version": "inventory.v1.gen4",
+      "unload": {
+        "attempted": true,
+        "ok": true,
+        "error": null,
+        "idle_confirmed": true
+      }
+    },
+    "duration_s": 3.584,
+    "pipeline_seconds": 41.437040582997724,
+    "pipeline_rtf": 11.561674269809632
+  },
+  "attempts": [
+    {
+      "window": 0,
+      "run_id": "run_5a760bd90cc9e249054f3a118eb8b57a5aa44c815994ae2f091c9ef1554b96ff",
+      "model": "qwen3:8b",
+      "extractor": {
+        "backend": "ollama",
+        "model": "qwen3:8b",
+        "digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+        "details": {
+          "parent_model": "",
+          "format": "gguf",
+          "family": "qwen3",
+          "families": [
+            "qwen3"
+          ],
+          "parameter_size": "8.2B",
+          "quantization_level": "Q4_K_M",
+          "context_length": 40960,
+          "embedding_length": 4096,
+          "runner": "ggml"
+        },
+        "size": 5225388164
+      },
+      "prompt_version": "inventory.v1.prompt4",
+      "schema_version": "inventory.v1.gen4",
+      "generation_schema_sha256": "7221e6d629ab44e994e4c8638a4765c0edfc626974d9cb78314f616490d16a48",
+      "options": {
+        "temperature": 0,
+        "seed": 0,
+        "top_k": 1,
+        "top_p": 1.0,
+        "num_ctx": 8192,
+        "num_predict": 2048
+      },
+      "segment_ids": [
+        "segment_0c1f55bd5ff6f2c997e86974fbf9f76f449071ef1d6ea39b0fdae52d8d4db853"
+      ],
+      "labels": {
+        "S1": "segment_0c1f55bd5ff6f2c997e86974fbf9f76f449071ef1d6ea39b0fdae52d8d4db853"
+      },
+      "known": {},
+      "system_prompt_sha256": "a3441774732bf5a1c64619e8b1c0d694c786702ced2414f066b4b768c4b66064",
+      "user_message": "<transcript>\nSegments to extract:\n[S1] il reste deux virgule cinq kilos de tomates et douze bouteilles de lait\n</transcript>",
+      "attempt": 1,
+      "kind": "initial",
+      "estimate_tokens": 2956,
+      "repair_message": null,
+      "content": "{\n  \"language\": \"fr\",\n  \"observations\": [\n    {\n      \"segment\": \"S1\",\n      \"quote\": \"il reste deux virgule cinq kilos de tomates\",\n      \"more_evidence\": [],\n      \"operation\": \"count\",\n      \"product_spoken\": \"tomates\",\n      \"quantity_text\": \"deux virgule cinq\",\n      \"quantity\": \"2.5\",\n      \"qualifier\": \"exact\",\n      \"unit_spoken\": \"kilos\",\n      \"package\": null,\n      \"location\": null,\n      \"ref\": \"o1\",\n      \"correction_of\": null\n    },\n    {\n      \"segment\": \"S1\",\n      \"quote\": \"douze bouteilles de lait\",\n      \"more_evidence\": [],\n      \"operation\": \"count\",\n      \"product_spoken\": \"lait\",\n      \"quantity_text\": \"douze\",\n      \"quantity\": \"12\",\n      \"qualifier\": \"exact\",\n      \"unit_spoken\": \"bouteilles\",\n      \"package\": null,\n      \"location\": null,\n      \"ref\": \"o2\",\n      \"correction_of\": null\n    }\n  ]\n}",
+      "done_reason": "stop",
+      "wall_s": 15.184303916990757,
+      "timings_ns": {
+        "total_duration": 15178581834,
+        "load_duration": 4057016500,
+        "prompt_eval_duration": 1045378999,
+        "eval_duration": 10067108000
+      },
+      "prompt_tokens": 676,
+      "output_tokens": 257,
+      "response_raw": {
+        "model": "qwen3:8b",
+        "created_at": "2026-11-25T18:18:35.477399Z",
+        "message": {
+          "role": "assistant",
+          "content": "{\n  \"language\": \"fr\",\n  \"observations\": [\n    {\n      \"segment\": \"S1\",\n      \"quote\": \"il reste deux virgule cinq kilos de tomates\",\n      \"more_evidence\": [],\n      \"operation\": \"count\",\n      \"product_spoken\": \"tomates\",\n      \"quantity_text\": \"deux virgule cinq\",\n      \"quantity\": \"2.5\",\n      \"qualifier\": \"exact\",\n      \"unit_spoken\": \"kilos\",\n      \"package\": null,\n      \"location\": null,\n      \"ref\": \"o1\",\n      \"correction_of\": null\n    },\n    {\n      \"segment\": \"S1\",\n      \"quote\": \"douze bouteilles de lait\",\n      \"more_evidence\": [],\n      \"operation\": \"count\",\n      \"product_spoken\": \"lait\",\n      \"quantity_text\": \"douze\",\n      \"quantity\": \"12\",\n      \"qualifier\": \"exact\",\n      \"unit_spoken\": \"bouteilles\",\n      \"package\": null,\n      \"location\": null,\n      \"ref\": \"o2\",\n      \"correction_of\": null\n    }\n  ]\n}"
+        },
+        "done": true,
+        "done_reason": "stop",
+        "total_duration": 15178581834,
+        "load_duration": 4057016500,
+        "prompt_eval_count": 676,
+        "prompt_eval_cached_count": 0,
+        "prompt_eval_duration": 1045378999,
+        "eval_count": 257,
+        "eval_duration": 10067108000
+      },
+      "errors": []
+    }
+  ],
+  "errors": []
+}

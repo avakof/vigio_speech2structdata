@@ -1,0 +1,29 @@
+{
+  "run_id": "run_5a760bd90cc9e249054f3a118eb8b57a5aa44c815994ae2f091c9ef1554b96ff",
+  "mode": "run",
+  "status": "ok",
+  "transcription_status": "ok",
+  "extraction_status": "ok",
+  "processing_version": "processing_a879d4be0a0486c28fa420f796ea62e310e6a2c5c33bdefc78a21a344a6ea045",
+  "source": {
+    "source_id": "file_3a54aa1b11cec5f409edb1c9de937da8f6c70092a617600356003e4c381a0759",
+    "kind": "file",
+    "name": "jacques-inventory.m4a",
+    "digest": "ffcc4b11d60fb3a623bbe2fa9e77354c52152508845b347eb1b03260bf8fde55"
+  },
+  "segments": 1,
+  "observations": 2,
+  "observations_needing_review": 0,
+  "errors": [],
+  "database": "/Users/vakof/orca/vigio_speech2structdata/outputs/m4a-inventory.sqlite3",
+  "disposition": "inserted",
+  "generation": 1,
+  "files": [
+    "outputs/m4a-inventory/observations.csv",
+    "outputs/m4a-inventory/observations.txt",
+    "outputs/m4a-inventory/segments.csv",
+    "outputs/m4a-inventory/segments.txt",
+    "outputs/m4a-inventory/run.json"
+  ],
+  "exit_code": 0
+}

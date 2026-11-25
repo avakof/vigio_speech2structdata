@@ -1,0 +1,34 @@
+{
+  "source": {
+    "source_id": "file_3a54aa1b11cec5f409edb1c9de937da8f6c70092a617600356003e4c381a0759",
+    "kind": "file",
+    "digest": "ffcc4b11d60fb3a623bbe2fa9e77354c52152508845b347eb1b03260bf8fde55",
+    "name": "jacques-inventory.m4a",
+    "native_rate": 16000,
+    "native_channels": 1,
+    "sample_rate": 16000,
+    "sample_count": 57344,
+    "channel_mix": "mono"
+  },
+  "rows": {
+    "sources": 1,
+    "runs": 1,
+    "segments": 1,
+    "observations": 2,
+    "observation_evidence": 2
+  },
+  "installed_csv_sha256": "07063b88147623e7c7afb770bd1c52df65c2c84052d11fbf960baea790271891",
+  "matches_saved_csv": true,
+  "observations": [
+    {
+      "product": "tomates",
+      "quantity": "2.5",
+      "unit": "kg"
+    },
+    {
+      "product": "lait",
+      "quantity": "12",
+      "unit": "bouteille"
+    }
+  ]
+}

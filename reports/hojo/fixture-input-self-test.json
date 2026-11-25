@@ -1,0 +1,23 @@
+{
+  "self_test": "passed",
+  "native_import_and_dlopen_guarded": true,
+  "label": "synthetic_fixture_input_no_hardware",
+  "input_path": "/Users/vakof/.cache/speechflow/hojo-jacques.wav",
+  "input_sha256": "d92c0759b7d4d3e03ae22eb3c47aa97ef7122789eac187c7cf42e8e6035d1330",
+  "input_rate_hz": 16000,
+  "input_channels": 1,
+  "input_frames": 57142,
+  "callback_rate_hz": 48000,
+  "callback_channels": 1,
+  "resampled_speech_frames": 171426,
+  "leading_silence_frames": 48000,
+  "trailing_silence_frames": 96000,
+  "prepared_frames": 315426,
+  "emitted_callback_frames": 2880,
+  "extra_digital_silence_frames": 0,
+  "timestamp_method": "synthetic ADC start and callback deadline on a paced host monotonic clock",
+  "hardware_opened": false,
+  "playback": false,
+  "fixture_origin_monotonic_s": 161133.695371541,
+  "fixture_elapsed_monotonic_s": 0.06461816700175405
+}

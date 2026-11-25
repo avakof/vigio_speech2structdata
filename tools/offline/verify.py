@@ -30,7 +30,7 @@ class Control(BaseHTTPRequestHandler):
         pass
 
 
-def observe_processes(root, role, samples):
+def observe_processes(root, role, samples, elapsed_s):
     try:
         processes = [root, *root.children(recursive=True)]
     except psutil.NoSuchProcess:
@@ -42,14 +42,17 @@ def observe_processes(root, role, samples):
                 row = samples.setdefault(process.pid, {
                     "pid": process.pid, "parent_pid": process.ppid(),
                     "process": process.name(), "tree": role, "max_sampled_rss_bytes": 0,
+                    "first_sample_s": elapsed_s,
                 })
                 row["max_sampled_rss_bytes"] = max(row["max_sampled_rss_bytes"], rss)
+                row["last_sample_s"] = elapsed_s
         except (psutil.AccessDenied, psutil.NoSuchProcess):
             continue
 
 
 def run_observed(command, env, work, server_pid, opener, url, report):
     samples, models = {}, {}
+    start = time.monotonic()
     server = psutil.Process(server_pid)
     available = psutil.virtual_memory().available
     report["system_available_before_bytes"] = available
@@ -58,15 +61,18 @@ def run_observed(command, env, work, server_pid, opener, url, report):
             report["app_pid"] = launched.pid
             app = psutil.Process(launched.pid)
             while launched.poll() is None:
-                observe_processes(server, "dedicated_ollama", samples)
-                observe_processes(app, "speechflow", samples)
+                elapsed = time.monotonic() - start
+                observe_processes(server, "dedicated_ollama", samples, elapsed)
+                observe_processes(app, "speechflow", samples, elapsed)
                 available = min(available, psutil.virtual_memory().available)
                 try:
                     with opener.open(url + "/api/ps", timeout=.5) as response:
                         for model in json.load(response).get("models", []):
                             digest = model["digest"]
-                            models[digest] = {field: model.get(field) for field in
-                                              ("name", "digest", "size", "size_vram", "context_length")}
+                            sample = models.setdefault(digest, {"first_sample_s": elapsed})
+                            sample.update({field: model.get(field) for field in
+                                           ("name", "digest", "size", "size_vram", "context_length")})
+                            sample["last_sample_s"] = elapsed
                 except (OSError, ValueError, KeyError):
                     pass
                 try:
@@ -107,14 +113,14 @@ def inference_checks(manifest, backend):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("mode", choices=("file", "mic"))
+    parser.add_argument("mode", choices=("file", "mic", "fixture-mic"))
     parser.add_argument("--audio", type=Path)
     parser.add_argument("--out", required=True, type=Path)
     parser.add_argument("--backend", choices=("cpu", "mps"), default="cpu")
     parser.add_argument("--seconds", default=10, type=float)
     args = parser.parse_args()
-    if args.mode == "file" and not args.audio:
-        parser.error("File mode requires --audio")
+    if args.mode in {"file", "fixture-mic"} and (not args.audio or not args.audio.is_file()):
+        parser.error(f"{args.mode} requires an existing --audio file")
     root = Path(__file__).resolve().parent
     cli = Path(sys.executable).parent / "speechflow"
     if not cli.is_file():
@@ -149,11 +155,17 @@ def main():
     server_command = [*probe, outside, f"http://127.0.0.1:{control.server_port}",
                       shutil.which("ollama") or "ollama", "serve"]
     call = ["run", str(args.audio.resolve())] if args.mode == "file" else ["mic", "--seconds", str(args.seconds)]
+    if args.mode == "fixture-mic":
+        call += ["--device", "SPEECHFLOW_QA_FILE_INPUT_ONLY"]
     app_command = [*probe, outside, url + "/api/version", str(cli), *call, "--json", "--offline",
                    "--out", str(work / "output"), "--database", str(work / "runs.sqlite3")]
     child_proof = work / "asr-network.json"
     app_env = {**env, "PYTHONPATH": os.pathsep.join([str(root / "instrument"), str(root)]),
                "SPEECHFLOW_TEST_CONTROL": json.dumps([str(child_proof.resolve()), outside, url + "/api/version"])}
+    if args.mode == "fixture-mic":
+        app_env["PYTHONPATH"] = os.pathsep.join([str(root / "fixture_only"), app_env["PYTHONPATH"],
+                                                 str(root.parent / "hojo")])
+        app_env["SPEECHFLOW_TEST_INPUT_FILE"] = str(args.audio.resolve())
     report = {"profile_sha256": hashlib.sha256(profile.read_bytes()).hexdigest(), "outside": outside,
               "unsandboxed_tcp_443": True, "unsandboxed_ipv6_errno": ipv6_baseline,
               "mode": args.mode, "server_command": server_command,
@@ -185,6 +197,11 @@ def main():
                 report["exit_code"] = run_observed(
                     app_command, app_env, work, server.pid, opener, url, report)
                 report["result"] = "FAIL" if report["preflight"]["ready"] else "BLOCKED"
+                if args.mode == "mic" and report["exit_code"] == 4:
+                    diagnostic = (work / "app.stderr").read_text()
+                    if "Cannot open microphone" in diagnostic or "Cannot use microphone" in diagnostic:
+                        report["result"] = "BLOCKED"
+                        report["blocker"] = "Default input device unavailable. See app.stderr for the PortAudio diagnostic."
                 report["app_control"] = json.loads((work / "app.stdout").read_text().splitlines()[0])
                 if report["app_control"]["pid"] != report["app_pid"]:
                     raise RuntimeError("App control PID does not match the installed CLI")
@@ -199,6 +216,12 @@ def main():
                     report["transcription_status"] = manifest["transcription_status"]
                     report["extraction_status"] = manifest["extraction_status"]
                     report["inference_checks"] = inference_checks(manifest, args.backend)
+                    if args.mode == "fixture-mic":
+                        child_control = report.get("asr_child_control", {})
+                        report["inference_checks"]["fixture_transport"] = (
+                            child_control.get("input_transport") == "fixture callbacks, no physical PortAudio"
+                            and child_control.get("native_portaudio_module_loaded") is False
+                            and child_control.get("fixture", {}).get("emitted_callback_frames", 0) > 0)
                     if (child_proof.exists() and report["exit_code"] == 0
                             and all(report["inference_checks"].values())):
                         report["result"] = "PASS"

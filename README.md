@@ -15,11 +15,7 @@ blocked. CPU and MPS both ran the pinned Hojo checkpoint. The default CPU
 backend reproduced the full reference sentence in the short synthetic
 inventory test. [Acceptance report](reports/acceptance.json) · [Backend measurements](reports/compatibility.md)
 
-## Setup — three separate steps
-
-Dependency installation and model preparation are different steps. The first
-installs Python packages only; the second is the only step that downloads
-weights.
+## Setup
 
 ### 1. Install dependencies (network, no models)
 
@@ -38,9 +34,9 @@ address.
 speechflow doctor
 ```
 
-`doctor` works before steps 1 and 3: it reports each missing dependency, missing
-asset and unreachable service with a fix, and exits `3` while anything is
-missing. `speechflow --help` needs only the standard library.
+Once the CLI is installed, `doctor` reports missing dependencies, assets and
+services and exits `3` while setup is incomplete. `speechflow --help` needs
+only the standard library.
 
 ### 3. Prepare model assets (network, large download)
 
@@ -91,8 +87,23 @@ and `--device NAME_OR_INDEX`. `export` takes `--format json|csv|table`,
 `--part observations|segments` (stdout) and `--out DIR` (write that format's
 files). `RUN_ID` may be a unique prefix of at least four characters.
 
-Microphone mode is *segmented* transcription: speech is cut at pauses and each
-utterance is transcribed as a unit. It is not native streaming.
+Microphone mode provides segmented transcription. Once the local stream opens
+the CLI prints `Listening for microphone input.` to stderr. Press Ctrl-C once
+to end capture and flush pending audio. Hojo processes queued utterances using
+one model instance. Final extraction and persistence follow capture.
+
+Each session has an `OUT/mic_<uuid>/` directory. Its `session.json` records the
+device, source clock, stop reason, counters and paths. `capture.f32le` contains
+16 kHz mono float32 samples and `provisional-transcript.jsonl` contains the
+individual Hojo replies. Use the finalized observations in `OUT/run.json`
+for revision history. If a queue fills, capture stops and preserves the spool.
+Check `known_lost_native_frames` and `device_lost_frames_unknown` in the
+metrics, including for interrupted sessions. A raw spool can be converted
+locally with `ffmpeg -f f32le -ar 16000 -ac 1 -i capture.f32le recovered.wav`.
+
+The tested microphone transport used paced digital samples with real local
+models. Physical microphone access and live latency were left untested at
+the user's request. [Fixture evidence](reports/offline/fixture-mic.json)
 
 ### Exit codes
 
@@ -228,12 +239,17 @@ say -v Jacques -o "$HOME/.cache/speechflow/hojo-jacques.wav" --file-format=WAVE 
 SPEECHFLOW_QA_MODEL_SLOT=1 .venv/bin/python -m pytest -q tests/real_models
 .venv/bin/speechflow --offline evaluate evaluation/fleurs-fr/manifest.jsonl --out outputs/fleurs
 .venv/bin/speechflow --offline evaluate evaluation/fixtures/reference-fr.jsonl --out outputs/reference
+.venv/bin/python tools/qa/make_long_french.py outputs/qa-fixtures/long-jacques.wav
+.venv/bin/speechflow --offline evaluate outputs/qa-fixtures/long-jacques.manifest.jsonl --out outputs/synthetic-real
+.venv/bin/python tools/offline/verify.py fixture-mic --audio "$HOME/.cache/speechflow/hojo-jacques.wav" --seconds 8 --out outputs/fixture-control
 ```
 
 Run heavyweight commands one at a time. Set `SPEECHFLOW_CONFIG` to a TOML
 configuration to choose the ASR backend across CLI commands and tests.
 The real file suite creates a dedicated loopback Ollama server and blocks
 external connections from both the application and server during offline verification.
-The microphone test opens the actual input device and needs a speaker.
+The `fixture-mic` command feeds digital samples into the callback transport and
+uses the real models. The default real-model suite excludes physical capture.
+The separately selected physical microphone test opens the device and needs a speaker.
 Set `SPEECHFLOW_QA_FILE_EVIDENCE` to the passing file run's `verification.json`
 and select it independently with `-m microphone`.

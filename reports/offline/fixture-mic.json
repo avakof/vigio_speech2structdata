@@ -1,0 +1,372 @@
+{
+  "profile_sha256": "9988d55bcfc6aa31054c514fb299ede34c952bd90b67475c5a64d9c2107a28d5",
+  "outside": "99.86.109.44",
+  "unsandboxed_tcp_443": true,
+  "unsandboxed_ipv6_errno": 65,
+  "mode": "fixture-mic",
+  "server_command": [
+    "/usr/bin/sandbox-exec",
+    "-f",
+    "/Users/vakof/orca/vigio_speech2structdata/tools/offline/loopback.sb",
+    "/Users/vakof/orca/vigio_speech2structdata/.venv/bin/python",
+    "-I",
+    "/Users/vakof/orca/vigio_speech2structdata/tools/offline/probe.py",
+    "99.86.109.44",
+    "http://127.0.0.1:54934",
+    "/opt/homebrew/bin/ollama",
+    "serve"
+  ],
+  "app_command": [
+    "/usr/bin/sandbox-exec",
+    "-f",
+    "/Users/vakof/orca/vigio_speech2structdata/tools/offline/loopback.sb",
+    "/Users/vakof/orca/vigio_speech2structdata/.venv/bin/python",
+    "-I",
+    "/Users/vakof/orca/vigio_speech2structdata/tools/offline/probe.py",
+    "99.86.109.44",
+    "http://127.0.0.1:54935/api/version",
+    "/Users/vakof/orca/vigio_speech2structdata/.venv/bin/speechflow",
+    "mic",
+    "--seconds",
+    "8.0",
+    "--device",
+    "SPEECHFLOW_QA_FILE_INPUT_ONLY",
+    "--json",
+    "--offline",
+    "--out",
+    "outputs/accepted-offline/fixture-mic-1795630274325132000/output",
+    "--database",
+    "outputs/accepted-offline/fixture-mic-1795630274325132000/runs.sqlite3"
+  ],
+  "endpoint": "http://127.0.0.1:54935",
+  "result": "PASS",
+  "ollama_version": "0.40.16",
+  "server_control": {
+    "pid": 51566,
+    "parent_pid": 51558,
+    "denied": {
+      "address": "99.86.109.44",
+      "port": 443,
+      "errno": 1,
+      "message": "[Errno 1] Operation not permitted"
+    },
+    "ipv6": {
+      "address": "2606:4700:4700::1111",
+      "errno": 1
+    },
+    "allowed": {
+      "url": "http://127.0.0.1:54934",
+      "status": 200,
+      "body": {
+        "control": true
+      }
+    },
+    "exec": [
+      "/opt/homebrew/bin/ollama",
+      "serve"
+    ]
+  },
+  "preflight": {
+    "ready": true,
+    "checks": [
+      {
+        "name": "python",
+        "ok": true,
+        "required": true,
+        "detail": "3.12.16",
+        "fix": "uv python install 3.12 (the project pins 3.12)"
+      },
+      {
+        "name": "platform",
+        "ok": true,
+        "required": true,
+        "detail": "Darwin 27.2.1 arm64",
+        "fix": "the pinned environment targets native Apple Silicon macOS"
+      },
+      {
+        "name": "memory",
+        "ok": true,
+        "required": false,
+        "detail": "48.0 GiB physical",
+        "fix": ""
+      },
+      {
+        "name": "chip",
+        "ok": true,
+        "required": false,
+        "detail": "Apple M3 Max",
+        "fix": ""
+      },
+      {
+        "name": "dependency hojo-asr",
+        "ok": true,
+        "required": true,
+        "detail": "0.1.3 (pinned)",
+        "fix": ""
+      },
+      {
+        "name": "dependency torch",
+        "ok": true,
+        "required": true,
+        "detail": "2.5.1 (pinned)",
+        "fix": ""
+      },
+      {
+        "name": "dependency torchaudio",
+        "ok": true,
+        "required": true,
+        "detail": "2.5.1 (pinned)",
+        "fix": ""
+      },
+      {
+        "name": "dependency transformers",
+        "ok": true,
+        "required": true,
+        "detail": "4.57.3 (pinned)",
+        "fix": ""
+      },
+      {
+        "name": "dependency huggingface-hub",
+        "ok": true,
+        "required": true,
+        "detail": "0.36.2",
+        "fix": ""
+      },
+      {
+        "name": "dependency numpy",
+        "ok": true,
+        "required": true,
+        "detail": "1.26.4 (pinned)",
+        "fix": ""
+      },
+      {
+        "name": "dependency silero-vad",
+        "ok": true,
+        "required": true,
+        "detail": "6.2.0 (pinned)",
+        "fix": ""
+      },
+      {
+        "name": "dependency sounddevice",
+        "ok": true,
+        "required": true,
+        "detail": "0.5.3 (pinned)",
+        "fix": ""
+      },
+      {
+        "name": "dependency soundfile",
+        "ok": true,
+        "required": true,
+        "detail": "0.14.0",
+        "fix": ""
+      },
+      {
+        "name": "dependency scipy",
+        "ok": true,
+        "required": true,
+        "detail": "1.17.1",
+        "fix": ""
+      },
+      {
+        "name": "dependency imageio-ffmpeg",
+        "ok": true,
+        "required": true,
+        "detail": "0.6.0 (pinned)",
+        "fix": ""
+      },
+      {
+        "name": "dependency pydantic",
+        "ok": true,
+        "required": true,
+        "detail": "2.14.4",
+        "fix": ""
+      },
+      {
+        "name": "dependency psutil",
+        "ok": true,
+        "required": true,
+        "detail": "7.2.2",
+        "fix": ""
+      },
+      {
+        "name": "configuration",
+        "ok": true,
+        "required": false,
+        "detail": "offline=True backend=cpu",
+        "fix": ""
+      },
+      {
+        "name": "database location",
+        "ok": true,
+        "required": true,
+        "detail": "/Users/vakof/.local/share/speechflow/inventory.sqlite3 (writable ancestor /Users/vakof/.local/share)",
+        "fix": "choose --database elsewhere"
+      },
+      {
+        "name": "disk free",
+        "ok": true,
+        "required": false,
+        "detail": "713.0 GiB near the database",
+        "fix": ""
+      },
+      {
+        "name": "database",
+        "ok": true,
+        "required": false,
+        "detail": "not created yet (created on first save)",
+        "fix": ""
+      }
+    ],
+    "assets": {
+      "available": true,
+      "report": {
+        "machine": "arm64",
+        "macos": "27.2.1",
+        "offline": true,
+        "hojo_revision": "aa1d0dfc369deb3b3235572fa151acd7b498481f",
+        "hojo_dir": "/Users/vakof/.cache/speechflow/assets/hojo",
+        "hojo_issues": [],
+        "silero_sha256": "e1122837f4154c511485fe0b9c64455f7b929c96fbb8d79fbdb336383ebd3720",
+        "ollama_version": "0.40.16",
+        "extractor_digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41"
+      }
+    }
+  },
+  "system_available_before_bytes": 24117329920,
+  "app_pid": 51571,
+  "system_min_sampled_available_bytes": 17145298944,
+  "process_samples": [
+    {
+      "pid": 51566,
+      "parent_pid": 51558,
+      "process": "ollama",
+      "tree": "dedicated_ollama",
+      "max_sampled_rss_bytes": 37322752,
+      "first_sample_s": 0.0021303749817889184,
+      "last_sample_s": 43.81281974999001
+    },
+    {
+      "pid": 51571,
+      "parent_pid": 51558,
+      "process": "python3.12",
+      "tree": "speechflow",
+      "max_sampled_rss_bytes": 43237376,
+      "first_sample_s": 0.0021303749817889184,
+      "last_sample_s": 43.81281974999001
+    },
+    {
+      "pid": 51572,
+      "parent_pid": 51571,
+      "process": "python3.12",
+      "tree": "speechflow",
+      "max_sampled_rss_bytes": 12761317376,
+      "first_sample_s": 0.7893442499917,
+      "last_sample_s": 35.09171012497973
+    },
+    {
+      "pid": 51715,
+      "parent_pid": 51566,
+      "process": "llama-server",
+      "tree": "dedicated_ollama",
+      "max_sampled_rss_bytes": 6586925056,
+      "first_sample_s": 35.87956079200376,
+      "last_sample_s": 43.81281974999001
+    }
+  ],
+  "resident_model_samples": [
+    {
+      "first_sample_s": 39.020508333982434,
+      "name": "qwen3:8b",
+      "digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+      "size": 5801708093,
+      "size_vram": 5801708093,
+      "context_length": 8192,
+      "last_sample_s": 43.81281974999001
+    }
+  ],
+  "exit_code": 0,
+  "app_control": {
+    "pid": 51571,
+    "parent_pid": 51558,
+    "denied": {
+      "address": "99.86.109.44",
+      "port": 443,
+      "errno": 1,
+      "message": "[Errno 1] Operation not permitted"
+    },
+    "ipv6": {
+      "address": "2606:4700:4700::1111",
+      "errno": 1
+    },
+    "allowed": {
+      "url": "http://127.0.0.1:54935/api/version",
+      "status": 200,
+      "body": {
+        "version": "0.40.16"
+      }
+    },
+    "exec": [
+      "/Users/vakof/orca/vigio_speech2structdata/.venv/bin/speechflow",
+      "mic"
+    ]
+  },
+  "asr_child_control": {
+    "pid": 51572,
+    "parent_pid": 51571,
+    "denied": {
+      "address": "99.86.109.44",
+      "port": 443,
+      "errno": 1,
+      "message": "[Errno 1] Operation not permitted"
+    },
+    "ipv6": {
+      "address": "2606:4700:4700::1111",
+      "errno": 1
+    },
+    "allowed": {
+      "url": "http://127.0.0.1:54935/api/version",
+      "status": 200,
+      "body": {
+        "version": "0.40.16"
+      }
+    },
+    "input_transport": "fixture callbacks, no physical PortAudio",
+    "fixture": {
+      "label": "synthetic_fixture_input_no_hardware",
+      "input_path": "/Users/vakof/.cache/speechflow/hojo-jacques.wav",
+      "input_sha256": "d92c0759b7d4d3e03ae22eb3c47aa97ef7122789eac187c7cf42e8e6035d1330",
+      "input_rate_hz": 16000,
+      "input_channels": 1,
+      "input_frames": 57142,
+      "callback_rate_hz": 48000,
+      "callback_channels": 1,
+      "resampled_speech_frames": 171426,
+      "leading_silence_frames": 48000,
+      "trailing_silence_frames": 96000,
+      "prepared_frames": 315426,
+      "emitted_callback_frames": 384000,
+      "extra_digital_silence_frames": 68574,
+      "timestamp_method": "synthetic ADC start and callback deadline on a paced host monotonic clock",
+      "hardware_opened": false,
+      "playback": false,
+      "fixture_origin_monotonic_s": 161206.56500875,
+      "fixture_elapsed_monotonic_s": 8.004525582975475
+    },
+    "native_portaudio_module_loaded": false
+  },
+  "run_id": "run_0cf184aedf0f3d0e59ec7fa642ad18a7099f68cdff5668a5ce51f836cb2ac393",
+  "transcription_status": "ok",
+  "extraction_status": "ok",
+  "inference_checks": {
+    "pinned_silero": true,
+    "pinned_hojo": true,
+    "requested_device": true,
+    "hojo_ran": true,
+    "raw_hojo_responses": true,
+    "pinned_extractor": true,
+    "local_generation": true,
+    "accepted_observations": true,
+    "finalized": true,
+    "fixture_transport": true
+  }
+}

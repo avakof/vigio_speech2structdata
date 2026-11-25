@@ -1,0 +1,46 @@
+{
+  "integrator": {
+    "thread_id": "01a21308-a0fb-79e0-8578-142793ef6b02",
+    "sqlite_mode": "ro",
+    "provider": "openai",
+    "model": "gpt-6.2-astra",
+    "effort": "xhigh",
+    "worktree": "/Users/vakof/orca/vigio_speech2structdata",
+    "rollout_file": "rollout-2026-11-25T15-07-43-01a21308-a0fb-79e0-8578-142793ef6b02.jsonl",
+    "context_first": {
+      "turn_id": "01a21308-a50d-7482-ad6a-13bcf9c74ed5",
+      "model": "gpt-6.2-astra",
+      "effort": "xhigh",
+      "cwd": "/Users/vakof/orca/vigio_speech2structdata"
+    },
+    "context_latest_at_check": {
+      "turn_id": "01a21308-a50d-7482-ad6a-13bcf9c74ed5",
+      "model": "gpt-6.2-astra",
+      "effort": "xhigh",
+      "cwd": "/Users/vakof/orca/vigio_speech2structdata"
+    },
+    "verified": true
+  },
+  "architect": {
+    "thread_id": "01a21309-4f14-7a32-a64e-3149c10a5287",
+    "sqlite_mode": "ro",
+    "provider": "openai",
+    "model": "gpt-6.2-astra",
+    "effort": "xhigh",
+    "worktree": "/Users/vakof/orca/vigio_speech2structdata",
+    "rollout_file": "rollout-2026-11-25T15-08-26-01a21309-4f14-7a32-a64e-3149c10a5287.jsonl",
+    "context_first": {
+      "turn_id": "01a21309-4f63-7f62-8672-f7dad8d16aad",
+      "model": "gpt-6.2-astra",
+      "effort": "xhigh",
+      "cwd": "/Users/vakof/orca/vigio_speech2structdata"
+    },
+    "context_latest_at_check": {
+      "turn_id": "01a213ee-2d62-7ab0-86f4-a2be72d16275",
+      "model": "gpt-6.2-astra",
+      "effort": "xhigh",
+      "cwd": "/Users/vakof/orca/vigio_speech2structdata"
+    },
+    "verified": true
+  }
+}

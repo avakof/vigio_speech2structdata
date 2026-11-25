@@ -8,10 +8,41 @@ PACKAGE_VERSION = "0.1.3"
 SAMPLE_RATE = 16_000
 BUNDLE_LIMIT_SECONDS = 30
 DEFAULT_CHUNK_SECONDS = 25.0
+PINNED_GENERATION_CAP = 200
+CAP_TOKEN_TOLERANCE = 4
+MIN_LOOP_BLOCK_TOKENS = 16
+MIN_LOOP_COPIES = 3
 
 
 class HojoResultError(RuntimeError):
     """The checkpoint did not return the expected record for an input chunk."""
+
+
+def generation_loop_warning(model, text: str) -> str | None:
+    """Recognize long exact token cycles near the pinned output limit."""
+    generation = getattr(getattr(model, "config", None), "generate", {})
+    if generation.get("max_new_tokens") != PINNED_GENERATION_CAP:
+        return None
+    tokens = model.tokenizer(text, add_special_tokens=False)["input_ids"]
+    count = len(tokens)
+    if abs(count - PINNED_GENERATION_CAP) > CAP_TOKEN_TOLERANCE:
+        return None
+
+    for width in range(MIN_LOOP_BLOCK_TOKENS, count // MIN_LOOP_COPIES + 1):
+        for start in range(count - MIN_LOOP_COPIES * width + 1):
+            block = tokens[start:start + width]
+            if tokens[start:start + MIN_LOOP_COPIES * width] != block * MIN_LOOP_COPIES:
+                continue
+            # A short periodic phrase can also form larger repeated blocks.
+            if any(width % period == 0 and block == block[:period] * (width // period)
+                   for period in range(1, MIN_LOOP_BLOCK_TOKENS)):
+                continue
+            return (
+                f"hojo_possible_generation_loop: {count} retokenized tokens near the configured "
+                f"{PINNED_GENERATION_CAP}-token cap and at least {MIN_LOOP_COPIES} consecutive "
+                f"copies of a {width}-token block"
+            )
+    return None
 
 
 def verify_local_bundle(settings) -> None:
