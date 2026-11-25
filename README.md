@@ -20,6 +20,8 @@ start of a segment, including one Arabic-script prefix. A backend can execute
 successfully while an exported count still needs comparison with the recording.
 Both backends recovered four of eight expected inventory phrases in the 72.46-second synthetic test. On a separate spoken negation, CPU Hojo lost the product name. These failures leave overall acceptance incomplete. [Paired transcripts](reports/review/repro/r11_mps_leading_tokens.out) · [Acceptance by gate](reports/acceptance.json)
 
+A subsequent user-supplied French Canadian MP3 produced 27 inventory candidates across 13 transcript segments. All 27 require review. The published table includes the unresolved quantities and corrections. [MP3 test report and exported rows](reports/user-audio/mathieu/README.md)
+
 ## Setup
 
 ### 1. Install dependencies (network, no models)

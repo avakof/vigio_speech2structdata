@@ -1,0 +1,69 @@
+{
+  "run_id": "run_82959e61a849b2cf75cf7e26ece02331475da0412ab63e187b1fa74a3f858f9a",
+  "processing_version": "processing_931cafbbf654f36cae6d416e04a2eb1d8213d53ff3430eba4e5fe4033dd43457",
+  "implementation_sha256": "23096a70df38af25f14f4275c9c0d0935f57d6d9a55ec421794a91906902e867",
+  "source_sha256": "b07e5161d00355518adccf0d6b2b9b74aa87ca80ff0928010b2567d7e9c90cb8",
+  "duration_s": 127.3991875,
+  "source_sample_rate": 44100,
+  "channels": 1,
+  "run_status": "needs_review",
+  "transcription_status": "ok",
+  "extraction_status": "needs_review",
+  "cli_exit": 11,
+  "generation": 1,
+  "segments": 13,
+  "asr_input_samples": [
+    51840,
+    28928,
+    133888,
+    38144,
+    185600,
+    400000,
+    204160,
+    400000,
+    66944,
+    8960,
+    51968,
+    325888,
+    125683
+  ],
+  "rows": 27,
+  "rows_by_status": {
+    "needs_review": 27
+  },
+  "ollama_replies_received": 4,
+  "recorded_attempts": 4,
+  "windows": 2,
+  "failed_windows": 0,
+  "generation_options": {
+    "temperature": 0,
+    "seed": 0,
+    "top_k": 1,
+    "top_p": 1.0,
+    "num_ctx": 32768,
+    "num_predict": 6144
+  },
+  "file_backend": "cpu",
+  "hojo_revision": "aa1d0dfc369deb3b3235572fa151acd7b498481f",
+  "extractor_digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+  "hojo_dtype": "encoder=float32,decoder=bfloat16",
+  "timings_s": {
+    "asr": 490.347258416994,
+    "extraction": 457.5977,
+    "pipeline": 963.5390189589816
+  },
+  "sqlite_integrity": "ok",
+  "sqlite_foreign_key_violations": 0,
+  "sqlite_manifest_matches_run_json": true,
+  "ordered_rows_match": true,
+  "sqlite_reexport_matches_first_export_sha256": {
+    "observations.txt": "a637c773829e0d85c9b474a6aac62f57143a622fdb91421b4a3a1fef4bbdfd7e",
+    "observations.csv": "701d5e39e5b57ae55d3093f824282578d6c6ca6ffb2b0cc121d439887f2cbf2d"
+  },
+  "public_csv_omitted_fields": [
+    "evidence_quotes"
+  ],
+  "public_csv_removed_diagnostic_source_excerpts": true,
+  "reference_supplied": false,
+  "accuracy": "NOT MEASURED"
+}

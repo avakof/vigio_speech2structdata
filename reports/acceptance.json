@@ -755,11 +755,23 @@
     },
     "user_supplied_file": {
       "status": "BLOCKED",
-      "detail": "The user chose to supply files and no path or attachment has arrived. A private Git-ignored output directory is ready. The published tests used licensed human recordings and labeled system-voice fixtures.",
+      "detail": "At the signed release on commit 04fcd57, the user had chosen file input and had not yet supplied a recording. The release status and totals refer to that assessment.",
       "evidence": [
         "docs/agent-routing.md",
         "reports/review/architect-release-dispatch.json"
-      ]
+      ],
+      "post_release_test": {
+        "file_processing_and_export": "PASS",
+        "extraction_status": "needs_review",
+        "reference_accuracy": "NOT MEASURED",
+        "observations": 27,
+        "accepted_observations": 0,
+        "evidence": [
+          "reports/user-audio/mathieu/README.md",
+          "reports/user-audio/mathieu/verification.json",
+          "reports/user-audio/mathieu/observations.csv"
+        ]
+      }
     },
     "mps_leading_word_fidelity": {
       "status": "FAIL",

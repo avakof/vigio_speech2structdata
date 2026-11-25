@@ -1,0 +1,70 @@
+{
+  "run_id": "run_b2e104454c5add42ce4fcecfc3ade4610cd02b08fc52dd0306b8900e803e9ac2",
+  "processing_version": "processing_fad4c9a220c79b09770a84142e9efcebf8d55bc5475a28a02b700fe60888b0db",
+  "implementation_sha256": "23096a70df38af25f14f4275c9c0d0935f57d6d9a55ec421794a91906902e867",
+  "source_sha256": "b07e5161d00355518adccf0d6b2b9b74aa87ca80ff0928010b2567d7e9c90cb8",
+  "duration_s": 127.3991875,
+  "source_sample_rate": 44100,
+  "channels": 1,
+  "run_status": "needs_review",
+  "transcription_status": "ok",
+  "extraction_status": "needs_review",
+  "cli_exit": 11,
+  "generation": 1,
+  "segments": 13,
+  "asr_input_samples": [
+    51840,
+    28928,
+    133888,
+    38144,
+    185600,
+    400000,
+    204160,
+    400000,
+    66944,
+    8960,
+    51968,
+    325888,
+    125683
+  ],
+  "rows": 11,
+  "rows_by_status": {
+    "ok": 1,
+    "needs_review": 10
+  },
+  "ollama_replies_received": 2,
+  "recorded_attempts": 4,
+  "windows": 2,
+  "failed_windows": 1,
+  "generation_options": {
+    "temperature": 0,
+    "seed": 0,
+    "top_k": 1,
+    "top_p": 1.0,
+    "num_ctx": 8192,
+    "num_predict": 2048
+  },
+  "file_backend": "cpu",
+  "hojo_revision": "aa1d0dfc369deb3b3235572fa151acd7b498481f",
+  "extractor_digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+  "hojo_dtype": "encoder=float32,decoder=bfloat16",
+  "timings_s": {
+    "asr": 211.10180437500821,
+    "extraction": 77.4235,
+    "pipeline": 305.10576366700116
+  },
+  "sqlite_integrity": "ok",
+  "sqlite_foreign_key_violations": 0,
+  "sqlite_manifest_matches_run_json": true,
+  "ordered_rows_match": true,
+  "sqlite_reexport_matches_first_export_sha256": {
+    "observations.txt": "2fcb9ba38d52f4ce8c7e1f6a0a0fb44d7f4821707f1eda7bf3f0da3c53c3bd13",
+    "observations.csv": "dfa9a56211cffd47090d3fa19b546549b0f30b35143d7c96cc762911521ed351"
+  },
+  "public_csv_omitted_fields": [
+    "evidence_quotes"
+  ],
+  "public_csv_removed_diagnostic_source_excerpts": true,
+  "reference_supplied": false,
+  "accuracy": "NOT MEASURED"
+}
