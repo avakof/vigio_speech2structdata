@@ -178,11 +178,11 @@ any SQLite client; keep it out of Git (`*.sqlite*` is ignored).
   (only a `save_events` line). "Same result" ignores timings, provenance, raw
   model output and extractor replies, so a repeat run with identical transcript
   and observations is a duplicate and a correction is never applied twice.
-* **Conflicts.** A different result under an already-stored `ok`, `no_speech` or
-  `needs_review` run is refused (exit 5) because one processing version must
-  reproduce its result; the attempted result is kept in `OUT/.recovery/`. A run
-  whose stored status is `error` is replaced by a new *generation*; the failed
-  generation stays in `run_saves`.
+* **Conflicts and recovery.** A retry may append a generation to a failed run.
+  For a `needs_review` run it must preserve the transcript, all prior event IDs
+  and every accepted observation. It must also improve the status, add events
+  or reduce the error set. Other conflicting changes exit 5 and leave the
+  attempted result in `OUT/.recovery/`. SQLite retains every committed generation.
 * **Invariants checked before writing**: unique segment/observation ids and
   ordinals, evidence quotes equal to the segment text at their offsets, decimal
   strings, correction targets resolvable or `needs_review`, no correction cycles,
@@ -203,13 +203,33 @@ defaults. Invalid values exit 2 before any audio is touched.
 
 ## Tests
 
+Run these commands from the checkout after the frozen install. The default
+suite exercises validation, error handling, retries, concurrency, storage and CLI behavior.
+
 ```sh
-pytest tests/persistence_own          # unit and CLI tests, no models, no network
+.venv/bin/python -m pytest -q
+.venv/bin/python -m pytest -q tests/qa
 ```
 
-These cover replay after restart, distinct identical utterances, two modes of one
-source, changed processing versions, corrections, immutability, transaction
-rollback, a process killed mid-transaction, failed exports, concurrent writers
-and readers, output consistency across JSON/CSV/table/SQL views, hostile
-text, exit codes, and `--help` / `doctor` with dependencies absent. The pipeline
-and model checks are separate (`-m real_models`, `-m microphone`).
+For real-model acceptance, prepare the assets and start local Ollama. The short
+synthetic inventory recording uses the French Jacques voice supplied by macOS.
+The two human-recorded FLEURS examples have separate provenance and references.
+
+```sh
+mkdir -p "$HOME/.cache/speechflow"
+say -v Jacques -o "$HOME/.cache/speechflow/hojo-jacques.wav" --file-format=WAVE \
+  --data-format=LEI16@16000 'Il reste deux virgule cinq kilos de tomates et douze bouteilles de lait.'
+.venv/bin/python evaluation/fleurs-fr/prepare.py
+.venv/bin/speechflow --offline models prepare
+SPEECHFLOW_QA_MODEL_SLOT=1 .venv/bin/python -m pytest -q tests/real_models
+.venv/bin/speechflow --offline evaluate evaluation/fleurs-fr/manifest.jsonl --out outputs/fleurs
+.venv/bin/speechflow --offline evaluate evaluation/fixtures/reference-fr.jsonl --out outputs/reference
+```
+
+Run heavyweight commands one at a time. Set `SPEECHFLOW_CONFIG` to a TOML
+configuration to choose the ASR backend across CLI commands and tests.
+The real file suite creates a dedicated loopback Ollama server and blocks
+external connections from both the application and server during offline verification.
+The microphone test opens the actual input device and needs a speaker.
+Set `SPEECHFLOW_QA_FILE_EVIDENCE` to the passing file run's `verification.json`
+and select it independently with `-m microphone`.

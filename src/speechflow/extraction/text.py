@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import re
 import unicodedata
 
 _SPECIAL = {"…": "...", "’": "'", "‘": "'", "«": '"', "»": '"',
@@ -41,6 +42,15 @@ def _folded_with_map(text: str) -> tuple[str, list[int]]:
         chars.pop()
         index.pop()
     return "".join(chars), index
+
+
+def term_spans(text: str, term: str):
+    """Yield original character ranges of every whole occurrence of a spoken field."""
+    folded, index = _folded_with_map(text)
+    needle = fold(term)
+    if needle:
+        for match in re.finditer(r"(?<![\w-])" + re.escape(needle) + r"(?![\w-])", folded):
+            yield index[match.start()], index[match.end() - 1] + 1
 
 
 def locate(text: str, quote: str, taken: list[tuple[int, int]] | None = None) -> tuple[int, int] | None:

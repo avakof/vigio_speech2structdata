@@ -23,7 +23,7 @@ from .numbers import APPROX_WORDS, dec_str, parse_quantity
 from .relations import complete_split_measure, source_relation_problems
 from .scope import check_quantity_scope, narrow_count_quote, negation_cue
 from .schema import LLMObservation, LLMOutput
-from .text import fold, locate
+from .text import fold, locate, term_spans
 from .units import PACKAGE_UNITS, compatible, convert, dimension, is_known_unit, normalize_unit
 
 
@@ -32,6 +32,7 @@ class ReplyCheck:
     observations: list[ValidatedObservation] = field(default_factory=list)
     repairable: list[str] = field(default_factory=list)
     semantic_repair: list[str] = field(default_factory=list)
+    unresolved_mentions: list[list[EvidenceSpan]] = field(default_factory=list)
     reply_errors: list[str] = field(default_factory=list)  # reviewable window-level notes
     skipped_duplicates: int = 0
     context_only_dropped: int = 0
@@ -131,6 +132,19 @@ def check_reply(
             span = locate(seg.normalized_text, quote, taken.get(seg.segment_id, []))
             if span is None:
                 out.repairable.append(f"{item.ref}: quote {quote!r} is not found in segment {lab}")
+                # A fabricated quote may still refer to a real item. Keep a
+                # source anchor for repair without creating an observation.
+                if item.product_spoken and item.quantity_text and item.unit_spoken:
+                    anchors = []
+                    for start, end in term_spans(seg.normalized_text, item.product_spoken):
+                        anchor = EvidenceSpan(segment_id=seg.segment_id, start=start, end=end,
+                                              quote=seg.normalized_text[start:end])
+                        if check_quantity_scope([anchor], segment_index, labels, item.product_spoken,
+                                                item.quantity_text, item.unit_spoken, item.operation,
+                                                item.location) is None:
+                            anchors.append(anchor)
+                    if anchors:
+                        out.unresolved_mentions.append(anchors)
                 failed = True
                 break
             taken.setdefault(seg.segment_id, []).append(span)

@@ -1,0 +1,58 @@
+FF..                                                                     [100%]
+=================================== FAILURES ===================================
+_ test_repair_preserves_grounded_fields_and_unresolved_source_mentions[drops_flour] _
+
+repair = 'drops_flour'
+
+    @pytest.mark.parametrize("repair", ["drops_flour", "drops_location", "complete", "unsupported"])
+    def test_repair_preserves_grounded_fields_and_unresolved_source_mentions(repair):
+        water = obs("S1", "Trois bouteilles d’eau en cave", product="eau", qtext="Trois",
+                    qty="3", unit="bouteilles", location="en cave")
+        flour = obs("S1", "Deux kilos de farine", "o2", product="farine", qtext="Deux",
+                    qty="2", unit="kilos")
+        initial = {**flour, "quote": "Deux kilos de farine complète"}
+        if repair == "unsupported":
+            initial.update(product_spoken="cacao", quote="Deux kilos de cacao")
+        repaired = [water] if repair in {"drops_flour", "unsupported"} else [
+            {**water, "location": None} if repair == "drops_location" else water, flour]
+        result = run([seg(0, "Trois bouteilles d’eau en cave. Deux kilos de farine.")],
+                     Fake(reply(water, initial), reply(*repaired)))
+        assert len(result.attempts) == 2
+        by_product = {o.product_spoken: o for o in result.observations}
+        assert by_product["eau"].location == "en cave"
+        if repair == "drops_flour":
+>           assert result.status == "needs_review" and any("farine" in s for s in result.errors)
+E           AssertionError: assert ('ok' == 'needs_review'
+E             
+E             - needs_review
+E             + ok)
+
+tools/extraction/tests/test_extraction_findings.py:720: AssertionError
+_ test_repair_preserves_grounded_fields_and_unresolved_source_mentions[drops_location] _
+
+repair = 'drops_location'
+
+    @pytest.mark.parametrize("repair", ["drops_flour", "drops_location", "complete", "unsupported"])
+    def test_repair_preserves_grounded_fields_and_unresolved_source_mentions(repair):
+        water = obs("S1", "Trois bouteilles d’eau en cave", product="eau", qtext="Trois",
+                    qty="3", unit="bouteilles", location="en cave")
+        flour = obs("S1", "Deux kilos de farine", "o2", product="farine", qtext="Deux",
+                    qty="2", unit="kilos")
+        initial = {**flour, "quote": "Deux kilos de farine complète"}
+        if repair == "unsupported":
+            initial.update(product_spoken="cacao", quote="Deux kilos de cacao")
+        repaired = [water] if repair in {"drops_flour", "unsupported"} else [
+            {**water, "location": None} if repair == "drops_location" else water, flour]
+        result = run([seg(0, "Trois bouteilles d’eau en cave. Deux kilos de farine.")],
+                     Fake(reply(water, initial), reply(*repaired)))
+        assert len(result.attempts) == 2
+        by_product = {o.product_spoken: o for o in result.observations}
+>       assert by_product["eau"].location == "en cave"
+E       AssertionError: assert None == 'en cave'
+E        +  where None = ValidatedObservation(product_spoken='eau', quantity_text='Trois', quantity='3', quantity_max=None, qualifier='exact', ...37304baf29bb47f696de3670a0bbdadd6e8ac80d892bbc137544072015afa', catalog_match=None, revision=1, status='ok', errors=[]).location
+
+tools/extraction/tests/test_extraction_findings.py:718: AssertionError
+=========================== short test summary info ============================
+FAILED tools/extraction/tests/test_extraction_findings.py::test_repair_preserves_grounded_fields_and_unresolved_source_mentions[drops_flour]
+FAILED tools/extraction/tests/test_extraction_findings.py::test_repair_preserves_grounded_fields_and_unresolved_source_mentions[drops_location]
+2 failed, 2 passed, 140 deselected in 0.17s

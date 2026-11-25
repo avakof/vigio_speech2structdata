@@ -698,3 +698,44 @@ def test_incomplete_model_number_recovers_only_from_uninterrupted_cited_spans():
 def test_byte_bound_covers_unmerged_tokens(text):
     from speechflow.extraction.prompt import estimate_tokens
     assert estimate_tokens(text) >= len(text.encode("utf-8"))
+
+
+@pytest.mark.parametrize("repair", ["drops_flour", "drops_location", "complete", "unsupported"])
+def test_repair_preserves_grounded_fields_and_unresolved_source_mentions(repair):
+    water = obs("S1", "Trois bouteilles d’eau en cave", product="eau", qtext="Trois",
+                qty="3", unit="bouteilles", location="en cave")
+    flour = obs("S1", "Deux kilos de farine", "o2", product="farine", qtext="Deux",
+                qty="2", unit="kilos")
+    initial = {**flour, "quote": "Deux kilos de farine complète"}
+    if repair == "unsupported":
+        initial.update(product_spoken="cacao", quote="Deux kilos de cacao")
+    repaired = [water] if repair in {"drops_flour", "unsupported"} else [
+        {**water, "location": None} if repair == "drops_location" else water, flour]
+    result = run([seg(0, "Trois bouteilles d’eau en cave. Deux kilos de farine.")],
+                 Fake(reply(water, initial), reply(*repaired)))
+    assert len(result.attempts) == 2
+    by_product = {o.product_spoken: o for o in result.observations}
+    assert by_product["eau"].location == "en cave"
+    if repair == "drops_flour":
+        assert result.status == "needs_review" and any("farine" in s for s in result.errors)
+    elif repair == "unsupported":
+        assert result.status == "ok" and set(by_product) == {"eau"}
+    else:
+        assert by_product["farine"].quantity == "2"
+        if repair == "complete":
+            assert result.status == "ok"
+
+
+@pytest.mark.parametrize("first_number,first_quantity", [("Trois", "3"), ("Deux", "2")])
+@pytest.mark.parametrize("complete", [False, True])
+def test_repair_accounts_for_repeated_product_occurrences(first_number, first_quantity, complete):
+    first = obs("S1", f"{first_number} kilos de farine en cave", product="farine",
+                qtext=first_number, qty=first_quantity, unit="kilos", location="en cave")
+    second = obs("S1", "Deux kilos de farine en cuisine", "o2", product="farine",
+                 qtext="Deux", qty="2", unit="kilos", location="en cuisine")
+    invalid = {**second, "quote": "Deux kilos de farine complète en cuisine"}
+    text = f"{first['quote']}. {second['quote']}."
+    result = run([seg(0, text)], Fake(reply(first, invalid), reply(first, second) if complete else reply(first)))
+    assert len(result.attempts) == 2
+    assert result.status == ("ok" if complete else "needs_review")
+    assert [o.location for o in result.observations] == (["en cave", "en cuisine"] if complete else ["en cave"])

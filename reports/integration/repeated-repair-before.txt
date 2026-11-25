@@ -1,0 +1,50 @@
+FF..                                                                     [100%]
+=================================== FAILURES ===================================
+_____ test_repair_accounts_for_repeated_product_occurrences[False-Trois-3] _____
+
+first_number = 'Trois', first_quantity = '3', complete = False
+
+    @pytest.mark.parametrize("first_number,first_quantity", [("Trois", "3"), ("Deux", "2")])
+    @pytest.mark.parametrize("complete", [False, True])
+    def test_repair_accounts_for_repeated_product_occurrences(first_number, first_quantity, complete):
+        first = obs("S1", f"{first_number} kilos de farine en cave", product="farine",
+                    qtext=first_number, qty=first_quantity, unit="kilos", location="en cave")
+        second = obs("S1", "Deux kilos de farine en cuisine", "o2", product="farine",
+                     qtext="Deux", qty="2", unit="kilos", location="en cuisine")
+        invalid = {**second, "quote": "Deux kilos de farine complète en cuisine"}
+        text = f"{first['quote']}. {second['quote']}."
+        result = run([seg(0, text)], Fake(reply(first, invalid), reply(first, second) if complete else reply(first)))
+        assert len(result.attempts) == 2
+>       assert result.status == ("ok" if complete else "needs_review")
+E       AssertionError: assert 'ok' == 'needs_review'
+E         
+E         - needs_review
+E         + ok
+
+tools/extraction/tests/test_extraction_findings.py:740: AssertionError
+_____ test_repair_accounts_for_repeated_product_occurrences[False-Deux-2] ______
+
+first_number = 'Deux', first_quantity = '2', complete = False
+
+    @pytest.mark.parametrize("first_number,first_quantity", [("Trois", "3"), ("Deux", "2")])
+    @pytest.mark.parametrize("complete", [False, True])
+    def test_repair_accounts_for_repeated_product_occurrences(first_number, first_quantity, complete):
+        first = obs("S1", f"{first_number} kilos de farine en cave", product="farine",
+                    qtext=first_number, qty=first_quantity, unit="kilos", location="en cave")
+        second = obs("S1", "Deux kilos de farine en cuisine", "o2", product="farine",
+                     qtext="Deux", qty="2", unit="kilos", location="en cuisine")
+        invalid = {**second, "quote": "Deux kilos de farine complète en cuisine"}
+        text = f"{first['quote']}. {second['quote']}."
+        result = run([seg(0, text)], Fake(reply(first, invalid), reply(first, second) if complete else reply(first)))
+        assert len(result.attempts) == 2
+>       assert result.status == ("ok" if complete else "needs_review")
+E       AssertionError: assert 'ok' == 'needs_review'
+E         
+E         - needs_review
+E         + ok
+
+tools/extraction/tests/test_extraction_findings.py:740: AssertionError
+=========================== short test summary info ============================
+FAILED tools/extraction/tests/test_extraction_findings.py::test_repair_accounts_for_repeated_product_occurrences[False-Trois-3]
+FAILED tools/extraction/tests/test_extraction_findings.py::test_repair_accounts_for_repeated_product_occurrences[False-Deux-2]
+2 failed, 2 passed, 144 deselected in 0.15s

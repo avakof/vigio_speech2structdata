@@ -150,12 +150,16 @@
     },
     "reference_semantics": {
       "status": "PASS",
-      "detail": "Scripted replies exercise the real validator. It checks a selected quote against the surrounding source clause for omitted negation, clipped quantities and borrowing a quantity from a different product. Real-model quality is tracked by the reference evaluation.",
+      "detail": "Scripted replies exercise the real validator. It checks a selected quote against the surrounding source clause for omitted negation, clipped quantities and borrowing a quantity from a different product. Real-model quality is tracked by the reference evaluation. Eight additional repair cases cover dropped grounded fields, repeated same-product utterances at different source positions, an unsupported item and full repair controls.",
       "evidence": [
         "reports/integration/post-extraction-fixes.txt",
         "reports/integration/post-unit-conversion.txt",
         "reports/qa/evidence-scope.md",
-        "reports/integration/source-context-suite.txt"
+        "reports/integration/source-context-suite.txt",
+        "reports/integration/repair-preservation-before.txt",
+        "reports/integration/repeated-repair-before.txt",
+        "reports/integration/repair-preservation-after.txt",
+        "reports/integration/repair-preservation-suite.txt"
       ]
     },
     "genuine_file_end_to_end": {

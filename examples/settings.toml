@@ -11,7 +11,7 @@ offline = false
 # Directory holding the prepared Hojo bundle (written by `speechflow models prepare`).
 hojo_dir = "~/.cache/speechflow/assets/hojo"
 
-# ASR backend: "cpu" is the verified baseline, "mps" runs on the Apple GPU.
+# ASR backend. Choose "cpu" or "mps" (Apple graphics processor).
 backend = "cpu"
 
 # Local extraction service; the address must be a numeric loopback URL.

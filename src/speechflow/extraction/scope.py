@@ -100,7 +100,7 @@ def _quantities_at_unit(clause, unit):
 
 def check_quantity_scope(
     evidence: list[EvidenceSpan], segments: dict[str, TranscriptSegment], labels: dict[str, TranscriptSegment],
-    product: str | None, quantity_text: str, unit: str, operation: str,
+    product: str | None, quantity_text: str, unit: str, operation: str, location: str | None = None,
 ) -> str | None:
     """A quote can copy real words but omit their qualifier or attribute them to another item."""
     if not evidence:
@@ -124,7 +124,7 @@ def check_quantity_scope(
         if re.match(rf"^{_TRAILING_APPROX}\s*(?:[.!?;]|$)", after):
             source += " " + following.normalized_text[:64]
     claimed = parse_quantity(quantity_text)
-    fields = [_term(term) for term in (quantity_text, unit, product) if term]
+    fields = [_term(term) for term in (quantity_text, unit, product, location) if term]
     problems = []
     for a, b in _clause_ranges(source):
         if a >= end or b <= start:

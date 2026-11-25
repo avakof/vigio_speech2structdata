@@ -16,6 +16,7 @@ from ..assets import DIGEST
 from .prompt import (PROMPT_VERSION, SYSTEM_PROMPT, PromptSegment, estimate_messages, estimate_tokens,
                      render_user, repair_message)
 from .schema import GENERATION_SCHEMA_VERSION, LLMOutput, generation_json_schema
+from .text import fold
 from .validate import check_reply
 
 # Accuracy-driven caps for an 8B model (the token budget below is the hard safety bound).
@@ -280,14 +281,11 @@ def _extract(segments, *, run_id, settings, backend, expected_digest) -> Extract
                                                   segment_index)
                 if check is not None:
                     problems = [*problems, *check.semantic_repair]
-                if attempt_no == 1 and problems and check is not None and (check.observations or check.semantic_repair):
+                if attempt_no == 1 and problems and check is not None and (
+                        check.observations or check.semantic_repair or check.unresolved_mentions):
                     partial = check
                 if attempt_no == 2 and partial is not None and check is not None:
-                    kept = {o.observation_id for o in check.observations if o.status == "ok"}
-                    missing_valid = [o for o in partial.observations if o.status == "ok" and o.observation_id not in kept]
-                    if missing_valid:
-                        problems.append("repair omitted previously grounded observations: " +
-                                        ", ".join(o.observation_id for o in missing_valid))
+                    problems.extend(_reconcile_repair(partial, check, rec))
                 rec["errors"] = problems
                 attempts.append(rec)
                 if not problems:
@@ -342,6 +340,44 @@ def _extract(segments, *, run_id, settings, backend, expected_digest) -> Extract
                "estimate_misses": totals["estimate_misses"], "max_actual_to_estimate_ratio": round(totals["max_estimate_ratio"], 3),
                "options": options, "prompt_version": PROMPT_VERSION, "schema_version": GENERATION_SCHEMA_VERSION}
     return ExtractionResult(observations=accepted, status=status, errors=errors, attempts=attempts, metrics=metrics)
+
+
+def _reconcile_repair(initial, repaired, attempt):
+    """A repair must account for grounded claims identified on the first pass."""
+    problems = []
+    accepted = {o.observation_id: o for o in repaired.observations if o.status == "ok"}
+    for old in initial.observations:
+        if old.status != "ok":
+            continue
+        current = accepted.get(old.observation_id)
+        if current is None:
+            problems.append(f"repair omitted previously grounded observation: {old.observation_id}")
+            continue
+        for name in type(old).model_fields:
+            prior, updated = getattr(old, name), getattr(current, name)
+            if prior is not None and updated is None:
+                # Same evidence anchor and event. Retain its already validated
+                # value when the second reply loses an optional field.
+                setattr(current, name, prior)
+                attempt.setdefault("retained_first_attempt_fields", []).append(
+                    {"observation_id": current.observation_id, "field": name})
+            elif prior is not None and prior != updated:
+                problems.append(f"repair changed previously grounded {name} for {old.observation_id}")
+    accounted = {o.observation_id for o in initial.observations if o.status == "ok"}
+    for anchors in sorted(initial.unresolved_mentions, key=len):
+        product = fold(anchors[0].quote)
+        for observation in repaired.observations:
+            if observation.observation_id in accounted or fold(observation.product_spoken or "") != product:
+                continue
+            if any(span.segment_id == anchor.segment_id and span.start <= anchor.start and span.end >= anchor.end
+                   for span in observation.evidence for anchor in anchors):
+                accounted.add(observation.observation_id)
+                break
+        else:
+            positions = ", ".join(f"{a.segment_id}:{a.start}-{a.end}" for a in anchors)
+            repaired.reply_errors.append(
+                f"repair left {anchors[0].quote!r} unresolved at {positions}")
+    return problems
 
 
 def _validate_reply(reply, settings, run_id, labels, ctx_labels, known, accepted, segment_index):
