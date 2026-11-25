@@ -227,14 +227,16 @@
     },
     "production_reference_acceptance": {
       "status": "PASS",
-      "detail": "The installed offline CLI evaluated all 15 French transcript fixtures twice with real qwen3:8b, once under independent QA. Each run represented all 16 gold observations and marked three additional candidates for review. Independent QA matched all 15 full observation sets and confirmed the runner unloaded.",
+      "detail": "The installed offline CLI evaluated all 15 French transcript fixtures twice with real qwen3:8b, once under independent QA. Each run represented all 16 gold observations and marked three additional candidates for review. Independent QA matched all 15 full observation sets and confirmed the runner unloaded. The post-repair regression run also matched every full observation in 79.23 s.",
       "evidence": [
         "reports/evaluation/reference-final.json",
         "reports/evaluation/reference-baseline.json",
         "reports/qa/inventory-context.md",
         "reports/qa/real-qwen-independent.md",
         "reports/qa/real-qwen-independent-comparison.json",
-        "reports/extraction/run-002/summary.json"
+        "reports/extraction/run-002/summary.json",
+        "reports/evaluation/repair-rerun-comparison.json",
+        "reports/evaluation/repair-rerun.json"
       ]
     },
     "end_to_end_field_scores": {

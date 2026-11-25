@@ -1,0 +1,26 @@
+{
+  "prior_evaluation_sha256": "662d3b49be67de43afe39c2fa4cb576799b82f6951c6fa83e6829534c956852f",
+  "new_evaluation_sha256": "338b7f4693718e13be0eea3281776e64942cd072b6eabaf42c98ef481423026a",
+  "command": ".venv/bin/speechflow --offline --json evaluate evaluation/fixtures/reference-fr.jsonl --out outputs/reference-repair-occurrences",
+  "full_observation_equality_by_case": {
+    "decimal-and-bottles": true,
+    "cross-segment-quantity": true,
+    "same-segment-correction": true,
+    "cross-segment-correction": true,
+    "unknown-carton-contents": true,
+    "explicit-carton-contents": true,
+    "missing-unit": true,
+    "approximate-accented-product": true,
+    "range": true,
+    "negation": true,
+    "ambiguous-correction": true,
+    "unsupported-language": true,
+    "transcript-injection": true,
+    "location": true,
+    "non-inventory": true
+  },
+  "elapsed_seconds": 79.234597,
+  "runner_after": {
+    "models": []
+  }
+}
