@@ -17,6 +17,8 @@ from urllib.request import ProxyHandler, build_opener
 
 import psutil
 
+from speechflow.assets import DIGEST, HOJO, MANIFEST
+
 
 class Control(BaseHTTPRequestHandler):
     def do_GET(self):
@@ -76,6 +78,31 @@ def run_observed(command, env, work, server_pid, opener, url, report):
     report["process_samples"] = list(samples.values())
     report["resident_model_samples"] = list(models.values())
     return code
+
+
+def inference_checks(manifest, backend):
+    """Keep functional and runtime evidence visible when a single check fails."""
+    provenance = manifest["provenance"]
+    audio = manifest["metrics"]["audio"]
+    attempts = manifest["attempts"]
+    segments = manifest["segments"]
+    return {
+        "pinned_silero": provenance.get("silero_sha256") == MANIFEST["vad"]["sha256"],
+        "pinned_hojo": provenance.get("hojo_revision") == HOJO["revision"],
+        "requested_device": provenance.get("backend") == backend,
+        "hojo_ran": audio.get("asr_seconds", 0) > 0,
+        "raw_hojo_responses": bool(segments) and all(
+            s["raw"].get("key") == s["segment_id"] and s["raw"].get("text", "").strip()
+            for s in segments),
+        "pinned_extractor": provenance.get("extractor_digest") == DIGEST,
+        "local_generation": any(
+            a.get("extractor", {}).get("digest", "").removeprefix("sha256:") == DIGEST
+            and a.get("response_raw", {}).get("eval_count", 0) > 0
+            and a["response_raw"].get("total_duration", 0) > 0 for a in attempts),
+        "accepted_observations": any(o["status"] == "ok" and o["evidence"]
+                                     for o in manifest["observations"]),
+        "finalized": manifest["status"] == "ok",
+    }
 
 
 def main():
@@ -171,10 +198,9 @@ def main():
                     report["run_id"] = manifest["run_id"]
                     report["transcription_status"] = manifest["transcription_status"]
                     report["extraction_status"] = manifest["extraction_status"]
-                    if (child_proof.exists() and report["exit_code"] == 0 and manifest["status"] == "ok" and
-                            any(s["raw"].get("text") for s in manifest["segments"]) and
-                            manifest["observations"] and manifest["attempts"] and
-                            manifest["provenance"].get("extractor_digest")):
+                    report["inference_checks"] = inference_checks(manifest, args.backend)
+                    if (child_proof.exists() and report["exit_code"] == 0
+                            and all(report["inference_checks"].values())):
                         report["result"] = "PASS"
             finally:
                 if server.poll() is None:
