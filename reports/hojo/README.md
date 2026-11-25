@@ -18,7 +18,7 @@ The bundle declares a 30-second front end (480,000 samples). The wheel passes `c
 
 The application caps every submitted chunk at the configured maximum of 25 seconds, including overlap and padding. The file path keeps disjoint core ranges. Neighboring padded inputs can share 400 ms at the default 200 ms one-sided padding. A suffix-prefix match of at least two words on shared input samples flags both segments for review. Raw and normalized texts retain both replies because segment-level timing cannot resolve the ambiguity. Missing or mismatched keys surface as segment errors.
 
-FFmpeg selects the first audio stream, downmixes according to its source layout, and resamples to 16 kHz float32 in one pass. The source digest covers the original file bytes. The PCM spool has a byte limit and is deleted on exit. At most one additional bounded Hojo WAV is open during inference. Silero uses the pinned local JIT model, samples 512-frame blocks with per-source state, and flushes active speech on the original decoded clock. A padded last VAD block cannot extend segment bounds past EOF.
+FFmpeg selects the first audio stream, downmixes according to its source layout, and resamples to 16 kHz float32 in one pass. The source digest covers the original file bytes. Decoder provenance records the resolved executable's SHA-256 and the FFmpeg version printed during decoding. The PCM spool has a byte limit and is deleted on exit. At most one additional bounded Hojo WAV is open during inference. Silero uses the pinned local JIT model, samples 512-frame blocks with per-source state, and flushes active speech on the original decoded clock. A padded last VAD block cannot extend segment bounds past EOF.
 
 ## Reproduction
 
@@ -45,6 +45,8 @@ for backend in cpu mps; do
 done
 ```
 
+The exact locked arm64 torch wheel was recovered after the long PyPI stream restarted. With the earlier wheel transfer stopped, `tools/hojo/download_torch_wheel.py --probe` validated HTTP 206 and the exact 256 KiB range, and `tools/hojo/download_torch_wheel.py --workers 24` assembled and verified all 244 resumable byte ranges. Install the resulting `~/.cache/speechflow/hojo-wheels/torch-2.5.1-cp312-none-macosx_11_0_arm64.whl` with `uv pip install --offline --no-deps --python "$HOME/.cache/speechflow/hojo-env/bin/python" WHEEL`, then finish the frozen requirements install. The recovered wheel matched SHA-256 `8c712df61101964eb11910a846514011f0b6f5920c55dbf567bff8a34163d5b1`. The private environment's offline install and `uv pip check` both succeeded.
+
 Each backend uses a fresh process. The asset digest check is timed separately and may prime the filesystem cache. Cold load means the first model construction in that process. The second inference with that model is the warm measurement. Real-time factor is the synchronized inference wall time divided by the WAV duration. Observed RSS, peak RSS, system available memory, and MPS allocation are separate views. The MPS counters must never be added to RSS because they refer to unified memory.
 
 ## Provisioning evidence
@@ -56,15 +58,34 @@ The first direct HF CDN attempt transferred approximately 1.3 MB before an HTTP/
 | Input format and SHA-256 | PASS | Jacques and two local FLEURS files matched their expected sample metadata and hashes. |
 | Forced split and overlap review | PASS | Arithmetic and review flags tested with fabricated segment and transcript data. |
 | Full snapshot verification | BLOCKED | Xet is still transferring the merged weight. The sparse staging file's logical size does not measure successfully reconstructed bytes. |
-| Frontend execution | BLOCKED | The isolated locked uv environment is still provisioning. The frontend probe stopped at the NumPy import. |
-| File decoding and real Silero | BLOCKED | The file probe stopped before decoding on missing `silero-vad` package metadata. |
+| Frontend execution, NumPy | PASS | Ten weight-free cases on pinned Transformers 4.57.3 and NumPy 1.26.4 confirmed the 30-second bundle and 40-second override. |
+| Frontend execution, PyTorch | PASS | PyTorch 2.5.1 paired with Transformers 4.57.3 confirmed the same ten cases. |
+| Native CPU and MPS primitive probes | PASS | Float32 convolution and boolean indexing plus bfloat16 matmul, masked SDPA, and beam reorder ran on both requested devices with fallback disabled. |
+| File decoding | PASS | The five real codec tests passed with the pinned imageio-ffmpeg wheel. Jacques and both FLEURS files normalized with matching source hashes and sample counts, using FFmpeg 7.1. |
+| Real Silero | PASS | Silero VAD 6.2.0 detected speech in Jacques and both FLEURS recordings. A 65.768-second repeated synthetic input exercised two forced boundaries, produced at most 400,000 samples per chunk including padding, and flushed through sample 1,052,289 at EOF. |
 | CPU and MPS inference | NOT RUN | Awaiting verified weights, dependencies, and release of the exclusive inference slot. |
 
 - [Direct download log](download-weight.log)
 - [Xet snapshot log](download-snapshot.log)
 - [Locked dependency provisioning log](provision-locked.log)
 - [Missing asset verification](verify-before-complete.log)
+- [Pinned wheel dispatch inspection](wheel-dispatch.json)
 - [Jacques and two FLEURS validation WAV preflight checks](input-preflight.log)
 - [Forced-boundary arithmetic with a mocked continuous VAD range](boundary-arithmetic.jsonl)
 - [Frontend dependency preflight](frontend-preflight.log)
+- [NumPy frontend verification](frontend-numpy.jsonl)
+- [PyTorch frontend verification](frontend-torch.jsonl)
+- [Native CPU primitives](primitives-cpu.jsonl)
+- [Native MPS primitives](primitives-mps.jsonl)
+- [Imported wheel versions and signatures](runtime-wheel.json)
+- [Silero segmentation of Jacques and two FLEURS WAVs](speech-segmentation.jsonl)
+- [Published file probe with real FFmpeg and Silero](file-probe.jsonl)
 - [File/VAD dependency preflight](file-preflight.log)
+- [Missing codec dependency IPC exit](codec-dependency-preflight.log)
+- [Decoder fingerprint regression with a controlled subprocess](decoder-identity-test.jsonl)
+- [Real codec tests](real-codec-pytest.log)
+- [Jacques and FLEURS decoded with real FFmpeg](normalized-inputs.jsonl)
+- [Audio contract tests](audio-contract-pytest.log)
+- [Bounded PyPI range response](torch-range-probe.log)
+- [Resumable PyTorch wheel transfer](torch-resumable.log)
+- [Exact offline dependency install](provision-ranged-wheel.log)

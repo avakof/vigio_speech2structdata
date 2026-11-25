@@ -1,0 +1,672 @@
+EEEEEEEEEEE                                                              [100%]
+==================================== ERRORS ====================================
+_ ERROR at setup of test_codec_decodes_right_channel_and_preserves_source[wav] _
+
+cls = <class 'importlib.metadata.Distribution'>, name = 'imageio-ffmpeg'
+
+    @classmethod
+    def from_name(cls, name: str):
+        """Return the Distribution for the given package name.
+    
+        :param name: The name of the distribution package to search for.
+        :return: The Distribution instance (or subclass thereof) for the named
+            package, if found.
+        :raises PackageNotFoundError: When the named package's distribution
+            metadata cannot be found.
+        :raises ValueError: When an invalid value is supplied for name.
+        """
+        if not name:
+            raise ValueError("A distribution name is required.")
+        try:
+>           return next(cls.discover(name=name))
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           StopIteration
+
+../../.local/share/uv/python/cpython-3.12.16-macos-aarch64-none/lib/python3.12/importlib/metadata/__init__.py:397: StopIteration
+
+During handling of the above exception, another exception occurred:
+
+package = 'imageio-ffmpeg', expected = '0.6.0'
+
+    def require_package(package, expected):
+        try:
+>           installed = version(package)
+                        ^^^^^^^^^^^^^^^^
+
+tests/real_models/conftest.py:14: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+../../.local/share/uv/python/cpython-3.12.16-macos-aarch64-none/lib/python3.12/importlib/metadata/__init__.py:889: in version
+    return distribution(distribution_name).version
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../.local/share/uv/python/cpython-3.12.16-macos-aarch64-none/lib/python3.12/importlib/metadata/__init__.py:862: in distribution
+    return Distribution.from_name(distribution_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+cls = <class 'importlib.metadata.Distribution'>, name = 'imageio-ffmpeg'
+
+    @classmethod
+    def from_name(cls, name: str):
+        """Return the Distribution for the given package name.
+    
+        :param name: The name of the distribution package to search for.
+        :return: The Distribution instance (or subclass thereof) for the named
+            package, if found.
+        :raises PackageNotFoundError: When the named package's distribution
+            metadata cannot be found.
+        :raises ValueError: When an invalid value is supplied for name.
+        """
+        if not name:
+            raise ValueError("A distribution name is required.")
+        try:
+            return next(cls.discover(name=name))
+        except StopIteration:
+>           raise PackageNotFoundError(name)
+E           importlib.metadata.PackageNotFoundError: No package metadata was found for imageio-ffmpeg
+
+../../.local/share/uv/python/cpython-3.12.16-macos-aarch64-none/lib/python3.12/importlib/metadata/__init__.py:399: PackageNotFoundError
+
+During handling of the above exception, another exception occurred:
+
+    @pytest.fixture(scope="session")
+    def codecs():
+>       require_package("imageio-ffmpeg", "0.6.0")
+
+tests/real_models/conftest.py:49: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+package = 'imageio-ffmpeg', expected = '0.6.0'
+
+    def require_package(package, expected):
+        try:
+            installed = version(package)
+        except PackageNotFoundError:
+>           pytest.fail(f"BLOCKED: install {package}=={expected} with uv sync --frozen")
+E           Failed: BLOCKED: install imageio-ffmpeg==0.6.0 with uv sync --frozen
+
+tests/real_models/conftest.py:16: Failed
+_ ERROR at setup of test_codec_decodes_right_channel_and_preserves_source[flac] _
+
+cls = <class 'importlib.metadata.Distribution'>, name = 'imageio-ffmpeg'
+
+    @classmethod
+    def from_name(cls, name: str):
+        """Return the Distribution for the given package name.
+    
+        :param name: The name of the distribution package to search for.
+        :return: The Distribution instance (or subclass thereof) for the named
+            package, if found.
+        :raises PackageNotFoundError: When the named package's distribution
+            metadata cannot be found.
+        :raises ValueError: When an invalid value is supplied for name.
+        """
+        if not name:
+            raise ValueError("A distribution name is required.")
+        try:
+>           return next(cls.discover(name=name))
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           StopIteration
+
+../../.local/share/uv/python/cpython-3.12.16-macos-aarch64-none/lib/python3.12/importlib/metadata/__init__.py:397: StopIteration
+
+During handling of the above exception, another exception occurred:
+
+package = 'imageio-ffmpeg', expected = '0.6.0'
+
+    def require_package(package, expected):
+        try:
+>           installed = version(package)
+                        ^^^^^^^^^^^^^^^^
+
+tests/real_models/conftest.py:14: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+../../.local/share/uv/python/cpython-3.12.16-macos-aarch64-none/lib/python3.12/importlib/metadata/__init__.py:889: in version
+    return distribution(distribution_name).version
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../.local/share/uv/python/cpython-3.12.16-macos-aarch64-none/lib/python3.12/importlib/metadata/__init__.py:862: in distribution
+    return Distribution.from_name(distribution_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+cls = <class 'importlib.metadata.Distribution'>, name = 'imageio-ffmpeg'
+
+    @classmethod
+    def from_name(cls, name: str):
+        """Return the Distribution for the given package name.
+    
+        :param name: The name of the distribution package to search for.
+        :return: The Distribution instance (or subclass thereof) for the named
+            package, if found.
+        :raises PackageNotFoundError: When the named package's distribution
+            metadata cannot be found.
+        :raises ValueError: When an invalid value is supplied for name.
+        """
+        if not name:
+            raise ValueError("A distribution name is required.")
+        try:
+            return next(cls.discover(name=name))
+        except StopIteration:
+>           raise PackageNotFoundError(name)
+E           importlib.metadata.PackageNotFoundError: No package metadata was found for imageio-ffmpeg
+
+../../.local/share/uv/python/cpython-3.12.16-macos-aarch64-none/lib/python3.12/importlib/metadata/__init__.py:399: PackageNotFoundError
+
+During handling of the above exception, another exception occurred:
+
+    @pytest.fixture(scope="session")
+    def codecs():
+>       require_package("imageio-ffmpeg", "0.6.0")
+
+tests/real_models/conftest.py:49: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+package = 'imageio-ffmpeg', expected = '0.6.0'
+
+    def require_package(package, expected):
+        try:
+            installed = version(package)
+        except PackageNotFoundError:
+>           pytest.fail(f"BLOCKED: install {package}=={expected} with uv sync --frozen")
+E           Failed: BLOCKED: install imageio-ffmpeg==0.6.0 with uv sync --frozen
+
+tests/real_models/conftest.py:16: Failed
+_ ERROR at setup of test_codec_decodes_right_channel_and_preserves_source[mp3] _
+
+cls = <class 'importlib.metadata.Distribution'>, name = 'imageio-ffmpeg'
+
+    @classmethod
+    def from_name(cls, name: str):
+        """Return the Distribution for the given package name.
+    
+        :param name: The name of the distribution package to search for.
+        :return: The Distribution instance (or subclass thereof) for the named
+            package, if found.
+        :raises PackageNotFoundError: When the named package's distribution
+            metadata cannot be found.
+        :raises ValueError: When an invalid value is supplied for name.
+        """
+        if not name:
+            raise ValueError("A distribution name is required.")
+        try:
+>           return next(cls.discover(name=name))
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           StopIteration
+
+../../.local/share/uv/python/cpython-3.12.16-macos-aarch64-none/lib/python3.12/importlib/metadata/__init__.py:397: StopIteration
+
+During handling of the above exception, another exception occurred:
+
+package = 'imageio-ffmpeg', expected = '0.6.0'
+
+    def require_package(package, expected):
+        try:
+>           installed = version(package)
+                        ^^^^^^^^^^^^^^^^
+
+tests/real_models/conftest.py:14: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+../../.local/share/uv/python/cpython-3.12.16-macos-aarch64-none/lib/python3.12/importlib/metadata/__init__.py:889: in version
+    return distribution(distribution_name).version
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../.local/share/uv/python/cpython-3.12.16-macos-aarch64-none/lib/python3.12/importlib/metadata/__init__.py:862: in distribution
+    return Distribution.from_name(distribution_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+cls = <class 'importlib.metadata.Distribution'>, name = 'imageio-ffmpeg'
+
+    @classmethod
+    def from_name(cls, name: str):
+        """Return the Distribution for the given package name.
+    
+        :param name: The name of the distribution package to search for.
+        :return: The Distribution instance (or subclass thereof) for the named
+            package, if found.
+        :raises PackageNotFoundError: When the named package's distribution
+            metadata cannot be found.
+        :raises ValueError: When an invalid value is supplied for name.
+        """
+        if not name:
+            raise ValueError("A distribution name is required.")
+        try:
+            return next(cls.discover(name=name))
+        except StopIteration:
+>           raise PackageNotFoundError(name)
+E           importlib.metadata.PackageNotFoundError: No package metadata was found for imageio-ffmpeg
+
+../../.local/share/uv/python/cpython-3.12.16-macos-aarch64-none/lib/python3.12/importlib/metadata/__init__.py:399: PackageNotFoundError
+
+During handling of the above exception, another exception occurred:
+
+    @pytest.fixture(scope="session")
+    def codecs():
+>       require_package("imageio-ffmpeg", "0.6.0")
+
+tests/real_models/conftest.py:49: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+package = 'imageio-ffmpeg', expected = '0.6.0'
+
+    def require_package(package, expected):
+        try:
+            installed = version(package)
+        except PackageNotFoundError:
+>           pytest.fail(f"BLOCKED: install {package}=={expected} with uv sync --frozen")
+E           Failed: BLOCKED: install imageio-ffmpeg==0.6.0 with uv sync --frozen
+
+tests/real_models/conftest.py:16: Failed
+_ ERROR at setup of test_codec_decodes_right_channel_and_preserves_source[m4a] _
+
+cls = <class 'importlib.metadata.Distribution'>, name = 'imageio-ffmpeg'
+
+    @classmethod
+    def from_name(cls, name: str):
+        """Return the Distribution for the given package name.
+    
+        :param name: The name of the distribution package to search for.
+        :return: The Distribution instance (or subclass thereof) for the named
+            package, if found.
+        :raises PackageNotFoundError: When the named package's distribution
+            metadata cannot be found.
+        :raises ValueError: When an invalid value is supplied for name.
+        """
+        if not name:
+            raise ValueError("A distribution name is required.")
+        try:
+>           return next(cls.discover(name=name))
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           StopIteration
+
+../../.local/share/uv/python/cpython-3.12.16-macos-aarch64-none/lib/python3.12/importlib/metadata/__init__.py:397: StopIteration
+
+During handling of the above exception, another exception occurred:
+
+package = 'imageio-ffmpeg', expected = '0.6.0'
+
+    def require_package(package, expected):
+        try:
+>           installed = version(package)
+                        ^^^^^^^^^^^^^^^^
+
+tests/real_models/conftest.py:14: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+../../.local/share/uv/python/cpython-3.12.16-macos-aarch64-none/lib/python3.12/importlib/metadata/__init__.py:889: in version
+    return distribution(distribution_name).version
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../.local/share/uv/python/cpython-3.12.16-macos-aarch64-none/lib/python3.12/importlib/metadata/__init__.py:862: in distribution
+    return Distribution.from_name(distribution_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+cls = <class 'importlib.metadata.Distribution'>, name = 'imageio-ffmpeg'
+
+    @classmethod
+    def from_name(cls, name: str):
+        """Return the Distribution for the given package name.
+    
+        :param name: The name of the distribution package to search for.
+        :return: The Distribution instance (or subclass thereof) for the named
+            package, if found.
+        :raises PackageNotFoundError: When the named package's distribution
+            metadata cannot be found.
+        :raises ValueError: When an invalid value is supplied for name.
+        """
+        if not name:
+            raise ValueError("A distribution name is required.")
+        try:
+            return next(cls.discover(name=name))
+        except StopIteration:
+>           raise PackageNotFoundError(name)
+E           importlib.metadata.PackageNotFoundError: No package metadata was found for imageio-ffmpeg
+
+../../.local/share/uv/python/cpython-3.12.16-macos-aarch64-none/lib/python3.12/importlib/metadata/__init__.py:399: PackageNotFoundError
+
+During handling of the above exception, another exception occurred:
+
+    @pytest.fixture(scope="session")
+    def codecs():
+>       require_package("imageio-ffmpeg", "0.6.0")
+
+tests/real_models/conftest.py:49: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+package = 'imageio-ffmpeg', expected = '0.6.0'
+
+    def require_package(package, expected):
+        try:
+            installed = version(package)
+        except PackageNotFoundError:
+>           pytest.fail(f"BLOCKED: install {package}=={expected} with uv sync --frozen")
+E           Failed: BLOCKED: install imageio-ffmpeg==0.6.0 with uv sync --frozen
+
+tests/real_models/conftest.py:16: Failed
+___________ ERROR at setup of test_codec_corrupt_wav_and_spool_limit ___________
+
+cls = <class 'importlib.metadata.Distribution'>, name = 'imageio-ffmpeg'
+
+    @classmethod
+    def from_name(cls, name: str):
+        """Return the Distribution for the given package name.
+    
+        :param name: The name of the distribution package to search for.
+        :return: The Distribution instance (or subclass thereof) for the named
+            package, if found.
+        :raises PackageNotFoundError: When the named package's distribution
+            metadata cannot be found.
+        :raises ValueError: When an invalid value is supplied for name.
+        """
+        if not name:
+            raise ValueError("A distribution name is required.")
+        try:
+>           return next(cls.discover(name=name))
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           StopIteration
+
+../../.local/share/uv/python/cpython-3.12.16-macos-aarch64-none/lib/python3.12/importlib/metadata/__init__.py:397: StopIteration
+
+During handling of the above exception, another exception occurred:
+
+package = 'imageio-ffmpeg', expected = '0.6.0'
+
+    def require_package(package, expected):
+        try:
+>           installed = version(package)
+                        ^^^^^^^^^^^^^^^^
+
+tests/real_models/conftest.py:14: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+../../.local/share/uv/python/cpython-3.12.16-macos-aarch64-none/lib/python3.12/importlib/metadata/__init__.py:889: in version
+    return distribution(distribution_name).version
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../.local/share/uv/python/cpython-3.12.16-macos-aarch64-none/lib/python3.12/importlib/metadata/__init__.py:862: in distribution
+    return Distribution.from_name(distribution_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+cls = <class 'importlib.metadata.Distribution'>, name = 'imageio-ffmpeg'
+
+    @classmethod
+    def from_name(cls, name: str):
+        """Return the Distribution for the given package name.
+    
+        :param name: The name of the distribution package to search for.
+        :return: The Distribution instance (or subclass thereof) for the named
+            package, if found.
+        :raises PackageNotFoundError: When the named package's distribution
+            metadata cannot be found.
+        :raises ValueError: When an invalid value is supplied for name.
+        """
+        if not name:
+            raise ValueError("A distribution name is required.")
+        try:
+            return next(cls.discover(name=name))
+        except StopIteration:
+>           raise PackageNotFoundError(name)
+E           importlib.metadata.PackageNotFoundError: No package metadata was found for imageio-ffmpeg
+
+../../.local/share/uv/python/cpython-3.12.16-macos-aarch64-none/lib/python3.12/importlib/metadata/__init__.py:399: PackageNotFoundError
+
+During handling of the above exception, another exception occurred:
+
+    @pytest.fixture(scope="session")
+    def codecs():
+>       require_package("imageio-ffmpeg", "0.6.0")
+
+tests/real_models/conftest.py:49: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+package = 'imageio-ffmpeg', expected = '0.6.0'
+
+    def require_package(package, expected):
+        try:
+            installed = version(package)
+        except PackageNotFoundError:
+>           pytest.fail(f"BLOCKED: install {package}=={expected} with uv sync --frozen")
+E           Failed: BLOCKED: install imageio-ffmpeg==0.6.0 with uv sync --frozen
+
+tests/real_models/conftest.py:16: Failed
+_____ ERROR at setup of test_real_silero_silence_and_speech_active_at_eof ______
+
+cls = <class 'importlib.metadata.Distribution'>, name = 'imageio-ffmpeg'
+
+    @classmethod
+    def from_name(cls, name: str):
+        """Return the Distribution for the given package name.
+    
+        :param name: The name of the distribution package to search for.
+        :return: The Distribution instance (or subclass thereof) for the named
+            package, if found.
+        :raises PackageNotFoundError: When the named package's distribution
+            metadata cannot be found.
+        :raises ValueError: When an invalid value is supplied for name.
+        """
+        if not name:
+            raise ValueError("A distribution name is required.")
+        try:
+>           return next(cls.discover(name=name))
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           StopIteration
+
+../../.local/share/uv/python/cpython-3.12.16-macos-aarch64-none/lib/python3.12/importlib/metadata/__init__.py:397: StopIteration
+
+During handling of the above exception, another exception occurred:
+
+package = 'imageio-ffmpeg', expected = '0.6.0'
+
+    def require_package(package, expected):
+        try:
+>           installed = version(package)
+                        ^^^^^^^^^^^^^^^^
+
+tests/real_models/conftest.py:14: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+../../.local/share/uv/python/cpython-3.12.16-macos-aarch64-none/lib/python3.12/importlib/metadata/__init__.py:889: in version
+    return distribution(distribution_name).version
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../.local/share/uv/python/cpython-3.12.16-macos-aarch64-none/lib/python3.12/importlib/metadata/__init__.py:862: in distribution
+    return Distribution.from_name(distribution_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+cls = <class 'importlib.metadata.Distribution'>, name = 'imageio-ffmpeg'
+
+    @classmethod
+    def from_name(cls, name: str):
+        """Return the Distribution for the given package name.
+    
+        :param name: The name of the distribution package to search for.
+        :return: The Distribution instance (or subclass thereof) for the named
+            package, if found.
+        :raises PackageNotFoundError: When the named package's distribution
+            metadata cannot be found.
+        :raises ValueError: When an invalid value is supplied for name.
+        """
+        if not name:
+            raise ValueError("A distribution name is required.")
+        try:
+            return next(cls.discover(name=name))
+        except StopIteration:
+>           raise PackageNotFoundError(name)
+E           importlib.metadata.PackageNotFoundError: No package metadata was found for imageio-ffmpeg
+
+../../.local/share/uv/python/cpython-3.12.16-macos-aarch64-none/lib/python3.12/importlib/metadata/__init__.py:399: PackageNotFoundError
+
+During handling of the above exception, another exception occurred:
+
+    @pytest.fixture(scope="session")
+    def codecs():
+>       require_package("imageio-ffmpeg", "0.6.0")
+
+tests/real_models/conftest.py:49: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+package = 'imageio-ffmpeg', expected = '0.6.0'
+
+    def require_package(package, expected):
+        try:
+            installed = version(package)
+        except PackageNotFoundError:
+>           pytest.fail(f"BLOCKED: install {package}=={expected} with uv sync --frozen")
+E           Failed: BLOCKED: install imageio-ffmpeg==0.6.0 with uv sync --frozen
+
+tests/real_models/conftest.py:16: Failed
+_ ERROR at setup of test_real_silero_long_fixture_exercises_forced_chunk_boundaries _
+
+cls = <class 'importlib.metadata.Distribution'>, name = 'imageio-ffmpeg'
+
+    @classmethod
+    def from_name(cls, name: str):
+        """Return the Distribution for the given package name.
+    
+        :param name: The name of the distribution package to search for.
+        :return: The Distribution instance (or subclass thereof) for the named
+            package, if found.
+        :raises PackageNotFoundError: When the named package's distribution
+            metadata cannot be found.
+        :raises ValueError: When an invalid value is supplied for name.
+        """
+        if not name:
+            raise ValueError("A distribution name is required.")
+        try:
+>           return next(cls.discover(name=name))
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           StopIteration
+
+../../.local/share/uv/python/cpython-3.12.16-macos-aarch64-none/lib/python3.12/importlib/metadata/__init__.py:397: StopIteration
+
+During handling of the above exception, another exception occurred:
+
+package = 'imageio-ffmpeg', expected = '0.6.0'
+
+    def require_package(package, expected):
+        try:
+>           installed = version(package)
+                        ^^^^^^^^^^^^^^^^
+
+tests/real_models/conftest.py:14: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+../../.local/share/uv/python/cpython-3.12.16-macos-aarch64-none/lib/python3.12/importlib/metadata/__init__.py:889: in version
+    return distribution(distribution_name).version
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../.local/share/uv/python/cpython-3.12.16-macos-aarch64-none/lib/python3.12/importlib/metadata/__init__.py:862: in distribution
+    return Distribution.from_name(distribution_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+cls = <class 'importlib.metadata.Distribution'>, name = 'imageio-ffmpeg'
+
+    @classmethod
+    def from_name(cls, name: str):
+        """Return the Distribution for the given package name.
+    
+        :param name: The name of the distribution package to search for.
+        :return: The Distribution instance (or subclass thereof) for the named
+            package, if found.
+        :raises PackageNotFoundError: When the named package's distribution
+            metadata cannot be found.
+        :raises ValueError: When an invalid value is supplied for name.
+        """
+        if not name:
+            raise ValueError("A distribution name is required.")
+        try:
+            return next(cls.discover(name=name))
+        except StopIteration:
+>           raise PackageNotFoundError(name)
+E           importlib.metadata.PackageNotFoundError: No package metadata was found for imageio-ffmpeg
+
+../../.local/share/uv/python/cpython-3.12.16-macos-aarch64-none/lib/python3.12/importlib/metadata/__init__.py:399: PackageNotFoundError
+
+During handling of the above exception, another exception occurred:
+
+    @pytest.fixture(scope="session")
+    def codecs():
+>       require_package("imageio-ffmpeg", "0.6.0")
+
+tests/real_models/conftest.py:49: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+package = 'imageio-ffmpeg', expected = '0.6.0'
+
+    def require_package(package, expected):
+        try:
+            installed = version(package)
+        except PackageNotFoundError:
+>           pytest.fail(f"BLOCKED: install {package}=={expected} with uv sync --frozen")
+E           Failed: BLOCKED: install imageio-ffmpeg==0.6.0 with uv sync --frozen
+
+tests/real_models/conftest.py:16: Failed
+____ ERROR at setup of test_real_hojo_long_audio_boundary_content_and_tail _____
+
+model_slot = None
+model_settings = Settings(offline=True, hojo_dir=PosixPath('/Users/vakof/.cache/speechflow/assets/hojo'), backend='cpu', ollama_url='ht... context_tokens=8192, output_tokens=2048, database=PosixPath('/Users/vakof/.local/share/speechflow/inventory.sqlite3'))
+
+    @pytest.fixture(scope="session")
+    def pinned_hojo(model_slot, model_settings):
+        from speechflow.assets import hojo_issues
+        issues = hojo_issues(model_settings)
+        if issues:
+>           pytest.fail(f"BLOCKED: {'; '.join(issues)}")
+E           Failed: BLOCKED: Missing or incomplete merged_full_model.safetensors (expected 11956909856 bytes)
+
+tests/real_models/conftest.py:64: Failed
+_ ERROR at setup of test_real_extractor_long_hojo_outputs_have_no_duplicate_observations _
+
+model_slot = None
+model_settings = Settings(offline=True, hojo_dir=PosixPath('/Users/vakof/.cache/speechflow/assets/hojo'), backend='cpu', ollama_url='ht... context_tokens=8192, output_tokens=2048, database=PosixPath('/Users/vakof/.local/share/speechflow/inventory.sqlite3'))
+
+    @pytest.fixture(scope="session")
+    def pinned_ollama(model_slot, model_settings):
+        from speechflow.assets import DIGEST, extractor_digest
+        try:
+            digest = extractor_digest(model_settings)
+        except (OSError, ValueError, KeyError) as exc:
+            pytest.fail(f"BLOCKED: Ollama unavailable: {exc}")
+>       assert digest == DIGEST, f"BLOCKED: pinned Ollama artifact absent (found {digest})"
+E       AssertionError: BLOCKED: pinned Ollama artifact absent (found None)
+E       assert None == '500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41'
+
+tests/real_models/conftest.py:76: AssertionError
+_____ ERROR at setup of test_real_extractor_installed_cli_exact_transcript _____
+
+model_slot = None
+model_settings = Settings(offline=True, hojo_dir=PosixPath('/Users/vakof/.cache/speechflow/assets/hojo'), backend='cpu', ollama_url='ht... context_tokens=8192, output_tokens=2048, database=PosixPath('/Users/vakof/.local/share/speechflow/inventory.sqlite3'))
+
+    @pytest.fixture(scope="session")
+    def pinned_ollama(model_slot, model_settings):
+        from speechflow.assets import DIGEST, extractor_digest
+        try:
+            digest = extractor_digest(model_settings)
+        except (OSError, ValueError, KeyError) as exc:
+            pytest.fail(f"BLOCKED: Ollama unavailable: {exc}")
+>       assert digest == DIGEST, f"BLOCKED: pinned Ollama artifact absent (found {digest})"
+E       AssertionError: BLOCKED: pinned Ollama artifact absent (found None)
+E       assert None == '500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41'
+
+tests/real_models/conftest.py:76: AssertionError
+____ ERROR at setup of test_real_file_installed_cli_offline_both_processes _____
+
+model_slot = None
+model_settings = Settings(offline=True, hojo_dir=PosixPath('/Users/vakof/.cache/speechflow/assets/hojo'), backend='cpu', ollama_url='ht... context_tokens=8192, output_tokens=2048, database=PosixPath('/Users/vakof/.local/share/speechflow/inventory.sqlite3'))
+
+    @pytest.fixture(scope="session")
+    def pinned_hojo(model_slot, model_settings):
+        from speechflow.assets import hojo_issues
+        issues = hojo_issues(model_settings)
+        if issues:
+>           pytest.fail(f"BLOCKED: {'; '.join(issues)}")
+E           Failed: BLOCKED: Missing or incomplete merged_full_model.safetensors (expected 11956909856 bytes)
+
+tests/real_models/conftest.py:64: Failed
+=========================== short test summary info ============================
+ERROR tests/real_models/test_runtime.py::test_codec_decodes_right_channel_and_preserves_source[wav]
+ERROR tests/real_models/test_runtime.py::test_codec_decodes_right_channel_and_preserves_source[flac]
+ERROR tests/real_models/test_runtime.py::test_codec_decodes_right_channel_and_preserves_source[mp3]
+ERROR tests/real_models/test_runtime.py::test_codec_decodes_right_channel_and_preserves_source[m4a]
+ERROR tests/real_models/test_runtime.py::test_codec_corrupt_wav_and_spool_limit
+ERROR tests/real_models/test_runtime.py::test_real_silero_silence_and_speech_active_at_eof
+ERROR tests/real_models/test_runtime.py::test_real_silero_long_fixture_exercises_forced_chunk_boundaries
+ERROR tests/real_models/test_runtime.py::test_real_hojo_long_audio_boundary_content_and_tail
+ERROR tests/real_models/test_runtime.py::test_real_extractor_long_hojo_outputs_have_no_duplicate_observations
+ERROR tests/real_models/test_runtime.py::test_real_extractor_installed_cli_exact_transcript
+ERROR tests/real_models/test_runtime.py::test_real_file_installed_cli_offline_both_processes
+1 deselected, 11 errors in 0.14s

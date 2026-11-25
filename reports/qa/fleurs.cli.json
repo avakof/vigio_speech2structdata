@@ -4,7 +4,7 @@
   "manifest_sha256": "b386291607189bca4d4e4bd11ad7d681da0d911d1d00a10ba5bdc92c40a64497",
   "requested_cases": 2,
   "requested_audio_cases": 2,
-  "elapsed_s": 0.000896,
+  "elapsed_s": 0.000835,
   "cases": [
     {
       "id": "10132087162443371989.wav",

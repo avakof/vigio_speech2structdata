@@ -1,0 +1,29 @@
+{
+  "run_id": "run_fa7d0e2700f4277447beb799ae7d730912806a3c6a26e67d6e65bc5b4a201519",
+  "mode": "run",
+  "status": "no_speech",
+  "transcription_status": "no_speech",
+  "extraction_status": "no_speech",
+  "processing_version": "processing_8f3eaa2da4f510c1cb7c6fd5e5bfaba8e3621c876d9e0f13ea08480b6a6e24dc",
+  "source": {
+    "source_id": "file_7048269a73eee3b0d3e9946726746247c933a3cbb04842393ac697c7f8dcd26f",
+    "kind": "file",
+    "name": "silence.wav",
+    "digest": "eb9a32f83e438e3b816db28e200706324fe31abca75c2f17827812fbee5c2e86"
+  },
+  "segments": 0,
+  "observations": 0,
+  "observations_needing_review": 0,
+  "errors": [],
+  "database": "/Users/vakof/orca/vigio_speech2structdata/outputs/silence.sqlite3",
+  "disposition": "inserted",
+  "generation": 1,
+  "files": [
+    "outputs/silence/observations.csv",
+    "outputs/silence/observations.txt",
+    "outputs/silence/segments.csv",
+    "outputs/silence/segments.txt",
+    "outputs/silence/run.json"
+  ],
+  "exit_code": 10
+}

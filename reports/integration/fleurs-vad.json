@@ -1,0 +1,31 @@
+{
+  "run_id": "run_d130778e320dfded052f0d69662ab252537a38764bec157b078d62cb09ba2a86",
+  "mode": "transcribe",
+  "status": "error",
+  "transcription_status": "error",
+  "extraction_status": "not_run",
+  "processing_version": "processing_894763c3a8a515d9f8cc18acdcde1708cff8ba625e809eb80f04cdf23949b1b9",
+  "source": {
+    "source_id": "file_081cedff95932cf2e117e5627dbf2262305c929ed6f31cf74ba3ed403945907f",
+    "kind": "file",
+    "name": "10198958753510138668.wav",
+    "digest": "a9f2f1630034aae5bbe5273a25166d9ed1e92bedf4d613c7398fbda92b65ed12"
+  },
+  "segments": 1,
+  "observations": 0,
+  "observations_needing_review": 0,
+  "errors": [
+    "Hojo load failed on cpu: RuntimeError: Cannot load pinned Hojo assets from /Users/vakof/.cache/speechflow/assets/hojo. Prepare the local models first.\nMissing or incomplete merged_full_model.safetensors (expected 11956909856 bytes)"
+  ],
+  "database": "/Users/vakof/orca/vigio_speech2structdata/outputs/preflight.sqlite3",
+  "disposition": "inserted",
+  "generation": 1,
+  "files": [
+    "outputs/fleurs-vad/observations.csv",
+    "outputs/fleurs-vad/observations.txt",
+    "outputs/fleurs-vad/segments.csv",
+    "outputs/fleurs-vad/segments.txt",
+    "outputs/fleurs-vad/run.json"
+  ],
+  "exit_code": 12
+}

@@ -1,10 +1,11 @@
 """Restore the two licensed evaluation WAVs, stopping at the second selected member."""
 
 import hashlib
+import io
 import json
 from pathlib import Path
 import tarfile
-from urllib.request import urlopen
+from urllib.request import Request, urlopen
 
 root = Path(__file__).resolve().parent
 rows = [json.loads(line) for line in (root / "manifest.jsonl").read_text().splitlines()]
@@ -16,7 +17,12 @@ for name, digest in list(needed.items()):
 if needed:
     url = ("https://huggingface.co/datasets/google/fleurs/resolve/"
            "70bb2e84b976b7e960aa89f1c648e09c59f894dd/data/fr_fr/audio/dev.tar.gz")
-    with urlopen(url, timeout=60) as source, tarfile.open(fileobj=source, mode="r|gz") as archive:
+    # Both selected archive members end in this verified prefix of the 142 MB archive.
+    with urlopen(Request(url, headers={"Range": "bytes=0-1499999"}), timeout=90) as source:
+        prefix = source.read(1500000)
+    if hashlib.sha256(prefix).hexdigest() != "92dcf5f1e96b18735fe2342c6491d0fb589b1a76b13a752112a67fed8617ee40":
+        raise ValueError("Incomplete or unexpected FLEURS archive prefix")
+    with tarfile.open(fileobj=io.BytesIO(prefix), mode="r|gz") as archive:
         for member in archive:
             name = Path(member.name).name
             if member.isfile() and name in needed:

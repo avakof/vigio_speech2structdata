@@ -1,0 +1,4 @@
+Downloading torch-2.5.1-cp312-none-macosx_11_0_arm64.whl in 3 ranges, 524307 bytes
+3/3 ordered ranges available
+Verified SHA-256 aedf5607bd273a7b5d4f7e6be4922c9d1c68c0f59601719d4b00cffc9662d870 for /var/folders/q8/_7ztc8bn4ybc9m23xt7dz_fc0000gn/T/tmpv4pkd289/torch-2.5.1-cp312-none-macosx_11_0_arm64.whl
+Resume, ordered assembly, and final digest guard passed with fixed data

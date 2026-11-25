@@ -70,6 +70,22 @@ def test_exact_french_decimal_and_bottles_have_no_invented_volume():
         assert observation.evidence[0].quote == quote
 
 
+def test_quantity_unit_and_product_spanning_vad_boundary_have_two_exact_spans():
+    first, second = "Il reste deux virgule", "cinq kilos de tomates."
+    segments = transcript(first, second)
+    result, _ = run(segments, reply(item(
+        "deux virgule", "tomates", "deux virgule cinq", "2.5", "kilos",
+        more_evidence=[{"segment": "S2", "quote": "cinq kilos de tomates"}],
+    )))
+    assert result.status == "ok", result.errors
+    observation, = result.observations
+    assert (observation.quantity, observation.unit, observation.product_spoken) == ("2.5", "kg", "tomates")
+    assert len(observation.evidence) == 2
+    for segment, span in zip(segments, observation.evidence, strict=True):
+        assert span.segment_id == segment.segment_id
+        assert segment.normalized_text[span.start:span.end] == span.quote
+
+
 @pytest.mark.parametrize("explicit", [False, True])
 def test_carton_contents_only_derived_when_spoken(explicit):
     text = "Deux cartons de douze bouteilles" if explicit else "Deux cartons de lait"

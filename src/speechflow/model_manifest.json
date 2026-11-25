@@ -19,5 +19,5 @@
     }
   },
   "ollama": {"model": "qwen3:8b", "manifest_sha256": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41"},
-  "vad": {"package": "silero-vad==6.2.0", "path": "silero_vad/data/silero_vad.jit"}
+  "vad": {"package": "silero-vad==6.2.0", "path": "silero_vad/data/silero_vad.jit", "sha256": "e1122837f4154c511485fe0b9c64455f7b929c96fbb8d79fbdb336383ebd3720"}
 }

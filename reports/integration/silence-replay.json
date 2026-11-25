@@ -1,0 +1,37 @@
+{
+  "command": [
+    "/Users/vakof/orca/vigio_speech2structdata/.venv/bin/speechflow",
+    "run",
+    "outputs/acceptance-inputs/silence.wav",
+    "--offline",
+    "--json",
+    "--out",
+    "/Users/vakof/orca/vigio_speech2structdata/outputs/silence-replay-dggardla/run",
+    "--database",
+    "/Users/vakof/orca/vigio_speech2structdata/outputs/silence-replay-dggardla/db.sqlite3"
+  ],
+  "export": [
+    "/Users/vakof/orca/vigio_speech2structdata/.venv/bin/speechflow",
+    "export",
+    "run_fa7d0e2700f4277447beb799ae7d730912806a3c6a26e67d6e65bc5b4a201519",
+    "--format",
+    "csv",
+    "--database",
+    "/Users/vakof/orca/vigio_speech2structdata/outputs/silence-replay-dggardla/db.sqlite3"
+  ],
+  "run_id": "run_fa7d0e2700f4277447beb799ae7d730912806a3c6a26e67d6e65bc5b4a201519",
+  "exit_codes": [
+    10,
+    10
+  ],
+  "dispositions": [
+    "inserted",
+    "duplicate"
+  ],
+  "generation": [
+    1,
+    1
+  ],
+  "csv_matches": true,
+  "observation_count": 0
+}

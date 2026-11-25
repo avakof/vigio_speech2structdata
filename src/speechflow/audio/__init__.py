@@ -15,7 +15,7 @@ from .hojo import SAMPLE_RATE, infer_wav, load_local_model, verify_local_bundle
 from .segmentation import segment_pcm, silero_provenance
 
 log = logging.getLogger(__name__)
-WORD = re.compile(r"[^\W_]+")
+WORD = re.compile(r"[^\W_]+(?:['-][^\W_]+)*")
 
 
 def _error_segment(segment: AudioSegment, error: Exception) -> TranscriptSegment:
@@ -59,8 +59,8 @@ def _flag_reemissions(segments: list[TranscriptSegment]) -> None:
         shared = min(left.input_end, right.input_end) - max(left.input_start, right.input_start)
         if shared <= 0 or left.status == "error" or right.status == "error":
             continue
-        suffix = WORD.findall(left.normalized_text.casefold())
-        prefix = WORD.findall(right.normalized_text.casefold())
+        suffix = WORD.findall(left.normalized_text.casefold().replace("’", "'"))
+        prefix = WORD.findall(right.normalized_text.casefold().replace("’", "'"))
         for width in range(min(len(suffix), len(prefix)), 1, -1):
             if suffix[-width:] == prefix[:width]:
                 phrase = " ".join(prefix[:width])
@@ -153,13 +153,14 @@ def transcribe_file(path: Path, settings: Settings) -> AudioResult:
     start = time.perf_counter()
     with TemporaryDirectory(prefix="speechflow-audio-") as temp:
         pcm = Path(temp) / "source.f32le"
-        source = decode_file(path, pcm, settings.max_spool_bytes)
-        metrics = {
+        metrics: dict = {}
+        source = decode_file(path, pcm, settings.max_spool_bytes, metrics=metrics)
+        metrics.update({
             "decode_seconds": time.perf_counter() - start,
             "decoded_seconds": source.sample_count / SAMPLE_RATE,
             "normalized_spool_bytes": source.sample_count * SAMPLE_BYTES,
             "requested_backend": settings.backend,
-        }
+        })
         result = _transcribe_pcm(pcm, source, settings, metrics)
     result.metrics["audio_total_seconds"] = time.perf_counter() - start
     return result

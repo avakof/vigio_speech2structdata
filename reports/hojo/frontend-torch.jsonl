@@ -1,0 +1,11 @@
+{"event": "frontend_environment", "python": "3.12.16", "machine": "arm64", "implementation": "pytorch", "torch": "2.5.1", "packages": {"transformers": "4.57.3", "numpy": "1.26.4", "regex": "2026.11.24", "huggingface-hub": "0.36.2"}}
+{"event": "frontend", "bundle_chunk_seconds": 30, "runtime_chunk_seconds": 30, "runtime_n_samples": 480000, "input_seconds": 25, "output_mel_frames": 2500, "truncated": false}
+{"event": "frontend", "bundle_chunk_seconds": 30, "runtime_chunk_seconds": 30, "runtime_n_samples": 480000, "input_seconds": 30, "output_mel_frames": 3000, "truncated": false}
+{"event": "frontend", "bundle_chunk_seconds": 30, "runtime_chunk_seconds": 30, "runtime_n_samples": 480000, "input_seconds": 31, "output_mel_frames": 3000, "truncated": true}
+{"event": "frontend", "bundle_chunk_seconds": 30, "runtime_chunk_seconds": 30, "runtime_n_samples": 480000, "input_seconds": 40, "output_mel_frames": 3000, "truncated": true}
+{"event": "frontend", "bundle_chunk_seconds": 30, "runtime_chunk_seconds": 30, "runtime_n_samples": 480000, "input_seconds": 41, "output_mel_frames": 3000, "truncated": true}
+{"event": "frontend", "bundle_chunk_seconds": 30, "runtime_chunk_seconds": 40, "runtime_n_samples": 640000, "input_seconds": 25, "output_mel_frames": 2500, "truncated": false}
+{"event": "frontend", "bundle_chunk_seconds": 30, "runtime_chunk_seconds": 40, "runtime_n_samples": 640000, "input_seconds": 30, "output_mel_frames": 3000, "truncated": false}
+{"event": "frontend", "bundle_chunk_seconds": 30, "runtime_chunk_seconds": 40, "runtime_n_samples": 640000, "input_seconds": 31, "output_mel_frames": 3100, "truncated": false}
+{"event": "frontend", "bundle_chunk_seconds": 30, "runtime_chunk_seconds": 40, "runtime_n_samples": 640000, "input_seconds": 40, "output_mel_frames": 4000, "truncated": false}
+{"event": "frontend", "bundle_chunk_seconds": 30, "runtime_chunk_seconds": 40, "runtime_n_samples": 640000, "input_seconds": 41, "output_mel_frames": 4000, "truncated": true}

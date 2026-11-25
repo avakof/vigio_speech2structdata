@@ -4,6 +4,7 @@ from collections import deque
 from hashlib import file_digest
 from pathlib import Path
 import re
+import shutil
 import subprocess
 from threading import Thread
 
@@ -14,6 +15,7 @@ SAMPLE_BYTES = 4  # Little-endian float32 PCM.
 BLOCK_BYTES = 64 * 1024
 FILE_SUFFIXES = {".wav", ".flac", ".mp3", ".m4a"}
 FIRST_AUDIO = re.compile(r"^\s*Stream #0:\d+.*?: Audio: .+?, (\d+) Hz, ([^,]+)")
+FFMPEG_VERSION = re.compile(r"^ffmpeg version (\S+)")
 NAMED_LAYOUTS = {
     "mono": 1,
     "stereo": 2,
@@ -59,17 +61,30 @@ def _identity(path: Path) -> tuple[int, ...]:
     return stat.st_dev, stat.st_ino, stat.st_size, stat.st_mtime_ns, stat.st_ctime_ns
 
 
-def decode_file(path: Path, pcm: Path, max_spool_bytes: int) -> AudioSource:
+def decode_file(
+    path: Path, pcm: Path, max_spool_bytes: int, *, metrics: dict | None = None
+) -> AudioSource:
     if path.suffix.lower() not in FILE_SUFFIXES:
         raise AudioDecodeError(f"Unsupported input {path.name!r}. Use WAV, FLAC, MP3, or M4A.")
     if not path.is_file():
         raise AudioDecodeError(f"Audio file not found or not a regular file at {path}")
     identity = _identity(path)
+    if identity[2] == 0:
+        raise AudioDecodeError(f"Audio file {path.name!r} is empty")
     with path.open("rb") as source:
         digest = file_digest(source, "sha256").hexdigest()
 
+    configured_executable = ffmpeg_executable()
+    resolved_executable = shutil.which(configured_executable)
+    if not resolved_executable:
+        raise AudioDecodeError(f"FFmpeg executable not found at {configured_executable!r}")
+    executable = Path(resolved_executable).resolve(strict=True)
+    executable_identity = _identity(executable)
+    with executable.open("rb") as binary:
+        executable_digest = file_digest(binary, "sha256").hexdigest()
+
     command = [
-        ffmpeg_executable(), "-hide_banner", "-nostdin", "-nostats", "-loglevel", "info",
+        str(executable), "-nostdin", "-nostats", "-loglevel", "info",
         "-xerror", "-protocol_whitelist", "file,pipe", "-format_whitelist", "wav,flac,mp3,mov",
         "-i", str(path.resolve()),
         "-map", "0:a:0", "-ac", "1", "-ar", str(SAMPLE_RATE),
@@ -82,10 +97,14 @@ def decode_file(path: Path, pcm: Path, max_spool_bytes: int) -> AudioSource:
 
     diagnostics = deque(maxlen=20)
     native: list[str] = []
+    decoder_version = None
 
     def drain_stderr():
+        nonlocal decoder_version
         for raw in process.stderr:
             line = raw.decode(errors="replace").strip("\r\n")
+            if decoder_version is None and (match := FFMPEG_VERSION.match(line)):
+                decoder_version = match[1]
             if not native and (match := FIRST_AUDIO.match(line)):
                 native.extend(match.groups())
             diagnostics.append(line[:1000])
@@ -118,11 +137,17 @@ def decode_file(path: Path, pcm: Path, max_spool_bytes: int) -> AudioSource:
         raise AudioDecodeError(f"FFmpeg could not decode {path.name!r}:\n{detail}")
     if not native or written % SAMPLE_BYTES:
         raise AudioDecodeError(f"FFmpeg did not produce a complete audio stream for {path.name!r}")
+    if decoder_version is None:
+        raise AudioDecodeError(f"Could not identify the version reported by FFmpeg at {executable}")
+    if _identity(executable) != executable_identity:
+        raise AudioDecodeError(f"FFmpeg executable at {executable} changed during decoding")
     if _identity(path) != identity:
         raise AudioDecodeError(f"Audio file {path.name!r} changed during processing")
 
     rate, layout = native
     channels = channel_count(layout)
+    if metrics is not None:
+        metrics["decoder"] = {"sha256": executable_digest, "version": decoder_version}
     return AudioSource(
         source_id=stable_id("file", digest),
         kind="file",

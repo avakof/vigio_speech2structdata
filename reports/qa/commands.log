@@ -1,13 +1,13 @@
 
 $ .venv/bin/python -m pytest -q tests/qa
-.......................................                                  [100%]
-39 passed in 0.31s
+........................................                                 [100%]
+40 passed in 0.28s
 exit 0
 
 $ .venv/bin/speechflow evaluate evaluation/fixtures/reference-fr.jsonl --offline --out outputs/qa-reference
 {
   "status": "error",
-  "requested_cases": 14,
+  "requested_cases": 15,
   "requested_audio_cases": 0,
   "wer": {
     "eligible_clips": 0,
@@ -22,7 +22,7 @@ $ .venv/bin/speechflow evaluate evaluation/fixtures/reference-fr.jsonl --offline
     "by_condition": {}
   },
   "reference": {
-    "gold_mentions": 15,
+    "gold_mentions": 16,
     "returned_candidates": 0,
     "accepted_candidates": 0,
     "review_candidates": 0,
@@ -30,10 +30,10 @@ $ .venv/bin/speechflow evaluate evaluation/fixtures/reference-fr.jsonl --offline
     "abstention_rate": null,
     "gold_coverage": 0.0,
     "gold_uncovered_rate": 1.0,
-    "cases_with_no_accepted_candidate": 14,
-    "positive_cases_with_no_accepted_candidate": 11,
-    "cases": 14,
-    "blocked_cases": 14,
+    "cases_with_no_accepted_candidate": 15,
+    "positive_cases_with_no_accepted_candidate": 12,
+    "cases": 15,
+    "blocked_cases": 15,
     "failed_cases": 0,
     "completed_cases": 0,
     "measurement_status": "NOT MEASURED"
@@ -203,7 +203,7 @@ $ .venv/bin/speechflow evaluate outputs/qa-fixtures/long-jacques.manifest.jsonl 
 }
 exit 12
 
-$ .venv/bin/python tools/qa/make_long_french.py outputs/qa-fixtures/long-jacques.wav
+Synthetic fixture output from tools/qa/make_long_french.py
 {
   "duration_s": 72.46,
   "sha256": "03293fee0a0826dd6359087582be59770998a18df193808c6ebda6b249ee8021",

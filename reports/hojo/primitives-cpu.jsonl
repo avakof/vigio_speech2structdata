@@ -1,0 +1,6 @@
+{"event": "primitive_environment", "backend": "cpu", "torch": "2.5.1", "machine": "arm64", "mps_built": true, "mps_available": true, "mps_fallback": "0"}
+{"event": "primitive", "name": "audio_convolution", "device": "cpu", "dtype": "torch.float32", "shape": [1, 1, 5, 8]}
+{"event": "primitive", "name": "audio_boolean_index", "device": "cpu", "dtype": "torch.float32", "shape": [4, 8]}
+{"event": "primitive", "name": "decoder_matmul", "device": "cpu", "dtype": "torch.bfloat16", "shape": [1, 1, 5, 5]}
+{"event": "primitive", "name": "decoder_masked_sdpa", "device": "cpu", "dtype": "torch.bfloat16", "shape": [1, 1, 5, 8]}
+{"event": "primitive", "name": "decoder_beam_reorder", "device": "cpu", "dtype": "torch.bfloat16", "shape": [4, 1, 5, 8]}

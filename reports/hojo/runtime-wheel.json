@@ -1,0 +1,25 @@
+{
+  "python": "3.12.16",
+  "machine": "arm64",
+  "hojo_module_version": "0.1.2",
+  "packages": {
+    "hojo-asr": "0.1.3",
+    "torch": "2.5.1",
+    "torchaudio": "2.5.1",
+    "transformers": "4.57.3",
+    "accelerate": "1.12.0",
+    "safetensors": "0.8.0",
+    "silero-vad": "6.2.0",
+    "numpy": "1.26.4",
+    "soundfile": "0.14.0",
+    "huggingface-hub": "0.36.2"
+  },
+  "cuda": false,
+  "mps": true,
+  "signatures": {
+    "load_model": "(folder_path: 'str', device: 'str' = 'cuda:0', *, cache_dir: 'Optional[str]' = None, revision: 'Optional[str]' = None, token: 'Optional[str]' = None, local_files_only: 'bool' = False) -> 'HOJO_ASR'",
+    "run_infer": "(self, audio_input: 'Union[str, Sequence[str]]', *, seed: 'int' = 777, batch_size: 'int' = 1, cuda_enabled: 'bool' = True) -> 'List[Dict[str, str]]'",
+    "autocast_context": "(self, dtype: 'torch.dtype' = torch.float16)",
+    "encode_speech": "(self, spectrogram: 'torch.Tensor', spectrogram_lengths: 'torch.Tensor') -> 'Tuple[torch.Tensor, torch.Tensor]'"
+  }
+}

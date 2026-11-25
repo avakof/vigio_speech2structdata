@@ -1,0 +1,5 @@
+Checked 71 packages in 8ms
+Checked 71 packages in 0.91ms
+All installed packages are compatible
+arm64 3.12.16 2.5.1 2.5.1 4.57.3
+MPS built/available True True

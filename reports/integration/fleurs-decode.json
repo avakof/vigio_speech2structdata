@@ -1,0 +1,31 @@
+{
+  "run_id": "run_0bef30ea46d7397ef357a4c47a6c28859f0e270f39637285f8f8cf1c5a2eb70d",
+  "mode": "transcribe",
+  "status": "error",
+  "transcription_status": "error",
+  "extraction_status": "not_run",
+  "processing_version": "processing_a7c126e403be0a97e1d2f43f5a14f489055ab84e7193757c4496b0ade0702b07",
+  "source": {
+    "source_id": "file_081cedff95932cf2e117e5627dbf2262305c929ed6f31cf74ba3ed403945907f",
+    "kind": "file",
+    "name": "10198958753510138668.wav",
+    "digest": "a9f2f1630034aae5bbe5273a25166d9ed1e92bedf4d613c7398fbda92b65ed12"
+  },
+  "segments": 0,
+  "observations": 0,
+  "observations_needing_review": 0,
+  "errors": [
+    "Silero segmentation failed: ModuleNotFoundError: No module named 'torch'"
+  ],
+  "database": "/Users/vakof/orca/vigio_speech2structdata/outputs/preflight.sqlite3",
+  "disposition": "inserted",
+  "generation": 1,
+  "files": [
+    "outputs/fleurs-preflight/observations.csv",
+    "outputs/fleurs-preflight/observations.txt",
+    "outputs/fleurs-preflight/segments.csv",
+    "outputs/fleurs-preflight/segments.txt",
+    "outputs/fleurs-preflight/run.json"
+  ],
+  "exit_code": 12
+}

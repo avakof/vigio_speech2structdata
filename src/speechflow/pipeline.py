@@ -94,7 +94,9 @@ def _provenance(audio, settings, mode):
             "schema_version": SCHEMA_VERSION, "config": settings.model_dump(mode="json", exclude=excluded),
             "silero_sha256": vad_digest, "hojo_revision": HOJO["revision"],
             "expected_extractor_digest": DIGEST if mode != "transcribe" else None,
-            "backend": audio.backend, "dtype": audio.dtype, "packages": installed}
+            "backend": audio.backend, "dtype": audio.dtype, "packages": installed,
+            "decoder": {k: v for k, v in audio.metrics.get("decoder", {}).items()
+                        if k in ("sha256", "version")}}
 
 
 def process(path: Path | None, *, mode: Literal["run", "transcribe", "mic"],

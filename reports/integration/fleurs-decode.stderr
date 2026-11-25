@@ -1,0 +1,11 @@
+Silero failed for file_081cedff95932cf2e117e5627dbf2262305c929ed6f31cf74ba3ed403945907f
+Traceback (most recent call last):
+  File "/Users/vakof/orca/vigio_speech2structdata/src/speechflow/audio/__init__.py", line 81, in _transcribe_pcm
+    segments = segment_pcm(pcm, source, settings.max_chunk_seconds, settings.padding_ms)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/vakof/orca/vigio_speech2structdata/src/speechflow/audio/segmentation.py", line 81, in segment_pcm
+    for speech_start, speech_end in speech_ranges(waveform, source.sample_count):
+                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/vakof/orca/vigio_speech2structdata/src/speechflow/audio/segmentation.py", line 36, in speech_ranges
+    import torch
+ModuleNotFoundError: No module named 'torch'

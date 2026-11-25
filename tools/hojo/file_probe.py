@@ -40,7 +40,8 @@ def wav(path, frames, rate=16_000):
 
 def segment(path, pcm):
     started = time.perf_counter()
-    source = decode_file(path, pcm, 32 * 1024 * 1024)
+    metrics = {}
+    source = decode_file(path, pcm, 32 * 1024 * 1024, metrics=metrics)
     segments = segment_pcm(pcm, source, 25, 200)
     for previous, current in zip(segments, segments[1:]):
         assert previous.core_end <= current.core_start
@@ -51,6 +52,7 @@ def segment(path, pcm):
     emit(
         "segmentation", source=source.model_dump(), seconds=time.perf_counter() - started,
         segments=[item.model_dump() for item in segments],
+        decoder=metrics["decoder"],
     )
     return source, segments
 

@@ -53,12 +53,22 @@ def memory(torch, psutil, backend):
 
 def probe_frontend(bundle):
     import numpy as np
-    import torch
     from transformers import WhisperFeatureExtractor
+    from transformers.utils import is_torch_available
 
     configuration = json.loads((bundle / FEATURE_PATH).read_text())
-    emit("frontend_environment", python=platform.python_version(), machine=platform.machine(),
-         torch=torch.__version__, transformers=importlib.metadata.version("transformers"))
+    use_torch = is_torch_available()
+    emit(
+        "frontend_environment",
+        python=platform.python_version(),
+        machine=platform.machine(),
+        implementation="pytorch" if use_torch else "numpy",
+        torch=importlib.metadata.version("torch") if use_torch else None,
+        packages={
+            name: importlib.metadata.version(name)
+            for name in ("transformers", "numpy", "regex", "huggingface-hub")
+        },
+    )
     for options in ({}, {"chunk_length": 40}):
         extractor = WhisperFeatureExtractor.from_pretrained(
             str(bundle / FEATURE_PATH.parent), local_files_only=True, **options
@@ -66,7 +76,12 @@ def probe_frontend(bundle):
         for seconds in (25, 30, 31, 40, 41):
             # Count frames using the same arguments as the wheel's data pipe.
             samples = np.zeros(seconds * SAMPLE_RATE, dtype=np.float32)
-            features = extractor(samples, sampling_rate=SAMPLE_RATE, return_tensors="pt", padding=False)
+            features = extractor(
+                samples,
+                sampling_rate=SAMPLE_RATE,
+                return_tensors="pt" if use_torch else "np",
+                padding=False,
+            )
             frames = int(features.input_features.shape[-1])
             expected = min(seconds * SAMPLE_RATE, extractor.n_samples) // extractor.hop_length
             if frames != expected:

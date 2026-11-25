@@ -1,0 +1,9 @@
+Traceback (most recent call last):
+  File "/Users/vakof/orca/vigio_speech2structdata/tools/hojo/prepare.py", line 36, in <module>
+    main()
+  File "/Users/vakof/orca/vigio_speech2structdata/tools/hojo/prepare.py", line 31, in main
+    verify_local_bundle(settings)
+  File "/Users/vakof/orca/vigio_speech2structdata/src/speechflow/audio/hojo.py", line 23, in verify_local_bundle
+    raise RuntimeError(
+RuntimeError: Cannot load pinned Hojo assets from /Users/vakof/.cache/speechflow/assets/hojo. Prepare the local models first.
+Missing or incomplete merged_full_model.safetensors (expected 11956909856 bytes)

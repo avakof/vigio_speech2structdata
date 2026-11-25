@@ -1,0 +1,2 @@
+/private/var/folders/q8/_7ztc8bn4ybc9m23xt7dz_fc0000gn/T/speechflow-handoff-rvwvlqfy/wheel-smoke/lib/python3.12/site-packages/speechflow
+[('model_manifest.json', True), ('migrations/0001_initial.sql', True), ('extraction/schemas/inventory.v1.gen2.schema.json', True)]

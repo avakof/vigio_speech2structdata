@@ -1,10 +1,10 @@
 {
   "status": "error",
   "manifest": "/Users/vakof/orca/vigio_speech2structdata/evaluation/fixtures/reference-fr.jsonl",
-  "manifest_sha256": "712bd728380d941c3e321b3a0bc02a7495568cdc3455f0a049c6dfd263ba4332",
-  "requested_cases": 14,
+  "manifest_sha256": "1423b90929bafaa7e09243ddb09556abfbc2f1eb178bbbed73663774e7ca23d3",
+  "requested_cases": 15,
   "requested_audio_cases": 0,
-  "elapsed_s": 0.045616,
+  "elapsed_s": 0.044927,
   "cases": [
     {
       "id": "decimal-and-bottles",
@@ -109,6 +109,188 @@
               "fn": 2,
               "predicted": 0,
               "expected": 2,
+              "precision": null,
+              "recall": 0.0
+            },
+            "location": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "predicted": 0,
+              "expected": 0,
+              "precision": null,
+              "recall": null
+            },
+            "negation": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "predicted": 0,
+              "expected": 0,
+              "precision": null,
+              "recall": null
+            },
+            "correction": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "predicted": 0,
+              "expected": 0,
+              "precision": null,
+              "recall": null
+            },
+            "packaging.count": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "predicted": 0,
+              "expected": 0,
+              "precision": null,
+              "recall": null
+            },
+            "packaging.unit": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "predicted": 0,
+              "expected": 0,
+              "precision": null,
+              "recall": null
+            },
+            "packaging.per_package_quantity": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "predicted": 0,
+              "expected": 0,
+              "precision": null,
+              "recall": null
+            },
+            "packaging.per_package_unit": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "predicted": 0,
+              "expected": 0,
+              "precision": null,
+              "recall": null
+            },
+            "packaging.total": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "predicted": 0,
+              "expected": 0,
+              "precision": null,
+              "recall": null
+            },
+            "packaging.total_unit": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "predicted": 0,
+              "expected": 0,
+              "precision": null,
+              "recall": null
+            }
+          }
+        },
+        "review_decision_correct": null
+      }
+    },
+    {
+      "id": "cross-segment-quantity",
+      "audio": null,
+      "source": null,
+      "revision": null,
+      "license": null,
+      "sha256": null,
+      "language": "fr",
+      "duration_s": null,
+      "condition": "unspecified",
+      "synthetic": false,
+      "reference": [
+        "Il reste deux virgule",
+        "cinq kilos de tomates."
+      ],
+      "expected_review": false,
+      "gold": [
+        {
+          "product_spoken": "tomates",
+          "quantity": "2.5",
+          "quantity_max": null,
+          "qualifier": "exact",
+          "unit": "kg",
+          "operation": "count",
+          "location": null,
+          "packaging": null,
+          "correction_of": null
+        }
+      ],
+      "reference_extraction": {
+        "status": "BLOCKED",
+        "errors": [
+          "Pinned qwen3:8b digest unavailable (found None)"
+        ],
+        "observations": [],
+        "scores": {
+          "gold_mentions": 1,
+          "returned_candidates": 0,
+          "accepted_candidates": 0,
+          "review_candidates": 0,
+          "covered_gold_mentions": 0,
+          "fields": {
+            "product_spoken": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 1,
+              "predicted": 0,
+              "expected": 1,
+              "precision": null,
+              "recall": 0.0
+            },
+            "quantity": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 1,
+              "predicted": 0,
+              "expected": 1,
+              "precision": null,
+              "recall": 0.0
+            },
+            "quantity_max": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "predicted": 0,
+              "expected": 0,
+              "precision": null,
+              "recall": null
+            },
+            "qualifier": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 1,
+              "predicted": 0,
+              "expected": 1,
+              "precision": null,
+              "recall": 0.0
+            },
+            "unit": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 1,
+              "predicted": 0,
+              "expected": 1,
+              "precision": null,
+              "recall": 0.0
+            },
+            "operation": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 1,
+              "predicted": 0,
+              "expected": 1,
               "precision": null,
               "recall": 0.0
             },
@@ -2582,7 +2764,7 @@
     "alignment": "normalized product and chronological occurrence, including revisions",
     "policy": "Only ok candidates score as predictions. Missing or misrecognized mentions contribute false negatives. Incorrect accepted fields contribute false positives.",
     "reference": {
-      "gold_mentions": 15,
+      "gold_mentions": 16,
       "returned_candidates": 0,
       "accepted_candidates": 0,
       "review_candidates": 0,
@@ -2590,10 +2772,10 @@
       "abstention_rate": null,
       "gold_coverage": 0.0,
       "gold_uncovered_rate": 1.0,
-      "cases_with_no_accepted_candidate": 14,
-      "positive_cases_with_no_accepted_candidate": 11,
-      "cases": 14,
-      "blocked_cases": 14,
+      "cases_with_no_accepted_candidate": 15,
+      "positive_cases_with_no_accepted_candidate": 12,
+      "cases": 15,
+      "blocked_cases": 15,
       "failed_cases": 0,
       "completed_cases": 0,
       "measurement_status": "NOT MEASURED",
@@ -2601,18 +2783,18 @@
         "product_spoken": {
           "tp": 0,
           "fp": 0,
-          "fn": 14,
+          "fn": 15,
           "predicted": 0,
-          "expected": 14,
+          "expected": 15,
           "precision": null,
           "recall": 0.0
         },
         "quantity": {
           "tp": 0,
           "fp": 0,
-          "fn": 14,
+          "fn": 15,
           "predicted": 0,
-          "expected": 14,
+          "expected": 15,
           "precision": null,
           "recall": 0.0
         },
@@ -2628,27 +2810,27 @@
         "qualifier": {
           "tp": 0,
           "fp": 0,
-          "fn": 15,
+          "fn": 16,
           "predicted": 0,
-          "expected": 15,
+          "expected": 16,
           "precision": null,
           "recall": 0.0
         },
         "unit": {
           "tp": 0,
           "fp": 0,
-          "fn": 14,
+          "fn": 15,
           "predicted": 0,
-          "expected": 14,
+          "expected": 15,
           "precision": null,
           "recall": 0.0
         },
         "operation": {
           "tp": 0,
           "fp": 0,
-          "fn": 15,
+          "fn": 16,
           "predicted": 0,
-          "expected": 15,
+          "expected": 16,
           "precision": null,
           "recall": 0.0
         },

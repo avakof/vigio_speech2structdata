@@ -4,7 +4,7 @@
   "manifest_sha256": "ee34f841c38c1cd2636fd304fa77aac0bacdff970538d94ff943b4b152332a45",
   "requested_cases": 1,
   "requested_audio_cases": 1,
-  "elapsed_s": 0.048684,
+  "elapsed_s": 0.055922,
   "cases": [
     {
       "id": "long-jacques-inventory",

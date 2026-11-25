@@ -34,5 +34,5 @@ environments = ["sys_platform == 'darwin' and platform_machine == 'arm64'"]
 packages = ["src/speechflow"]
 
 [tool.pytest.ini_options]
-testpaths = ["tests"]
+testpaths = ["tests", "tools/extraction/tests"]
 markers = ["real_models: runs local model weights", "microphone: opens a physical capture device"]
