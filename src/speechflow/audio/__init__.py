@@ -11,7 +11,10 @@ import unicodedata
 from ..config import Settings
 from ..contracts import AudioResult, AudioSegment, AudioSource, TranscriptSegment
 from .decoding import SAMPLE_BYTES, decode_file
-from .hojo import SAMPLE_RATE, generation_loop_warning, infer_wav, load_local_model, verify_local_bundle
+from .hojo import (
+    SAMPLE_RATE, generation_cap_warning, generation_loop_warning, infer_wav, load_local_model,
+    verify_local_bundle,
+)
 from .segmentation import VAD_MIN_SILENCE_MS, segment_pcm, silero_provenance
 
 log = logging.getLogger(__name__)
@@ -45,19 +48,21 @@ def _infer_segment(model, source_pcm, segment: AudioSegment, work: Path, max_sec
         wav.unlink(missing_ok=True)
 
     text = " ".join(unicodedata.normalize("NFC", raw["text"]).split())
-    warning = "Hojo returned empty text for a detected speech segment" if not text else None
-    if text:
+    warnings = [] if text else ["Hojo returned empty text for a detected speech segment"]
+    for diagnostic in (generation_cap_warning, generation_loop_warning) if text else ():
         try:
-            warning = generation_loop_warning(model, raw["text"])
+            warning = diagnostic(model, raw["text"])
+            if warning:
+                warnings.append(warning)
         except Exception:
-            log.warning("Could not check Hojo output for repetition in %s", segment.segment_id,
+            log.warning("Could not check Hojo generation in %s", segment.segment_id,
                         exc_info=True)
     return TranscriptSegment(
         **segment.model_dump(),
         raw=raw,
         normalized_text=text,
-        status="needs_review" if warning else "ok",
-        errors=[warning] if warning else [],
+        status="needs_review" if warnings else "ok",
+        errors=warnings,
     )
 
 

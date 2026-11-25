@@ -6,12 +6,16 @@ from types import SimpleNamespace
 import unicodedata
 
 import pytest
+import torch
 from transformers import AutoTokenizer
 import yaml
 
 from speechflow import audio
 from speechflow.audio import microphone
-from speechflow.audio.hojo import PINNED_GENERATION_CAP, generation_loop_warning
+from speechflow.audio.hojo import (
+    PINNED_GENERATION_CAP, GenerationObservation, _observe_wav_generation, generation_cap_warning,
+    generation_loop_warning, infer_wav,
+)
 from speechflow.config import Settings
 from speechflow.contracts import AudioSegment, AudioSource
 from speechflow.extraction import extract
@@ -113,8 +117,8 @@ def _source(path, source_id):
         ("archived", "needs_review"),
         ("short_natural_repeat", "ok"),
         ("unicode", "ok"),
-        ("near_cap_short_loop", "ok"),
-        ("near_cap_nonrepetition", "ok"),
+        ("near_cap_short_loop", "needs_review"),
+        ("near_cap_nonrepetition", "needs_review"),
     ],
 )
 def test_file_review_and_extraction(monkeypatch, tmp_path, local_model_metadata, case, expected):
@@ -141,11 +145,12 @@ def test_file_review_and_extraction(monkeypatch, tmp_path, local_model_metadata,
     assert record.raw == raw
     assert record.normalized_text == " ".join(unicodedata.normalize("NFC", raw["text"]).split())
     assert all(getattr(record, k) == v for k, v in seg.model_dump().items())
-    if case == "archived":
-        assert record.errors == [
-            "hojo_possible_generation_loop: 200 retokenized tokens near the configured "
+    if expected == "needs_review":
+        assert record.errors[0].startswith("hojo_possible_generation_cap: 200 retokenized tokens")
+        assert record.errors[1:] == ([
+            "hojo_possible_generation_loop: 200 retokenized tokens near the "
             "200-token cap and at least 3 consecutive copies of a 48-token block"
-        ]
+        ] if case == "archived" else [])
     else:
         assert record.errors == []
 
@@ -162,8 +167,8 @@ def test_file_review_and_extraction(monkeypatch, tmp_path, local_model_metadata,
         [span] = observation.evidence
         assert record.normalized_text[span.start:span.end] == span.quote == quote
         spans.add((span.start, span.end))
-        if case == "archived":
-            assert any("asr_needs_review:" in e and "hojo_possible_generation_loop:" in e
+        if expected == "needs_review":
+            assert any("asr_needs_review:" in e and "hojo_possible_generation_cap:" in e
                        for e in observation.errors)
     assert len(spans) == occurrences
 
@@ -202,3 +207,111 @@ def test_archived_shorter_bisections_and_unknown_cap(local_model_metadata):
     changed = SimpleNamespace(tokenizer=model.tokenizer,
                               config=SimpleNamespace(generate={"max_new_tokens": 220}))
     assert generation_loop_warning(changed, text) is None
+
+
+class ScriptedDecoder:
+    def __init__(self):
+        self.called = []
+
+    def generate(self, **kwargs):
+        self.called.append(kwargs)
+        return self.tokens
+
+
+class ScriptedHojo:
+    """Use real CPU tensor shapes and no model to exercise the per-call hook."""
+
+    device = SimpleNamespace(type="cpu")
+    config = SimpleNamespace(generate={"max_new_tokens": PINNED_GENERATION_CAP})
+
+    def __init__(self, feature_frames, cap, ids, *, eos_id=999, decoded_ids=None):
+        self.feature_frames = feature_frames
+        self.cap = cap
+        self.eos_id = eos_id
+        self.decoder_model = ScriptedDecoder()
+        self.decoder_model.tokens = torch.tensor([ids]) if ids is not None else object()
+        self.decoded_ids = ids if decoded_ids is None else decoded_ids
+
+    def tokenizer(self, text, add_special_tokens):
+        assert text == "unchanged text" and not add_special_tokens
+        return {"input_ids": self.decoded_ids}
+
+    def run_infer(self, paths, batch_size, cuda_enabled):
+        assert batch_size == 1 and not cuda_enabled
+        self._speech_feature_frames = self.feature_frames
+        kwargs = {"inputs_embeds": "the original embedding argument", "eos_token_id": self.eos_id}
+        if self.cap is not None:
+            kwargs["max_new_tokens"] = self.cap
+        received = self.decoder_model.generate(**kwargs)
+        assert received is self.decoder_model.tokens
+        self.record = {"key": Path(paths[0]).stem, "text": "unchanged text"}
+        return [self.record]
+
+    def _run_observed_wav(self, file):
+        return _observe_wav_generation(self, file)
+
+
+@pytest.mark.parametrize(
+    "name,frames,cap,ids,terminal_eos,review,loop",
+    [
+        ("distinct at 200", 200, 200, list(range(200)), False, True, False),
+        ("period 4 at 200", 200, 200, list(range(4)) * 50, False, True, False),
+        ("long cycle at 200", 200, 200, (list(range(16)) * 13)[:200], False, True, True),
+        ("dynamic 110", 50, 110, (list(range(16)) * 7)[:110], False, True, True),
+        ("short natural EOS", 8, 26, [15, 17, 21, 999], True, False, False),
+        ("EOS one before cap", 50, 110, [1] * 108 + [999], True, False, False),
+        ("selected below cap", 50, 110, [1] * 109, False, False, False),
+        ("EOS at cap", 50, 110, [1] * 109 + [999], True, True, False),
+        ("actual argument wins", 50, 105, list(range(105)), False, True, False),
+    ],
+    ids=lambda value: value if isinstance(value, str) else None,
+)
+def test_observed_decoder_outputs(
+    tmp_path, name, frames, cap, ids, terminal_eos, review, loop,
+):
+    import soundfile
+
+    path = tmp_path / "known.wav"
+    soundfile.write(path, [0.0] * 512, 16000, subtype="FLOAT")
+    model = ScriptedHojo(frames, cap, ids)
+    decoder = model.decoder_model
+    prior = decoder.generate
+    first_override = lambda **kwargs: prior(**kwargs)
+    decoder.generate = first_override
+
+    raw = infer_wav(model, path)
+    assert decoder.generate is first_override
+    assert raw is model.record
+    assert raw == {"key": "known", "text": "unchanged text"}
+    assert decoder.called == [
+        {"inputs_embeds": "the original embedding argument", "eos_token_id": 999,
+         "max_new_tokens": cap}
+    ]
+    assert model.last_generation == GenerationObservation(frames, cap, len(ids), terminal_eos)
+    warning = generation_cap_warning(model, raw["text"])
+    assert bool(warning) is review
+    if warning:
+        assert f"{cap}/{cap}" in warning
+        assert ("terminal EOS present" in warning) is terminal_eos
+    assert bool(generation_loop_warning(model, raw["text"])) is loop
+
+
+def test_missing_ids_fall_back_to_exact_feature_limit_and_reset_after_failure(tmp_path):
+    path = tmp_path / "fallback.wav"
+    model = ScriptedHojo(50, None, None, decoded_ids=list(range(108)))
+    decoder = model.decoder_model
+    raw = _observe_wav_generation(model, path)[0]
+    assert "generate" not in vars(decoder)
+    assert model.last_generation == GenerationObservation(50, 110, None, None)
+    assert generation_cap_warning(model, raw["text"]).startswith(
+        "hojo_possible_generation_cap: 108 retokenized tokens near the 110-token"
+    )
+
+    def fail(**_kwargs):
+        raise RuntimeError("decoder failed")
+
+    decoder.generate = fail
+    with pytest.raises(RuntimeError, match="decoder failed"):
+        _observe_wav_generation(model, path)
+    assert decoder.generate is fail
+    assert model.last_generation is None

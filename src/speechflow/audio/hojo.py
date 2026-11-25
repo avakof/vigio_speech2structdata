@@ -1,5 +1,8 @@
 """Local Hojo ASR with a conservative input limit and explicit device handling."""
 
+from dataclasses import dataclass
+from functools import wraps
+import logging
 from pathlib import Path
 
 MODEL_ID = "HojoAI/Hojo-ASR-Multi-V1"
@@ -12,20 +15,115 @@ PINNED_GENERATION_CAP = 200
 CAP_TOKEN_TOLERANCE = 4
 MIN_LOOP_BLOCK_TOKENS = 16
 MIN_LOOP_COPIES = 3
+log = logging.getLogger(__name__)
 
 
 class HojoResultError(RuntimeError):
     """The checkpoint did not return the expected record for an input chunk."""
 
 
-def generation_loop_warning(model, text: str) -> str | None:
-    """Recognize long exact token cycles near the pinned output limit."""
+@dataclass(frozen=True)
+class GenerationObservation:
+    feature_frames: int | None
+    max_new_tokens: int | None
+    output_tokens: int | None
+    terminal_eos: bool | None
+
+
+def _observe_wav_generation(model, file: Path):
+    """Pass through the pinned decoder call and observe its unmodified result."""
+    decoder = model.decoder_model
+    generate = decoder.generate
+    previous_override = vars(decoder).get("generate")
+    calls = []
+    model.last_generation = None
+    model._speech_feature_frames = None
+
+    @wraps(generate)
+    def observe(*args, **kwargs):
+        output = generate(*args, **kwargs)
+        embeds_only = not args and "inputs_embeds" in kwargs and "input_ids" not in kwargs
+        calls.append((kwargs.get("max_new_tokens"), kwargs.get("eos_token_id"),
+                      output if embeds_only else None))
+        return output
+
+    decoder.generate = observe
+    try:
+        records = model.run_infer([str(file)], batch_size=1, cuda_enabled=model.device.type == "mps")
+    finally:
+        if previous_override is None:
+            del decoder.generate
+        else:
+            decoder.generate = previous_override
+
+    try:
+        model.last_generation = _generation_observation(model, calls)
+    except Exception:
+        log.warning("Could not observe Hojo decoder output", exc_info=True)
+    return records
+
+
+def _generation_observation(model, calls):
+    feature_frames = model._speech_feature_frames
+    dynamic_cap = None
+    if feature_frames is not None:
+        # hojo-asr 0.1.3, HOJO_ASR.infer uses the length of these same embeddings.
+        configured = model.config.generate.get("max_new_tokens", PINNED_GENERATION_CAP)
+        dynamic_cap = max(10, min(configured, 2 * feature_frames + 10))
+    count = terminal_eos = None
+    if len(calls) == 1:
+        cap, eos_id, ids = calls[0]
+        if type(cap) is int and cap > 0:
+            dynamic_cap = cap
+        # Transformers 4.57.3 starts the pinned decoder's inputs_embeds-only
+        # path with zero token IDs and returns the single beam's cropped sequence.
+        shape = getattr(ids, "shape", ())
+        if len(shape) == 2 and shape[0] == 1 and 0 < shape[1] <= (dynamic_cap or 0):
+            count = shape[1]
+            if isinstance(eos_id, (int, list, tuple)):
+                eos_ids = (eos_id,) if isinstance(eos_id, int) else eos_id
+                try:
+                    terminal_eos = ids[0, -1].item() in eos_ids
+                except (AttributeError, RuntimeError, TypeError):
+                    pass
+    return GenerationObservation(feature_frames, dynamic_cap, count, terminal_eos)
+
+
+def _generation_cap(model, observation):
+    if observation is not None and observation.max_new_tokens is not None:
+        return observation.max_new_tokens
     generation = getattr(getattr(model, "config", None), "generate", {})
-    if generation.get("max_new_tokens") != PINNED_GENERATION_CAP:
+    return PINNED_GENERATION_CAP if generation.get("max_new_tokens") == PINNED_GENERATION_CAP else None
+
+
+def generation_cap_warning(model, text: str) -> str | None:
+    """Identify a filled token budget, with a text-length proxy when IDs are unavailable."""
+    observation = getattr(model, "last_generation", None)
+    cap = _generation_cap(model, observation)
+    if cap is None:
+        return None
+    if observation is not None and observation.output_tokens is not None:
+        if observation.output_tokens == cap:
+            eos = {True: "present", False: "absent", None: "unknown"}[observation.terminal_eos]
+            return (f"hojo_generation_cap_reached: decoder returned {cap}/{cap} output tokens "
+                    f"(terminal EOS {eos})")
+        return None
+    count = len(model.tokenizer(text, add_special_tokens=False)["input_ids"])
+    if abs(count - cap) <= CAP_TOKEN_TOLERANCE:
+        return (f"hojo_possible_generation_cap: {count} retokenized tokens near the "
+                f"{cap}-token generation limit")
+    return None
+
+
+def generation_loop_warning(model, text: str) -> str | None:
+    """Recognize long exact token cycles near the observed output limit."""
+    observation = getattr(model, "last_generation", None)
+    cap = _generation_cap(model, observation)
+    if cap is None or (observation is not None and observation.output_tokens not in (None, cap)):
         return None
     tokens = model.tokenizer(text, add_special_tokens=False)["input_ids"]
     count = len(tokens)
-    if abs(count - PINNED_GENERATION_CAP) > CAP_TOKEN_TOLERANCE:
+    if abs(count - cap) > CAP_TOKEN_TOLERANCE:
         return None
 
     for width in range(MIN_LOOP_BLOCK_TOKENS, count // MIN_LOOP_COPIES + 1):
@@ -38,8 +136,8 @@ def generation_loop_warning(model, text: str) -> str | None:
                    for period in range(1, MIN_LOOP_BLOCK_TOKENS)):
                 continue
             return (
-                f"hojo_possible_generation_loop: {count} retokenized tokens near the configured "
-                f"{PINNED_GENERATION_CAP}-token cap and at least {MIN_LOOP_COPIES} consecutive "
+                f"hojo_possible_generation_loop: {count} retokenized tokens near the "
+                f"{cap}-token cap and at least {MIN_LOOP_COPIES} consecutive "
                 f"copies of a {width}-token block"
             )
     return None
@@ -105,8 +203,12 @@ def load_local_model(bundle: Path, backend: str):
         def encode_speech(self, spectrogram, spectrogram_lengths):
             self.encode_calls += 1
             embeddings, attention = super().encode_speech(spectrogram, spectrogram_lengths)
+            self._speech_feature_frames = embeddings.shape[1]
             embedding_dtype = self.decoder_model.get_input_embeddings().weight.dtype
             return embeddings.to(dtype=embedding_dtype), attention
+
+        def _run_observed_wav(self, file):
+            return _observe_wav_generation(self, file)
 
     model = LocalHojo.load_model(str(bundle.resolve()), device=backend, local_files_only=True)
     if not isinstance(model, LocalHojo):
@@ -142,7 +244,11 @@ def infer_wav(model, file: Path, *, max_seconds: float = DEFAULT_CHUNK_SECONDS) 
     if info.format != "WAV" or info.channels != 1 or info.samplerate != SAMPLE_RATE:
         raise ValueError("Hojo requires a mono 16 kHz WAV")
     validate_frame_count(info.frames, max_seconds)
-    results = model.run_infer([str(file)], batch_size=1, cuda_enabled=model.device.type == "mps")
+    observe = getattr(model, "_run_observed_wav", None)
+    results = (
+        observe(file) if observe is not None
+        else model.run_infer([str(file)], batch_size=1, cuda_enabled=model.device.type == "mps")
+    )
     if len(results) != 1:
         raise HojoResultError(f"Hojo returned {len(results)} records for chunk {file.stem!r}")
     record = results[0]
