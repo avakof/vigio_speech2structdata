@@ -1,0 +1,2164 @@
+{
+  "status": "needs_review",
+  "manifest": "/Users/vakof/orca/vigio_speech2structdata/outputs/qa-fixtures/semantic-fr/manifest.jsonl",
+  "manifest_sha256": "f39c2b94d586a079802b40dee57c0c9facf70615dbbd3aaac8ed09bd113c4489",
+  "requested_cases": 2,
+  "requested_audio_cases": 2,
+  "elapsed_s": 100.080161,
+  "cases": [
+    {
+      "id": "synthetic-jacques-negation",
+      "audio": "synthetic-jacques-negation.wav",
+      "source": "macOS /usr/bin/say, Jacques (fr_FR), 160 words/min",
+      "revision": "macOS 27.2.1 (26B131), gold SHA-256 fe252a2ebbc367251b9d60a9b40fb80edf0ff47d919c82ed00662c26561ce6b4",
+      "license": "Local QA only. No redistribution license asserted for the macOS system voice output.",
+      "sha256": "7521d20069565288dec589bd4395171ce40428478a811e78afdd9432d1871ca8",
+      "language": "fr",
+      "duration_s": 1.628875,
+      "condition": "synthetic-macos-say",
+      "synthetic": true,
+      "reference": [
+        "Il ne reste pas de sucre."
+      ],
+      "expected_review": false,
+      "gold": [
+        {
+          "product_spoken": "sucre",
+          "quantity": null,
+          "quantity_max": null,
+          "qualifier": "unknown",
+          "unit": null,
+          "operation": "negation",
+          "location": null,
+          "packaging": null,
+          "correction_of": null
+        }
+      ],
+      "reference_extraction": {
+        "status": "ok",
+        "errors": [],
+        "metrics": {
+          "extractor": {
+            "backend": "ollama",
+            "model": "qwen3:8b",
+            "digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+            "details": {
+              "parent_model": "",
+              "format": "gguf",
+              "family": "qwen3",
+              "families": [
+                "qwen3"
+              ],
+              "parameter_size": "8.2B",
+              "quantization_level": "Q4_K_M",
+              "context_length": 40960,
+              "embedding_length": 4096,
+              "runner": "ggml"
+            },
+            "size": 5225388164
+          },
+          "windows": 1,
+          "failed_windows": 0,
+          "attempts": 2,
+          "repairs": 1,
+          "model_wall_s": 4.736,
+          "total_wall_s": 4.7368,
+          "prompt_tokens": 1397,
+          "output_tokens": 90,
+          "load_duration_ns": 780716583,
+          "duplicates_skipped": 0,
+          "context_only_dropped": 0,
+          "unit_conversions": [],
+          "estimate_misses": 0,
+          "max_actual_to_estimate_ratio": 0.227,
+          "options": {
+            "temperature": 0,
+            "seed": 0,
+            "top_k": 1,
+            "top_p": 1.0,
+            "num_ctx": 8192,
+            "num_predict": 2048
+          },
+          "prompt_version": "inventory.v1.prompt4",
+          "schema_version": "inventory.v1.gen4",
+          "unload": {
+            "attempted": true,
+            "ok": true,
+            "error": null,
+            "idle_confirmed": true
+          }
+        },
+        "observations": [
+          {
+            "product_spoken": "sucre",
+            "quantity_text": null,
+            "quantity": null,
+            "quantity_max": null,
+            "qualifier": "unknown",
+            "unit_spoken": null,
+            "unit": null,
+            "packaging": null,
+            "location": null,
+            "operation": "negation",
+            "evidence": [
+              {
+                "segment_id": "evaluation_segment_79378a2f9bf8cebb7991bf57056e4cfa3dd8ed8ebede0a8a35d04368c992075a",
+                "start": 0,
+                "end": 24,
+                "quote": "Il ne reste pas de sucre"
+              }
+            ],
+            "correction_of": null,
+            "observation_id": "obs_01eba8a475e1707bb88a927d9e2ed2459d90d121e369f895d596740e8ee09b15",
+            "catalog_match": null,
+            "revision": 1,
+            "status": "ok",
+            "errors": []
+          }
+        ],
+        "attempts": [
+          {
+            "window": 0,
+            "run_id": "evaluation_50abaad1a31be8dff45739311f0a0423d6dec1f838710610b69268ab6b796568",
+            "model": "qwen3:8b",
+            "extractor": {
+              "backend": "ollama",
+              "model": "qwen3:8b",
+              "digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+              "details": {
+                "parent_model": "",
+                "format": "gguf",
+                "family": "qwen3",
+                "families": [
+                  "qwen3"
+                ],
+                "parameter_size": "8.2B",
+                "quantization_level": "Q4_K_M",
+                "context_length": 40960,
+                "embedding_length": 4096,
+                "runner": "ggml"
+              },
+              "size": 5225388164
+            },
+            "prompt_version": "inventory.v1.prompt4",
+            "schema_version": "inventory.v1.gen4",
+            "generation_schema_sha256": "7221e6d629ab44e994e4c8638a4765c0edfc626974d9cb78314f616490d16a48",
+            "options": {
+              "temperature": 0,
+              "seed": 0,
+              "top_k": 1,
+              "top_p": 1.0,
+              "num_ctx": 8192,
+              "num_predict": 2048
+            },
+            "segment_ids": [
+              "evaluation_segment_79378a2f9bf8cebb7991bf57056e4cfa3dd8ed8ebede0a8a35d04368c992075a"
+            ],
+            "labels": {
+              "S1": "evaluation_segment_79378a2f9bf8cebb7991bf57056e4cfa3dd8ed8ebede0a8a35d04368c992075a"
+            },
+            "known": {},
+            "system_prompt_sha256": "a3441774732bf5a1c64619e8b1c0d694c786702ced2414f066b4b768c4b66064",
+            "user_message": "<transcript>\nSegments to extract:\n[S1] Il ne reste pas de sucre.\n</transcript>",
+            "attempt": 1,
+            "kind": "initial",
+            "estimate_tokens": 2910,
+            "repair_message": null,
+            "content": "{\"language\":\"fr\",\"observations\":[]}",
+            "done_reason": "stop",
+            "wall_s": 2.042962042003637,
+            "timings_ns": {
+              "total_duration": 2038732417,
+              "load_duration": 778289292,
+              "prompt_eval_duration": 1011284000,
+              "eval_duration": 239415000
+            },
+            "prompt_tokens": 661,
+            "output_tokens": 9,
+            "response_raw": {
+              "model": "qwen3:8b",
+              "created_at": "2026-11-25T18:47:44.962192Z",
+              "message": {
+                "role": "assistant",
+                "content": "{\"language\":\"fr\",\"observations\":[]}"
+              },
+              "done": true,
+              "done_reason": "stop",
+              "total_duration": 2038732417,
+              "load_duration": 778289292,
+              "prompt_eval_count": 661,
+              "prompt_eval_cached_count": 0,
+              "prompt_eval_duration": 1011284000,
+              "eval_count": 9,
+              "eval_duration": 239415000
+            },
+            "errors": [
+              "Record the explicit inventory absence 'Il ne reste pas de sucre' as negation, without inventing zero."
+            ]
+          },
+          {
+            "window": 0,
+            "run_id": "evaluation_50abaad1a31be8dff45739311f0a0423d6dec1f838710610b69268ab6b796568",
+            "model": "qwen3:8b",
+            "extractor": {
+              "backend": "ollama",
+              "model": "qwen3:8b",
+              "digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+              "details": {
+                "parent_model": "",
+                "format": "gguf",
+                "family": "qwen3",
+                "families": [
+                  "qwen3"
+                ],
+                "parameter_size": "8.2B",
+                "quantization_level": "Q4_K_M",
+                "context_length": 40960,
+                "embedding_length": 4096,
+                "runner": "ggml"
+              },
+              "size": 5225388164
+            },
+            "prompt_version": "inventory.v1.prompt4",
+            "schema_version": "inventory.v1.gen4",
+            "generation_schema_sha256": "7221e6d629ab44e994e4c8638a4765c0edfc626974d9cb78314f616490d16a48",
+            "options": {
+              "temperature": 0,
+              "seed": 0,
+              "top_k": 1,
+              "top_p": 1.0,
+              "num_ctx": 8192,
+              "num_predict": 2048
+            },
+            "segment_ids": [
+              "evaluation_segment_79378a2f9bf8cebb7991bf57056e4cfa3dd8ed8ebede0a8a35d04368c992075a"
+            ],
+            "labels": {
+              "S1": "evaluation_segment_79378a2f9bf8cebb7991bf57056e4cfa3dd8ed8ebede0a8a35d04368c992075a"
+            },
+            "known": {},
+            "system_prompt_sha256": "a3441774732bf5a1c64619e8b1c0d694c786702ced2414f066b4b768c4b66064",
+            "user_message": "<transcript>\nSegments to extract:\n[S1] Il ne reste pas de sucre.\n</transcript>",
+            "attempt": 2,
+            "kind": "repair",
+            "estimate_tokens": 3356,
+            "repair_message": "Your previous reply was rejected: [\"Record the explicit inventory absence 'Il ne reste pas de sucre' as negation, without inventing zero.\"]\nReturn one corrected JSON object only, matching the schema. Use exact quotes from the cited segment; use null when unsure rather than guessing.",
+            "content": "{\"language\":\"fr\",\"observations\":[{\"segment\":\"S1\",\"quote\":\"Il ne reste pas de sucre\",\"more_evidence\":[],\"operation\":\"negation\",\"product_spoken\":\"sucre\",\"quantity_text\":null,\"quantity\":null,\"qualifier\": \"unknown\",\"unit_spoken\":null,\"package\":null,\"location\":null,\"ref\":\"o1\",\"correction_of\":null}]}",
+            "done_reason": "stop",
+            "wall_s": 2.6930720829986967,
+            "timings_ns": {
+              "total_duration": 2688841583,
+              "load_duration": 2427291,
+              "prompt_eval_duration": 190652000,
+              "eval_duration": 2491574000
+            },
+            "prompt_tokens": 736,
+            "output_tokens": 81,
+            "response_raw": {
+              "model": "qwen3:8b",
+              "created_at": "2026-11-25T18:47:47.655395Z",
+              "message": {
+                "role": "assistant",
+                "content": "{\"language\":\"fr\",\"observations\":[{\"segment\":\"S1\",\"quote\":\"Il ne reste pas de sucre\",\"more_evidence\":[],\"operation\":\"negation\",\"product_spoken\":\"sucre\",\"quantity_text\":null,\"quantity\":null,\"qualifier\": \"unknown\",\"unit_spoken\":null,\"package\":null,\"location\":null,\"ref\":\"o1\",\"correction_of\":null}]}"
+              },
+              "done": true,
+              "done_reason": "stop",
+              "total_duration": 2688841583,
+              "load_duration": 2427291,
+              "prompt_eval_count": 736,
+              "prompt_eval_cached_count": 648,
+              "prompt_eval_duration": 190652000,
+              "eval_count": 81,
+              "eval_duration": 2491574000
+            },
+            "errors": []
+          }
+        ],
+        "scores": {
+          "gold_mentions": 1,
+          "returned_candidates": 1,
+          "accepted_candidates": 1,
+          "review_candidates": 0,
+          "covered_gold_mentions": 1,
+          "fields": {
+            "product_spoken": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0,
+              "predicted": 1,
+              "expected": 1,
+              "precision": 1.0,
+              "recall": 1.0
+            },
+            "quantity": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "predicted": 0,
+              "expected": 0,
+              "precision": null,
+              "recall": null
+            },
+            "quantity_max": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "predicted": 0,
+              "expected": 0,
+              "precision": null,
+              "recall": null
+            },
+            "qualifier": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0,
+              "predicted": 1,
+              "expected": 1,
+              "precision": 1.0,
+              "recall": 1.0
+            },
+            "unit": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "predicted": 0,
+              "expected": 0,
+              "precision": null,
+              "recall": null
+            },
+            "operation": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0,
+              "predicted": 1,
+              "expected": 1,
+              "precision": 1.0,
+              "recall": 1.0
+            },
+            "location": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "predicted": 0,
+              "expected": 0,
+              "precision": null,
+              "recall": null
+            },
+            "negation": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0,
+              "predicted": 1,
+              "expected": 1,
+              "precision": 1.0,
+              "recall": 1.0
+            },
+            "correction": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "predicted": 0,
+              "expected": 0,
+              "precision": null,
+              "recall": null
+            },
+            "packaging.count": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "predicted": 0,
+              "expected": 0,
+              "precision": null,
+              "recall": null
+            },
+            "packaging.unit": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "predicted": 0,
+              "expected": 0,
+              "precision": null,
+              "recall": null
+            },
+            "packaging.per_package_quantity": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "predicted": 0,
+              "expected": 0,
+              "precision": null,
+              "recall": null
+            },
+            "packaging.per_package_unit": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "predicted": 0,
+              "expected": 0,
+              "precision": null,
+              "recall": null
+            },
+            "packaging.total": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "predicted": 0,
+              "expected": 0,
+              "precision": null,
+              "recall": null
+            },
+            "packaging.total_unit": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "predicted": 0,
+              "expected": 0,
+              "precision": null,
+              "recall": null
+            }
+          }
+        },
+        "review_decision_correct": true
+      },
+      "asr": {
+        "status": "ok",
+        "errors": [
+          "unresolved_negated_quantity:segment_6fd3158fe4e6ae3a2be823ce33f278a49d8040ea01c00e475a1cc8b03951b89e:0-29: 'il ne reste pas deux ou trois'"
+        ],
+        "provenance": {
+          "speechflow_version": "0.1.0",
+          "implementation_sha256": "e57cfaded674f24cd50e807aa0eb5e4ba63543c8dc8ba5ad89c5efe827af1079",
+          "schema_version": "inventory.v1",
+          "config": {
+            "backend": "cpu",
+            "ollama_model": "qwen3:8b",
+            "max_chunk_seconds": 25.0,
+            "padding_ms": 200,
+            "max_spool_bytes": 1073741824,
+            "extraction_timeout": 120.0,
+            "context_tokens": 8192,
+            "output_tokens": 2048
+          },
+          "silero_sha256": "e1122837f4154c511485fe0b9c64455f7b929c96fbb8d79fbdb336383ebd3720",
+          "hojo_revision": "aa1d0dfc369deb3b3235572fa151acd7b498481f",
+          "expected_extractor_digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+          "backend": "cpu",
+          "dtype": "encoder=float32,decoder=bfloat16",
+          "packages": {
+            "torch": "2.5.1",
+            "torchaudio": "2.5.1",
+            "transformers": "4.57.3",
+            "hojo-asr": "0.1.3",
+            "silero-vad": "6.2.0",
+            "numpy": "1.26.4",
+            "soundfile": "0.14.0",
+            "imageio-ffmpeg": "0.6.0",
+            "pydantic": "2.14.4"
+          },
+          "decoder": {
+            "sha256": "6d175a4743ca50256e89a8cdd731100f9cee33bd79aeea46894d209410dc6617",
+            "version": "7.1"
+          },
+          "ollama_version": "0.40.16",
+          "extractor_digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41"
+        },
+        "metrics": {
+          "audio": {
+            "decoder": {
+              "sha256": "6d175a4743ca50256e89a8cdd731100f9cee33bd79aeea46894d209410dc6617",
+              "version": "7.1"
+            },
+            "decode_seconds": 0.06645600000047125,
+            "decoded_seconds": 1.628875,
+            "normalized_spool_bytes": 104248,
+            "requested_backend": "cpu",
+            "vad_min_silence_ms": 350,
+            "silero": {
+              "version": "6.2.0",
+              "artifact": "silero_vad/data/silero_vad.jit",
+              "sha256": "e1122837f4154c511485fe0b9c64455f7b929c96fbb8d79fbdb336383ebd3720"
+            },
+            "vad_seconds": 0.905650082975626,
+            "asr_chunk_sample_counts": [
+              23168
+            ],
+            "model_asset_verification_seconds": 6.304281707998598,
+            "model_load_seconds": 10.226726916007465,
+            "asr_seconds": 3.849950208008522,
+            "process_peak_rss_bytes": 12754829312,
+            "asr_realtime_factor": 2.363563937078365,
+            "audio_total_seconds": 21.389671624987386
+          },
+          "extraction": {
+            "extractor": {
+              "backend": "ollama",
+              "model": "qwen3:8b",
+              "digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+              "details": {
+                "parent_model": "",
+                "format": "gguf",
+                "family": "qwen3",
+                "families": [
+                  "qwen3"
+                ],
+                "parameter_size": "8.2B",
+                "quantization_level": "Q4_K_M",
+                "context_length": 40960,
+                "embedding_length": 4096,
+                "runner": "ggml"
+              },
+              "size": 5225388164
+            },
+            "windows": 1,
+            "failed_windows": 0,
+            "attempts": 1,
+            "repairs": 0,
+            "model_wall_s": 4.2686,
+            "total_wall_s": 4.2688,
+            "prompt_tokens": 661,
+            "output_tokens": 9,
+            "load_duration_ns": 776368750,
+            "duplicates_skipped": 0,
+            "context_only_dropped": 0,
+            "unit_conversions": [],
+            "estimate_misses": 0,
+            "max_actual_to_estimate_ratio": 0.227,
+            "options": {
+              "temperature": 0,
+              "seed": 0,
+              "top_k": 1,
+              "top_p": 1.0,
+              "num_ctx": 8192,
+              "num_predict": 2048
+            },
+            "prompt_version": "inventory.v1.prompt4",
+            "schema_version": "inventory.v1.gen4",
+            "unload": {
+              "attempted": true,
+              "ok": true,
+              "error": null,
+              "idle_confirmed": true
+            }
+          },
+          "duration_s": 1.628875,
+          "pipeline_seconds": 26.179541082994547,
+          "pipeline_rtf": 16.072160898162565
+        },
+        "actual_duration_s": 1.628875,
+        "segments": [
+          {
+            "segment_id": "segment_6fd3158fe4e6ae3a2be823ce33f278a49d8040ea01c00e475a1cc8b03951b89e",
+            "source_id": "file_9aaa0ff0861c84bd312a4ffd7dfd172ca22f647b7a517e835db9eb5451dbc5da",
+            "ordinal": 0,
+            "input_start": 0,
+            "core_start": 512,
+            "core_end": 19968,
+            "input_end": 23168,
+            "raw": {
+              "key": "segment_6fd3158fe4e6ae3a2be823ce33f278a49d8040ea01c00e475a1cc8b03951b89e",
+              "text": "il ne reste pas deux ou trois"
+            },
+            "normalized_text": "il ne reste pas deux ou trois",
+            "status": "ok",
+            "errors": []
+          }
+        ]
+      },
+      "asr_extraction": {
+        "status": "needs_review",
+        "errors": [
+          "unresolved_negated_quantity:segment_6fd3158fe4e6ae3a2be823ce33f278a49d8040ea01c00e475a1cc8b03951b89e:0-29: 'il ne reste pas deux ou trois'"
+        ],
+        "metrics": {
+          "audio": {
+            "decoder": {
+              "sha256": "6d175a4743ca50256e89a8cdd731100f9cee33bd79aeea46894d209410dc6617",
+              "version": "7.1"
+            },
+            "decode_seconds": 0.06645600000047125,
+            "decoded_seconds": 1.628875,
+            "normalized_spool_bytes": 104248,
+            "requested_backend": "cpu",
+            "vad_min_silence_ms": 350,
+            "silero": {
+              "version": "6.2.0",
+              "artifact": "silero_vad/data/silero_vad.jit",
+              "sha256": "e1122837f4154c511485fe0b9c64455f7b929c96fbb8d79fbdb336383ebd3720"
+            },
+            "vad_seconds": 0.905650082975626,
+            "asr_chunk_sample_counts": [
+              23168
+            ],
+            "model_asset_verification_seconds": 6.304281707998598,
+            "model_load_seconds": 10.226726916007465,
+            "asr_seconds": 3.849950208008522,
+            "process_peak_rss_bytes": 12754829312,
+            "asr_realtime_factor": 2.363563937078365,
+            "audio_total_seconds": 21.389671624987386
+          },
+          "extraction": {
+            "extractor": {
+              "backend": "ollama",
+              "model": "qwen3:8b",
+              "digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+              "details": {
+                "parent_model": "",
+                "format": "gguf",
+                "family": "qwen3",
+                "families": [
+                  "qwen3"
+                ],
+                "parameter_size": "8.2B",
+                "quantization_level": "Q4_K_M",
+                "context_length": 40960,
+                "embedding_length": 4096,
+                "runner": "ggml"
+              },
+              "size": 5225388164
+            },
+            "windows": 1,
+            "failed_windows": 0,
+            "attempts": 1,
+            "repairs": 0,
+            "model_wall_s": 4.2686,
+            "total_wall_s": 4.2688,
+            "prompt_tokens": 661,
+            "output_tokens": 9,
+            "load_duration_ns": 776368750,
+            "duplicates_skipped": 0,
+            "context_only_dropped": 0,
+            "unit_conversions": [],
+            "estimate_misses": 0,
+            "max_actual_to_estimate_ratio": 0.227,
+            "options": {
+              "temperature": 0,
+              "seed": 0,
+              "top_k": 1,
+              "top_p": 1.0,
+              "num_ctx": 8192,
+              "num_predict": 2048
+            },
+            "prompt_version": "inventory.v1.prompt4",
+            "schema_version": "inventory.v1.gen4",
+            "unload": {
+              "attempted": true,
+              "ok": true,
+              "error": null,
+              "idle_confirmed": true
+            }
+          },
+          "duration_s": 1.628875,
+          "pipeline_seconds": 26.179541082994547,
+          "pipeline_rtf": 16.072160898162565
+        },
+        "observations": [],
+        "attempts": [
+          {
+            "window": 0,
+            "run_id": "run_b5aafb713ce9e9e2b96b4e20887ce7ac71a5ae98a3935d2031fafbe8fafe9369",
+            "model": "qwen3:8b",
+            "extractor": {
+              "backend": "ollama",
+              "model": "qwen3:8b",
+              "digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+              "details": {
+                "parent_model": "",
+                "format": "gguf",
+                "family": "qwen3",
+                "families": [
+                  "qwen3"
+                ],
+                "parameter_size": "8.2B",
+                "quantization_level": "Q4_K_M",
+                "context_length": 40960,
+                "embedding_length": 4096,
+                "runner": "ggml"
+              },
+              "size": 5225388164
+            },
+            "prompt_version": "inventory.v1.prompt4",
+            "schema_version": "inventory.v1.gen4",
+            "generation_schema_sha256": "7221e6d629ab44e994e4c8638a4765c0edfc626974d9cb78314f616490d16a48",
+            "options": {
+              "temperature": 0,
+              "seed": 0,
+              "top_k": 1,
+              "top_p": 1.0,
+              "num_ctx": 8192,
+              "num_predict": 2048
+            },
+            "segment_ids": [
+              "segment_6fd3158fe4e6ae3a2be823ce33f278a49d8040ea01c00e475a1cc8b03951b89e"
+            ],
+            "labels": {
+              "S1": "segment_6fd3158fe4e6ae3a2be823ce33f278a49d8040ea01c00e475a1cc8b03951b89e"
+            },
+            "known": {},
+            "system_prompt_sha256": "a3441774732bf5a1c64619e8b1c0d694c786702ced2414f066b4b768c4b66064",
+            "user_message": "<transcript>\nSegments to extract:\n[S1] il ne reste pas deux ou trois\n</transcript>",
+            "attempt": 1,
+            "kind": "initial",
+            "estimate_tokens": 2914,
+            "repair_message": null,
+            "content": "{\"language\":\"fr\",\"observations\":[]}",
+            "done_reason": "stop",
+            "wall_s": 4.268610583007103,
+            "timings_ns": {
+              "total_duration": 4264899583,
+              "load_duration": 776368750,
+              "prompt_eval_duration": 1967263000,
+              "eval_duration": 1498734000
+            },
+            "prompt_tokens": 661,
+            "output_tokens": 9,
+            "response_raw": {
+              "model": "qwen3:8b",
+              "created_at": "2026-11-25T18:48:13.841964Z",
+              "message": {
+                "role": "assistant",
+                "content": "{\"language\":\"fr\",\"observations\":[]}"
+              },
+              "done": true,
+              "done_reason": "stop",
+              "total_duration": 4264899583,
+              "load_duration": 776368750,
+              "prompt_eval_count": 661,
+              "prompt_eval_cached_count": 0,
+              "prompt_eval_duration": 1967263000,
+              "eval_count": 9,
+              "eval_duration": 1498734000
+            },
+            "errors": []
+          }
+        ],
+        "scores": {
+          "gold_mentions": 1,
+          "returned_candidates": 0,
+          "accepted_candidates": 0,
+          "review_candidates": 0,
+          "covered_gold_mentions": 0,
+          "fields": {
+            "product_spoken": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 1,
+              "predicted": 0,
+              "expected": 1,
+              "precision": null,
+              "recall": 0.0
+            },
+            "quantity": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "predicted": 0,
+              "expected": 0,
+              "precision": null,
+              "recall": null
+            },
+            "quantity_max": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "predicted": 0,
+              "expected": 0,
+              "precision": null,
+              "recall": null
+            },
+            "qualifier": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 1,
+              "predicted": 0,
+              "expected": 1,
+              "precision": null,
+              "recall": 0.0
+            },
+            "unit": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "predicted": 0,
+              "expected": 0,
+              "precision": null,
+              "recall": null
+            },
+            "operation": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 1,
+              "predicted": 0,
+              "expected": 1,
+              "precision": null,
+              "recall": 0.0
+            },
+            "location": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "predicted": 0,
+              "expected": 0,
+              "precision": null,
+              "recall": null
+            },
+            "negation": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 1,
+              "predicted": 0,
+              "expected": 1,
+              "precision": null,
+              "recall": 0.0
+            },
+            "correction": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "predicted": 0,
+              "expected": 0,
+              "precision": null,
+              "recall": null
+            },
+            "packaging.count": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "predicted": 0,
+              "expected": 0,
+              "precision": null,
+              "recall": null
+            },
+            "packaging.unit": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "predicted": 0,
+              "expected": 0,
+              "precision": null,
+              "recall": null
+            },
+            "packaging.per_package_quantity": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "predicted": 0,
+              "expected": 0,
+              "precision": null,
+              "recall": null
+            },
+            "packaging.per_package_unit": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "predicted": 0,
+              "expected": 0,
+              "precision": null,
+              "recall": null
+            },
+            "packaging.total": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "predicted": 0,
+              "expected": 0,
+              "precision": null,
+              "recall": null
+            },
+            "packaging.total_unit": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "predicted": 0,
+              "expected": 0,
+              "precision": null,
+              "recall": null
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "synthetic-jacques-correction",
+      "audio": "synthetic-jacques-correction.wav",
+      "source": "macOS /usr/bin/say, Jacques (fr_FR), 160 words/min",
+      "revision": "macOS 27.2.1 (26B131), gold SHA-256 fe252a2ebbc367251b9d60a9b40fb80edf0ff47d919c82ed00662c26561ce6b4",
+      "license": "Local QA only. No redistribution license asserted for the macOS system voice output.",
+      "sha256": "19912045e20067d7b73f643f889451eee4ba837f7797f232e3dc29585fadaf40",
+      "language": "fr",
+      "duration_s": 4.4616875,
+      "condition": "synthetic-macos-say",
+      "synthetic": true,
+      "reference": [
+        "Il reste trois kilos de farine, pardon, deux kilos de farine."
+      ],
+      "expected_review": false,
+      "gold": [
+        {
+          "product_spoken": "farine",
+          "quantity": "3",
+          "quantity_max": null,
+          "qualifier": "exact",
+          "unit": "kg",
+          "operation": "count",
+          "location": null,
+          "packaging": null,
+          "correction_of": null
+        },
+        {
+          "product_spoken": "farine",
+          "quantity": "2",
+          "quantity_max": null,
+          "qualifier": "exact",
+          "unit": "kg",
+          "operation": "correction",
+          "location": null,
+          "packaging": null,
+          "correction_of": 0
+        }
+      ],
+      "reference_extraction": {
+        "status": "ok",
+        "errors": [],
+        "metrics": {
+          "extractor": {
+            "backend": "ollama",
+            "model": "qwen3:8b",
+            "digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+            "details": {
+              "parent_model": "",
+              "format": "gguf",
+              "family": "qwen3",
+              "families": [
+                "qwen3"
+              ],
+              "parameter_size": "8.2B",
+              "quantization_level": "Q4_K_M",
+              "context_length": 40960,
+              "embedding_length": 4096,
+              "runner": "ggml"
+            },
+            "size": 5225388164
+          },
+          "windows": 1,
+          "failed_windows": 0,
+          "attempts": 1,
+          "repairs": 0,
+          "model_wall_s": 9.5577,
+          "total_wall_s": 9.5587,
+          "prompt_tokens": 671,
+          "output_tokens": 245,
+          "load_duration_ns": 781827375,
+          "duplicates_skipped": 0,
+          "context_only_dropped": 0,
+          "unit_conversions": [],
+          "estimate_misses": 0,
+          "max_actual_to_estimate_ratio": 0.228,
+          "options": {
+            "temperature": 0,
+            "seed": 0,
+            "top_k": 1,
+            "top_p": 1.0,
+            "num_ctx": 8192,
+            "num_predict": 2048
+          },
+          "prompt_version": "inventory.v1.prompt4",
+          "schema_version": "inventory.v1.gen4",
+          "unload": {
+            "attempted": true,
+            "ok": true,
+            "error": null,
+            "idle_confirmed": true
+          }
+        },
+        "observations": [
+          {
+            "product_spoken": "farine",
+            "quantity_text": "trois",
+            "quantity": "3",
+            "quantity_max": null,
+            "qualifier": "exact",
+            "unit_spoken": "kilos",
+            "unit": "kg",
+            "packaging": null,
+            "location": null,
+            "operation": "count",
+            "evidence": [
+              {
+                "segment_id": "evaluation_segment_030268dbdd6195e6480e4639c8198e94f4f598ed2f8661adf591d09d4b5b19e0",
+                "start": 0,
+                "end": 30,
+                "quote": "Il reste trois kilos de farine"
+              }
+            ],
+            "correction_of": null,
+            "observation_id": "obs_080c62af20016b53d45635263ac3f973274eb5d815d43f4f5ae4563fb158f006",
+            "catalog_match": null,
+            "revision": 1,
+            "status": "ok",
+            "errors": []
+          },
+          {
+            "product_spoken": "farine",
+            "quantity_text": "deux",
+            "quantity": "2",
+            "quantity_max": null,
+            "qualifier": "exact",
+            "unit_spoken": "kilos",
+            "unit": "kg",
+            "packaging": null,
+            "location": null,
+            "operation": "correction",
+            "evidence": [
+              {
+                "segment_id": "evaluation_segment_030268dbdd6195e6480e4639c8198e94f4f598ed2f8661adf591d09d4b5b19e0",
+                "start": 32,
+                "end": 60,
+                "quote": "pardon, deux kilos de farine"
+              }
+            ],
+            "correction_of": "obs_080c62af20016b53d45635263ac3f973274eb5d815d43f4f5ae4563fb158f006",
+            "observation_id": "obs_ad4ba8f456fc571159c86de1087b01fa6422a3251e12c35c18f5278f3cac5a9b",
+            "catalog_match": null,
+            "revision": 2,
+            "status": "ok",
+            "errors": []
+          }
+        ],
+        "attempts": [
+          {
+            "window": 0,
+            "run_id": "evaluation_648995f46328cce35c259f74e2d4cf4e90ff12d6ec1fb46bcacbbad790581282",
+            "model": "qwen3:8b",
+            "extractor": {
+              "backend": "ollama",
+              "model": "qwen3:8b",
+              "digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+              "details": {
+                "parent_model": "",
+                "format": "gguf",
+                "family": "qwen3",
+                "families": [
+                  "qwen3"
+                ],
+                "parameter_size": "8.2B",
+                "quantization_level": "Q4_K_M",
+                "context_length": 40960,
+                "embedding_length": 4096,
+                "runner": "ggml"
+              },
+              "size": 5225388164
+            },
+            "prompt_version": "inventory.v1.prompt4",
+            "schema_version": "inventory.v1.gen4",
+            "generation_schema_sha256": "7221e6d629ab44e994e4c8638a4765c0edfc626974d9cb78314f616490d16a48",
+            "options": {
+              "temperature": 0,
+              "seed": 0,
+              "top_k": 1,
+              "top_p": 1.0,
+              "num_ctx": 8192,
+              "num_predict": 2048
+            },
+            "segment_ids": [
+              "evaluation_segment_030268dbdd6195e6480e4639c8198e94f4f598ed2f8661adf591d09d4b5b19e0"
+            ],
+            "labels": {
+              "S1": "evaluation_segment_030268dbdd6195e6480e4639c8198e94f4f598ed2f8661adf591d09d4b5b19e0"
+            },
+            "known": {},
+            "system_prompt_sha256": "a3441774732bf5a1c64619e8b1c0d694c786702ced2414f066b4b768c4b66064",
+            "user_message": "<transcript>\nSegments to extract:\n[S1] Il reste trois kilos de farine, pardon, deux kilos de farine.\n</transcript>",
+            "attempt": 1,
+            "kind": "initial",
+            "estimate_tokens": 2946,
+            "repair_message": null,
+            "content": "{\n  \"language\": \"fr\",\n  \"observations\": [\n    {\n      \"segment\": \"S1\",\n      \"quote\": \"Il reste trois kilos de farine\",\n      \"more_evidence\": [],\n      \"operation\": \"count\",\n      \"product_spoken\": \"farine\",\n      \"quantity_text\": \"trois\",\n      \"quantity\": \"3\",\n      \"qualifier\": \"exact\",\n      \"unit_spoken\": \"kilos\",\n      \"package\": null,\n      \"location\": null,\n      \"ref\": \"o1\",\n      \"correction_of\": null\n    },\n    {\n      \"segment\": \"S1\",\n      \"quote\": \"pardon, deux kilos de farine\",\n      \"more_evidence\": [],\n      \"operation\": \"correction\",\n      \"product_spoken\": \"farine\",\n      \"quantity_text\": \"deux\",\n      \"quantity\": \"2\",\n      \"qualifier\": \"exact\",\n      \"unit_spoken\": \"kilos\",\n      \"package\": null,\n      \"location\": null,\n      \"ref\": \"o2\",\n      \"correction_of\": \"o1\"\n    }\n  ]\n}",
+            "done_reason": "stop",
+            "wall_s": 9.557682332990225,
+            "timings_ns": {
+              "total_duration": 9553791250,
+              "load_duration": 781827375,
+              "prompt_eval_duration": 1011780000,
+              "eval_duration": 7749381000
+            },
+            "prompt_tokens": 671,
+            "output_tokens": 245,
+            "response_raw": {
+              "model": "qwen3:8b",
+              "created_at": "2026-11-25T18:48:23.443324Z",
+              "message": {
+                "role": "assistant",
+                "content": "{\n  \"language\": \"fr\",\n  \"observations\": [\n    {\n      \"segment\": \"S1\",\n      \"quote\": \"Il reste trois kilos de farine\",\n      \"more_evidence\": [],\n      \"operation\": \"count\",\n      \"product_spoken\": \"farine\",\n      \"quantity_text\": \"trois\",\n      \"quantity\": \"3\",\n      \"qualifier\": \"exact\",\n      \"unit_spoken\": \"kilos\",\n      \"package\": null,\n      \"location\": null,\n      \"ref\": \"o1\",\n      \"correction_of\": null\n    },\n    {\n      \"segment\": \"S1\",\n      \"quote\": \"pardon, deux kilos de farine\",\n      \"more_evidence\": [],\n      \"operation\": \"correction\",\n      \"product_spoken\": \"farine\",\n      \"quantity_text\": \"deux\",\n      \"quantity\": \"2\",\n      \"qualifier\": \"exact\",\n      \"unit_spoken\": \"kilos\",\n      \"package\": null,\n      \"location\": null,\n      \"ref\": \"o2\",\n      \"correction_of\": \"o1\"\n    }\n  ]\n}"
+              },
+              "done": true,
+              "done_reason": "stop",
+              "total_duration": 9553791250,
+              "load_duration": 781827375,
+              "prompt_eval_count": 671,
+              "prompt_eval_cached_count": 0,
+              "prompt_eval_duration": 1011780000,
+              "eval_count": 245,
+              "eval_duration": 7749381000
+            },
+            "errors": []
+          }
+        ],
+        "scores": {
+          "gold_mentions": 2,
+          "returned_candidates": 2,
+          "accepted_candidates": 2,
+          "review_candidates": 0,
+          "covered_gold_mentions": 2,
+          "fields": {
+            "product_spoken": {
+              "tp": 2,
+              "fp": 0,
+              "fn": 0,
+              "predicted": 2,
+              "expected": 2,
+              "precision": 1.0,
+              "recall": 1.0
+            },
+            "quantity": {
+              "tp": 2,
+              "fp": 0,
+              "fn": 0,
+              "predicted": 2,
+              "expected": 2,
+              "precision": 1.0,
+              "recall": 1.0
+            },
+            "quantity_max": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "predicted": 0,
+              "expected": 0,
+              "precision": null,
+              "recall": null
+            },
+            "qualifier": {
+              "tp": 2,
+              "fp": 0,
+              "fn": 0,
+              "predicted": 2,
+              "expected": 2,
+              "precision": 1.0,
+              "recall": 1.0
+            },
+            "unit": {
+              "tp": 2,
+              "fp": 0,
+              "fn": 0,
+              "predicted": 2,
+              "expected": 2,
+              "precision": 1.0,
+              "recall": 1.0
+            },
+            "operation": {
+              "tp": 2,
+              "fp": 0,
+              "fn": 0,
+              "predicted": 2,
+              "expected": 2,
+              "precision": 1.0,
+              "recall": 1.0
+            },
+            "location": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "predicted": 0,
+              "expected": 0,
+              "precision": null,
+              "recall": null
+            },
+            "negation": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "predicted": 0,
+              "expected": 0,
+              "precision": null,
+              "recall": null
+            },
+            "correction": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0,
+              "predicted": 1,
+              "expected": 1,
+              "precision": 1.0,
+              "recall": 1.0
+            },
+            "packaging.count": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "predicted": 0,
+              "expected": 0,
+              "precision": null,
+              "recall": null
+            },
+            "packaging.unit": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "predicted": 0,
+              "expected": 0,
+              "precision": null,
+              "recall": null
+            },
+            "packaging.per_package_quantity": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "predicted": 0,
+              "expected": 0,
+              "precision": null,
+              "recall": null
+            },
+            "packaging.per_package_unit": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "predicted": 0,
+              "expected": 0,
+              "precision": null,
+              "recall": null
+            },
+            "packaging.total": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "predicted": 0,
+              "expected": 0,
+              "precision": null,
+              "recall": null
+            },
+            "packaging.total_unit": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "predicted": 0,
+              "expected": 0,
+              "precision": null,
+              "recall": null
+            }
+          }
+        },
+        "review_decision_correct": true
+      },
+      "asr": {
+        "status": "ok",
+        "errors": [],
+        "provenance": {
+          "speechflow_version": "0.1.0",
+          "implementation_sha256": "e57cfaded674f24cd50e807aa0eb5e4ba63543c8dc8ba5ad89c5efe827af1079",
+          "schema_version": "inventory.v1",
+          "config": {
+            "backend": "cpu",
+            "ollama_model": "qwen3:8b",
+            "max_chunk_seconds": 25.0,
+            "padding_ms": 200,
+            "max_spool_bytes": 1073741824,
+            "extraction_timeout": 120.0,
+            "context_tokens": 8192,
+            "output_tokens": 2048
+          },
+          "silero_sha256": "e1122837f4154c511485fe0b9c64455f7b929c96fbb8d79fbdb336383ebd3720",
+          "hojo_revision": "aa1d0dfc369deb3b3235572fa151acd7b498481f",
+          "expected_extractor_digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+          "backend": "cpu",
+          "dtype": "encoder=float32,decoder=bfloat16",
+          "packages": {
+            "torch": "2.5.1",
+            "torchaudio": "2.5.1",
+            "transformers": "4.57.3",
+            "hojo-asr": "0.1.3",
+            "silero-vad": "6.2.0",
+            "numpy": "1.26.4",
+            "soundfile": "0.14.0",
+            "imageio-ffmpeg": "0.6.0",
+            "pydantic": "2.14.4"
+          },
+          "decoder": {
+            "sha256": "6d175a4743ca50256e89a8cdd731100f9cee33bd79aeea46894d209410dc6617",
+            "version": "7.1"
+          },
+          "ollama_version": "0.40.16",
+          "extractor_digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41"
+        },
+        "metrics": {
+          "audio": {
+            "decoder": {
+              "sha256": "6d175a4743ca50256e89a8cdd731100f9cee33bd79aeea46894d209410dc6617",
+              "version": "7.1"
+            },
+            "decode_seconds": 0.07390170797589235,
+            "decoded_seconds": 4.4616875,
+            "normalized_spool_bytes": 285548,
+            "requested_backend": "cpu",
+            "vad_min_silence_ms": 350,
+            "silero": {
+              "version": "6.2.0",
+              "artifact": "silero_vad/data/silero_vad.jit",
+              "sha256": "e1122837f4154c511485fe0b9c64455f7b929c96fbb8d79fbdb336383ebd3720"
+            },
+            "vad_seconds": 0.9241279159905389,
+            "asr_chunk_sample_counts": [
+              68224
+            ],
+            "model_asset_verification_seconds": 5.8832780420198105,
+            "model_load_seconds": 11.268172292009695,
+            "asr_seconds": 20.690816165995784,
+            "process_peak_rss_bytes": 12874481664,
+            "asr_realtime_factor": 4.6374418123178245,
+            "audio_total_seconds": 38.92594508299953
+          },
+          "extraction": {
+            "extractor": {
+              "backend": "ollama",
+              "model": "qwen3:8b",
+              "digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+              "details": {
+                "parent_model": "",
+                "format": "gguf",
+                "family": "qwen3",
+                "families": [
+                  "qwen3"
+                ],
+                "parameter_size": "8.2B",
+                "quantization_level": "Q4_K_M",
+                "context_length": 40960,
+                "embedding_length": 4096,
+                "runner": "ggml"
+              },
+              "size": 5225388164
+            },
+            "windows": 1,
+            "failed_windows": 0,
+            "attempts": 2,
+            "repairs": 1,
+            "model_wall_s": 19.6643,
+            "total_wall_s": 19.669,
+            "prompt_tokens": 1705,
+            "output_tokens": 519,
+            "load_duration_ns": 781112500,
+            "duplicates_skipped": 0,
+            "context_only_dropped": 0,
+            "unit_conversions": [],
+            "estimate_misses": 0,
+            "max_actual_to_estimate_ratio": 0.236,
+            "options": {
+              "temperature": 0,
+              "seed": 0,
+              "top_k": 1,
+              "top_p": 1.0,
+              "num_ctx": 8192,
+              "num_predict": 2048
+            },
+            "prompt_version": "inventory.v1.prompt4",
+            "schema_version": "inventory.v1.gen4",
+            "unload": {
+              "attempted": true,
+              "ok": true,
+              "error": null,
+              "idle_confirmed": true
+            }
+          },
+          "duration_s": 4.4616875,
+          "pipeline_seconds": 59.45136029200512,
+          "pipeline_rtf": 13.324859773797497
+        },
+        "actual_duration_s": 4.4616875,
+        "segments": [
+          {
+            "segment_id": "segment_b54120c51756ee418474e3ce6f45a0011f4ef27fcc612f36a85935cd92f3927c",
+            "source_id": "file_bf4593c6337d290b915c294f368c7bd73fa972b70202c6a0603c597b8a214ca8",
+            "ordinal": 0,
+            "input_start": 0,
+            "core_start": 512,
+            "core_end": 65024,
+            "input_end": 68224,
+            "raw": {
+              "key": "segment_b54120c51756ee418474e3ce6f45a0011f4ef27fcc612f36a85935cd92f3927c",
+              "text": "il reste trois kilos de farine pardon deux kilos de farine"
+            },
+            "normalized_text": "il reste trois kilos de farine pardon deux kilos de farine",
+            "status": "ok",
+            "errors": []
+          }
+        ]
+      },
+      "asr_extraction": {
+        "status": "ok",
+        "errors": [],
+        "metrics": {
+          "audio": {
+            "decoder": {
+              "sha256": "6d175a4743ca50256e89a8cdd731100f9cee33bd79aeea46894d209410dc6617",
+              "version": "7.1"
+            },
+            "decode_seconds": 0.07390170797589235,
+            "decoded_seconds": 4.4616875,
+            "normalized_spool_bytes": 285548,
+            "requested_backend": "cpu",
+            "vad_min_silence_ms": 350,
+            "silero": {
+              "version": "6.2.0",
+              "artifact": "silero_vad/data/silero_vad.jit",
+              "sha256": "e1122837f4154c511485fe0b9c64455f7b929c96fbb8d79fbdb336383ebd3720"
+            },
+            "vad_seconds": 0.9241279159905389,
+            "asr_chunk_sample_counts": [
+              68224
+            ],
+            "model_asset_verification_seconds": 5.8832780420198105,
+            "model_load_seconds": 11.268172292009695,
+            "asr_seconds": 20.690816165995784,
+            "process_peak_rss_bytes": 12874481664,
+            "asr_realtime_factor": 4.6374418123178245,
+            "audio_total_seconds": 38.92594508299953
+          },
+          "extraction": {
+            "extractor": {
+              "backend": "ollama",
+              "model": "qwen3:8b",
+              "digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+              "details": {
+                "parent_model": "",
+                "format": "gguf",
+                "family": "qwen3",
+                "families": [
+                  "qwen3"
+                ],
+                "parameter_size": "8.2B",
+                "quantization_level": "Q4_K_M",
+                "context_length": 40960,
+                "embedding_length": 4096,
+                "runner": "ggml"
+              },
+              "size": 5225388164
+            },
+            "windows": 1,
+            "failed_windows": 0,
+            "attempts": 2,
+            "repairs": 1,
+            "model_wall_s": 19.6643,
+            "total_wall_s": 19.669,
+            "prompt_tokens": 1705,
+            "output_tokens": 519,
+            "load_duration_ns": 781112500,
+            "duplicates_skipped": 0,
+            "context_only_dropped": 0,
+            "unit_conversions": [],
+            "estimate_misses": 0,
+            "max_actual_to_estimate_ratio": 0.236,
+            "options": {
+              "temperature": 0,
+              "seed": 0,
+              "top_k": 1,
+              "top_p": 1.0,
+              "num_ctx": 8192,
+              "num_predict": 2048
+            },
+            "prompt_version": "inventory.v1.prompt4",
+            "schema_version": "inventory.v1.gen4",
+            "unload": {
+              "attempted": true,
+              "ok": true,
+              "error": null,
+              "idle_confirmed": true
+            }
+          },
+          "duration_s": 4.4616875,
+          "pipeline_seconds": 59.45136029200512,
+          "pipeline_rtf": 13.324859773797497
+        },
+        "observations": [
+          {
+            "product_spoken": "farine",
+            "quantity_text": "trois",
+            "quantity": "3",
+            "quantity_max": null,
+            "qualifier": "exact",
+            "unit_spoken": "kilos",
+            "unit": "kg",
+            "packaging": null,
+            "location": null,
+            "operation": "count",
+            "evidence": [
+              {
+                "segment_id": "segment_b54120c51756ee418474e3ce6f45a0011f4ef27fcc612f36a85935cd92f3927c",
+                "start": 0,
+                "end": 30,
+                "quote": "il reste trois kilos de farine"
+              }
+            ],
+            "correction_of": null,
+            "observation_id": "obs_62ecc986300526acfec219f067f1456533fa4eab2afe23ecb854090661bfc6b9",
+            "catalog_match": null,
+            "revision": 1,
+            "status": "ok",
+            "errors": []
+          },
+          {
+            "product_spoken": "farine",
+            "quantity_text": "deux",
+            "quantity": "2",
+            "quantity_max": null,
+            "qualifier": "exact",
+            "unit_spoken": "kilos",
+            "unit": "kg",
+            "packaging": null,
+            "location": null,
+            "operation": "correction",
+            "evidence": [
+              {
+                "segment_id": "segment_b54120c51756ee418474e3ce6f45a0011f4ef27fcc612f36a85935cd92f3927c",
+                "start": 31,
+                "end": 58,
+                "quote": "pardon deux kilos de farine"
+              }
+            ],
+            "correction_of": "obs_62ecc986300526acfec219f067f1456533fa4eab2afe23ecb854090661bfc6b9",
+            "observation_id": "obs_8f66947233060f32d1d478a53a6e8cd10a0e1869f9741063791385b2395aa6d1",
+            "catalog_match": null,
+            "revision": 2,
+            "status": "ok",
+            "errors": []
+          }
+        ],
+        "attempts": [
+          {
+            "window": 0,
+            "run_id": "run_87bd701fa6550dcdba580a329216a075719735bca81883bf33f52869f5d0a2ae",
+            "model": "qwen3:8b",
+            "extractor": {
+              "backend": "ollama",
+              "model": "qwen3:8b",
+              "digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+              "details": {
+                "parent_model": "",
+                "format": "gguf",
+                "family": "qwen3",
+                "families": [
+                  "qwen3"
+                ],
+                "parameter_size": "8.2B",
+                "quantization_level": "Q4_K_M",
+                "context_length": 40960,
+                "embedding_length": 4096,
+                "runner": "ggml"
+              },
+              "size": 5225388164
+            },
+            "prompt_version": "inventory.v1.prompt4",
+            "schema_version": "inventory.v1.gen4",
+            "generation_schema_sha256": "7221e6d629ab44e994e4c8638a4765c0edfc626974d9cb78314f616490d16a48",
+            "options": {
+              "temperature": 0,
+              "seed": 0,
+              "top_k": 1,
+              "top_p": 1.0,
+              "num_ctx": 8192,
+              "num_predict": 2048
+            },
+            "segment_ids": [
+              "segment_b54120c51756ee418474e3ce6f45a0011f4ef27fcc612f36a85935cd92f3927c"
+            ],
+            "labels": {
+              "S1": "segment_b54120c51756ee418474e3ce6f45a0011f4ef27fcc612f36a85935cd92f3927c"
+            },
+            "known": {},
+            "system_prompt_sha256": "a3441774732bf5a1c64619e8b1c0d694c786702ced2414f066b4b768c4b66064",
+            "user_message": "<transcript>\nSegments to extract:\n[S1] il reste trois kilos de farine pardon deux kilos de farine\n</transcript>",
+            "attempt": 1,
+            "kind": "initial",
+            "estimate_tokens": 2943,
+            "repair_message": null,
+            "content": "{\n  \"language\": \"fr\",\n  \"observations\": [\n    {\n      \"segment\": \"S1\",\n      \"quote\": \"il reste trois kilos de farine\",\n      \"more_evidence\": [\n        {\n          \"segment\": \"S1\",\n          \"quote\": \"pardon deux kilos de farine\"\n        }\n      ],\n      \"operation\": \"count\",\n      \"product_spoken\": \"farine\",\n      \"quantity_text\": \"trois\",\n      \"quantity\": \"3\",\n      \"qualifier\": \"exact\",\n      \"unit_spoken\": \"kilos\",\n      \"package\": null,\n      \"location\": null,\n      \"ref\": \"o1\",\n      \"correction_of\": \"o2\"\n    },\n    {\n      \"segment\": \"S1\",\n      \"quote\": \"pardon deux kilos de farine\",\n      \"more_evidence\": [],\n      \"operation\": \"correction\",\n      \"product_spoken\": \"farine\",\n      \"quantity_text\": \"deux\",\n      \"quantity\": \"2\",\n      \"qualifier\": \"exact\",\n      \"unit_spoken\": \"kilos\",\n      \"package\": null,\n      \"location\": null,\n      \"ref\": \"o2\",\n      \"correction_of\": \"o1\"\n    }\n  ]\n}",
+            "done_reason": "stop",
+            "wall_s": 11.047886125015793,
+            "timings_ns": {
+              "total_duration": 11043470833,
+              "load_duration": 780277208,
+              "prompt_eval_duration": 1101523000,
+              "eval_duration": 9148437000
+            },
+            "prompt_tokens": 669,
+            "output_tokens": 275,
+            "response_raw": {
+              "model": "qwen3:8b",
+              "created_at": "2026-11-25T18:49:14.265693Z",
+              "message": {
+                "role": "assistant",
+                "content": "{\n  \"language\": \"fr\",\n  \"observations\": [\n    {\n      \"segment\": \"S1\",\n      \"quote\": \"il reste trois kilos de farine\",\n      \"more_evidence\": [\n        {\n          \"segment\": \"S1\",\n          \"quote\": \"pardon deux kilos de farine\"\n        }\n      ],\n      \"operation\": \"count\",\n      \"product_spoken\": \"farine\",\n      \"quantity_text\": \"trois\",\n      \"quantity\": \"3\",\n      \"qualifier\": \"exact\",\n      \"unit_spoken\": \"kilos\",\n      \"package\": null,\n      \"location\": null,\n      \"ref\": \"o1\",\n      \"correction_of\": \"o2\"\n    },\n    {\n      \"segment\": \"S1\",\n      \"quote\": \"pardon deux kilos de farine\",\n      \"more_evidence\": [],\n      \"operation\": \"correction\",\n      \"product_spoken\": \"farine\",\n      \"quantity_text\": \"deux\",\n      \"quantity\": \"2\",\n      \"qualifier\": \"exact\",\n      \"unit_spoken\": \"kilos\",\n      \"package\": null,\n      \"location\": null,\n      \"ref\": \"o2\",\n      \"correction_of\": \"o1\"\n    }\n  ]\n}"
+              },
+              "done": true,
+              "done_reason": "stop",
+              "total_duration": 11043470833,
+              "load_duration": 780277208,
+              "prompt_eval_count": 669,
+              "prompt_eval_cached_count": 0,
+              "prompt_eval_duration": 1101523000,
+              "eval_count": 275,
+              "eval_duration": 9148437000
+            },
+            "errors": [
+              "o1: evidence parts must cite distinct segments in transcript order",
+              "Keep the earlier amount as a separate event and the following correction with its own quote and prior reference. Source: 'trois kilos de farine pardon deux kilos'"
+            ]
+          },
+          {
+            "window": 0,
+            "run_id": "run_87bd701fa6550dcdba580a329216a075719735bca81883bf33f52869f5d0a2ae",
+            "model": "qwen3:8b",
+            "extractor": {
+              "backend": "ollama",
+              "model": "qwen3:8b",
+              "digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+              "details": {
+                "parent_model": "",
+                "format": "gguf",
+                "family": "qwen3",
+                "families": [
+                  "qwen3"
+                ],
+                "parameter_size": "8.2B",
+                "quantization_level": "Q4_K_M",
+                "context_length": 40960,
+                "embedding_length": 4096,
+                "runner": "ggml"
+              },
+              "size": 5225388164
+            },
+            "prompt_version": "inventory.v1.prompt4",
+            "schema_version": "inventory.v1.gen4",
+            "generation_schema_sha256": "7221e6d629ab44e994e4c8638a4765c0edfc626974d9cb78314f616490d16a48",
+            "options": {
+              "temperature": 0,
+              "seed": 0,
+              "top_k": 1,
+              "top_p": 1.0,
+              "num_ctx": 8192,
+              "num_predict": 2048
+            },
+            "segment_ids": [
+              "segment_b54120c51756ee418474e3ce6f45a0011f4ef27fcc612f36a85935cd92f3927c"
+            ],
+            "labels": {
+              "S1": "segment_b54120c51756ee418474e3ce6f45a0011f4ef27fcc612f36a85935cd92f3927c"
+            },
+            "known": {},
+            "system_prompt_sha256": "a3441774732bf5a1c64619e8b1c0d694c786702ced2414f066b4b768c4b66064",
+            "user_message": "<transcript>\nSegments to extract:\n[S1] il reste trois kilos de farine pardon deux kilos de farine\n</transcript>",
+            "attempt": 2,
+            "kind": "repair",
+            "estimate_tokens": 4397,
+            "repair_message": "Your previous reply was rejected: [\"o1: evidence parts must cite distinct segments in transcript order\", \"Keep the earlier amount as a separate event and the following correction with its own quote and prior reference. Source: 'trois kilos de farine pardon deux kilos'\"]\nReturn one corrected JSON object only, matching the schema. Use exact quotes from the cited segment; use null when unsure rather than guessing.",
+            "content": "{\n  \"language\": \"fr\",\n  \"observations\": [\n    {\n      \"segment\": \"S1\",\n      \"quote\": \"il reste trois kilos de farine\",\n      \"more_evidence\": [],\n      \"operation\": \"count\",\n      \"product_spoken\": \"farine\",\n      \"quantity_text\": \"trois\",\n      \"quantity\": \"3\",\n      \"qualifier\": \"exact\",\n      \"unit_spoken\": \"kilos\",\n      \"package\": null,\n      \"location\": null,\n      \"ref\": \"o1\",\n      \"correction_of\": null\n    },\n    {\n      \"segment\": \"S1\",\n      \"quote\": \"pardon deux kilos de farine\",\n      \"more_evidence\": [],\n      \"operation\": \"correction\",\n      \"product_spoken\": \"farine\",\n      \"quantity_text\": \"deux\",\n      \"quantity\": \"2\",\n      \"qualifier\": \"exact\",\n      \"unit_spoken\": \"kilos\",\n      \"package\": null,\n      \"location\": null,\n      \"ref\": \"o2\",\n      \"correction_of\": \"o1\"\n    }\n  ]\n}",
+            "done_reason": "stop",
+            "wall_s": 8.616421042010188,
+            "timings_ns": {
+              "total_duration": 8611623542,
+              "load_duration": 835292,
+              "prompt_eval_duration": 706403000,
+              "eval_duration": 7899288000
+            },
+            "prompt_tokens": 1036,
+            "output_tokens": 244,
+            "response_raw": {
+              "model": "qwen3:8b",
+              "created_at": "2026-11-25T18:49:22.882684Z",
+              "message": {
+                "role": "assistant",
+                "content": "{\n  \"language\": \"fr\",\n  \"observations\": [\n    {\n      \"segment\": \"S1\",\n      \"quote\": \"il reste trois kilos de farine\",\n      \"more_evidence\": [],\n      \"operation\": \"count\",\n      \"product_spoken\": \"farine\",\n      \"quantity_text\": \"trois\",\n      \"quantity\": \"3\",\n      \"qualifier\": \"exact\",\n      \"unit_spoken\": \"kilos\",\n      \"package\": null,\n      \"location\": null,\n      \"ref\": \"o1\",\n      \"correction_of\": null\n    },\n    {\n      \"segment\": \"S1\",\n      \"quote\": \"pardon deux kilos de farine\",\n      \"more_evidence\": [],\n      \"operation\": \"correction\",\n      \"product_spoken\": \"farine\",\n      \"quantity_text\": \"deux\",\n      \"quantity\": \"2\",\n      \"qualifier\": \"exact\",\n      \"unit_spoken\": \"kilos\",\n      \"package\": null,\n      \"location\": null,\n      \"ref\": \"o2\",\n      \"correction_of\": \"o1\"\n    }\n  ]\n}"
+              },
+              "done": true,
+              "done_reason": "stop",
+              "total_duration": 8611623542,
+              "load_duration": 835292,
+              "prompt_eval_count": 1036,
+              "prompt_eval_cached_count": 656,
+              "prompt_eval_duration": 706403000,
+              "eval_count": 244,
+              "eval_duration": 7899288000
+            },
+            "errors": []
+          }
+        ],
+        "scores": {
+          "gold_mentions": 2,
+          "returned_candidates": 2,
+          "accepted_candidates": 2,
+          "review_candidates": 0,
+          "covered_gold_mentions": 2,
+          "fields": {
+            "product_spoken": {
+              "tp": 2,
+              "fp": 0,
+              "fn": 0,
+              "predicted": 2,
+              "expected": 2,
+              "precision": 1.0,
+              "recall": 1.0
+            },
+            "quantity": {
+              "tp": 2,
+              "fp": 0,
+              "fn": 0,
+              "predicted": 2,
+              "expected": 2,
+              "precision": 1.0,
+              "recall": 1.0
+            },
+            "quantity_max": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "predicted": 0,
+              "expected": 0,
+              "precision": null,
+              "recall": null
+            },
+            "qualifier": {
+              "tp": 2,
+              "fp": 0,
+              "fn": 0,
+              "predicted": 2,
+              "expected": 2,
+              "precision": 1.0,
+              "recall": 1.0
+            },
+            "unit": {
+              "tp": 2,
+              "fp": 0,
+              "fn": 0,
+              "predicted": 2,
+              "expected": 2,
+              "precision": 1.0,
+              "recall": 1.0
+            },
+            "operation": {
+              "tp": 2,
+              "fp": 0,
+              "fn": 0,
+              "predicted": 2,
+              "expected": 2,
+              "precision": 1.0,
+              "recall": 1.0
+            },
+            "location": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "predicted": 0,
+              "expected": 0,
+              "precision": null,
+              "recall": null
+            },
+            "negation": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "predicted": 0,
+              "expected": 0,
+              "precision": null,
+              "recall": null
+            },
+            "correction": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0,
+              "predicted": 1,
+              "expected": 1,
+              "precision": 1.0,
+              "recall": 1.0
+            },
+            "packaging.count": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "predicted": 0,
+              "expected": 0,
+              "precision": null,
+              "recall": null
+            },
+            "packaging.unit": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "predicted": 0,
+              "expected": 0,
+              "precision": null,
+              "recall": null
+            },
+            "packaging.per_package_quantity": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "predicted": 0,
+              "expected": 0,
+              "precision": null,
+              "recall": null
+            },
+            "packaging.per_package_unit": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "predicted": 0,
+              "expected": 0,
+              "precision": null,
+              "recall": null
+            },
+            "packaging.total": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "predicted": 0,
+              "expected": 0,
+              "precision": null,
+              "recall": null
+            },
+            "packaging.total_unit": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "predicted": 0,
+              "expected": 0,
+              "precision": null,
+              "recall": null
+            }
+          }
+        }
+      }
+    }
+  ],
+  "wer": {
+    "normalization": "NFC, casefold, curly apostrophe to straight. Keep accents. Split on punctuation and whitespace except internal apostrophes and decimal separators. Keep number surface forms without expanding words or equating decimal comma and point. Concatenate ordered normalized segments. Repetitions count as insertions.",
+    "eligible_clips": 0,
+    "eligible_duration_s": 0,
+    "eligible_reference_words": 0,
+    "scored_clips": 0,
+    "scored_duration_s": 0,
+    "reference_words": 0,
+    "edits": null,
+    "wer": null,
+    "status": "NOT MEASURED",
+    "by_condition": {}
+  },
+  "extraction": {
+    "alignment": "normalized product and chronological occurrence, including revisions",
+    "policy": "Only ok candidates score as predictions. Missing or misrecognized mentions contribute false negatives. Incorrect accepted fields contribute false positives.",
+    "reference": {
+      "gold_mentions": 3,
+      "returned_candidates": 3,
+      "accepted_candidates": 3,
+      "review_candidates": 0,
+      "covered_gold_mentions": 3,
+      "abstention_rate": 0.0,
+      "gold_coverage": 1.0,
+      "gold_uncovered_rate": 0.0,
+      "cases_with_no_accepted_candidate": 0,
+      "positive_cases_with_no_accepted_candidate": 0,
+      "cases": 2,
+      "blocked_cases": 0,
+      "failed_cases": 0,
+      "completed_cases": 2,
+      "measurement_status": "MEASURED",
+      "fields": {
+        "product_spoken": {
+          "tp": 3,
+          "fp": 0,
+          "fn": 0,
+          "predicted": 3,
+          "expected": 3,
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        "quantity": {
+          "tp": 2,
+          "fp": 0,
+          "fn": 0,
+          "predicted": 2,
+          "expected": 2,
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        "quantity_max": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "predicted": 0,
+          "expected": 0,
+          "precision": null,
+          "recall": null
+        },
+        "qualifier": {
+          "tp": 3,
+          "fp": 0,
+          "fn": 0,
+          "predicted": 3,
+          "expected": 3,
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        "unit": {
+          "tp": 2,
+          "fp": 0,
+          "fn": 0,
+          "predicted": 2,
+          "expected": 2,
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        "operation": {
+          "tp": 3,
+          "fp": 0,
+          "fn": 0,
+          "predicted": 3,
+          "expected": 3,
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        "location": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "predicted": 0,
+          "expected": 0,
+          "precision": null,
+          "recall": null
+        },
+        "negation": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "predicted": 1,
+          "expected": 1,
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        "correction": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "predicted": 1,
+          "expected": 1,
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        "packaging.count": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "predicted": 0,
+          "expected": 0,
+          "precision": null,
+          "recall": null
+        },
+        "packaging.unit": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "predicted": 0,
+          "expected": 0,
+          "precision": null,
+          "recall": null
+        },
+        "packaging.per_package_quantity": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "predicted": 0,
+          "expected": 0,
+          "precision": null,
+          "recall": null
+        },
+        "packaging.per_package_unit": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "predicted": 0,
+          "expected": 0,
+          "precision": null,
+          "recall": null
+        },
+        "packaging.total": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "predicted": 0,
+          "expected": 0,
+          "precision": null,
+          "recall": null
+        },
+        "packaging.total_unit": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "predicted": 0,
+          "expected": 0,
+          "precision": null,
+          "recall": null
+        }
+      }
+    },
+    "asr": {
+      "gold_mentions": 3,
+      "returned_candidates": 2,
+      "accepted_candidates": 2,
+      "review_candidates": 0,
+      "covered_gold_mentions": 2,
+      "abstention_rate": 0.0,
+      "gold_coverage": 0.6666666666666666,
+      "gold_uncovered_rate": 0.3333333333333333,
+      "cases_with_no_accepted_candidate": 1,
+      "positive_cases_with_no_accepted_candidate": 1,
+      "cases": 2,
+      "blocked_cases": 0,
+      "failed_cases": 0,
+      "completed_cases": 2,
+      "measurement_status": "MEASURED",
+      "fields": {
+        "product_spoken": {
+          "tp": 2,
+          "fp": 0,
+          "fn": 1,
+          "predicted": 2,
+          "expected": 3,
+          "precision": 1.0,
+          "recall": 0.6666666666666666
+        },
+        "quantity": {
+          "tp": 2,
+          "fp": 0,
+          "fn": 0,
+          "predicted": 2,
+          "expected": 2,
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        "quantity_max": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "predicted": 0,
+          "expected": 0,
+          "precision": null,
+          "recall": null
+        },
+        "qualifier": {
+          "tp": 2,
+          "fp": 0,
+          "fn": 1,
+          "predicted": 2,
+          "expected": 3,
+          "precision": 1.0,
+          "recall": 0.6666666666666666
+        },
+        "unit": {
+          "tp": 2,
+          "fp": 0,
+          "fn": 0,
+          "predicted": 2,
+          "expected": 2,
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        "operation": {
+          "tp": 2,
+          "fp": 0,
+          "fn": 1,
+          "predicted": 2,
+          "expected": 3,
+          "precision": 1.0,
+          "recall": 0.6666666666666666
+        },
+        "location": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "predicted": 0,
+          "expected": 0,
+          "precision": null,
+          "recall": null
+        },
+        "negation": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 1,
+          "predicted": 0,
+          "expected": 1,
+          "precision": null,
+          "recall": 0.0
+        },
+        "correction": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "predicted": 1,
+          "expected": 1,
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        "packaging.count": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "predicted": 0,
+          "expected": 0,
+          "precision": null,
+          "recall": null
+        },
+        "packaging.unit": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "predicted": 0,
+          "expected": 0,
+          "precision": null,
+          "recall": null
+        },
+        "packaging.per_package_quantity": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "predicted": 0,
+          "expected": 0,
+          "precision": null,
+          "recall": null
+        },
+        "packaging.per_package_unit": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "predicted": 0,
+          "expected": 0,
+          "precision": null,
+          "recall": null
+        },
+        "packaging.total": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "predicted": 0,
+          "expected": 0,
+          "precision": null,
+          "recall": null
+        },
+        "packaging.total_unit": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "predicted": 0,
+          "expected": 0,
+          "precision": null,
+          "recall": null
+        }
+      }
+    }
+  }
+}

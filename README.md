@@ -145,6 +145,13 @@ et douze bouteilles de lait”, the CPU file pipeline produced these rows.
 The original Hojo reply, finalized evidence spans, CSV/table files and direct
 SQLite rows are available for this run. [Raw manifest](reports/integration/jacques-350-manifest.json) · [CSV](reports/examples/jacques/observations.csv) · [Terminal table](reports/examples/jacques/observations.txt) · [SQLite comparison](reports/examples/jacques/sqlite-export-check.json)
 
+Check the run status and `errors` even when the observation list is empty. For
+example, Hojo heard a sugar-negation fixture as “il ne reste pas deux ou trois”.
+Speechflow saved the exact unresolved span for review. The recording's product
+could not be recovered. On the continuous 72.46 s synthetic inventory test,
+CPU and MPS each recognized four of eight predeclared phrases. One incorrect
+product count passed validation on CPU. [Spoken negation and correction](reports/evaluation/semantic-audio-reviewed.json) · [Long-file scores](reports/evaluation/synthetic-real.json)
+
 * Quantities are base-ten decimal strings. An unknown quantity is empty/`-`,
   never `0`; `qualifier` says `exact`, `approximate`, `range` or `unknown`.
 * Packaging keeps count, per-package contents and total in separate columns; a

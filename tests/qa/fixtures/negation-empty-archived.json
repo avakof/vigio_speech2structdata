@@ -1,0 +1,42 @@
+{
+  "report": "reports/evaluation/semantic-audio-real.json",
+  "report_sha256": "d6da931527521ed54782badda522e405f16044619736915cbb3229ce77966d72",
+  "case_id": "synthetic-jacques-negation",
+  "segment": {
+    "segment_id": "segment_6fd3158fe4e6ae3a2be823ce33f278a49d8040ea01c00e475a1cc8b03951b89e",
+    "source_id": "file_9aaa0ff0861c84bd312a4ffd7dfd172ca22f647b7a517e835db9eb5451dbc5da",
+    "ordinal": 0,
+    "input_start": 0,
+    "core_start": 512,
+    "core_end": 19968,
+    "input_end": 23168,
+    "raw": {
+      "key": "segment_6fd3158fe4e6ae3a2be823ce33f278a49d8040ea01c00e475a1cc8b03951b89e",
+      "text": "il ne reste pas deux ou trois"
+    },
+    "normalized_text": "il ne reste pas deux ou trois",
+    "status": "ok",
+    "errors": []
+  },
+  "reply": {
+    "content": "{\"language\":\"fr\",\"observations\":[]}",
+    "done_reason": "stop",
+    "response_raw": {
+      "model": "qwen3:8b",
+      "created_at": "2026-11-25T18:42:21.76581Z",
+      "message": {
+        "role": "assistant",
+        "content": "{\"language\":\"fr\",\"observations\":[]}"
+      },
+      "done": true,
+      "done_reason": "stop",
+      "total_duration": 2038379292,
+      "load_duration": 780576500,
+      "prompt_eval_count": 661,
+      "prompt_eval_cached_count": 0,
+      "prompt_eval_duration": 1010356000,
+      "eval_count": 9,
+      "eval_duration": 237799000
+    }
+  }
+}
