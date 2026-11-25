@@ -131,16 +131,18 @@
     },
     "validated_exports_and_replay": {
       "status": "PASS",
-      "detail": "Fixture observations exercise transactional history and correction replay. Two actual installed-CLI silence imports produced a single stored generation and byte-identical CSV. Speech-bearing model outputs are tracked separately.",
+      "detail": "Fixture observations exercise transactional history and correction replay. Two actual installed-CLI silence imports produced a single stored generation and byte-identical CSV. Speech-bearing model outputs are tracked separately. Concurrent saves and explicit exports targeting one directory also passed process and race regressions, including interrupted-writer recovery.",
       "evidence": [
         "reports/integration/storage-fixes.txt",
         "reports/integration/silence-replay.json",
-        "reports/integration/partial-retry.txt"
+        "reports/integration/partial-retry.txt",
+        "reports/persistence/out-dir-lock.md",
+        "reports/integration/output-lock-suite.txt"
       ]
     },
     "reference_semantics": {
       "status": "PASS",
-      "detail": "Independent deterministic checks use scripted extractor replies. The full default suite now passes 236 tests, including cross-unit corrections and model release. Real generation remains pending.",
+      "detail": "Independent deterministic checks use scripted extractor replies, including cross-unit corrections and model release. Real generation remains pending.",
       "evidence": [
         "reports/integration/post-extraction-fixes.txt",
         "reports/integration/post-unit-conversion.txt"

@@ -1,0 +1,14 @@
+E       assert {'observation...    -\n', ...} == {'observation...ux  -\n', ...}
+E       AssertionError: assert {'observation...ux  -\n', ...} == {'observation...ux  -\n', ...}
+E       AssertionError: assert {'observation...ux  -\n', ...} == {'observation...ux  -\n', ...}
+E       assert not True
+E           AssertionError: assert False
+FAILED tests/persistence_own/test_own_out_dir_lock.py::test_save_overtaken_between_commit_and_views_cannot_leave_stale_exports
+FAILED tests/persistence_own/test_own_out_dir_lock.py::test_interleaved_file_swaps_cannot_mix_generations
+FAILED tests/persistence_own/test_own_out_dir_lock.py::test_export_started_before_a_newer_save_cannot_overwrite_it
+FAILED tests/persistence_own/test_own_out_dir_lock.py::test_save_after_pending_explicit_export_of_same_directory_is_serialized
+FAILED tests/persistence_own/test_own_out_dir_lock.py::test_lock_dies_with_its_holder_and_a_timeout_keeps_the_manifest
+5 failed, 2 passed in 11.97s
+5 failed, 2 passed in 11.97s
+5 failed, 2 passed in 11.98s
+5 failed, 2 passed in 11.95s

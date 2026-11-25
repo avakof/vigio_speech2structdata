@@ -1,0 +1,8 @@
+        failed, fixed = failed_then_fixed()
+        P.save_run(failed, db, out)
+        P.export_run(db, failed.run_id, "csv", out=out)
+        P.write_views(P.load_manifest(db, failed.run_id), out)
+FAILED tests/persistence_own/test_own_out_dir_lock.py::test_lock_dies_with_its_holder_and_a_timeout_keeps_the_manifest
+FAILED tests/persistence_own/test_own_out_dir_lock.py::test_unrelated_dot_export_entries_survive_save_export_and_recovery
+FAILED tests/persistence_own/test_own_out_dir_lock.py::test_forked_child_neither_reenters_nor_prolongs_the_parents_lock
+3 failed, 6 passed in 4.96s

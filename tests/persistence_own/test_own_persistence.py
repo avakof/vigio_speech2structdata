@@ -85,7 +85,8 @@ def test_frozen_save_signature_commits_and_exports(db, tmp_path):
     m = make_manifest()
     assert P.save(m, db, tmp_path / "o") is None
     assert {p.name for p in (tmp_path / "o").iterdir()} == {
-        "run.json", "observations.csv", "segments.csv", "observations.txt", "segments.txt"}
+        "run.json", "observations.csv", "segments.csv", "observations.txt", "segments.txt",
+        P.OUT_LOCK_NAME}
 
 
 def test_replay_after_restart_is_idempotent(db, tmp_path):

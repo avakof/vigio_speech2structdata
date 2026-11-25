@@ -119,6 +119,8 @@ stored in SQLite (so `export` reproduces them byte for byte):
 | `observations.csv`, `segments.csv` | UTF-8, `\n` line ends, header row, empty cell = null |
 | `observations.txt`, `segments.txt` | fixed-width terminal tables, null shown as `-`, ids shortened (`obs_148d2cff71`), long cells end with `…` |
 
+Saves, exports and recovery share a per-directory `.speechflow.lock` on the local filesystem. A writer waits up to 30 seconds. If a save times out, `speechflow recover --out DIR` can commit the saved recovery copy once the writer finishes. For a consistent read during an active export, read the single `run.json` manifest or use `speechflow export RUN_ID` to render a committed database record.
+
 ```
 #  obs             status  op          product  qty  max  qualifier  unit  packaging                               final  corrects
 0  obs_148d2cff71  ok      count       farine   3    -    exact      kg    -                                       false  -

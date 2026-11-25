@@ -12,6 +12,7 @@ Public entry points: ``save`` (frozen contract signature), ``save_run``,
 from __future__ import annotations
 
 import csv
+import fcntl
 import hashlib
 import io
 import json
@@ -20,10 +21,12 @@ import re
 import shutil
 import sqlite3
 import tempfile
+import threading
 import time
 import unicodedata
 import uuid
-from collections.abc import Callable, Iterable, Sequence
+from collections.abc import Callable, Iterable, Iterator, Sequence
+from contextlib import contextmanager
 from dataclasses import dataclass, field
 from datetime import UTC, datetime
 from decimal import Decimal
@@ -36,6 +39,8 @@ from .contracts import RunManifest
 MIN_SQLITE = (3, 38, 0)
 BUSY_TIMEOUT_MS = 30_000
 RECOVERY_DIR = ".recovery"
+OUT_LOCK_NAME = ".speechflow.lock"
+OUT_LOCK_TIMEOUT_S = 30.0
 VIEW_FILES = {
     "csv": ("observations.csv", "segments.csv"),
     "table": ("observations.txt", "segments.txt"),
@@ -445,56 +450,133 @@ def _fsync_write(path: Path, text: str) -> None:
         os.fsync(handle.fileno())
 
 
+# ------------------------------------------------------------ output-directory lock
+
+_held = threading.local()
+
+
+@contextmanager
+def _out_lock(out: Path) -> Iterator[None]:
+    """Exclusive, re-entrant lock scoped to one output directory.
+
+    Every save, explicit export and recovery that targets ``out`` runs under it,
+    from the database transaction through the last file swap, so the order in
+    which writers finish equals the order in which they committed and a
+    directory never mixes generations. It is an ``flock`` on a file inside
+    ``out``: the OS releases it when its holder dies, different directories use
+    different locks, and nothing global is held. Lock order is always
+    directory lock, then the SQLite write lock.
+
+    Ownership is recorded per (pid, path) in thread-local state, so a forked
+    child never mistakes the parent's critical section for its own. The
+    acquirer unlocks explicitly before closing, because a child that inherited
+    the descriptor would otherwise keep the (shared) lock alive after the
+    parent has left.
+    """
+    out = Path(out)
+    try:
+        out.mkdir(parents=True, exist_ok=True)
+        fd = os.open(out / OUT_LOCK_NAME, os.O_CREAT | os.O_RDWR, 0o600)
+    except OSError as exc:
+        raise PersistenceError(f"cannot lock output directory {out}: {exc}") from exc
+    pid = os.getpid()
+    key = (pid, os.path.realpath(out / OUT_LOCK_NAME))
+    held: dict[tuple[int, str], int] = _held.__dict__.setdefault("paths", {})
+    try:
+        if key in held:  # this thread of this process owns it (recover -> save_run)
+            held[key] += 1
+            try:
+                yield
+            finally:
+                held[key] -= 1
+            return
+        deadline = time.monotonic() + OUT_LOCK_TIMEOUT_S
+        while True:
+            try:
+                fcntl.flock(fd, fcntl.LOCK_EX | fcntl.LOCK_NB)
+                break
+            except BlockingIOError:
+                if time.monotonic() > deadline:
+                    raise PersistenceError(
+                        f"output directory {out} is locked by another speechflow process; "
+                        "retry once it finishes. Nothing was committed, and a copy of the "
+                        f"result is in {out / RECOVERY_DIR} if it was written.") from None
+                time.sleep(0.01)
+            except OSError as exc:
+                raise PersistenceError(f"cannot lock output directory {out}: {exc}") from exc
+        held[key] = 1
+        try:
+            yield
+        finally:
+            held.pop(key, None)
+            if os.getpid() == pid:  # a forked copy of this frame must not unlock the parent
+                try:
+                    fcntl.flock(fd, fcntl.LOCK_UN)
+                except OSError:
+                    pass
+    finally:
+        os.close(fd)
+
+
 def _write_recovery(out: Path, manifest: RunManifest, digest: str) -> Path:
     directory = Path(out) / RECOVERY_DIR
-    try:
-        directory.mkdir(parents=True, exist_ok=True)
-        final = directory / f"{manifest.run_id}.{digest[:16]}.{uuid.uuid4().hex[:8]}.json"
-        tmp = final.with_suffix(".tmp")
-        _fsync_write(tmp, manifest.model_dump_json(indent=2) + "\n")
-        os.replace(tmp, final)
-    except OSError as exc:
-        raise PersistenceError(f"cannot write recovery copy under {directory}: {exc}") from exc
-    return final
+    for attempt in range(5):
+        try:
+            directory.mkdir(parents=True, exist_ok=True)
+            final = directory / f"{manifest.run_id}.{digest[:16]}.{uuid.uuid4().hex[:8]}.json"
+            tmp = final.with_suffix(".tmp")
+            _fsync_write(tmp, manifest.model_dump_json(indent=2) + "\n")
+            os.replace(tmp, final)
+            return final
+        except FileNotFoundError:
+            if attempt == 4:  # another save removed the empty directory under us; retry
+                raise PersistenceError(f"cannot write recovery copy under {directory}") from None
+        except OSError as exc:
+            raise PersistenceError(f"cannot write recovery copy under {directory}: {exc}") from exc
+    raise AssertionError("unreachable")
 
 
 def save_run(manifest: RunManifest, database: Path, out: Path, *,
              clock: Callable[[], str] = _now, recovery: Path | None = None) -> SaveResult:
     """Commit ``manifest`` to ``database`` and write the views into ``out``.
 
-    Order: (1) recovery copy in ``out/.recovery``; (2) one IMMEDIATE transaction;
-    (3) views rendered from the stored manifest and swapped in file by file;
-    (4) recovery copy removed. A failure at any step leaves the recovery copy,
+    Order: (1) recovery copy in ``out/.recovery``; (2) the output-directory lock,
+    held through steps 3-5; (3) one IMMEDIATE transaction; (4) views rendered from
+    the stored manifest and swapped in file by file; (5) recovery copy removed. A failure at any step leaves the recovery copy,
     and ``recover`` or ``export_run`` completes the work later.
     """
     manifest = RunManifest.model_validate_json(manifest.model_dump_json())
     out, database = Path(out), Path(database)
     digest = content_digest(manifest)
+    # The recovery copy is written before waiting for the directory lock so that
+    # a lock timeout or a crash anywhere below still leaves the result on disk.
     recovery = recovery or _write_recovery(out, manifest, digest)
     check_manifest(manifest)
 
-    conn = connect(database)
-    try:
-        conn.execute("BEGIN IMMEDIATE")
+    with _out_lock(out):  # one writer per directory, from commit to the last view
+        conn = connect(database)
         try:
-            disposition, save_id, generation, text = _write_run(conn, manifest, digest, clock())
-            conn.execute("COMMIT")
-        except BaseException:
-            if conn.in_transaction:
-                conn.execute("ROLLBACK")
-            raise
-    except sqlite3.Error as exc:
-        raise _wrap(exc, database) from exc
-    finally:
-        conn.close()
+            conn.execute("BEGIN IMMEDIATE")
+            try:
+                disposition, save_id, generation, text = _write_run(
+                    conn, manifest, digest, clock())
+                conn.execute("COMMIT")
+            except BaseException:
+                if conn.in_transaction:
+                    conn.execute("ROLLBACK")
+                raise
+        except sqlite3.Error as exc:
+            raise _wrap(exc, database) from exc
+        finally:
+            conn.close()
 
-    stored = RunManifest.model_validate_json(text)
-    files = write_views(stored, out)
-    recovery.unlink(missing_ok=True)
-    try:
-        recovery.parent.rmdir()  # only succeeds when no other copy is pending
-    except OSError:
-        pass
+        stored = RunManifest.model_validate_json(text)
+        files = write_views(stored, out)
+        recovery.unlink(missing_ok=True)
+        try:
+            recovery.parent.rmdir()  # only succeeds when no other copy is pending
+        except OSError:
+            pass
     return SaveResult(manifest.run_id, disposition, save_id, generation, digest,
                       database, stored, files)
 
@@ -753,35 +835,42 @@ def render_views(manifest: RunManifest, formats: Sequence[str] = ("csv", "table"
 
 def write_views(manifest: RunManifest, out: Path,
                 formats: Sequence[str] = ("csv", "table", "json")) -> list[Path]:
-    """Stage every file, then swap each in atomically. ``run.json`` goes last."""
+    """Stage every file, then swap each in atomically. ``run.json`` goes last.
+
+    Serialized per output directory with every other writer of that directory.
+    """
     views = render_views(manifest, formats)
     names = sorted(views, key=lambda n: (n == "run.json", n))
     out = Path(out)
-    try:
-        out.mkdir(parents=True, exist_ok=True)
-        stage = Path(tempfile.mkdtemp(prefix=".export-", dir=out))
-    except OSError as exc:
-        raise PersistenceError(f"cannot write exports to {out}: {exc}") from exc
-    try:
-        for name in names:
-            _fsync_write(stage / name, views[name])
-        for name in names:
-            os.replace(stage / name, out / name)
-    except OSError as exc:
-        raise PersistenceError(
-            f"export to {out} failed ({exc}); the run is committed. Re-run "
-            f"`speechflow export {manifest.run_id} --out {out}` to complete it") from exc
-    finally:
-        shutil.rmtree(stage, ignore_errors=True)
+    with _out_lock(out):
+        try:
+            stage = Path(tempfile.mkdtemp(prefix=".export-", dir=out))
+        except OSError as exc:
+            raise PersistenceError(f"cannot write exports to {out}: {exc}") from exc
+        try:
+            for name in names:
+                _fsync_write(stage / name, views[name])
+            for name in names:
+                os.replace(stage / name, out / name)
+        except OSError as exc:
+            raise PersistenceError(
+                f"export to {out} failed ({exc}); the run is committed. Re-run "
+                f"`speechflow export {manifest.run_id} --out {out}` to complete it") from exc
+        finally:
+            shutil.rmtree(stage, ignore_errors=True)
     return [out / n for n in names]
 
 
 def export_run(database: Path, run_id: str, fmt: str, *, part: str = "observations",
                out: Path | None = None) -> str | list[Path]:
     """Render a stored run. Returns text when ``out`` is None, else the files written."""
-    manifest = load_manifest(database, run_id)
     if out is not None:
-        return write_views(manifest, Path(out), (fmt,))
+        # Read the run *inside* the directory lock: a save that committed while
+        # we waited must not be overwritten by the older generation we would
+        # otherwise have read first.
+        with _out_lock(Path(out)):
+            return write_views(load_manifest(database, run_id), Path(out), (fmt,))
+    manifest = load_manifest(database, run_id)
     views = render_views(manifest, (fmt,))
     if fmt == "json":
         return views["run.json"]
@@ -796,12 +885,15 @@ def recover(database: Path, out: Path) -> list[tuple[Path, str, str]]:
     """
     results: list[tuple[Path, str, str]] = []
     directory = Path(out) / RECOVERY_DIR
-    for path in sorted(directory.glob("*.json")) if directory.is_dir() else []:
-        try:
-            manifest = RunManifest.model_validate_json(path.read_text(encoding="utf-8"))
-            result = save_run(manifest, database, out, recovery=path)
-        except (PersistenceError, ValueError, OSError) as exc:
-            results.append((path, "failed", str(exc)))
-            continue
-        results.append((path, result.disposition, result.run_id))
+    if not directory.is_dir():
+        return results
+    with _out_lock(Path(out)):  # one recoverer per directory; re-entered by save_run
+        for path in sorted(directory.glob("*.json")):
+            try:
+                manifest = RunManifest.model_validate_json(path.read_text(encoding="utf-8"))
+                result = save_run(manifest, database, out, recovery=path)
+            except (PersistenceError, ValueError, OSError) as exc:
+                results.append((path, "failed", str(exc)))
+                continue
+            results.append((path, result.disposition, result.run_id))
     return results
