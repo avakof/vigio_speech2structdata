@@ -184,12 +184,14 @@
       ]
     },
     "long_boundary_and_no_loss": {
-      "status": "NOT RUN",
+      "status": "FAIL",
+      "detail": "Independent 72.46 s CPU run had 3 bounded real ASR inputs (largest 400,000 samples), two forced core boundaries and zero unflushed tail samples. Hojo recognized 4/8 exact gold inventory phrases. Both real long-content and end-to-end-observation assertions failed.",
       "evidence": [
-        "reports/hojo/file-probe.jsonl",
-        "reports/integration/native-audio-tests.txt"
-      ],
-      "detail": "Real FFmpeg/Silero on 65.768 seconds produced four chunks, including two 400,000-sample inputs, and flushed to EOF. The ASR boundary-phrase and observation assertions still require the weights."
+        "reports/qa/real-full-long-analysis.json",
+        "reports/qa/real-full-long-hojo.json",
+        "reports/qa/real-full-long-extraction.json",
+        "reports/qa/real-full-suite.log"
+      ]
     },
     "offline_control_app_and_daemon": {
       "status": "PASS",
@@ -210,22 +212,28 @@
       ]
     },
     "microphone_and_backpressure": {
-      "status": "FAIL",
-      "detail": "Reviewer exercised the mic entry point before the required file gate. Capture implementation pending.",
+      "status": "PASS",
+      "detail": "Segmented microphone capture is implemented. Thirteen injected-frame tests exercised real Silero, native-rate conversion, the bounded callback queue and controlled stops with retained audio. The ASR callable in these transport tests was injected. Actual device queue and end-of-speech latency are separate gates.",
       "evidence": [
-        "reports/review/repro/r04_mic_ipc.out"
+        "reports/hojo/microphone-injected-pytest.log",
+        "reports/integration/mic-resampler-check.json"
       ]
     },
     "offline_microphone_inference": {
-      "status": "NOT RUN",
-      "evidence": []
+      "status": "BLOCKED",
+      "detail": "Physical offline microphone test barred by user choice; synthetic callback transport is tracked separately.",
+      "evidence": [
+        "reports/integration/mic-device-discovery.json",
+        "docs/agent-routing.md"
+      ]
     },
     "french_wer": {
-      "status": "BLOCKED",
-      "detail": "NOT MEASURED. Two FLEURS recordings total 20.46 s.",
+      "status": "PASS",
+      "detail": "Measured 2 word edits across 61 human-reference words, 3.2787% corpus WER, on two preselected FLEURS fr_fr dev clips totaling 20.46 s. One clip had 0 edits on 38 words; the other 2 on 23. No clean/noisy labels were supplied. This small result does not estimate broader French accuracy.",
       "evidence": [
         "evaluation/fleurs-fr/provenance.json",
-        "reports/qa/fleurs.cli.json"
+        "evaluation/fleurs-fr/manifest.jsonl",
+        "reports/evaluation/fleurs-real.json"
       ]
     },
     "field_scores": {
@@ -280,6 +288,26 @@
         "reports/integration/jacques-350-manifest.json",
         "reports/examples/jacques/sqlite-export-check.json"
       ]
+    },
+    "physical_microphone": {
+      "status": "BLOCKED",
+      "detail": "User explicitly chose file input only. The default MacBook Pro Microphone was enumerated as 48 kHz mono; no physical input was opened and no playback was performed.",
+      "evidence": [
+        "reports/integration/mic-device-discovery.json",
+        "docs/agent-routing.md"
+      ]
+    },
+    "physical_queue_and_eos_latency": {
+      "status": "BLOCKED",
+      "detail": "Actual device queue behavior, device losses and live end-of-speech-to-final-output latency require physical capture, declined by user.",
+      "evidence": [
+        "docs/agent-routing.md"
+      ]
+    },
+    "fixture_microphone_real_models": {
+      "status": "NOT RUN",
+      "detail": "Fixture-based callback transport using real local models is being prepared.",
+      "evidence": []
     }
   }
 }

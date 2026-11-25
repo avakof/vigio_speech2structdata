@@ -1,0 +1,256 @@
+{
+  "exit_code": 1,
+  "passed": 9,
+  "failed": 3,
+  "deselected": 1,
+  "pytest_seconds": 478.94,
+  "snapshot_counts": {
+    "rows": 210,
+    "max_cli_hojo_children": 1,
+    "default_ollama_and_cli_hojo_overlap": 0,
+    "poll_errors": 0
+  },
+  "seatbelt_file": {
+    "verification": "outputs/qa-full-real-001/test_real_file_installed_cli_o0/offline/file-1795630140943339000/verification.json",
+    "run_id": "run_8b97566bb27215068ccc377707c83f978930036ae6f170b6483e0693a5236de4",
+    "inventory": [
+      [
+        "lait",
+        "12",
+        "bouteille"
+      ],
+      [
+        "tomates",
+        "2.5",
+        "kg"
+      ]
+    ],
+    "pipeline_metrics": {
+      "audio": {
+        "decoder": {
+          "sha256": "6d175a4743ca50256e89a8cdd731100f9cee33bd79aeea46894d209410dc6617",
+          "version": "7.1"
+        },
+        "decode_seconds": 0.04607683399808593,
+        "decoded_seconds": 3.571375,
+        "normalized_spool_bytes": 228568,
+        "requested_backend": "cpu",
+        "vad_min_silence_ms": 350,
+        "silero": {
+          "version": "6.2.0",
+          "artifact": "silero_vad/data/silero_vad.jit",
+          "sha256": "e1122837f4154c511485fe0b9c64455f7b929c96fbb8d79fbdb336383ebd3720"
+        },
+        "vad_seconds": 0.6238340410054661,
+        "asr_chunk_sample_counts": [
+          57142
+        ],
+        "model_asset_verification_seconds": 5.029129958013073,
+        "model_load_seconds": 9.359357415989507,
+        "asr_seconds": 7.387401165993651,
+        "process_peak_rss_bytes": 12773539840,
+        "asr_realtime_factor": 2.068503354028533,
+        "audio_total_seconds": 22.489133083989145
+      },
+      "extraction": {
+        "extractor": {
+          "backend": "ollama",
+          "model": "qwen3:8b",
+          "digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+          "details": {
+            "parent_model": "",
+            "format": "gguf",
+            "family": "qwen3",
+            "families": [
+              "qwen3"
+            ],
+            "parameter_size": "8.2B",
+            "quantization_level": "Q4_K_M",
+            "context_length": 40960,
+            "embedding_length": 4096,
+            "runner": "ggml"
+          },
+          "size": 5225388164
+        },
+        "windows": 1,
+        "failed_windows": 0,
+        "attempts": 1,
+        "repairs": 0,
+        "model_wall_s": 6.5958,
+        "total_wall_s": 6.5984,
+        "prompt_tokens": 676,
+        "output_tokens": 257,
+        "load_duration_ns": 777082333,
+        "duplicates_skipped": 0,
+        "context_only_dropped": 0,
+        "unit_conversions": [],
+        "estimate_misses": 0,
+        "max_actual_to_estimate_ratio": 0.229,
+        "options": {
+          "temperature": 0,
+          "seed": 0,
+          "top_k": 1,
+          "top_p": 1.0,
+          "num_ctx": 8192,
+          "num_predict": 2048
+        },
+        "prompt_version": "inventory.v1.prompt4",
+        "schema_version": "inventory.v1.gen4",
+        "unload": {
+          "attempted": true,
+          "ok": true,
+          "error": null,
+          "idle_confirmed": true
+        }
+      },
+      "duration_s": 3.571375,
+      "pipeline_seconds": 29.53159912500996,
+      "pipeline_rtf": 8.268971789579632
+    },
+    "status": "PASS"
+  },
+  "exact_transcript_evaluation": {
+    "path": "outputs/qa-full-real-001/test_real_extractor_installed_0/evaluation.json",
+    "sha256": "ebca257299bb73ebf3127a54ff91bca2544c7c027db6218f928155cf96e84634",
+    "elapsed_s": 97.191518,
+    "cases": 15,
+    "gold_covered": 16,
+    "fields": {
+      "product_spoken": {
+        "tp": 15,
+        "fp": 0,
+        "fn": 0,
+        "predicted": 15,
+        "expected": 15,
+        "precision": 1.0,
+        "recall": 1.0
+      },
+      "quantity": {
+        "tp": 15,
+        "fp": 0,
+        "fn": 0,
+        "predicted": 15,
+        "expected": 15,
+        "precision": 1.0,
+        "recall": 1.0
+      },
+      "quantity_max": {
+        "tp": 1,
+        "fp": 0,
+        "fn": 0,
+        "predicted": 1,
+        "expected": 1,
+        "precision": 1.0,
+        "recall": 1.0
+      },
+      "qualifier": {
+        "tp": 16,
+        "fp": 0,
+        "fn": 0,
+        "predicted": 16,
+        "expected": 16,
+        "precision": 1.0,
+        "recall": 1.0
+      },
+      "unit": {
+        "tp": 15,
+        "fp": 0,
+        "fn": 0,
+        "predicted": 15,
+        "expected": 15,
+        "precision": 1.0,
+        "recall": 1.0
+      },
+      "operation": {
+        "tp": 16,
+        "fp": 0,
+        "fn": 0,
+        "predicted": 16,
+        "expected": 16,
+        "precision": 1.0,
+        "recall": 1.0
+      },
+      "location": {
+        "tp": 1,
+        "fp": 0,
+        "fn": 0,
+        "predicted": 1,
+        "expected": 1,
+        "precision": 1.0,
+        "recall": 1.0
+      },
+      "negation": {
+        "tp": 1,
+        "fp": 0,
+        "fn": 0,
+        "predicted": 1,
+        "expected": 1,
+        "precision": 1.0,
+        "recall": 1.0
+      },
+      "correction": {
+        "tp": 2,
+        "fp": 0,
+        "fn": 0,
+        "predicted": 2,
+        "expected": 2,
+        "precision": 1.0,
+        "recall": 1.0
+      },
+      "packaging.count": {
+        "tp": 2,
+        "fp": 0,
+        "fn": 0,
+        "predicted": 2,
+        "expected": 2,
+        "precision": 1.0,
+        "recall": 1.0
+      },
+      "packaging.unit": {
+        "tp": 2,
+        "fp": 0,
+        "fn": 0,
+        "predicted": 2,
+        "expected": 2,
+        "precision": 1.0,
+        "recall": 1.0
+      },
+      "packaging.per_package_quantity": {
+        "tp": 1,
+        "fp": 0,
+        "fn": 0,
+        "predicted": 1,
+        "expected": 1,
+        "precision": 1.0,
+        "recall": 1.0
+      },
+      "packaging.per_package_unit": {
+        "tp": 1,
+        "fp": 0,
+        "fn": 0,
+        "predicted": 1,
+        "expected": 1,
+        "precision": 1.0,
+        "recall": 1.0
+      },
+      "packaging.total": {
+        "tp": 1,
+        "fp": 0,
+        "fn": 0,
+        "predicted": 1,
+        "expected": 1,
+        "precision": 1.0,
+        "recall": 1.0
+      },
+      "packaging.total_unit": {
+        "tp": 1,
+        "fp": 0,
+        "fn": 0,
+        "predicted": 1,
+        "expected": 1,
+        "precision": 1.0,
+        "recall": 1.0
+      }
+    }
+  }
+}

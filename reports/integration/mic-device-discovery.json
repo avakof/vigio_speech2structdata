@@ -1,0 +1,8 @@
+{
+  "name": "MacBook Pro Microphone",
+  "index": 1,
+  "max_input_channels": 1,
+  "default_samplerate": 48000.0,
+  "portaudio_version": "PortAudio V19.7.0-devel, revision unknown",
+  "opened_stream": false
+}

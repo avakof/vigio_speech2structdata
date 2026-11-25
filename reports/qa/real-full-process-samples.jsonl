@@ -1,0 +1,210 @@
+{"utc_epoch": 1795629735.316729, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 52144, "kind": "pytest"}, {"pid": 49066, "ppid": 49065, "rss_KiB": 528304, "kind": "CLI Hojo child"}], "ollama_models": []}
+{"utc_epoch": 1795629737.381906, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 52144, "kind": "pytest"}, {"pid": 49066, "ppid": 49065, "rss_KiB": 3072064, "kind": "CLI Hojo child"}], "ollama_models": []}
+{"utc_epoch": 1795629739.437885, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 52144, "kind": "pytest"}, {"pid": 49066, "ppid": 49065, "rss_KiB": 3072064, "kind": "CLI Hojo child"}], "ollama_models": []}
+{"utc_epoch": 1795629741.522149, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 52144, "kind": "pytest"}, {"pid": 49066, "ppid": 49065, "rss_KiB": 3072064, "kind": "CLI Hojo child"}], "ollama_models": []}
+{"utc_epoch": 1795629743.5883589, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 52144, "kind": "pytest"}, {"pid": 49066, "ppid": 49065, "rss_KiB": 5167360, "kind": "CLI Hojo child"}], "ollama_models": []}
+{"utc_epoch": 1795629745.654794, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 52144, "kind": "pytest"}, {"pid": 49066, "ppid": 49065, "rss_KiB": 8535024, "kind": "CLI Hojo child"}], "ollama_models": []}
+{"utc_epoch": 1795629747.717412, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 52144, "kind": "pytest"}, {"pid": 49066, "ppid": 49065, "rss_KiB": 12455616, "kind": "CLI Hojo child"}], "ollama_models": []}
+{"utc_epoch": 1795629749.778744, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 52144, "kind": "pytest"}, {"pid": 49066, "ppid": 49065, "rss_KiB": 12368304, "kind": "CLI Hojo child"}], "ollama_models": []}
+{"utc_epoch": 1795629751.8438551, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 52144, "kind": "pytest"}, {"pid": 49066, "ppid": 49065, "rss_KiB": 12390528, "kind": "CLI Hojo child"}], "ollama_models": []}
+{"utc_epoch": 1795629753.9005508, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 52144, "kind": "pytest"}], "ollama_models": ["qwen3:8b"]}
+{"utc_epoch": 1795629755.960764, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 52144, "kind": "pytest"}], "ollama_models": ["qwen3:8b"]}
+{"utc_epoch": 1795629758.028215, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 52144, "kind": "pytest"}], "ollama_models": ["qwen3:8b"]}
+{"utc_epoch": 1795629760.0850618, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 58432, "kind": "pytest"}], "ollama_models": []}
+{"utc_epoch": 1795629762.153095, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 58464, "kind": "pytest"}], "ollama_models": []}
+{"utc_epoch": 1795629764.218603, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 58464, "kind": "pytest"}], "ollama_models": []}
+{"utc_epoch": 1795629766.278486, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 223152, "kind": "pytest"}], "ollama_models": []}
+{"utc_epoch": 1795629768.3331861, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 369264, "kind": "pytest"}], "ollama_models": []}
+{"utc_epoch": 1795629770.393177, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 412768, "kind": "pytest"}], "ollama_models": []}
+{"utc_epoch": 1795629772.4434502, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 412768, "kind": "pytest"}], "ollama_models": []}
+{"utc_epoch": 1795629774.51265, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 894944, "kind": "pytest"}], "ollama_models": []}
+{"utc_epoch": 1795629776.567151, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 3086032, "kind": "pytest"}], "ollama_models": []}
+{"utc_epoch": 1795629778.6295009, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 3086032, "kind": "pytest"}], "ollama_models": []}
+{"utc_epoch": 1795629780.688541, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 3086032, "kind": "pytest"}], "ollama_models": []}
+{"utc_epoch": 1795629782.759468, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 4062032, "kind": "pytest"}], "ollama_models": []}
+{"utc_epoch": 1795629784.858607, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 5434752, "kind": "pytest"}], "ollama_models": []}
+{"utc_epoch": 1795629786.941626, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 5781312, "kind": "pytest"}], "ollama_models": []}
+{"utc_epoch": 1795629789.034273, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 6177824, "kind": "pytest"}], "ollama_models": []}
+{"utc_epoch": 1795629791.132365, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 6520320, "kind": "pytest"}], "ollama_models": []}
+{"utc_epoch": 1795629793.2499468, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 6941200, "kind": "pytest"}], "ollama_models": []}
+{"utc_epoch": 1795629795.355137, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 7378192, "kind": "pytest"}], "ollama_models": []}
+{"utc_epoch": 1795629797.4622378, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 7234176, "kind": "pytest"}], "ollama_models": []}
+{"utc_epoch": 1795629799.5846138, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 7654912, "kind": "pytest"}], "ollama_models": []}
+{"utc_epoch": 1795629801.703948, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 8067632, "kind": "pytest"}], "ollama_models": []}
+{"utc_epoch": 1795629803.8524852, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 8471616, "kind": "pytest"}], "ollama_models": []}
+{"utc_epoch": 1795629805.972536, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 8886432, "kind": "pytest"}], "ollama_models": []}
+{"utc_epoch": 1795629808.0725272, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 8936944, "kind": "pytest"}], "ollama_models": []}
+{"utc_epoch": 1795629810.164268, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 9407776, "kind": "pytest"}], "ollama_models": []}
+{"utc_epoch": 1795629812.2647219, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 9882720, "kind": "pytest"}], "ollama_models": []}
+{"utc_epoch": 1795629814.380179, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 10390256, "kind": "pytest"}], "ollama_models": []}
+{"utc_epoch": 1795629816.485163, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 10881952, "kind": "pytest"}], "ollama_models": []}
+{"utc_epoch": 1795629818.5888078, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 11328704, "kind": "pytest"}], "ollama_models": []}
+{"utc_epoch": 1795629820.6746418, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 11894224, "kind": "pytest"}], "ollama_models": []}
+{"utc_epoch": 1795629822.760911, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 11938240, "kind": "pytest"}], "ollama_models": []}
+{"utc_epoch": 1795629824.8386009, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 11927152, "kind": "pytest"}], "ollama_models": []}
+{"utc_epoch": 1795629826.918326, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 11916816, "kind": "pytest"}], "ollama_models": []}
+{"utc_epoch": 1795629828.9984798, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 11942496, "kind": "pytest"}], "ollama_models": []}
+{"utc_epoch": 1795629831.07692, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 11969456, "kind": "pytest"}], "ollama_models": []}
+{"utc_epoch": 1795629833.159313, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 11958080, "kind": "pytest"}], "ollama_models": []}
+{"utc_epoch": 1795629835.239577, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 11964640, "kind": "pytest"}], "ollama_models": []}
+{"utc_epoch": 1795629837.319073, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 11993424, "kind": "pytest"}], "ollama_models": []}
+{"utc_epoch": 1795629839.4020832, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 11979872, "kind": "pytest"}], "ollama_models": []}
+{"utc_epoch": 1795629841.4852211, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 11986400, "kind": "pytest"}], "ollama_models": []}
+{"utc_epoch": 1795629843.57994, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 11993104, "kind": "pytest"}], "ollama_models": []}
+{"utc_epoch": 1795629845.665411, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 12025120, "kind": "pytest"}], "ollama_models": []}
+{"utc_epoch": 1795629847.751437, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 12492592, "kind": "pytest"}], "ollama_models": []}
+{"utc_epoch": 1795629849.841192, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 12717888, "kind": "pytest"}], "ollama_models": []}
+{"utc_epoch": 1795629851.935152, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 13156752, "kind": "pytest"}], "ollama_models": []}
+{"utc_epoch": 1795629854.026239, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 13249648, "kind": "pytest"}], "ollama_models": []}
+{"utc_epoch": 1795629856.1196191, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 13268464, "kind": "pytest"}], "ollama_models": []}
+{"utc_epoch": 1795629858.2155871, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 13281008, "kind": "pytest"}], "ollama_models": []}
+{"utc_epoch": 1795629860.313386, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 13296688, "kind": "pytest"}], "ollama_models": []}
+{"utc_epoch": 1795629862.411236, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 13312368, "kind": "pytest"}], "ollama_models": []}
+{"utc_epoch": 1795629864.5050611, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 13328048, "kind": "pytest"}], "ollama_models": []}
+{"utc_epoch": 1795629866.6038918, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 13343776, "kind": "pytest"}], "ollama_models": []}
+{"utc_epoch": 1795629868.709206, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 12759488, "kind": "pytest"}], "ollama_models": []}
+{"utc_epoch": 1795629870.8179042, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 12759488, "kind": "pytest"}], "ollama_models": []}
+{"utc_epoch": 1795629872.946622, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 12759488, "kind": "pytest"}], "ollama_models": []}
+{"utc_epoch": 1795629875.0631108, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 12762016, "kind": "pytest"}], "ollama_models": []}
+{"utc_epoch": 1795629877.1983092, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 12767040, "kind": "pytest"}], "ollama_models": []}
+{"utc_epoch": 1795629879.319212, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 12486048, "kind": "pytest"}], "ollama_models": []}
+{"utc_epoch": 1795629881.455334, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 12491072, "kind": "pytest"}], "ollama_models": []}
+{"utc_epoch": 1795629883.582331, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 12501120, "kind": "pytest"}], "ollama_models": []}
+{"utc_epoch": 1795629885.738724, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 12506144, "kind": "pytest"}], "ollama_models": []}
+{"utc_epoch": 1795629887.870343, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 11949600, "kind": "pytest"}], "ollama_models": []}
+{"utc_epoch": 1795629890.012646, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 12011472, "kind": "pytest"}], "ollama_models": []}
+{"utc_epoch": 1795629892.14428, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 12021520, "kind": "pytest"}], "ollama_models": []}
+{"utc_epoch": 1795629894.244193, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 12031568, "kind": "pytest"}], "ollama_models": []}
+{"utc_epoch": 1795629896.332951, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 12041760, "kind": "pytest"}], "ollama_models": []}
+{"utc_epoch": 1795629898.4227011, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 12051808, "kind": "pytest"}], "ollama_models": []}
+{"utc_epoch": 1795629900.5526028, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 12061856, "kind": "pytest"}], "ollama_models": []}
+{"utc_epoch": 1795629902.6596532, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 12071904, "kind": "pytest"}], "ollama_models": []}
+{"utc_epoch": 1795629904.7506392, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 12081952, "kind": "pytest"}], "ollama_models": []}
+{"utc_epoch": 1795629906.858948, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 12092000, "kind": "pytest"}], "ollama_models": []}
+{"utc_epoch": 1795629908.9496372, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 12107088, "kind": "pytest"}], "ollama_models": []}
+{"utc_epoch": 1795629911.018125, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 11927984, "kind": "pytest"}], "ollama_models": []}
+{"utc_epoch": 1795629913.0853062, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 11937120, "kind": "pytest"}], "ollama_models": []}
+{"utc_epoch": 1795629915.1514208, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 11946320, "kind": "pytest"}], "ollama_models": []}
+{"utc_epoch": 1795629917.21509, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 11948000, "kind": "pytest"}], "ollama_models": []}
+{"utc_epoch": 1795629919.2882922, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 11962096, "kind": "pytest"}], "ollama_models": []}
+{"utc_epoch": 1795629921.363425, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 11968272, "kind": "pytest"}], "ollama_models": []}
+{"utc_epoch": 1795629923.437016, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 11975760, "kind": "pytest"}], "ollama_models": []}
+{"utc_epoch": 1795629925.5207412, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 11982928, "kind": "pytest"}], "ollama_models": []}
+{"utc_epoch": 1795629927.602314, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 11990192, "kind": "pytest"}], "ollama_models": []}
+{"utc_epoch": 1795629929.667744, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 12018928, "kind": "pytest"}], "ollama_models": []}
+{"utc_epoch": 1795629931.7503319, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 12000224, "kind": "pytest"}], "ollama_models": []}
+{"utc_epoch": 1795629933.8216472, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 12188944, "kind": "pytest"}], "ollama_models": []}
+{"utc_epoch": 1795629935.891916, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 12499280, "kind": "pytest"}], "ollama_models": []}
+{"utc_epoch": 1795629937.964166, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 12641760, "kind": "pytest"}], "ollama_models": []}
+{"utc_epoch": 1795629940.033226, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 12860704, "kind": "pytest"}], "ollama_models": []}
+{"utc_epoch": 1795629942.095523, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 13010368, "kind": "pytest"}], "ollama_models": []}
+{"utc_epoch": 1795629944.166878, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 13029136, "kind": "pytest"}], "ollama_models": []}
+{"utc_epoch": 1795629946.2400808, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 13045552, "kind": "pytest"}], "ollama_models": []}
+{"utc_epoch": 1795629948.304547, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 13064240, "kind": "pytest"}], "ollama_models": []}
+{"utc_epoch": 1795629950.373378, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 13082928, "kind": "pytest"}], "ollama_models": []}
+{"utc_epoch": 1795629952.438842, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 13099280, "kind": "pytest"}], "ollama_models": []}
+{"utc_epoch": 1795629954.5061939, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 13117984, "kind": "pytest"}], "ollama_models": []}
+{"utc_epoch": 1795629956.571365, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 13136672, "kind": "pytest"}], "ollama_models": []}
+{"utc_epoch": 1795629958.638152, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 13153024, "kind": "pytest"}], "ollama_models": []}
+{"utc_epoch": 1795629960.704462, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 13171712, "kind": "pytest"}], "ollama_models": []}
+{"utc_epoch": 1795629962.769471, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 13188064, "kind": "pytest"}], "ollama_models": []}
+{"utc_epoch": 1795629964.8728461, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 12700928, "kind": "pytest"}], "ollama_models": []}
+{"utc_epoch": 1795629966.966399, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 12700960, "kind": "pytest"}], "ollama_models": []}
+{"utc_epoch": 1795629969.0728488, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 12703536, "kind": "pytest"}], "ollama_models": []}
+{"utc_epoch": 1795629971.16017, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 12717648, "kind": "pytest"}], "ollama_models": []}
+{"utc_epoch": 1795629973.2336361, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 12234544, "kind": "pytest"}], "ollama_models": []}
+{"utc_epoch": 1795629975.292991, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 12306000, "kind": "pytest"}], "ollama_models": []}
+{"utc_epoch": 1795629977.37265, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 12315408, "kind": "pytest"}], "ollama_models": []}
+{"utc_epoch": 1795629979.4478762, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 12329520, "kind": "pytest"}], "ollama_models": []}
+{"utc_epoch": 1795629981.523624, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 12338928, "kind": "pytest"}], "ollama_models": []}
+{"utc_epoch": 1795629983.601465, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 11878720, "kind": "pytest"}], "ollama_models": []}
+{"utc_epoch": 1795629985.688113, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 11983104, "kind": "pytest"}], "ollama_models": []}
+{"utc_epoch": 1795629987.762451, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 11992512, "kind": "pytest"}], "ollama_models": []}
+{"utc_epoch": 1795629989.826565, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 12006624, "kind": "pytest"}], "ollama_models": []}
+{"utc_epoch": 1795629991.906146, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 12020736, "kind": "pytest"}], "ollama_models": []}
+{"utc_epoch": 1795629994.011266, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 12030144, "kind": "pytest"}], "ollama_models": []}
+{"utc_epoch": 1795629996.083384, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 11969712, "kind": "pytest"}], "ollama_models": []}
+{"utc_epoch": 1795629998.152664, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 11980064, "kind": "pytest"}], "ollama_models": []}
+{"utc_epoch": 1795630000.226057, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 11990784, "kind": "pytest"}], "ollama_models": []}
+{"utc_epoch": 1795630002.2995222, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 12001216, "kind": "pytest"}], "ollama_models": []}
+{"utc_epoch": 1795630004.367496, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 12010752, "kind": "pytest"}], "ollama_models": []}
+{"utc_epoch": 1795630006.439005, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 12021184, "kind": "pytest"}], "ollama_models": []}
+{"utc_epoch": 1795630008.511298, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 11992672, "kind": "pytest"}], "ollama_models": []}
+{"utc_epoch": 1795630010.578651, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 12002272, "kind": "pytest"}], "ollama_models": []}
+{"utc_epoch": 1795630012.647421, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 12011872, "kind": "pytest"}], "ollama_models": []}
+{"utc_epoch": 1795630014.7175272, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 11980192, "kind": "pytest"}], "ollama_models": []}
+{"utc_epoch": 1795630016.786378, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 12073376, "kind": "pytest"}], "ollama_models": []}
+{"utc_epoch": 1795630018.85678, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 12083616, "kind": "pytest"}], "ollama_models": []}
+{"utc_epoch": 1795630020.91818, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 794656, "kind": "pytest"}], "ollama_models": []}
+{"utc_epoch": 1795630022.980157, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 794720, "kind": "pytest"}], "ollama_models": []}
+{"utc_epoch": 1795630025.044536, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 565264, "kind": "pytest"}], "ollama_models": ["qwen3:8b"]}
+{"utc_epoch": 1795630027.146964, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 507392, "kind": "pytest"}], "ollama_models": ["qwen3:8b"]}
+{"utc_epoch": 1795630029.245253, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 507392, "kind": "pytest"}], "ollama_models": ["qwen3:8b"]}
+{"utc_epoch": 1795630031.308521, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 507392, "kind": "pytest"}], "ollama_models": ["qwen3:8b"]}
+{"utc_epoch": 1795630033.3745139, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 507392, "kind": "pytest"}], "ollama_models": ["qwen3:8b"]}
+{"utc_epoch": 1795630035.43887, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 507392, "kind": "pytest"}], "ollama_models": ["qwen3:8b"]}
+{"utc_epoch": 1795630037.500027, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 507920, "kind": "pytest"}], "ollama_models": ["qwen3:8b"]}
+{"utc_epoch": 1795630039.5707898, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 507920, "kind": "pytest"}], "ollama_models": ["qwen3:8b"]}
+{"utc_epoch": 1795630041.639946, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 507920, "kind": "pytest"}], "ollama_models": ["qwen3:8b"]}
+{"utc_epoch": 1795630043.697491, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 509312, "kind": "pytest"}], "ollama_models": []}
+{"utc_epoch": 1795630045.765406, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 509312, "kind": "pytest"}], "ollama_models": ["qwen3:8b"]}
+{"utc_epoch": 1795630047.83499, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 509312, "kind": "pytest"}], "ollama_models": ["qwen3:8b"]}
+{"utc_epoch": 1795630049.89262, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 509312, "kind": "pytest"}], "ollama_models": ["qwen3:8b"]}
+{"utc_epoch": 1795630051.9483242, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 509312, "kind": "pytest"}], "ollama_models": ["qwen3:8b"]}
+{"utc_epoch": 1795630054.0015402, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 509312, "kind": "pytest"}], "ollama_models": ["qwen3:8b"]}
+{"utc_epoch": 1795630056.0603259, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 509312, "kind": "pytest"}], "ollama_models": ["qwen3:8b"]}
+{"utc_epoch": 1795630058.115229, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 509312, "kind": "pytest"}], "ollama_models": ["qwen3:8b"]}
+{"utc_epoch": 1795630060.1780522, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 509312, "kind": "pytest"}], "ollama_models": ["qwen3:8b"]}
+{"utc_epoch": 1795630062.2493498, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 509312, "kind": "pytest"}], "ollama_models": ["qwen3:8b"]}
+{"utc_epoch": 1795630064.3244429, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 509312, "kind": "pytest"}], "ollama_models": ["qwen3:8b"]}
+{"utc_epoch": 1795630066.396099, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 509312, "kind": "pytest"}], "ollama_models": []}
+{"utc_epoch": 1795630068.451107, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 509312, "kind": "pytest"}], "ollama_models": ["qwen3:8b"]}
+{"utc_epoch": 1795630070.52706, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 509312, "kind": "pytest"}], "ollama_models": ["qwen3:8b"]}
+{"utc_epoch": 1795630072.586816, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 509312, "kind": "pytest"}], "ollama_models": ["qwen3:8b"]}
+{"utc_epoch": 1795630074.650222, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 509312, "kind": "pytest"}], "ollama_models": ["qwen3:8b"]}
+{"utc_epoch": 1795630076.704799, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 509312, "kind": "pytest"}], "ollama_models": ["qwen3:8b"]}
+{"utc_epoch": 1795630078.7622201, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 509312, "kind": "pytest"}], "ollama_models": ["qwen3:8b"]}
+{"utc_epoch": 1795630080.8157299, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 509312, "kind": "pytest"}], "ollama_models": ["qwen3:8b"]}
+{"utc_epoch": 1795630082.8704882, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 509312, "kind": "pytest"}], "ollama_models": ["qwen3:8b"]}
+{"utc_epoch": 1795630084.927383, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 509312, "kind": "pytest"}], "ollama_models": ["qwen3:8b"]}
+{"utc_epoch": 1795630087.011509, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 509312, "kind": "pytest"}], "ollama_models": ["qwen3:8b"]}
+{"utc_epoch": 1795630089.071491, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 509312, "kind": "pytest"}], "ollama_models": ["qwen3:8b"]}
+{"utc_epoch": 1795630091.12784, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 509312, "kind": "pytest"}], "ollama_models": ["qwen3:8b"]}
+{"utc_epoch": 1795630093.1990972, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 509312, "kind": "pytest"}], "ollama_models": []}
+{"utc_epoch": 1795630095.2608058, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 509312, "kind": "pytest"}], "ollama_models": ["qwen3:8b"]}
+{"utc_epoch": 1795630097.337179, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 509312, "kind": "pytest"}], "ollama_models": ["qwen3:8b"]}
+{"utc_epoch": 1795630099.395522, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 509312, "kind": "pytest"}], "ollama_models": ["qwen3:8b"]}
+{"utc_epoch": 1795630101.449832, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 509312, "kind": "pytest"}], "ollama_models": ["qwen3:8b"]}
+{"utc_epoch": 1795630103.5163279, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 509312, "kind": "pytest"}], "ollama_models": ["qwen3:8b"]}
+{"utc_epoch": 1795630105.574068, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 509312, "kind": "pytest"}], "ollama_models": ["qwen3:8b"]}
+{"utc_epoch": 1795630107.6889658, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 509312, "kind": "pytest"}], "ollama_models": ["qwen3:8b"]}
+{"utc_epoch": 1795630109.7453198, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 509312, "kind": "pytest"}], "ollama_models": ["qwen3:8b"]}
+{"utc_epoch": 1795630111.806265, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 509312, "kind": "pytest"}], "ollama_models": ["qwen3:8b"]}
+{"utc_epoch": 1795630113.875746, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 509312, "kind": "pytest"}], "ollama_models": ["qwen3:8b"]}
+{"utc_epoch": 1795630115.981447, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 509312, "kind": "pytest"}], "ollama_models": []}
+{"utc_epoch": 1795630118.100168, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 509312, "kind": "pytest"}], "ollama_models": ["qwen3:8b"]}
+{"utc_epoch": 1795630120.1959412, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 509312, "kind": "pytest"}], "ollama_models": ["qwen3:8b"]}
+{"utc_epoch": 1795630122.299113, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 509312, "kind": "pytest"}], "ollama_models": ["qwen3:8b"]}
+{"utc_epoch": 1795630124.4075809, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 509312, "kind": "pytest"}], "ollama_models": ["qwen3:8b"]}
+{"utc_epoch": 1795630126.510619, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 509312, "kind": "pytest"}], "ollama_models": ["qwen3:8b"]}
+{"utc_epoch": 1795630128.6126149, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 509312, "kind": "pytest"}], "ollama_models": []}
+{"utc_epoch": 1795630130.708152, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 509312, "kind": "pytest"}], "ollama_models": ["qwen3:8b"]}
+{"utc_epoch": 1795630132.8001049, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 509312, "kind": "pytest"}], "ollama_models": ["qwen3:8b"]}
+{"utc_epoch": 1795630134.903004, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 509312, "kind": "pytest"}], "ollama_models": ["qwen3:8b"]}
+{"utc_epoch": 1795630136.965169, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 509312, "kind": "pytest"}], "ollama_models": ["qwen3:8b"]}
+{"utc_epoch": 1795630139.0530078, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 509312, "kind": "pytest"}], "ollama_models": []}
+{"utc_epoch": 1795630141.126209, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 509360, "kind": "pytest"}], "ollama_models": []}
+{"utc_epoch": 1795630143.179882, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 509360, "kind": "pytest"}, {"pid": 50619, "ppid": 50618, "rss_KiB": 210832, "kind": "CLI Hojo child"}], "ollama_models": []}
+{"utc_epoch": 1795630145.234838, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 509360, "kind": "pytest"}, {"pid": 50619, "ppid": 50618, "rss_KiB": 210832, "kind": "CLI Hojo child"}], "ollama_models": []}
+{"utc_epoch": 1795630147.295028, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 509360, "kind": "pytest"}, {"pid": 50619, "ppid": 50618, "rss_KiB": 210832, "kind": "CLI Hojo child"}], "ollama_models": []}
+{"utc_epoch": 1795630149.3522298, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 509360, "kind": "pytest"}, {"pid": 50619, "ppid": 50618, "rss_KiB": 390640, "kind": "CLI Hojo child"}], "ollama_models": []}
+{"utc_epoch": 1795630151.405192, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 509360, "kind": "pytest"}, {"pid": 50619, "ppid": 50618, "rss_KiB": 3075344, "kind": "CLI Hojo child"}], "ollama_models": []}
+{"utc_epoch": 1795630153.4589791, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 509360, "kind": "pytest"}, {"pid": 50619, "ppid": 50618, "rss_KiB": 3075344, "kind": "CLI Hojo child"}], "ollama_models": []}
+{"utc_epoch": 1795630155.5143418, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 509360, "kind": "pytest"}, {"pid": 50619, "ppid": 50618, "rss_KiB": 3075344, "kind": "CLI Hojo child"}], "ollama_models": []}
+{"utc_epoch": 1795630157.593547, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 509360, "kind": "pytest"}, {"pid": 50619, "ppid": 50618, "rss_KiB": 5721408, "kind": "CLI Hojo child"}], "ollama_models": []}
+{"utc_epoch": 1795630159.662152, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 509360, "kind": "pytest"}, {"pid": 50619, "ppid": 50618, "rss_KiB": 9794400, "kind": "CLI Hojo child"}], "ollama_models": []}
+{"utc_epoch": 1795630161.727672, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 509360, "kind": "pytest"}, {"pid": 50619, "ppid": 50618, "rss_KiB": 12370320, "kind": "CLI Hojo child"}], "ollama_models": []}
+{"utc_epoch": 1795630163.792882, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 509360, "kind": "pytest"}, {"pid": 50619, "ppid": 50618, "rss_KiB": 12385984, "kind": "CLI Hojo child"}], "ollama_models": []}
+{"utc_epoch": 1795630165.854078, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 509360, "kind": "pytest"}], "ollama_models": []}
+{"utc_epoch": 1795630167.976644, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 509360, "kind": "pytest"}], "ollama_models": []}
+{"utc_epoch": 1795630170.091398, "processes": [{"pid": 48943, "ppid": 48925, "rss_KiB": 509360, "kind": "pytest"}], "ollama_models": []}

@@ -1,0 +1,577 @@
+{
+  "status": "ok",
+  "manifest": "/Users/vakof/orca/vigio_speech2structdata/evaluation/fleurs-fr/manifest.jsonl",
+  "manifest_sha256": "b386291607189bca4d4e4bd11ad7d681da0d911d1d00a10ba5bdc92c40a64497",
+  "requested_cases": 2,
+  "requested_audio_cases": 2,
+  "elapsed_s": 63.028073,
+  "cases": [
+    {
+      "id": "10132087162443371989.wav",
+      "audio": "10132087162443371989.wav",
+      "source": "google/fleurs:fr_fr/validation",
+      "revision": "70bb2e84b976b7e960aa89f1c648e09c59f894dd",
+      "license": "CC-BY-4.0",
+      "sha256": "8bb53b14f4cc695c54a136a5db57e534344a225d81a6b5314ca6cdb0a12c7005",
+      "language": "fr",
+      "duration_s": 14.46,
+      "condition": "unspecified",
+      "synthetic": false,
+      "reference": [
+        "Il y a de nombreuses répercussions sociales et politiques telles que l'utilisation du système métrique, le passage de l'absolutisme au républicanisme, le nationalisme et la conviction que le pays appartient au peuple et non à un seul dirigeant."
+      ],
+      "expected_review": false,
+      "asr": {
+        "status": "ok",
+        "errors": [],
+        "provenance": {
+          "speechflow_version": "0.1.0",
+          "implementation_sha256": "acf2f062305d90d33c11040ac8865194a7a9a1d3cb707295e47ed24913fd15e3",
+          "schema_version": "inventory.v1",
+          "config": {
+            "backend": "cpu",
+            "ollama_model": "qwen3:8b",
+            "max_chunk_seconds": 25.0,
+            "padding_ms": 200,
+            "max_spool_bytes": 1073741824,
+            "extraction_timeout": 120.0,
+            "context_tokens": 8192,
+            "output_tokens": 2048
+          },
+          "silero_sha256": "e1122837f4154c511485fe0b9c64455f7b929c96fbb8d79fbdb336383ebd3720",
+          "hojo_revision": "aa1d0dfc369deb3b3235572fa151acd7b498481f",
+          "expected_extractor_digest": null,
+          "backend": "cpu",
+          "dtype": "encoder=float32,decoder=bfloat16",
+          "packages": {
+            "torch": "2.5.1",
+            "torchaudio": "2.5.1",
+            "transformers": "4.57.3",
+            "hojo-asr": "0.1.3",
+            "silero-vad": "6.2.0",
+            "numpy": "1.26.4",
+            "soundfile": "0.14.0",
+            "imageio-ffmpeg": "0.6.0",
+            "pydantic": "2.14.4"
+          },
+          "decoder": {
+            "sha256": "6d175a4743ca50256e89a8cdd731100f9cee33bd79aeea46894d209410dc6617",
+            "version": "7.1"
+          }
+        },
+        "metrics": {
+          "audio": {
+            "decoder": {
+              "sha256": "6d175a4743ca50256e89a8cdd731100f9cee33bd79aeea46894d209410dc6617",
+              "version": "7.1"
+            },
+            "decode_seconds": 0.04641520802397281,
+            "decoded_seconds": 14.46,
+            "normalized_spool_bytes": 925440,
+            "requested_backend": "cpu",
+            "vad_min_silence_ms": 350,
+            "silero": {
+              "version": "6.2.0",
+              "artifact": "silero_vad/data/silero_vad.jit",
+              "sha256": "e1122837f4154c511485fe0b9c64455f7b929c96fbb8d79fbdb336383ebd3720"
+            },
+            "vad_seconds": 0.7022192909789737,
+            "asr_chunk_sample_counts": [
+              216320
+            ],
+            "model_asset_verification_seconds": 4.909466749988496,
+            "model_load_seconds": 8.88236625000718,
+            "asr_seconds": 23.471096249995753,
+            "process_peak_rss_bytes": 12905119744,
+            "asr_realtime_factor": 1.6231740145225277,
+            "audio_total_seconds": 38.054030541010434
+          },
+          "extraction": {},
+          "duration_s": 14.46,
+          "pipeline_seconds": 38.409305749984924,
+          "pipeline_rtf": 2.6562452109256514
+        },
+        "actual_duration_s": 14.46,
+        "segments": [
+          {
+            "segment_id": "segment_54e6a20fda73137801338915594d2e37b110c6c7617a3243cb52f28c57b3e489",
+            "source_id": "file_b510ffcd7d3031358212b21b7e73d14c15534db90f6da6650e5782dba163b08c",
+            "ordinal": 0,
+            "input_start": 9600,
+            "core_start": 12800,
+            "core_end": 222720,
+            "input_end": 225920,
+            "raw": {
+              "key": "segment_54e6a20fda73137801338915594d2e37b110c6c7617a3243cb52f28c57b3e489",
+              "text": "il y a de nombreuses répercussions sociales et politiques telles que l'utilisation du système métrique le passage de l'absolutisme au républicanisme le nationalisme et la conviction que le pays appartient au peuple et non à un seul dirigeant"
+            },
+            "normalized_text": "il y a de nombreuses répercussions sociales et politiques telles que l'utilisation du système métrique le passage de l'absolutisme au républicanisme le nationalisme et la conviction que le pays appartient au peuple et non à un seul dirigeant",
+            "status": "ok",
+            "errors": []
+          }
+        ]
+      },
+      "wer": {
+        "basis": "pinned FLEURS corpus verification, no independent listening labels",
+        "condition": "unspecified",
+        "duration_s": 14.46,
+        "reference_words": 38,
+        "hypothesis_words": 38,
+        "inference_completed": true,
+        "edits": 0
+      }
+    },
+    {
+      "id": "10198958753510138668.wav",
+      "audio": "10198958753510138668.wav",
+      "source": "google/fleurs:fr_fr/validation",
+      "revision": "70bb2e84b976b7e960aa89f1c648e09c59f894dd",
+      "license": "CC-BY-4.0",
+      "sha256": "a9f2f1630034aae5bbe5273a25166d9ed1e92bedf4d613c7398fbda92b65ed12",
+      "language": "fr",
+      "duration_s": 6.0,
+      "condition": "unspecified",
+      "synthetic": false,
+      "reference": [
+        "Il n'avait pas non plus le pouvoir de déroger aux lois fiscales ni à celles sur les droits de douane entre les États."
+      ],
+      "expected_review": false,
+      "asr": {
+        "status": "ok",
+        "errors": [],
+        "provenance": {
+          "speechflow_version": "0.1.0",
+          "implementation_sha256": "acf2f062305d90d33c11040ac8865194a7a9a1d3cb707295e47ed24913fd15e3",
+          "schema_version": "inventory.v1",
+          "config": {
+            "backend": "cpu",
+            "ollama_model": "qwen3:8b",
+            "max_chunk_seconds": 25.0,
+            "padding_ms": 200,
+            "max_spool_bytes": 1073741824,
+            "extraction_timeout": 120.0,
+            "context_tokens": 8192,
+            "output_tokens": 2048
+          },
+          "silero_sha256": "e1122837f4154c511485fe0b9c64455f7b929c96fbb8d79fbdb336383ebd3720",
+          "hojo_revision": "aa1d0dfc369deb3b3235572fa151acd7b498481f",
+          "expected_extractor_digest": null,
+          "backend": "cpu",
+          "dtype": "encoder=float32,decoder=bfloat16",
+          "packages": {
+            "torch": "2.5.1",
+            "torchaudio": "2.5.1",
+            "transformers": "4.57.3",
+            "hojo-asr": "0.1.3",
+            "silero-vad": "6.2.0",
+            "numpy": "1.26.4",
+            "soundfile": "0.14.0",
+            "imageio-ffmpeg": "0.6.0",
+            "pydantic": "2.14.4"
+          },
+          "decoder": {
+            "sha256": "6d175a4743ca50256e89a8cdd731100f9cee33bd79aeea46894d209410dc6617",
+            "version": "7.1"
+          }
+        },
+        "metrics": {
+          "audio": {
+            "decoder": {
+              "sha256": "6d175a4743ca50256e89a8cdd731100f9cee33bd79aeea46894d209410dc6617",
+              "version": "7.1"
+            },
+            "decode_seconds": 0.039889999985462055,
+            "decoded_seconds": 6.0,
+            "normalized_spool_bytes": 384000,
+            "requested_backend": "cpu",
+            "vad_min_silence_ms": 350,
+            "silero": {
+              "version": "6.2.0",
+              "artifact": "silero_vad/data/silero_vad.jit",
+              "sha256": "e1122837f4154c511485fe0b9c64455f7b929c96fbb8d79fbdb336383ebd3720"
+            },
+            "vad_seconds": 0.6580479170079343,
+            "asr_chunk_sample_counts": [
+              81152
+            ],
+            "model_asset_verification_seconds": 4.824445790989557,
+            "model_load_seconds": 8.955703999992693,
+            "asr_seconds": 9.72273008301272,
+            "process_peak_rss_bytes": 12918538240,
+            "asr_realtime_factor": 1.6204550138354534,
+            "audio_total_seconds": 24.243686041998444
+          },
+          "extraction": {},
+          "duration_s": 6.0,
+          "pipeline_seconds": 24.616233917011414,
+          "pipeline_rtf": 4.102705652835236
+        },
+        "actual_duration_s": 6.0,
+        "segments": [
+          {
+            "segment_id": "segment_4afd22aaf9ad97350bf7c2c2334972e579ea90e0ea63eb7f2b83e090de478c22",
+            "source_id": "file_081cedff95932cf2e117e5627dbf2262305c929ed6f31cf74ba3ed403945907f",
+            "ordinal": 0,
+            "input_start": 11648,
+            "core_start": 14848,
+            "core_end": 89600,
+            "input_end": 92800,
+            "raw": {
+              "key": "segment_4afd22aaf9ad97350bf7c2c2334972e579ea90e0ea63eb7f2b83e090de478c22",
+              "text": "il n'avait pas non plus le pouvoir de déroger aux lois fiscales ni d'assister sur les droits de douane entre les états"
+            },
+            "normalized_text": "il n'avait pas non plus le pouvoir de déroger aux lois fiscales ni d'assister sur les droits de douane entre les états",
+            "status": "ok",
+            "errors": []
+          }
+        ]
+      },
+      "wer": {
+        "basis": "pinned FLEURS corpus verification, no independent listening labels",
+        "condition": "unspecified",
+        "duration_s": 6.0,
+        "reference_words": 23,
+        "hypothesis_words": 22,
+        "inference_completed": true,
+        "edits": 2
+      }
+    }
+  ],
+  "wer": {
+    "normalization": "NFC, casefold, curly apostrophe to straight. Keep accents. Split on punctuation and whitespace except internal apostrophes and decimal separators. Keep number surface forms without expanding words or equating decimal comma and point. Concatenate ordered normalized segments. Repetitions count as insertions.",
+    "eligible_clips": 2,
+    "eligible_duration_s": 20.46,
+    "eligible_reference_words": 61,
+    "scored_clips": 2,
+    "scored_duration_s": 20.46,
+    "reference_words": 61,
+    "edits": 2,
+    "wer": 0.03278688524590164,
+    "status": "MEASURED",
+    "by_condition": {
+      "unspecified": {
+        "eligible_clips": 2,
+        "eligible_duration_s": 20.46,
+        "eligible_reference_words": 61,
+        "scored_clips": 2,
+        "scored_duration_s": 20.46,
+        "reference_words": 61,
+        "edits": 2,
+        "wer": 0.03278688524590164,
+        "status": "MEASURED"
+      }
+    }
+  },
+  "extraction": {
+    "alignment": "normalized product and chronological occurrence, including revisions",
+    "policy": "Only ok candidates score as predictions. Missing or misrecognized mentions contribute false negatives. Incorrect accepted fields contribute false positives.",
+    "reference": {
+      "gold_mentions": 0,
+      "returned_candidates": 0,
+      "accepted_candidates": 0,
+      "review_candidates": 0,
+      "covered_gold_mentions": 0,
+      "abstention_rate": null,
+      "gold_coverage": null,
+      "gold_uncovered_rate": null,
+      "cases_with_no_accepted_candidate": 0,
+      "positive_cases_with_no_accepted_candidate": 0,
+      "cases": 0,
+      "blocked_cases": 0,
+      "failed_cases": 0,
+      "completed_cases": 0,
+      "measurement_status": "NOT MEASURED",
+      "fields": {
+        "product_spoken": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "predicted": 0,
+          "expected": 0,
+          "precision": null,
+          "recall": null
+        },
+        "quantity": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "predicted": 0,
+          "expected": 0,
+          "precision": null,
+          "recall": null
+        },
+        "quantity_max": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "predicted": 0,
+          "expected": 0,
+          "precision": null,
+          "recall": null
+        },
+        "qualifier": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "predicted": 0,
+          "expected": 0,
+          "precision": null,
+          "recall": null
+        },
+        "unit": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "predicted": 0,
+          "expected": 0,
+          "precision": null,
+          "recall": null
+        },
+        "operation": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "predicted": 0,
+          "expected": 0,
+          "precision": null,
+          "recall": null
+        },
+        "location": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "predicted": 0,
+          "expected": 0,
+          "precision": null,
+          "recall": null
+        },
+        "negation": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "predicted": 0,
+          "expected": 0,
+          "precision": null,
+          "recall": null
+        },
+        "correction": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "predicted": 0,
+          "expected": 0,
+          "precision": null,
+          "recall": null
+        },
+        "packaging.count": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "predicted": 0,
+          "expected": 0,
+          "precision": null,
+          "recall": null
+        },
+        "packaging.unit": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "predicted": 0,
+          "expected": 0,
+          "precision": null,
+          "recall": null
+        },
+        "packaging.per_package_quantity": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "predicted": 0,
+          "expected": 0,
+          "precision": null,
+          "recall": null
+        },
+        "packaging.per_package_unit": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "predicted": 0,
+          "expected": 0,
+          "precision": null,
+          "recall": null
+        },
+        "packaging.total": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "predicted": 0,
+          "expected": 0,
+          "precision": null,
+          "recall": null
+        },
+        "packaging.total_unit": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "predicted": 0,
+          "expected": 0,
+          "precision": null,
+          "recall": null
+        }
+      }
+    },
+    "asr": {
+      "gold_mentions": 0,
+      "returned_candidates": 0,
+      "accepted_candidates": 0,
+      "review_candidates": 0,
+      "covered_gold_mentions": 0,
+      "abstention_rate": null,
+      "gold_coverage": null,
+      "gold_uncovered_rate": null,
+      "cases_with_no_accepted_candidate": 0,
+      "positive_cases_with_no_accepted_candidate": 0,
+      "cases": 0,
+      "blocked_cases": 0,
+      "failed_cases": 0,
+      "completed_cases": 0,
+      "measurement_status": "NOT MEASURED",
+      "fields": {
+        "product_spoken": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "predicted": 0,
+          "expected": 0,
+          "precision": null,
+          "recall": null
+        },
+        "quantity": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "predicted": 0,
+          "expected": 0,
+          "precision": null,
+          "recall": null
+        },
+        "quantity_max": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "predicted": 0,
+          "expected": 0,
+          "precision": null,
+          "recall": null
+        },
+        "qualifier": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "predicted": 0,
+          "expected": 0,
+          "precision": null,
+          "recall": null
+        },
+        "unit": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "predicted": 0,
+          "expected": 0,
+          "precision": null,
+          "recall": null
+        },
+        "operation": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "predicted": 0,
+          "expected": 0,
+          "precision": null,
+          "recall": null
+        },
+        "location": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "predicted": 0,
+          "expected": 0,
+          "precision": null,
+          "recall": null
+        },
+        "negation": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "predicted": 0,
+          "expected": 0,
+          "precision": null,
+          "recall": null
+        },
+        "correction": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "predicted": 0,
+          "expected": 0,
+          "precision": null,
+          "recall": null
+        },
+        "packaging.count": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "predicted": 0,
+          "expected": 0,
+          "precision": null,
+          "recall": null
+        },
+        "packaging.unit": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "predicted": 0,
+          "expected": 0,
+          "precision": null,
+          "recall": null
+        },
+        "packaging.per_package_quantity": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "predicted": 0,
+          "expected": 0,
+          "precision": null,
+          "recall": null
+        },
+        "packaging.per_package_unit": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "predicted": 0,
+          "expected": 0,
+          "precision": null,
+          "recall": null
+        },
+        "packaging.total": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "predicted": 0,
+          "expected": 0,
+          "precision": null,
+          "recall": null
+        },
+        "packaging.total_unit": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "predicted": 0,
+          "expected": 0,
+          "precision": null,
+          "recall": null
+        }
+      }
+    }
+  }
+}

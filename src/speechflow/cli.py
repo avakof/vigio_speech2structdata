@@ -24,6 +24,7 @@ import re
 import shutil
 import subprocess
 import sys
+import time
 import traceback
 import unicodedata
 from collections.abc import Sequence
@@ -39,7 +40,7 @@ EXIT_INTERRUPTED = 130
 REQUIRED_MODULES = {
     "hojo_asr": "hojo-asr", "torch": "torch", "torchaudio": "torchaudio",
     "transformers": "transformers", "huggingface_hub": "huggingface-hub", "numpy": "numpy",
-    "silero_vad": "silero-vad", "sounddevice": "sounddevice",
+    "silero_vad": "silero-vad", "sounddevice": "sounddevice", "soundfile": "soundfile", "scipy": "scipy",
     "imageio_ffmpeg": "imageio-ffmpeg", "pydantic": "pydantic", "psutil": "psutil",
 }
 INSTALL_HINT = "uv sync --frozen"
@@ -364,10 +365,12 @@ def _process_and_save(args: argparse.Namespace, mode: str, path: Path | None) ->
                        EXIT_DEPENDENCY) from exc
     manifest = pipeline.process(path, mode=mode, settings=settings, out=out)
     result = persistence.save_run(manifest, settings.database, out)
-    return _report_run(args, result, persistence)
+    speech_end = manifest.metrics.get("audio", {}).get("last_speech_end_monotonic_s") if mode == "mic" else None
+    durable_delay = time.monotonic() - speech_end if speech_end is not None else None
+    return _report_run(args, result, persistence, durable_delay)
 
 
-def _report_run(args: argparse.Namespace, result, persistence) -> int:
+def _report_run(args: argparse.Namespace, result, persistence, durable_delay=None) -> int:
     m = result.manifest
     code = STATUS_EXIT[m.status]
     review = sum(o.status == "needs_review" for o in m.observations)
@@ -383,6 +386,8 @@ def _report_run(args: argparse.Namespace, result, persistence) -> int:
         "generation": result.generation, "files": [str(f) for f in result.files],
         "exit_code": code,
     }
+    if durable_delay is not None:
+        summary["end_of_speech_to_durable_output_s"] = durable_delay
     if getattr(args, "json", False):
         _emit(json.dumps(summary, indent=2, ensure_ascii=False))
         return code
@@ -395,6 +400,8 @@ def _report_run(args: argparse.Namespace, result, persistence) -> int:
     _emit(f"processing_version: {m.processing_version}")
     _emit(f"segments: {len(m.segments)}  observations: {len(m.observations)} "
           f"({review} need review)")
+    if durable_delay is not None:
+        _emit(f"Estimated end of speech to saved output: {durable_delay:.3f} s")
     for error in m.errors:
         _emit(f"error: {_safe(error)}")
     _emit(f"database: {result.database} ({result.disposition}, generation {result.generation})")

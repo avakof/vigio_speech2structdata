@@ -1,0 +1,155 @@
+{
+  "audio": {
+    "source": {
+      "source_id": "file_887828442457ab8a2c767295f603ecd0ac3172aa3cbb5ccb3cd97208dc303725",
+      "kind": "file",
+      "digest": "03293fee0a0826dd6359087582be59770998a18df193808c6ebda6b249ee8021",
+      "name": "long.wav",
+      "native_rate": 16000,
+      "native_channels": 1,
+      "sample_rate": 16000,
+      "sample_count": 1159360,
+      "channel_mix": "mono"
+    },
+    "segments": [
+      {
+        "segment_id": "segment_5b5d9adb73ad8d209e4fd6cab6a3bd143d65d4e96251133e3037348e4b612756",
+        "source_id": "file_887828442457ab8a2c767295f603ecd0ac3172aa3cbb5ccb3cd97208dc303725",
+        "ordinal": 0,
+        "input_start": 0,
+        "core_start": 512,
+        "core_end": 394112,
+        "input_end": 397312,
+        "raw": {
+          "key": "segment_5b5d9adb73ad8d209e4fd6cab6a3bd143d65d4e96251133e3037348e4b612756",
+          "text": "je compte huit kilos de tomates pour continuer la vérification je retourne vers les étages de la réserve pendant que mon collègue termine tranquillement la vérification du potager réfrigérateur je compte quatre kilos de carottes pour continuer la vérification je retourne vers les étages de la réserve pendant que mon collègue termine tranquillement la vérification du potager réfrigérateur je compte six kilos de courgettes pour continuer la vérification je retourne vers les étages de la réserve pendant que mon collègue termine tranquillement la vérification du potager réfrigérateur"
+        },
+        "normalized_text": "je compte huit kilos de tomates pour continuer la vérification je retourne vers les étages de la réserve pendant que mon collègue termine tranquillement la vérification du potager réfrigérateur je compte quatre kilos de carottes pour continuer la vérification je retourne vers les étages de la réserve pendant que mon collègue termine tranquillement la vérification du potager réfrigérateur je compte six kilos de courgettes pour continuer la vérification je retourne vers les étages de la réserve pendant que mon collègue termine tranquillement la vérification du potager réfrigérateur",
+        "status": "ok",
+        "errors": []
+      },
+      {
+        "segment_id": "segment_9bd583b00f28866c5256bfa8af86c9f3536a0e27265d8027497ee1ce4159bdd2",
+        "source_id": "file_887828442457ab8a2c767295f603ecd0ac3172aa3cbb5ccb3cd97208dc303725",
+        "ordinal": 1,
+        "input_start": 390912,
+        "core_start": 394112,
+        "core_end": 787712,
+        "input_end": 790912,
+        "raw": {
+          "key": "segment_9bd583b00f28866c5256bfa8af86c9f3536a0e27265d8027497ee1ce4159bdd2",
+          "text": "les étagères de la réserve pendant que mon collègue termine tranquillement la vérification du poisson réfrigérateur je compte cinq kilos de poissons pour continuer la vérification je retourne vers les étagères de la réserve pendant que mon collègue termine tranquillement la vérification du poisson réfrigérateur je compte cinq kilos de poissons pour continuer la vérification je retourne vers les étagères de la réserve pendant que mon collègue termine tranquillement la vérification du poisson réfrigérateur je compte cinq kilos de poissons pour continuer la vérification je retourne vers les étagères de la réserve pendant que mon collègue termine tranquillement la vérification du poisson réfrigérateur je compte cinq kilos de poissons pour continuer la vérification je retourne vers les étagères de la réserve pendant"
+        },
+        "normalized_text": "les étagères de la réserve pendant que mon collègue termine tranquillement la vérification du poisson réfrigérateur je compte cinq kilos de poissons pour continuer la vérification je retourne vers les étagères de la réserve pendant que mon collègue termine tranquillement la vérification du poisson réfrigérateur je compte cinq kilos de poissons pour continuer la vérification je retourne vers les étagères de la réserve pendant que mon collègue termine tranquillement la vérification du poisson réfrigérateur je compte cinq kilos de poissons pour continuer la vérification je retourne vers les étagères de la réserve pendant que mon collègue termine tranquillement la vérification du poisson réfrigérateur je compte cinq kilos de poissons pour continuer la vérification je retourne vers les étagères de la réserve pendant",
+        "status": "ok",
+        "errors": []
+      },
+      {
+        "segment_id": "segment_89b3416ca81cf5051f53aa9a7c91620b2c6ae8646b772e0bc949ac01300ec0e2",
+        "source_id": "file_887828442457ab8a2c767295f603ecd0ac3172aa3cbb5ccb3cd97208dc303725",
+        "ordinal": 2,
+        "input_start": 784512,
+        "core_start": 787712,
+        "core_end": 1159360,
+        "input_end": 1159360,
+        "raw": {
+          "key": "segment_89b3416ca81cf5051f53aa9a7c91620b2c6ae8646b772e0bc949ac01300ec0e2",
+          "text": "je compte quatre kilos de citron pour continuer la vérification je retourne vers les étagères de la réserve pendant que mon collègue termine tranquillement la vérification du frigidaire je compte sept kilos de citron pour continuer la vérification je retourne vers les étagères de la réserve pendant que mon collègue termine tranquillement la vérification du frigidaire je compte deux kilos de gingembre"
+        },
+        "normalized_text": "je compte quatre kilos de citron pour continuer la vérification je retourne vers les étagères de la réserve pendant que mon collègue termine tranquillement la vérification du frigidaire je compte sept kilos de citron pour continuer la vérification je retourne vers les étagères de la réserve pendant que mon collègue termine tranquillement la vérification du frigidaire je compte deux kilos de gingembre",
+        "status": "ok",
+        "errors": []
+      }
+    ],
+    "status": "ok",
+    "errors": [],
+    "backend": "cpu",
+    "dtype": "encoder=float32,decoder=bfloat16",
+    "metrics": {
+      "decoder": {
+        "sha256": "6d175a4743ca50256e89a8cdd731100f9cee33bd79aeea46894d209410dc6617",
+        "version": "7.1"
+      },
+      "decode_seconds": 0.04761383301229216,
+      "decoded_seconds": 72.46,
+      "normalized_spool_bytes": 4637440,
+      "requested_backend": "cpu",
+      "vad_min_silence_ms": 350,
+      "silero": {
+        "version": "6.2.0",
+        "artifact": "silero_vad/data/silero_vad.jit",
+        "sha256": "e1122837f4154c511485fe0b9c64455f7b929c96fbb8d79fbdb336383ebd3720"
+      },
+      "vad_seconds": 0.4587001249892637,
+      "asr_chunk_sample_counts": [
+        397312,
+        400000,
+        374848
+      ],
+      "model_asset_verification_seconds": 4.995833124994533,
+      "model_load_seconds": 7.534408749983413,
+      "asr_seconds": 239.2487670829869,
+      "process_peak_rss_bytes": 13757087744,
+      "asr_realtime_factor": 3.301804679588558,
+      "audio_total_seconds": 252.3275994999858
+    }
+  },
+  "anchors": [
+    {
+      "phrase": "huit kilos de tomates",
+      "product": "tomates",
+      "quantity": "8",
+      "sample_start": 0,
+      "sample_end": 26080
+    },
+    {
+      "phrase": "quatre kilos de carottes",
+      "product": "carottes",
+      "quantity": "4",
+      "sample_start": 160640,
+      "sample_end": 190720
+    },
+    {
+      "phrase": "six kilos de courgettes",
+      "product": "courgettes",
+      "quantity": "6",
+      "sample_start": 325280,
+      "sample_end": 351840
+    },
+    {
+      "phrase": "neuf kilos de pommes",
+      "product": "pommes",
+      "quantity": "9",
+      "sample_start": 486400,
+      "sample_end": 511200
+    },
+    {
+      "phrase": "cinq kilos de poires",
+      "product": "poires",
+      "quantity": "5",
+      "sample_start": 645760,
+      "sample_end": 672320
+    },
+    {
+      "phrase": "trois kilos de kiwis",
+      "product": "kiwis",
+      "quantity": "3",
+      "sample_start": 806880,
+      "sample_end": 834880
+    },
+    {
+      "phrase": "sept kilos de citrons",
+      "product": "citrons",
+      "quantity": "7",
+      "sample_start": 969440,
+      "sample_end": 997120
+    },
+    {
+      "phrase": "deux kilos de gingembre",
+      "product": "gingembre",
+      "quantity": "2",
+      "sample_start": 1131680,
+      "sample_end": 1159360
+    }
+  ]
+}

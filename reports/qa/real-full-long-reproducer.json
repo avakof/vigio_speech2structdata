@@ -1,0 +1,44 @@
+{
+  "scope": "Single original normalized Hojo call isolated from the long fixture. No additional inference performed.",
+  "original_wav": "outputs/qa-full-real-001/synthetic-jacques0/long.wav",
+  "original_wav_sha256": "03293fee0a0826dd6359087582be59770998a18df193808c6ebda6b249ee8021",
+  "normalized_pcm": "outputs/qa-full-real-001/test_real_silero_long_fixture_0/long.f32",
+  "isolated_hojo_input": "outputs/qa-full-real-001/reproducer/segment_9bd583b00f28866c5256bfa8af86c9f3536a0e27265d8027497ee1ce4159bdd2.wav",
+  "isolated_wav_sha256": "667925ed176b87a177c2f8073636e21c6221084ab7e296f7a12e101b16cf7b57",
+  "isolated_f32_pcm_sha256": "6891844eed0281e7d88c9bb6a086d13c8fa6e6b14de4c6a5580229e82da8e54e",
+  "sample_rate": 16000,
+  "input_samples": [
+    390912,
+    790912
+  ],
+  "duration_s": 25.0,
+  "core_samples": [
+    394112,
+    787712
+  ],
+  "expected_anchors": [
+    {
+      "phrase": "neuf kilos de pommes",
+      "product": "pommes",
+      "quantity": "9",
+      "sample_start": 486400,
+      "sample_end": 511200,
+      "chunk_relative_sample_start": 95488,
+      "chunk_relative_sample_end": 120288
+    },
+    {
+      "phrase": "cinq kilos de poires",
+      "product": "poires",
+      "quantity": "5",
+      "sample_start": 645760,
+      "sample_end": 672320,
+      "chunk_relative_sample_start": 254848,
+      "chunk_relative_sample_end": 281408
+    }
+  ],
+  "unchanged_hojo_result": {
+    "key": "segment_9bd583b00f28866c5256bfa8af86c9f3536a0e27265d8027497ee1ce4159bdd2",
+    "text": "les étagères de la réserve pendant que mon collègue termine tranquillement la vérification du poisson réfrigérateur je compte cinq kilos de poissons pour continuer la vérification je retourne vers les étagères de la réserve pendant que mon collègue termine tranquillement la vérification du poisson réfrigérateur je compte cinq kilos de poissons pour continuer la vérification je retourne vers les étagères de la réserve pendant que mon collègue termine tranquillement la vérification du poisson réfrigérateur je compte cinq kilos de poissons pour continuer la vérification je retourne vers les étagères de la réserve pendant que mon collègue termine tranquillement la vérification du poisson réfrigérateur je compte cinq kilos de poissons pour continuer la vérification je retourne vers les étagères de la réserve pendant"
+  },
+  "normalized_text": "les étagères de la réserve pendant que mon collègue termine tranquillement la vérification du poisson réfrigérateur je compte cinq kilos de poissons pour continuer la vérification je retourne vers les étagères de la réserve pendant que mon collègue termine tranquillement la vérification du poisson réfrigérateur je compte cinq kilos de poissons pour continuer la vérification je retourne vers les étagères de la réserve pendant que mon collègue termine tranquillement la vérification du poisson réfrigérateur je compte cinq kilos de poissons pour continuer la vérification je retourne vers les étagères de la réserve pendant que mon collègue termine tranquillement la vérification du poisson réfrigérateur je compte cinq kilos de poissons pour continuer la vérification je retourne vers les étagères de la réserve pendant"
+}

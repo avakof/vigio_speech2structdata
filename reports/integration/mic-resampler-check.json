@@ -1,0 +1,150 @@
+{
+  "input": "deterministic generated float32 samples, RNG seed 113",
+  "reference": "scipy.signal.resample_poly on the full input with default Kaiser window",
+  "cases": [
+    {
+      "input_rate": 8000,
+      "source_samples": 16031,
+      "block_size": 151,
+      "expected_samples": 32062,
+      "actual_samples": 32062,
+      "max_abs_error": 0.0
+    },
+    {
+      "input_rate": 8000,
+      "source_samples": 16031,
+      "block_size": 1024,
+      "expected_samples": 32062,
+      "actual_samples": 32062,
+      "max_abs_error": 0.0
+    },
+    {
+      "input_rate": 8000,
+      "source_samples": 16031,
+      "block_size": 6173,
+      "expected_samples": 32062,
+      "actual_samples": 32062,
+      "max_abs_error": 0.0
+    },
+    {
+      "input_rate": 16000,
+      "source_samples": 32031,
+      "block_size": 151,
+      "expected_samples": 32031,
+      "actual_samples": 32031,
+      "max_abs_error": 0.0
+    },
+    {
+      "input_rate": 16000,
+      "source_samples": 32031,
+      "block_size": 1024,
+      "expected_samples": 32031,
+      "actual_samples": 32031,
+      "max_abs_error": 0.0
+    },
+    {
+      "input_rate": 16000,
+      "source_samples": 32031,
+      "block_size": 6173,
+      "expected_samples": 32031,
+      "actual_samples": 32031,
+      "max_abs_error": 0.0
+    },
+    {
+      "input_rate": 22050,
+      "source_samples": 44131,
+      "block_size": 151,
+      "expected_samples": 32023,
+      "actual_samples": 32023,
+      "max_abs_error": 0.0
+    },
+    {
+      "input_rate": 22050,
+      "source_samples": 44131,
+      "block_size": 1024,
+      "expected_samples": 32023,
+      "actual_samples": 32023,
+      "max_abs_error": 0.0
+    },
+    {
+      "input_rate": 22050,
+      "source_samples": 44131,
+      "block_size": 6173,
+      "expected_samples": 32023,
+      "actual_samples": 32023,
+      "max_abs_error": 0.0
+    },
+    {
+      "input_rate": 44100,
+      "source_samples": 88231,
+      "block_size": 151,
+      "expected_samples": 32012,
+      "actual_samples": 32012,
+      "max_abs_error": 0.0
+    },
+    {
+      "input_rate": 44100,
+      "source_samples": 88231,
+      "block_size": 1024,
+      "expected_samples": 32012,
+      "actual_samples": 32012,
+      "max_abs_error": 0.0
+    },
+    {
+      "input_rate": 44100,
+      "source_samples": 88231,
+      "block_size": 6173,
+      "expected_samples": 32012,
+      "actual_samples": 32012,
+      "max_abs_error": 0.0
+    },
+    {
+      "input_rate": 48000,
+      "source_samples": 96031,
+      "block_size": 151,
+      "expected_samples": 32011,
+      "actual_samples": 32011,
+      "max_abs_error": 0.0
+    },
+    {
+      "input_rate": 48000,
+      "source_samples": 96031,
+      "block_size": 1024,
+      "expected_samples": 32011,
+      "actual_samples": 32011,
+      "max_abs_error": 0.0
+    },
+    {
+      "input_rate": 48000,
+      "source_samples": 96031,
+      "block_size": 6173,
+      "expected_samples": 32011,
+      "actual_samples": 32011,
+      "max_abs_error": 0.0
+    },
+    {
+      "input_rate": 96000,
+      "source_samples": 192031,
+      "block_size": 151,
+      "expected_samples": 32006,
+      "actual_samples": 32006,
+      "max_abs_error": 0.0
+    },
+    {
+      "input_rate": 96000,
+      "source_samples": 192031,
+      "block_size": 1024,
+      "expected_samples": 32006,
+      "actual_samples": 32006,
+      "max_abs_error": 0.0
+    },
+    {
+      "input_rate": 96000,
+      "source_samples": 192031,
+      "block_size": 6173,
+      "expected_samples": 32006,
+      "actual_samples": 32006,
+      "max_abs_error": 0.0
+    }
+  ]
+}

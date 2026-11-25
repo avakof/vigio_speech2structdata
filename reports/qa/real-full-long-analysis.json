@@ -1,0 +1,365 @@
+{
+  "source": {
+    "source_id": "file_887828442457ab8a2c767295f603ecd0ac3172aa3cbb5ccb3cd97208dc303725",
+    "kind": "file",
+    "digest": "03293fee0a0826dd6359087582be59770998a18df193808c6ebda6b249ee8021",
+    "name": "long.wav",
+    "native_rate": 16000,
+    "native_channels": 1,
+    "sample_rate": 16000,
+    "sample_count": 1159360,
+    "channel_mix": "mono"
+  },
+  "status": "ok",
+  "backend": "cpu",
+  "dtype": "encoder=float32,decoder=bfloat16",
+  "metrics": {
+    "decoder": {
+      "sha256": "6d175a4743ca50256e89a8cdd731100f9cee33bd79aeea46894d209410dc6617",
+      "version": "7.1"
+    },
+    "decode_seconds": 0.04761383301229216,
+    "decoded_seconds": 72.46,
+    "normalized_spool_bytes": 4637440,
+    "requested_backend": "cpu",
+    "vad_min_silence_ms": 350,
+    "silero": {
+      "version": "6.2.0",
+      "artifact": "silero_vad/data/silero_vad.jit",
+      "sha256": "e1122837f4154c511485fe0b9c64455f7b929c96fbb8d79fbdb336383ebd3720"
+    },
+    "vad_seconds": 0.4587001249892637,
+    "asr_chunk_sample_counts": [
+      397312,
+      400000,
+      374848
+    ],
+    "model_asset_verification_seconds": 4.995833124994533,
+    "model_load_seconds": 7.534408749983413,
+    "asr_seconds": 239.2487670829869,
+    "process_peak_rss_bytes": 13757087744,
+    "asr_realtime_factor": 3.301804679588558,
+    "audio_total_seconds": 252.3275994999858
+  },
+  "forced_boundaries_samples": [
+    394112,
+    787712
+  ],
+  "forced_boundaries_seconds": [
+    24.632,
+    49.232
+  ],
+  "samples_after_last_core": 0,
+  "chunks": [
+    {
+      "id": "segment_5b5d9adb73ad8d209e4fd6cab6a3bd143d65d4e96251133e3037348e4b612756",
+      "raw_key": "segment_5b5d9adb73ad8d209e4fd6cab6a3bd143d65d4e96251133e3037348e4b612756",
+      "input": [
+        0,
+        397312
+      ],
+      "core": [
+        512,
+        394112
+      ],
+      "samples": 397312,
+      "status": "ok"
+    },
+    {
+      "id": "segment_9bd583b00f28866c5256bfa8af86c9f3536a0e27265d8027497ee1ce4159bdd2",
+      "raw_key": "segment_9bd583b00f28866c5256bfa8af86c9f3536a0e27265d8027497ee1ce4159bdd2",
+      "input": [
+        390912,
+        790912
+      ],
+      "core": [
+        394112,
+        787712
+      ],
+      "samples": 400000,
+      "status": "ok"
+    },
+    {
+      "id": "segment_89b3416ca81cf5051f53aa9a7c91620b2c6ae8646b772e0bc949ac01300ec0e2",
+      "raw_key": "segment_89b3416ca81cf5051f53aa9a7c91620b2c6ae8646b772e0bc949ac01300ec0e2",
+      "input": [
+        784512,
+        1159360
+      ],
+      "core": [
+        787712,
+        1159360
+      ],
+      "samples": 374848,
+      "status": "ok"
+    }
+  ],
+  "anchors": [
+    {
+      "phrase": "huit kilos de tomates",
+      "product": "tomates",
+      "quantity": "8",
+      "sample_start": 0,
+      "sample_end": 26080,
+      "start_s": 0.0,
+      "end_s": 1.63,
+      "segment_ids": [
+        "segment_5b5d9adb73ad8d209e4fd6cab6a3bd143d65d4e96251133e3037348e4b612756"
+      ],
+      "match": true
+    },
+    {
+      "phrase": "quatre kilos de carottes",
+      "product": "carottes",
+      "quantity": "4",
+      "sample_start": 160640,
+      "sample_end": 190720,
+      "start_s": 10.04,
+      "end_s": 11.92,
+      "segment_ids": [
+        "segment_5b5d9adb73ad8d209e4fd6cab6a3bd143d65d4e96251133e3037348e4b612756"
+      ],
+      "match": true
+    },
+    {
+      "phrase": "six kilos de courgettes",
+      "product": "courgettes",
+      "quantity": "6",
+      "sample_start": 325280,
+      "sample_end": 351840,
+      "start_s": 20.33,
+      "end_s": 21.99,
+      "segment_ids": [
+        "segment_5b5d9adb73ad8d209e4fd6cab6a3bd143d65d4e96251133e3037348e4b612756"
+      ],
+      "match": true
+    },
+    {
+      "phrase": "neuf kilos de pommes",
+      "product": "pommes",
+      "quantity": "9",
+      "sample_start": 486400,
+      "sample_end": 511200,
+      "start_s": 30.4,
+      "end_s": 31.95,
+      "segment_ids": [
+        "segment_9bd583b00f28866c5256bfa8af86c9f3536a0e27265d8027497ee1ce4159bdd2"
+      ],
+      "match": false
+    },
+    {
+      "phrase": "cinq kilos de poires",
+      "product": "poires",
+      "quantity": "5",
+      "sample_start": 645760,
+      "sample_end": 672320,
+      "start_s": 40.36,
+      "end_s": 42.02,
+      "segment_ids": [
+        "segment_9bd583b00f28866c5256bfa8af86c9f3536a0e27265d8027497ee1ce4159bdd2"
+      ],
+      "match": false
+    },
+    {
+      "phrase": "trois kilos de kiwis",
+      "product": "kiwis",
+      "quantity": "3",
+      "sample_start": 806880,
+      "sample_end": 834880,
+      "start_s": 50.43,
+      "end_s": 52.18,
+      "segment_ids": [
+        "segment_89b3416ca81cf5051f53aa9a7c91620b2c6ae8646b772e0bc949ac01300ec0e2"
+      ],
+      "match": false
+    },
+    {
+      "phrase": "sept kilos de citrons",
+      "product": "citrons",
+      "quantity": "7",
+      "sample_start": 969440,
+      "sample_end": 997120,
+      "start_s": 60.59,
+      "end_s": 62.32,
+      "segment_ids": [
+        "segment_89b3416ca81cf5051f53aa9a7c91620b2c6ae8646b772e0bc949ac01300ec0e2"
+      ],
+      "match": false
+    },
+    {
+      "phrase": "deux kilos de gingembre",
+      "product": "gingembre",
+      "quantity": "2",
+      "sample_start": 1131680,
+      "sample_end": 1159360,
+      "start_s": 70.73,
+      "end_s": 72.46,
+      "segment_ids": [
+        "segment_89b3416ca81cf5051f53aa9a7c91620b2c6ae8646b772e0bc949ac01300ec0e2"
+      ],
+      "match": true
+    }
+  ],
+  "recognized": 4,
+  "extraction_status": "needs_review",
+  "extraction_errors": [],
+  "extraction_metrics": {
+    "extractor": {
+      "backend": "ollama",
+      "model": "qwen3:8b",
+      "digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": [
+          "qwen3"
+        ],
+        "parameter_size": "8.2B",
+        "quantization_level": "Q4_K_M",
+        "context_length": 40960,
+        "embedding_length": 4096,
+        "runner": "ggml"
+      },
+      "size": 5225388164
+    },
+    "windows": 2,
+    "failed_windows": 0,
+    "attempts": 2,
+    "repairs": 0,
+    "model_wall_s": 22.4322,
+    "total_wall_s": 22.547,
+    "prompt_tokens": 2080,
+    "output_tokens": 734,
+    "load_duration_ns": 3553458375,
+    "duplicates_skipped": 0,
+    "context_only_dropped": 0,
+    "unit_conversions": [],
+    "estimate_misses": 0,
+    "max_actual_to_estimate_ratio": 0.232,
+    "options": {
+      "temperature": 0,
+      "seed": 0,
+      "top_k": 1,
+      "top_p": 1.0,
+      "num_ctx": 8192,
+      "num_predict": 2048
+    },
+    "prompt_version": "inventory.v1.prompt4",
+    "schema_version": "inventory.v1.gen4",
+    "unload": {
+      "attempted": true,
+      "ok": true,
+      "error": null,
+      "idle_confirmed": true
+    }
+  },
+  "accepted": [
+    [
+      "tomates",
+      "8",
+      "kg",
+      1
+    ],
+    [
+      "carottes",
+      "4",
+      "kg",
+      1
+    ],
+    [
+      "courgettes",
+      "6",
+      "kg",
+      1
+    ],
+    [
+      "poissons",
+      "5",
+      "kg",
+      1
+    ],
+    [
+      "citron",
+      "4",
+      "kg",
+      1
+    ],
+    [
+      "gingembre",
+      "2",
+      "kg",
+      1
+    ]
+  ],
+  "missing": [
+    [
+      "pommes",
+      "9",
+      "kg",
+      1
+    ],
+    [
+      "poires",
+      "5",
+      "kg",
+      1
+    ],
+    [
+      "kiwis",
+      "3",
+      "kg",
+      1
+    ],
+    [
+      "citrons",
+      "7",
+      "kg",
+      1
+    ]
+  ],
+  "extra": [
+    [
+      "poissons",
+      "5",
+      "kg",
+      1
+    ],
+    [
+      "citron",
+      "4",
+      "kg",
+      1
+    ]
+  ],
+  "observations_needing_review": [
+    {
+      "product_spoken": null,
+      "quantity_text": "sept",
+      "quantity": "7",
+      "quantity_max": null,
+      "qualifier": "exact",
+      "unit_spoken": "kilos",
+      "unit": "kg",
+      "packaging": null,
+      "location": null,
+      "operation": "correction",
+      "evidence": [
+        {
+          "segment_id": "segment_89b3416ca81cf5051f53aa9a7c91620b2c6ae8646b772e0bc949ac01300ec0e2",
+          "start": 186,
+          "end": 247,
+          "quote": "je compte sept kilos de citron pour continuer la vérification"
+        }
+      ],
+      "correction_of": null,
+      "observation_id": "obs_50b0bce19ca6c64eb16c1fa13be1472c2e773712c5b044acddbf1ddc1a01922c",
+      "catalog_match": null,
+      "revision": 1,
+      "status": "needs_review",
+      "errors": [
+        "correction_target_ambiguous:o1:candidates ['k4', 'o1']"
+      ]
+    }
+  ]
+}

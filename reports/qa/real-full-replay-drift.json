@@ -1,0 +1,98 @@
+{
+  "provenance_differences": {
+    "implementation_sha256": [
+      "419c3d3c7553e4a18e59961ca9ed1fbd31282f51f9aaf4ddd9e5fd4890764432",
+      "0cd8753367f4d987991a86149788b9aa612d85a69c10e9998afa761c2ce15bcc"
+    ]
+  },
+  "same_segments": true,
+  "same_validated_fields": true,
+  "run_ids": [
+    "run_cabdea56fb54dbe3f9bbc1d0aedcf1aee464b1d839d403950285dafe6f577b37",
+    "run_90e1076564fdc6e9b984992ef21911a0440ea6cd82b3a1ba0ba46751513eeb1f"
+  ],
+  "versions": [
+    "processing_08f044d338d5ae311e0c85527d81e7e7ef1bac43b278bdee4aff4a986c2ce4bb",
+    "processing_e76aa04fd08683f011bcb744d475dc1e5766e664c2fb4e0d17580fddf5798eb9"
+  ],
+  "snapshots": [
+    {
+      "command": [
+        "/Users/vakof/orca/vigio_speech2structdata/.venv/bin/speechflow",
+        "run",
+        "/Users/vakof/.cache/speechflow/hojo-jacques.wav",
+        "--out",
+        "/Users/vakof/orca/vigio_speech2structdata/outputs/qa-full-real-001/test_real_file_installed_cli_r0/first",
+        "--json",
+        "--offline",
+        "--backend",
+        "cpu",
+        "--database",
+        "/Users/vakof/orca/vigio_speech2structdata/outputs/qa-full-real-001/test_real_file_installed_cli_r0/inventory.sqlite3"
+      ],
+      "pid": 48944,
+      "returncode": 0,
+      "seconds": 34.39457699999912,
+      "ollama_snapshots": [
+        {
+          "seconds": 0.003788000001804903,
+          "models": []
+        },
+        {
+          "seconds": 28.921727082983125,
+          "models": [
+            [
+              "qwen3:8b",
+              "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41"
+            ]
+          ]
+        },
+        {
+          "seconds": 34.294009999983246,
+          "models": []
+        }
+      ],
+      "ollama_models_before": [],
+      "stdout": "first.stdout",
+      "stderr": "first.stderr",
+      "ollama_models_after": []
+    },
+    {
+      "command": [
+        "/Users/vakof/orca/vigio_speech2structdata/.venv/bin/speechflow",
+        "run",
+        "/Users/vakof/.cache/speechflow/hojo-jacques.wav",
+        "--out",
+        "/Users/vakof/orca/vigio_speech2structdata/outputs/qa-full-real-001/test_real_file_installed_cli_r0/replay",
+        "--json",
+        "--offline",
+        "--backend",
+        "cpu",
+        "--database",
+        "/Users/vakof/orca/vigio_speech2structdata/outputs/qa-full-real-001/test_real_file_installed_cli_r0/inventory.sqlite3"
+      ],
+      "pid": 49065,
+      "returncode": 0,
+      "seconds": 32.94988891601679,
+      "ollama_snapshots": [
+        {
+          "seconds": 0.00383129101828672,
+          "models": []
+        },
+        {
+          "seconds": 27.14646874999744,
+          "models": [
+            [
+              "qwen3:8b",
+              "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41"
+            ]
+          ]
+        }
+      ],
+      "ollama_models_before": [],
+      "stdout": "replay.stdout",
+      "stderr": "replay.stderr",
+      "ollama_models_after": []
+    }
+  ]
+}

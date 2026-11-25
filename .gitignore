@@ -15,3 +15,5 @@ models/
 *.m4a
 *.mp3
 *.safetensors
+*.f32le
+mic_[0-9a-f]*/

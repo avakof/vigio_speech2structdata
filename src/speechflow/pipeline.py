@@ -23,7 +23,8 @@ def _audio(path, mode, settings, out):
         request, response = work / "settings.json", work / "result.json"
         request.write_text(settings.model_dump_json())
         env = {**os.environ, "HF_HUB_OFFLINE": "1", "TRANSFORMERS_OFFLINE": "1",
-               "HF_HUB_DISABLE_TELEMETRY": "1", "TOKENIZERS_PARALLELISM": "false"}
+               "HF_HUB_DISABLE_TELEMETRY": "1", "TOKENIZERS_PARALLELISM": "false",
+               "PYTORCH_ENABLE_MPS_FALLBACK": "0"}
         cmd = [sys.executable, "-m", "speechflow.asr_process", str(request),
                str(response), mode, str(out if mode == "mic" else path)]
         # The child receives the first interrupt and can finalize its capture.
@@ -78,6 +79,8 @@ def _provenance(audio, settings, mode):
         excluded.update({"mic_device", "mic_seconds", "mic_queue_seconds"})
     packages = ("torch", "torchaudio", "transformers", "hojo-asr", "silero-vad",
                 "numpy", "soundfile", "imageio-ffmpeg", "pydantic")
+    if mode == "mic":
+        packages += ("sounddevice", "scipy")
     installed = {}
     for name in packages:
         try:
@@ -135,10 +138,12 @@ def process(path: Path | None, *, mode: Literal["run", "transcribe", "mic"],
         status = "needs_review" if audio.status == "needs_review" and stage == "ok" else stage
     elapsed = time.perf_counter() - start
     duration = audio.source.sample_count / 16000
+    metrics = {"audio": audio.metrics, "extraction": extraction.metrics, "duration_s": duration,
+               "pipeline_seconds": elapsed, "pipeline_rtf": elapsed / duration if duration else None}
+    if mode == "mic" and audio.metrics.get("last_speech_end_monotonic_s") is not None:
+        metrics["end_of_speech_to_validated_output_s"] = time.monotonic() - audio.metrics["last_speech_end_monotonic_s"]
     return RunManifest(run_id=run_id, processing_version=version, mode=mode, status=status,
                        transcription_status=audio.status, extraction_status=stage, source=audio.source,
                        segments=audio.segments, observations=extraction.observations, provenance=provenance,
-                       metrics={"audio": audio.metrics, "extraction": extraction.metrics,
-                                "duration_s": duration, "pipeline_seconds": elapsed,
-                                "pipeline_rtf": elapsed / duration if duration else None},
+                       metrics=metrics,
                        errors=audio.errors + extraction.errors, attempts=extraction.attempts)
