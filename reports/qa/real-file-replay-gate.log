@@ -1,0 +1,9 @@
+$ env -u SPEECHFLOW_QA_MODEL_SLOT .venv/bin/python -m pytest -q --tb=line tests/real_models/test_file_replay.py::test_real_file_installed_cli_replay
+E                                                                        [100%]
+==================================== ERRORS ====================================
+____________ ERROR at setup of test_real_file_installed_cli_replay _____________
+E   Failed: BLOCKED: obtain the local heavy-model slot and set SPEECHFLOW_QA_MODEL_SLOT=1
+=========================== short test summary info ============================
+ERROR tests/real_models/test_file_replay.py::test_real_file_installed_cli_replay
+1 error in 0.06s
+exit 1

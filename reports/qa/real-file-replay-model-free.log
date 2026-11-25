@@ -1,0 +1,6 @@
+$ PYTHONPATH=tests/real_models .venv/bin/python -c [seeded SQLite and export assertion smoke]
+$ /Users/vakof/orca/vigio_speech2structdata/.venv/bin/speechflow export run_7be288dc06bff75f8b5b1237289dd769af04672b07e65dc8e38ac04eed088466 --format json --out /var/folders/q8/_7ztc8bn4ybc9m23xt7dz_fc0000gn/T/speechflow-qa-replay-pure-uy24n0kz/exported --offline --backend cpu --database /var/folders/q8/_7ztc8bn4ybc9m23xt7dz_fc0000gn/T/speechflow-qa-replay-pure-uy24n0kz/fixture.sqlite3
+$ /Users/vakof/orca/vigio_speech2structdata/.venv/bin/speechflow export run_7be288dc06bff75f8b5b1237289dd769af04672b07e65dc8e38ac04eed088466 --format csv --out /var/folders/q8/_7ztc8bn4ybc9m23xt7dz_fc0000gn/T/speechflow-qa-replay-pure-uy24n0kz/exported --offline --backend cpu --database /var/folders/q8/_7ztc8bn4ybc9m23xt7dz_fc0000gn/T/speechflow-qa-replay-pure-uy24n0kz/fixture.sqlite3
+$ /Users/vakof/orca/vigio_speech2structdata/.venv/bin/speechflow export run_7be288dc06bff75f8b5b1237289dd769af04672b07e65dc8e38ac04eed088466 --format table --out /var/folders/q8/_7ztc8bn4ybc9m23xt7dz_fc0000gn/T/speechflow-qa-replay-pure-uy24n0kz/exported --offline --backend cpu --database /var/folders/q8/_7ztc8bn4ybc9m23xt7dz_fc0000gn/T/speechflow-qa-replay-pure-uy24n0kz/fixture.sqlite3
+PASS model-free SQL and export assertion smoke using a seeded manifest
+exit 0

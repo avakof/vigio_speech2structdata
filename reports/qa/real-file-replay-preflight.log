@@ -1,0 +1,11 @@
+$ .venv/bin/python -m pytest --collect-only -q tests/real_models/test_file_replay.py::test_real_file_installed_cli_replay
+tests/real_models/test_file_replay.py::test_real_file_installed_cli_replay
+
+1 test collected in 0.07s
+exit 0
+
+$ PYTHONPATH=tests/real_models .venv/bin/python [fixture and executable preflight]
+fixture /Users/vakof/.cache/speechflow/hojo-jacques.wav d92c0759b7d4d3e03ae22eb3c47aa97ef7122789eac187c7cf42e8e6035d1330 57142 samples
+installed CLI /Users/vakof/orca/vigio_speech2structdata/.venv/bin/speechflow
+model_settings ASR backend cpu
+exit 0
