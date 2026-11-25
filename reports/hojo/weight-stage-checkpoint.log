@@ -1,0 +1,31 @@
+{"event": "clone", "source": "/Users/vakof/.cache/speechflow/assets/hojo/.cache/huggingface/download/VRRTbUONH1q7XCuZ_AXCPrULH8s=.c046a5a26c142f5aded7331d36892293a025f579e342a27861e80509afaca88d.incomplete", "stage": "/Users/vakof/.cache/speechflow/hojo-weight-range-stage/merged_full_model.safetensors.staging", "extent_count": 47, "extent_bytes": 4164295791, "guard_bytes_each_edge": 4096, "reused_parts": 3924, "reused_bytes": 4114612224, "required_download_bytes": 7842297632}
+{"event": "range_retry", "index": 2, "attempt": 1, "http": null, "detail": "The read operation timed out"}
+{"event": "range_retry", "index": 0, "attempt": 1, "http": null, "detail": "The read operation timed out"}
+{"event": "range_retry", "index": 23, "attempt": 1, "http": null, "detail": "The read operation timed out"}
+{"event": "range_retry", "index": 4, "attempt": 1, "http": null, "detail": "The read operation timed out"}
+{"event": "range_retry", "index": 13, "attempt": 1, "http": null, "detail": "Received 556911 bytes for bytes 13631488-14680063/11956909856, expected 1048576"}
+{"event": "range_retry", "index": 12, "attempt": 1, "http": null, "detail": "Received 544956 bytes for bytes 12582912-13631487/11956909856, expected 1048576"}
+{"event": "range_retry", "index": 3, "attempt": 1, "http": null, "detail": "Received 830847 bytes for bytes 3145728-4194303/11956909856, expected 1048576"}
+{"event": "range_retry", "index": 16, "attempt": 1, "http": null, "detail": "Received 777409 bytes for bytes 16777216-17825791/11956909856, expected 1048576"}
+{"event": "range_retry", "index": 22, "attempt": 1, "http": null, "detail": "The read operation timed out"}
+{"event": "range_retry", "index": 1, "attempt": 1, "http": null, "detail": "Received 804142 bytes for bytes 1048576-2097151/11956909856, expected 1048576"}
+{"event": "range_retry", "index": 20, "attempt": 1, "http": null, "detail": "Received 807100 bytes for bytes 20971520-22020095/11956909856, expected 1048576"}
+{"event": "range_retry", "index": 7, "attempt": 1, "http": null, "detail": "Received 936786 bytes for bytes 7340032-8388607/11956909856, expected 1048576"}
+{"event": "range_retry", "index": 10, "attempt": 1, "http": null, "detail": "Received 557112 bytes for bytes 10485760-11534335/11956909856, expected 1048576"}
+{"event": "range_retry", "index": 18, "attempt": 1, "http": null, "detail": "Received 642791 bytes for bytes 18874368-19922943/11956909856, expected 1048576"}
+{"event": "range_retry", "index": 14, "attempt": 1, "http": null, "detail": "Received 938172 bytes for bytes 14680064-15728639/11956909856, expected 1048576"}
+{"event": "range_retry", "index": 15, "attempt": 1, "http": null, "detail": "Received 813811 bytes for bytes 15728640-16777215/11956909856, expected 1048576"}
+{"event": "range_retry", "index": 21, "attempt": 1, "http": null, "detail": "Received 800631 bytes for bytes 22020096-23068671/11956909856, expected 1048576"}
+{"event": "range_retry", "index": 17, "attempt": 1, "http": null, "detail": "Received 809623 bytes for bytes 17825792-18874367/11956909856, expected 1048576"}
+{"event": "checkpoint", "parts": 24, "received": 6291456, "wall_seconds": 323.78060804199777, "bytes_per_second": 19431.23165419447, "workers": 24, "pending": 42, "downloaded_parts": 6}
+{"event": "reduced_concurrency", "workers": 12, "retry_delay_seconds": 4}
+{"event": "checkpoint", "parts": 12, "received": 12582912, "wall_seconds": 25.149990832986077, "bytes_per_second": 500314.7748068591, "workers": 12, "pending": 30, "downloaded_parts": 18}
+{"event": "checkpoint", "parts": 12, "received": 12582912, "wall_seconds": 27.922378165996633, "bytes_per_second": 450638.9794306003, "workers": 12, "pending": 18, "downloaded_parts": 30}
+{"event": "checkpoint", "parts": 12, "received": 12582912, "wall_seconds": 30.690612874983344, "bytes_per_second": 409992.20352020516, "workers": 12, "pending": 6, "downloaded_parts": 42}
+{"event": "range_retry", "index": 21, "attempt": 2, "http": null, "detail": "The read operation timed out"}
+{"event": "range_retry", "index": 15, "attempt": 2, "http": null, "detail": "The read operation timed out"}
+{"event": "range_retry", "index": 18, "attempt": 2, "http": null, "detail": "The read operation timed out"}
+{"event": "range_retry", "index": 10, "attempt": 2, "http": null, "detail": "The read operation timed out"}
+{"event": "checkpoint", "parts": 6, "received": 2097152, "wall_seconds": 112.98844079198898, "bytes_per_second": 18560.765909327343, "workers": 12, "pending": 4, "downloaded_parts": 44}
+{"event": "reduced_concurrency", "workers": 6, "retry_delay_seconds": 4}
+{"event": "checkpoint", "parts": 4, "received": 4194304, "wall_seconds": 22.75589579201187, "bytes_per_second": 184317.2441259091, "workers": 6, "pending": 0, "downloaded_parts": 48}

@@ -1,0 +1,7 @@
+HTTP 206 download_bytes 262144 average_bytes_per_sec 32764
+HTTP/2 302
+content-length: 1098
+HTTP/2 206
+content-length: 262144
+content-range: bytes 0-262143/11956909856
+Validated 262144-byte pinned range and confirmed it matches the previous direct prefix.

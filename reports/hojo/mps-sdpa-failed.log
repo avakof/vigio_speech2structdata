@@ -1,0 +1,33 @@
+2026-11-25 18:51:12,309 INFO Loading LLaMA Tokenizer llama_path: /Users/vakof/.cache/speechflow/assets/hojo/Qwen3-4B-Instruct-2507
+2026-11-25 18:51:12,455 INFO Loading LLaMA Model (config only, weights from safetensors)
+2026-11-25 18:51:12,622 INFO Loading Encoder
+Unrecognized keys in `rope_scaling` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section', 'interleaved'}
+Unrecognized keys in `rope_scaling` for 'rope_type'='default': {'mrope_section', 'interleaved'}
+2026-11-25 18:51:25,185 INFO Loaded weights from /Users/vakof/.cache/speechflow/assets/hojo/merged_full_model.safetensors (source=local)
+2026-11-25 18:51:25,192 INFO Inference uses batch size 1 and one model instance
+2026-11-25 18:51:25,192 INFO Dataset pipeline type is wav
+The following generation flags are not valid and may be ignored: ['top_p']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Setting `pad_token_id` to `eos_token_id`:151645 for open-end generation.
+loc("mps_matmul"("(mpsFileLoc): /AppleInternal/Library/BuildRoots/4~Cax4ugCrHf1kB85FKho1tYl8aQDbVbGgjnvcT2g/Library/Caches/com.apple.xbs/TemporaryDirectory.H6J7g0/Sources/MetalPerformanceShadersGraph/mpsgraph/MetalPerformanceShadersGraph/Core/Files/MPSGraphUtilities.mm":48:0)): error: incompatible dimensions
+loc("mps_matmul"("(mpsFileLoc): /AppleInternal/Library/BuildRoots/4~Cax4ugCrHf1kB85FKho1tYl8aQDbVbGgjnvcT2g/Library/Caches/com.apple.xbs/TemporaryDirectory.H6J7g0/Sources/MetalPerformanceShadersGraph/mpsgraph/MetalPerformanceShadersGraph/Core/Files/MPSGraphUtilities.mm":48:0)): error: invalid shape
+LLVM ERROR: Failed to infer result type(s):
+"mps.matmul"(...) {} : (tensor<4x32x1x128xbf16>, tensor<4x8x128x47xbf16>) -> ( ??? )
+time: command terminated abnormally
+       34.16 real        18.76 user        11.01 sys
+          3565240320  maximum resident set size
+                   0  average shared memory size
+                   0  average unshared data size
+                   0  average unshared stack size
+              122741  page reclaims
+              319444  page faults
+                   0  swaps
+                   0  block input operations
+                   0  block output operations
+                   0  messages sent
+                   0  messages received
+                   0  signals received
+                4983  voluntary context switches
+               60289  involuntary context switches
+        280799434691  instructions retired
+        106246979921  cycles elapsed
+         14225066672  peak memory footprint

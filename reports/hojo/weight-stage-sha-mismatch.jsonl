@@ -1,0 +1,7 @@
+{"event": "clone", "source": "/Users/vakof/.cache/speechflow/tmpts6bo_pf/wrong-sparse-original", "stage": "/Users/vakof/.cache/speechflow/tmpts6bo_pf/stage/merged_full_model.safetensors.staging", "extent_count": 1, "extent_bytes": 4194304, "guard_bytes_each_edge": 4096, "reused_parts": 2, "reused_bytes": 2097152, "required_download_bytes": 4194625}
+{"event": "checkpoint", "parts": 5, "received": 4194625, "wall_seconds": 0.0028002090111840516, "bytes_per_second": 1497968538.507891, "workers": 4, "pending": 0, "in_flight": 0, "downloaded_parts": 5}
+{"event": "expected_sha_mismatch", "detail": "Staged weight verification failed. Stage and original Xet cache retained at /Users/vakof/.cache/speechflow/tmpts6bo_pf/stage/merged_full_model.safetensors.staging.", "canonical_absent": true}
+{"event": "checkpoint", "parts": 2, "received": 2097152, "wall_seconds": 0.001209999987622723, "bytes_per_second": 1733183488.803382, "workers": 4, "pending": 0, "in_flight": 0, "downloaded_parts": 7}
+{"event": "verified_weight", "sha256": "540b22005b049ca1d79d1b3318c497424b2db7200f1c0117bf06b54c11009e4a", "bytes": 6291777, "path": "/Users/vakof/.cache/speechflow/tmpts6bo_pf/stage/merged_full_model.safetensors.verified"}
+{"event": "published", "sha256": "540b22005b049ca1d79d1b3318c497424b2db7200f1c0117bf06b54c11009e4a", "bytes": 6291777, "path": "/Users/vakof/.cache/speechflow/tmpts6bo_pf/bundle/merged_full_model.safetensors"}
+{"event": "mismatch_recovery_pass", "original_unchanged": true, "refetched_interiors": 2}

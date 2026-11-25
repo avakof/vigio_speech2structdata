@@ -1,0 +1,30 @@
+2026-11-25 18:50:25,451 INFO Loading LLaMA Tokenizer llama_path: /Users/vakof/.cache/speechflow/assets/hojo/Qwen3-4B-Instruct-2507
+2026-11-25 18:50:25,581 INFO Loading LLaMA Model (config only, weights from safetensors)
+2026-11-25 18:50:25,713 INFO Loading Encoder
+Unrecognized keys in `rope_scaling` for 'rope_type'='default': {'interleaved', 'mrope_section', 'mrope_interleaved'}
+Unrecognized keys in `rope_scaling` for 'rope_type'='default': {'interleaved', 'mrope_section'}
+2026-11-25 18:50:32,818 INFO Loaded weights from /Users/vakof/.cache/speechflow/assets/hojo/merged_full_model.safetensors (source=local)
+2026-11-25 18:50:32,819 INFO Inference uses batch size 1 and one model instance
+2026-11-25 18:50:32,820 INFO Dataset pipeline type is wav
+The following generation flags are not valid and may be ignored: ['top_p']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Setting `pad_token_id` to `eos_token_id`:151645 for open-end generation.
+2026-11-25 18:50:39,628 INFO Dataset pipeline type is wav
+Setting `pad_token_id` to `eos_token_id`:151645 for open-end generation.
+       32.35 real       174.96 user        33.08 sys
+         12767412224  maximum resident set size
+                   0  average shared memory size
+                   0  average unshared data size
+                   0  average unshared stack size
+              947825  page reclaims
+                6745  page faults
+                   0  swaps
+                   0  block input operations
+                   0  block output operations
+                   0  messages sent
+                   0  messages received
+                   0  signals received
+                5371  voluntary context switches
+              350922  involuntary context switches
+       3069394065113  instructions retired
+        696333490587  cycles elapsed
+          3598379040  peak memory footprint

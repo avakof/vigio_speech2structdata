@@ -1,0 +1,8 @@
+{"event": "clone", "source": "/Users/vakof/.cache/speechflow/tmpl_ejetei/xet-surrogate.incomplete", "stage": "/Users/vakof/.cache/speechflow/tmpl_ejetei/stage/merged_full_model.safetensors.staging", "extent_count": 2, "extent_bytes": 4198212, "guard_bytes_each_edge": 4096, "reused_parts": 2, "reused_bytes": 2097152, "required_download_bytes": 6291639}
+{"event": "checkpoint", "parts": 2, "received": 2097152, "wall_seconds": 0.0013189580058678985, "bytes_per_second": 1590006649.6962013, "workers": 4, "pending": 0, "downloaded_parts": 2}
+{"event": "verified_checkpoint", "reused_parts": 2, "downloaded_parts": 2, "source_signature": [16777231, 4229949, 8388420, 1795623520703691063, 1795623520703691063, 8200]}
+{"event": "checkpoint", "parts": 4, "received": 4194304, "wall_seconds": 0.0017111669876612723, "bytes_per_second": 2451136581.200962, "workers": 4, "pending": 1, "downloaded_parts": 6}
+{"event": "checkpoint", "parts": 1, "received": 183, "wall_seconds": 0.0003307080187369138, "bytes_per_second": 553358.218222041, "workers": 4, "pending": 0, "downloaded_parts": 7}
+{"event": "verified_weight", "sha256": "44efb9e0ab967154361bfbecc6f41a3466156fc618b18e3cde59f647fce8b31f", "bytes": 8388791, "path": "/Users/vakof/.cache/speechflow/tmpl_ejetei/stage/merged_full_model.safetensors.verified"}
+{"event": "published", "sha256": "44efb9e0ab967154361bfbecc6f41a3466156fc618b18e3cde59f647fce8b31f", "bytes": 8388791, "path": "/Users/vakof/.cache/speechflow/tmpl_ejetei/bundle/merged_full_model.safetensors"}
+{"event": "surrogate_pass", "aligned_interiors": [2, 3], "original_unchanged": true, "full_hash_checked": true, "resumed_download_count": 7}

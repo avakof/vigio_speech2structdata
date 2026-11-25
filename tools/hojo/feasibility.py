@@ -172,6 +172,9 @@ def benchmark(args, torch, psutil, soundfile):
         parameter_placements={name: sorted(values) for name, values in placements.items()},
         encoder_attention=model.speech_encoder.config._attn_implementation,
         decoder_attention=model.decoder_model.config._attn_implementation,
+        decoder_layer_attention=sorted({
+            layer.self_attn.config._attn_implementation for layer in model.decoder_model.model.layers
+        }),
         feature_limit_seconds=model.feat_extractor.chunk_length,
         compatibility_subclass=type(model).__name__,
         memory=memory(torch, psutil, args.backend),

@@ -1,0 +1,2 @@
+{"event": "input", "mode": "repeated-kv-eager", "torch": "2.5.1", "device": "mps:0", "dtype": "torch.bfloat16", "query": [4, 32, 1, 128], "key": [4, 8, 47, 128]}
+{"event": "output", "shape": [4, 1, 32, 128], "device": "mps:0", "dtype": "torch.bfloat16", "max_abs_difference_cpu": 3.814697265625e-06}

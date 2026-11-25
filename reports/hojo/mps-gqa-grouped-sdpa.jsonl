@@ -1,0 +1,1 @@
+{"event": "input", "mode": "grouped-sdpa", "torch": "2.5.1", "device": "mps:0", "dtype": "torch.bfloat16", "query": [4, 32, 1, 128], "key": [4, 8, 47, 128]}

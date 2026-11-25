@@ -1,0 +1,90 @@
+[
+  {
+    "endpoint_ms": 100,
+    "frames": 57142,
+    "core_ranges": [
+      [
+        1024,
+        18944
+      ],
+      [
+        21504,
+        51712
+      ]
+    ],
+    "input_ranges": [
+      [
+        0,
+        22144
+      ],
+      [
+        18304,
+        54912
+      ]
+    ]
+  },
+  {
+    "endpoint_ms": 200,
+    "frames": 57142,
+    "core_ranges": [
+      [
+        1024,
+        51712
+      ]
+    ],
+    "input_ranges": [
+      [
+        0,
+        54912
+      ]
+    ]
+  },
+  {
+    "endpoint_ms": 300,
+    "frames": 57142,
+    "core_ranges": [
+      [
+        1024,
+        51712
+      ]
+    ],
+    "input_ranges": [
+      [
+        0,
+        54912
+      ]
+    ]
+  },
+  {
+    "endpoint_ms": 350,
+    "frames": 57142,
+    "core_ranges": [
+      [
+        1024,
+        57142
+      ]
+    ],
+    "input_ranges": [
+      [
+        0,
+        57142
+      ]
+    ]
+  },
+  {
+    "endpoint_ms": 500,
+    "frames": 57142,
+    "core_ranges": [
+      [
+        1024,
+        57142
+      ]
+    ],
+    "input_ranges": [
+      [
+        0,
+        57142
+      ]
+    ]
+  }
+]

@@ -86,6 +86,16 @@ def load_local_model(bundle: Path, backend: str):
             raise RuntimeError(f"The loaded Hojo instance did not bind the local {name} hook")
     if model.device.type != backend:
         raise RuntimeError(f"Hojo requested {backend} but loaded on {model.device}")
+    if backend == "mps":
+        # Torch 2.5.1 aborts on Hojo's grouped-query SDPA with 32 query and
+        # eight KV heads. Qwen3's eager path explicitly repeats KV on device.
+        decoder = model.decoder_model
+        decoder.set_attn_implementation("eager")
+        implementations = {
+            layer.self_attn.config._attn_implementation for layer in decoder.model.layers
+        }
+        if implementations != {"eager"}:
+            raise RuntimeError(f"Hojo decoder did not switch all MPS layers to eager: {implementations}")
     if model.feat_extractor.sampling_rate != SAMPLE_RATE:
         raise RuntimeError("Hojo's runtime sample rate disagrees with the application")
     if model.feat_extractor.n_samples < BUNDLE_LIMIT_SECONDS * SAMPLE_RATE:

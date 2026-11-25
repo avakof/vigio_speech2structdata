@@ -9,9 +9,11 @@ tools only. See `docs/contracts.md` for the frozen interfaces.
 Target machine: Apple Silicon Mac (developed for M3 Max / 48 GB), macOS, Python
 3.12. The lock file only resolves for `darwin` / `arm64`.
 
-Current verification results are in [the acceptance report](reports/acceptance.json).
-File processing, extraction and storage are implemented. The file end-to-end
-gate awaits the pinned local weights. Microphone capture is gated on that run.
+The installed CLI on the M3 Max transcribed French speech, extracted inventory,
+and saved the results to SQLite and matching exports with external networking
+blocked. CPU and MPS both ran the pinned Hojo checkpoint. The default CPU
+backend reproduced the full reference sentence in the short synthetic
+inventory test. [Acceptance report](reports/acceptance.json) · [Backend measurements](reports/compatibility.md)
 
 ## Setup — three separate steps
 
@@ -121,14 +123,16 @@ stored in SQLite (so `export` reproduces them byte for byte):
 
 Saves, exports and recovery share a per-directory `.speechflow.lock` on the local filesystem. A writer waits up to 30 seconds. If a save times out, `speechflow recover --out DIR` can commit the saved recovery copy once the writer finishes. For a consistent read during an active export, read the single `run.json` manifest or use `speechflow export RUN_ID` to render a committed database record.
 
-```
-#  obs             status  op          product  qty  max  qualifier  unit  packaging                               final  corrects
-0  obs_148d2cff71  ok      count       farine   3    -    exact      kg    -                                       false  -
-1  obs_cf649f0393  ok      correction  farine   2    -    exact      kg    -                                       true   obs_148d2cff71
-2  obs_64be05706a  ok      count       lait     -    -    unknown    -     2 carton x 12 bouteille = 24 bouteille  true   -
-```
+For the synthetic French recording “Il reste deux virgule cinq kilos de tomates
+et douze bouteilles de lait”, the CPU file pipeline produced these rows.
 
-(Layout illustration rendered from a test fixture; it is not model output.)
+| Product as spoken | Quantity | Unit | Status |
+|---|---:|---|---|
+| tomates | 2.5 | kg | ok |
+| lait | 12 | bouteille | ok |
+
+The original Hojo reply, finalized evidence spans, CSV/table files and direct
+SQLite rows are available for this run. [Raw manifest](reports/integration/jacques-350-manifest.json) · [CSV](reports/examples/jacques/observations.csv) · [Terminal table](reports/examples/jacques/observations.txt) · [SQLite comparison](reports/examples/jacques/sqlite-export-check.json)
 
 * Quantities are base-ten decimal strings. An unknown quantity is empty/`-`,
   never `0`; `qualifier` says `exact`, `approximate`, `range` or `unknown`.

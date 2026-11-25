@@ -116,18 +116,23 @@
       ]
     },
     "hojo_cpu": {
-      "status": "NOT RUN",
+      "status": "PASS",
+      "detail": "Both 3.571375 s Jacques iterations returned the complete expected French sentence with CPU float32 audio and bfloat16 decoder parameters. Model load 7.370 s, first 6.808 s, warm 8.751 s. Each inference exercised both compatibility hooks.",
       "evidence": [
-        "reports/hojo/README.md"
-      ],
-      "detail": "All pinned assets verified. Real backend feasibility pending."
+        "reports/hojo/cpu.jsonl",
+        "reports/hojo/cpu.log"
+      ]
     },
     "hojo_mps": {
-      "status": "NOT RUN",
+      "status": "PASS",
+      "detail": "Full checkpoint ran twice with fallback disabled after selecting eager attention on this decoder instance. The first native SDPA route aborted on 32 query heads versus 8 KV heads. Eager model load 16.526 s, first inference 27.339 s, second 6.761 s. Both MPS results correctly recognized the quantities and products and rendered “Il reste” as “Présence de”.",
       "evidence": [
-        "reports/hojo/README.md"
-      ],
-      "detail": "All pinned assets verified. Real backend feasibility pending."
+        "reports/hojo/mps-sdpa-failed.log",
+        "reports/hojo/mps-gqa-grouped-sdpa.log",
+        "reports/hojo/mps-gqa-repeated-kv-eager.jsonl",
+        "reports/hojo/mps.jsonl",
+        "reports/hojo/mps.log"
+      ]
     },
     "local_schema_extraction": {
       "status": "PASS",
@@ -150,7 +155,8 @@
         "reports/integration/silence-replay.json",
         "reports/integration/partial-retry.txt",
         "reports/persistence/out-dir-lock.md",
-        "reports/integration/output-lock-suite.txt"
+        "reports/integration/output-lock-suite.txt",
+        "reports/examples/jacques/sqlite-export-check.json"
       ]
     },
     "reference_semantics": {
@@ -168,9 +174,13 @@
       ]
     },
     "genuine_file_end_to_end": {
-      "status": "BLOCKED",
+      "status": "PASS",
+      "detail": "Six-second human FLEURS clip traversed FFmpeg, Silero, keyed native CPU Hojo, pinned local Qwen, deterministic validation and SQLite/JSON/CSV/table export. All stage statuses are ok. Its noninventory French speech correctly produced no inventory observations.",
       "evidence": [
-        "reports/offline/file-attempt-1.stderr"
+        "reports/integration/first-human-cli.json",
+        "reports/integration/first-human-file.json",
+        "evaluation/fleurs-fr/provenance.json",
+        "reports/integration/jacques-350-manifest.json"
       ]
     },
     "long_boundary_and_no_loss": {
@@ -186,17 +196,18 @@
       "detail": "The dedicated Ollama, installed CLI and its identified ASR child each received EPERM for external IPv4 and IPv6 connections and HTTP 200 over loopback. IPv6 outside the sandbox had no route. The native attempt ran Silero, then stopped at the missing checkpoint.",
       "evidence": [
         "reports/offline/child-controls.json",
-        "reports/offline/controlled-native-file.json"
+        "reports/offline/controlled-native-file.json",
+        "reports/offline/positive-file.json"
       ]
     },
     "offline_file_inference": {
-      "status": "BLOCKED",
+      "status": "PASS",
+      "detail": "A dedicated local Ollama, installed speechflow CLI and its ASR child showed IPv4/IPv6 external EPERM and allowed loopback. The installed application ran real Silero, CPU Hojo and qwen3:8b with credentials and Orca variables absent. Both correct evidence-backed inventory observations were committed and exported. Pipeline 31.507 s.",
       "evidence": [
-        "reports/offline/file-attempt-1.json",
-        "reports/offline/file-attempt-1.stderr",
-        "reports/offline/controlled-native-file.json"
-      ],
-      "detail": "The later native attempt reached Silero and recorded the blocked Hojo load with exit 12. Offline inference requires the full speech and extraction models."
+        "reports/offline/positive-file-receipt.json",
+        "reports/offline/positive-file.json",
+        "reports/offline/positive-file-manifest.json"
+      ]
     },
     "microphone_and_backpressure": {
       "status": "FAIL",
@@ -227,8 +238,15 @@
       ]
     },
     "runtime_performance": {
-      "status": "NOT RUN",
-      "evidence": []
+      "status": "PASS",
+      "detail": "CPU/MPS cold and warm times, unified-memory readings, loaded-file ASR time, extraction and full pipeline RTF measured on the target Mac. Live latency and saturation are tracked separately.",
+      "evidence": [
+        "reports/compatibility.md",
+        "reports/hojo/cpu.jsonl",
+        "reports/hojo/mps.jsonl",
+        "reports/integration/jacques-350-manifest.json",
+        "reports/offline/positive-file.json"
+      ]
     },
     "production_reference_acceptance": {
       "status": "PASS",
@@ -249,6 +267,18 @@
       "detail": "Actual Hojo transcripts required.",
       "evidence": [
         "reports/qa/synthetic.cli.json"
+      ]
+    },
+    "positive_inventory_file": {
+      "status": "PASS",
+      "detail": "The initial 100 ms endpoint split a decimal and led to an incorrect accepted 5 kg. Real Silero at 350 ms kept the 3.571375 s clip in one bounded ASR input. The installed CPU CLI then returned the exact French sentence, 2.5 kg of tomatoes and 12 bottles of milk, correct spans and unknown bottle volume. Total 34.979 s. SQL matched JSON and installed exports byte-matched all four views.",
+      "evidence": [
+        "reports/integration/jacques-cli.json",
+        "reports/integration/jacques-short-pause-before.json",
+        "reports/integration/vad-short-pauses.json",
+        "reports/integration/jacques-350-cli.json",
+        "reports/integration/jacques-350-manifest.json",
+        "reports/examples/jacques/sqlite-export-check.json"
       ]
     }
   }

@@ -1,0 +1,4 @@
+#  obs             status  op     product  qty  max  qualifier  unit       packaging  location  final  corrects  errors
+-  --------------  ------  -----  -------  ---  ---  ---------  ---------  ---------  --------  -----  --------  ------
+0  obs_2aac2c990f  ok      count  tomates  2.5  -    exact      kg         -          -         true   -         -
+1  obs_aff2615600  ok      count  lait     12   -    exact      bouteille  -          -         true   -         -

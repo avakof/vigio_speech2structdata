@@ -3,9 +3,10 @@
 
 import argparse
 from concurrent.futures import ThreadPoolExecutor
+from contextlib import contextmanager
 import fcntl
 from hashlib import file_digest
-from http.client import HTTPException
+from http.client import HTTPException, IncompleteRead
 from pathlib import Path
 import shutil
 import time
@@ -30,8 +31,8 @@ def locked_wheel():
     return entry["url"], entry["size"], entry["hash"].removeprefix("sha256:")
 
 
-def read_range(url, size, start, end):
-    """Retrieve one inclusive byte range, validated before it is saved."""
+@contextmanager
+def open_range(url, size, start, end):
     expected_range = f"bytes {start}-{end}/{size}"
     expected_size = end - start + 1
     request = Request(url, headers={"Range": f"bytes={start}-{end}", "Accept-Encoding": "identity"})
@@ -39,10 +40,41 @@ def read_range(url, size, start, end):
         if response.status != 206 or response.headers.get("Content-Range") != expected_range:
             raise OSError(f"Expected HTTP 206 {expected_range}, received "
                           f"{response.status} {response.headers.get('Content-Range')!r}")
+        length = response.headers.get("Content-Length")
+        if length is not None and length != str(expected_size):
+            raise OSError(f"Content-Length {length!r} disagrees with {expected_range}")
+        yield response, expected_range, expected_size
+
+
+def read_range(url, size, start, end):
+    """Retrieve one inclusive byte range, validated before it is saved."""
+    with open_range(url, size, start, end) as (response, expected_range, expected_size):
         data = response.read(expected_size + 1)
     if len(data) != expected_size:
         raise OSError(f"Received {len(data)} bytes for {expected_range}, expected {expected_size}")
     return data
+
+
+def read_range_prefix(url, size, start, end):
+    """Retain bytes from a validated range when its body ends early."""
+    received = bytearray()
+    timed_out = False
+    with open_range(url, size, start, end) as (response, expected_range, expected_size):
+        try:
+            while len(received) < expected_size:
+                block = response.read1(min(64 * 1024, expected_size - len(received)))
+                if not block:
+                    break
+                received.extend(block)
+        except (OSError, IncompleteRead) as error:
+            if isinstance(error, IncompleteRead):
+                received.extend(error.partial)
+            if not received:
+                raise
+            timed_out = isinstance(error, TimeoutError)
+        if not received or len(received) > expected_size:
+            raise OSError(f"Received {len(received)} bytes for {expected_range}, expected up to {expected_size}")
+    return bytes(received), timed_out
 
 
 def digest(path):

@@ -1,0 +1,85 @@
+{
+  "database": "outputs/file-acceptance.sqlite3",
+  "run_id": "run_41452ebb075c71e5c15088e5b0f8ec27c4d22d47d4fd9c7987d67faa1cd7fe22",
+  "current_observations": [
+    {
+      "product_spoken": "tomates",
+      "quantity": "2.5",
+      "unit": "kg",
+      "status": "ok",
+      "observation_id": "obs_2aac2c990fc32345159327ca9f25f97f83d27983ba5c32796ab1c915941e26bb",
+      "is_final": 1
+    },
+    {
+      "product_spoken": "lait",
+      "quantity": "12",
+      "unit": "bouteille",
+      "status": "ok",
+      "observation_id": "obs_aff2615600f2e10567d3eda1ebc1d5b99a51890e6fba0091f5e59072befd4b29",
+      "is_final": 1
+    }
+  ],
+  "stored_json_matches_manifest": true,
+  "cli_exports": [
+    {
+      "command": [
+        "/Users/vakof/orca/vigio_speech2structdata/.venv/bin/speechflow",
+        "export",
+        "run_41452ebb075c71e5c15088e5b0f8ec27c4d22d47d4fd9c7987d67faa1cd7fe22",
+        "--format",
+        "csv",
+        "--part",
+        "observations",
+        "--database",
+        "outputs/file-acceptance.sqlite3"
+      ],
+      "sha256": "5cd7e64d2c1367c3a8ada1de80c350b5fcfc6797de759b10d1d7d82406d9051c",
+      "byte_count": 834
+    },
+    {
+      "command": [
+        "/Users/vakof/orca/vigio_speech2structdata/.venv/bin/speechflow",
+        "export",
+        "run_41452ebb075c71e5c15088e5b0f8ec27c4d22d47d4fd9c7987d67faa1cd7fe22",
+        "--format",
+        "table",
+        "--part",
+        "observations",
+        "--database",
+        "outputs/file-acceptance.sqlite3"
+      ],
+      "sha256": "ff6ec56271872f87111d54a54ca69cffb0baaacc25b71f09e5c2954aa1f9e5ab",
+      "byte_count": 470
+    },
+    {
+      "command": [
+        "/Users/vakof/orca/vigio_speech2structdata/.venv/bin/speechflow",
+        "export",
+        "run_41452ebb075c71e5c15088e5b0f8ec27c4d22d47d4fd9c7987d67faa1cd7fe22",
+        "--format",
+        "csv",
+        "--part",
+        "segments",
+        "--database",
+        "outputs/file-acceptance.sqlite3"
+      ],
+      "sha256": "09e28db3488dae2ded1a960c1b7b213a8fa571362461a1de876fb2778a208b08",
+      "byte_count": 297
+    },
+    {
+      "command": [
+        "/Users/vakof/orca/vigio_speech2structdata/.venv/bin/speechflow",
+        "export",
+        "run_41452ebb075c71e5c15088e5b0f8ec27c4d22d47d4fd9c7987d67faa1cd7fe22",
+        "--format",
+        "table",
+        "--part",
+        "segments",
+        "--database",
+        "outputs/file-acceptance.sqlite3"
+      ],
+      "sha256": "ac97db7eb2fa3ecca8ab7b776b015f7abb94d818ee54715a46a9458844607ee7",
+      "byte_count": 297
+    }
+  ]
+}

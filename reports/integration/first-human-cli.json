@@ -1,0 +1,29 @@
+{
+  "run_id": "run_a52ebd0f89f37fe2c7e23d8bf60afcdb138398cf967b308bd9d0646ffb85cca2",
+  "mode": "run",
+  "status": "ok",
+  "transcription_status": "ok",
+  "extraction_status": "ok",
+  "processing_version": "processing_faf4292995273f2dcc16a2c08e8b2bec166df6e527e52825c701024b870c3036",
+  "source": {
+    "source_id": "file_081cedff95932cf2e117e5627dbf2262305c929ed6f31cf74ba3ed403945907f",
+    "kind": "file",
+    "name": "10198958753510138668.wav",
+    "digest": "a9f2f1630034aae5bbe5273a25166d9ed1e92bedf4d613c7398fbda92b65ed12"
+  },
+  "segments": 1,
+  "observations": 0,
+  "observations_needing_review": 0,
+  "errors": [],
+  "database": "/Users/vakof/orca/vigio_speech2structdata/outputs/file-acceptance.sqlite3",
+  "disposition": "inserted",
+  "generation": 1,
+  "files": [
+    "outputs/first-human-file/observations.csv",
+    "outputs/first-human-file/observations.txt",
+    "outputs/first-human-file/segments.csv",
+    "outputs/first-human-file/segments.txt",
+    "outputs/first-human-file/run.json"
+  ],
+  "exit_code": 0
+}

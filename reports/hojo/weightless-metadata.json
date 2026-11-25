@@ -1,0 +1,26 @@
+{
+  "evidence": "Pinned local metadata and header from bounded prefix, no model instantiated",
+  "header_bytes": 124168,
+  "checkpoint_group_dtypes": {
+    "bottleneck.I64": 2,
+    "bottleneck.F32": 85,
+    "ln_speech.F32": 2,
+    "speech_encoder.F32": 525,
+    "decoder_model.BF16": 399
+  },
+  "tokenizer_length_before_pad": 151669,
+  "tokenizer_length_after_pad": 151670,
+  "decoder_config_vocabulary": 151936,
+  "embedding_tensor": [
+    151670,
+    2560
+  ],
+  "head_tensor": [
+    151670,
+    2560
+  ],
+  "first_additional_special_token": "<|im_start|>",
+  "encoder_scale_embedding": false,
+  "float_wav_load_dtype": "torch.float32",
+  "float_wav_load_rate": 16000
+}

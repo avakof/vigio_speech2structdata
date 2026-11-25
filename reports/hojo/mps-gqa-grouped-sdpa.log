@@ -1,0 +1,4 @@
+loc("mps_matmul"("(mpsFileLoc): /AppleInternal/Library/BuildRoots/4~Cax4ugCrHf1kB85FKho1tYl8aQDbVbGgjnvcT2g/Library/Caches/com.apple.xbs/TemporaryDirectory.H6J7g0/Sources/MetalPerformanceShadersGraph/mpsgraph/MetalPerformanceShadersGraph/Core/Files/MPSGraphUtilities.mm":48:0)): error: incompatible dimensions
+loc("mps_matmul"("(mpsFileLoc): /AppleInternal/Library/BuildRoots/4~Cax4ugCrHf1kB85FKho1tYl8aQDbVbGgjnvcT2g/Library/Caches/com.apple.xbs/TemporaryDirectory.H6J7g0/Sources/MetalPerformanceShadersGraph/mpsgraph/MetalPerformanceShadersGraph/Core/Files/MPSGraphUtilities.mm":48:0)): error: invalid shape
+LLVM ERROR: Failed to infer result type(s):
+"mps.matmul"(...) {} : (tensor<4x32x1x128xbf16>, tensor<4x8x128x47xbf16>) -> ( ??? )

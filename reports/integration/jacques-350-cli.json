@@ -1,0 +1,29 @@
+{
+  "run_id": "run_41452ebb075c71e5c15088e5b0f8ec27c4d22d47d4fd9c7987d67faa1cd7fe22",
+  "mode": "run",
+  "status": "ok",
+  "transcription_status": "ok",
+  "extraction_status": "ok",
+  "processing_version": "processing_c4af6c1ba3c614f43957dc6bccf78ef821fc0349c56f41d810cf6ec996536525",
+  "source": {
+    "source_id": "file_7cf7f1b6f24023659c0b4b1cfa6dcb5453a8f4c2e1a1ad98f04ef7eefbf4590c",
+    "kind": "file",
+    "name": "hojo-jacques.wav",
+    "digest": "d92c0759b7d4d3e03ae22eb3c47aa97ef7122789eac187c7cf42e8e6035d1330"
+  },
+  "segments": 1,
+  "observations": 2,
+  "observations_needing_review": 0,
+  "errors": [],
+  "database": "/Users/vakof/orca/vigio_speech2structdata/outputs/file-acceptance.sqlite3",
+  "disposition": "inserted",
+  "generation": 1,
+  "files": [
+    "outputs/jacques-cpu-350/observations.csv",
+    "outputs/jacques-cpu-350/observations.txt",
+    "outputs/jacques-cpu-350/segments.csv",
+    "outputs/jacques-cpu-350/segments.txt",
+    "outputs/jacques-cpu-350/run.json"
+  ],
+  "exit_code": 0
+}
