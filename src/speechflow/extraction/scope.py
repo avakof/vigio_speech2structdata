@@ -32,6 +32,8 @@ _BOUNDARY = re.compile(r"(?:[!?;…]|(?<!\d)[.,]|[.,](?!\d)|\b(?:mais|puis|ensui
 _PREDICATE = re.compile(r"^(?:il (?:ne |en )?(?:reste|y a)|nous (?:avons|n avons)|on (?:a|compte)|j ai|je compte)\b")
 _NEGATED_ITEM = re.compile(r"\b(?:(?:pas|plus) (?:de|du|des|d)|aucune?) +\w+")
 _TRAILING_APPROX = r"(?:environ|a peu pres|approximativement)"
+_BARE_NEGATED_COUNT = re.compile(
+    r"\bil\s+ne\s+reste\s+(?:pas|plus)\s+(?P<number>[\w -]{1,80})(?=[.!?;…](?!\d)|$)", re.I)
 
 
 def _words(text: str) -> str:
@@ -42,6 +44,13 @@ def _term(text: str) -> re.Pattern:
     return re.compile(r"(?<![\w-])" + re.escape(_words(text)) + r"(?![\w-])")
 
 
+def _starts_with_measure(text):
+    words = text.split()[:16]
+    return any(
+        is_known_unit(normalize_unit(word.strip(".,!?"))) and parse_quantity(" ".join(words[:i])) is not None
+        for i, word in enumerate(words) if i)
+
+
 def _new_item(left, right):
     left = _words(left)
     right = _words(right)
@@ -49,12 +58,36 @@ def _new_item(left, right):
         return True
     if not left or left.split()[-1] in {"de", "du", "des", "d", "et", "entre", "a"}:
         return False
-    words = right.split()[:16]
-    starts_with_measure = any(
-        is_known_unit(normalize_unit(word.strip(".,!?"))) and parse_quantity(" ".join(words[:i])) is not None
-        for i, word in enumerate(words) if i)
-    return starts_with_measure and bool(
+    return _starts_with_measure(right) and bool(
         _NEGATED_ITEM.search(left) or any(is_known_unit(normalize_unit(word)) for word in left.split()))
+
+
+def unresolved_negated_counts(segments, observations):
+    """Report an uncovered, referent-free count once the ordered transcript is complete."""
+    evidence = {}
+    for observation in observations:
+        for span in observation.evidence:
+            evidence.setdefault(span.segment_id, []).append(span)
+    for i, segment in enumerate(segments):
+        text = segment.normalized_text
+        for match in _BARE_NEGATED_COUNT.finditer(text):
+            numbers = [parse_quantity(word) for word in re.split(r"\s+ou\s+", match["number"], flags=re.I)]
+            if len(numbers) > 2 or any(n is None or n.qualifier != "exact" or n.value is None for n in numbers):
+                continue
+            before = text[:match.start()].rstrip()
+            if not before and i and segments[i - 1].ordinal + 1 == segment.ordinal:
+                before = segments[i - 1].normalized_text.rstrip()
+            if before.endswith(("?", ":")):
+                continue
+            if not text[match.end():].strip() and i + 1 < len(segments):
+                following = segments[i + 1]
+                if following.ordinal == segment.ordinal + 1:
+                    next_text = _words(following.normalized_text[:160])
+                    if not (_PREDICATE.match(next_text) or _starts_with_measure(next_text)):
+                        continue
+            start, end = match.start(), match.start() + len(match.group().rstrip())
+            if not any(span.start < end and start < span.end for span in evidence.get(segment.segment_id, ())):
+                yield f"unresolved_negated_quantity:{segment.segment_id}:{start}-{end}: {text[start:end]!r}"
 
 
 def _clause_ranges(text):

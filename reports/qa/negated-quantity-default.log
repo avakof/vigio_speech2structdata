@@ -1,0 +1,15 @@
+$ .venv/bin/python -m pytest -q
+e15f22568ebb7d3134ecde566a26a08709099457
+ad7c1e7bb9a62412b925a823d93ba45f900ac11f16af1030b4be39a67112c1f1  src/speechflow/extraction/core.py
+d2dca2b29eb8fe08580a94770d69e4b8636b3a9bb2d4fbdd8883b91c6e1b43ca  src/speechflow/extraction/scope.py
+b00886eedc0661bccc3676e4a0c3340b201a61d8397dfedbbe3e421116f49919  src/speechflow/extraction/relations.py
+........................................................................ [ 24%]
+........................................................................ [ 48%]
+........................................................................ [ 72%]
+........................................................................ [ 96%]
+...........                                                              [100%]
+299 passed, 13 deselected in 8.95s
+ad7c1e7bb9a62412b925a823d93ba45f900ac11f16af1030b4be39a67112c1f1  src/speechflow/extraction/core.py
+d2dca2b29eb8fe08580a94770d69e4b8636b3a9bb2d4fbdd8883b91c6e1b43ca  src/speechflow/extraction/scope.py
+b00886eedc0661bccc3676e4a0c3340b201a61d8397dfedbbe3e421116f49919  src/speechflow/extraction/relations.py
+pytest exit 0

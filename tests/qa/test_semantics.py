@@ -545,3 +545,129 @@ def test_decimal_fragment_complete_previous_utterance_leaves_the_next_count_inde
     assert [(obs.product_spoken, obs.quantity, obs.unit) for obs in result.observations] == [
         ("eau", "12", "bouteille"), ("tomates", "5", "kg"), ("lait", "12", "bouteille"),
     ]
+
+
+def _negated_quantity_case(segments, *responses):
+    original = [segment.model_dump(mode="json") for segment in segments]
+    result, calls = run(segments, *responses)
+    assert [segment.model_dump(mode="json") for segment in segments] == original
+    assert [attempt["content"] for attempt in result.attempts] == [
+        response.content for response in responses[:len(calls)]
+    ]
+    print(json.dumps({
+        "segments": original,
+        "status": result.status,
+        "errors": result.errors,
+        "attempts": [{k: attempt[k] for k in ("kind", "window", "content", "errors")}
+                     for attempt in result.attempts],
+        "observations": [obs.model_dump(mode="json") for obs in result.observations],
+    }, ensure_ascii=False))
+    return result, calls
+
+
+def _assert_unresolved_negated_quantity(result, segment, quote):
+    start = segment.normalized_text.index(quote)
+    end = start + len(quote)
+    assert result.status == "needs_review", result.errors
+    assert result.errors == [f"unresolved_negated_quantity:{segment.segment_id}:{start}-{end}: {quote!r}"]
+    assert result.metrics["windows"] == 1
+
+
+def test_negated_quantity_fragment_archived_empty():
+    archive = Path(__file__).with_name("fixtures") / "negation-empty-archived.json"
+    record = json.loads(archive.read_text(encoding="utf-8"))
+    segment = TranscriptSegment.model_validate(record["segment"])
+    quote = "il ne reste pas deux ou trois"
+    assert segment.raw["text"] == segment.normalized_text == quote
+    initial = record["reply"]
+    assert initial["response_raw"]["message"]["content"] == initial["content"]
+    response = BackendReply(initial["content"], initial["done_reason"], raw=initial["response_raw"])
+    result, calls = _negated_quantity_case([segment], response, response)
+    assert result.observations == []
+    assert len(calls) == 1
+    assert result.attempts[0]["response_raw"] == initial["response_raw"]
+    _assert_unresolved_negated_quantity(result, segment, quote)
+
+
+@pytest.mark.parametrize("prefix, fragment", [
+    ("", "il ne reste pas quatre"),
+    ("On reprend l’inventaire. ", "Il ne reste pas six ou huit"),
+])
+def test_negated_quantity_fragment_other_cardinals(prefix, fragment):
+    segment, = transcript(f"{prefix}{fragment}.")
+    empty = reply()
+    result, calls = _negated_quantity_case([segment], empty, empty)
+    assert result.observations == []
+    assert len(calls) == 1
+    _assert_unresolved_negated_quantity(result, segment, fragment)
+
+
+@pytest.mark.parametrize("repair", [False, True], ids=["no-repair", "unrelated-repair"])
+def test_negated_quantity_fragment_preserves_neighbor_once_per_window(repair):
+    fragment = "il ne reste pas deux ou trois"
+    milk_quote = "douze bouteilles de lait"
+    segments = transcript(fragment, f"Il reste {milk_quote}.")
+    milk = item(milk_quote, "lait", "douze", "12", "bouteilles", segment="S2")
+    if repair:
+        bad = item("Deux kilos de farine", "farine", "Deux", "2", "kilos", segment="S9", ref="o2")
+        responses = (reply(milk, bad), reply(milk))
+    else:
+        responses = (reply(milk), reply(milk))
+    result, calls = _negated_quantity_case(segments, *responses)
+    assert len(calls) == (2 if repair else 1)
+    assert [a["window"] for a in result.attempts] == [0] * len(calls)
+    assert [a["kind"] for a in result.attempts] == (["initial", "repair"] if repair else ["initial"])
+    observation, = result.observations
+    assert (observation.status, observation.product_spoken, observation.quantity, observation.unit) == (
+        "ok", "lait", "12", "bouteille",
+    )
+    span, = observation.evidence
+    assert span.segment_id == segments[1].segment_id
+    assert segments[1].normalized_text[span.start:span.end] == span.quote == milk_quote
+    _assert_unresolved_negated_quantity(result, segments[0], fragment)
+
+
+@pytest.mark.parametrize("texts", [
+    ("Le technicien ne reste pas dans le bâtiment.",),
+    ("Il ne reste pas de temps avant la fermeture.",),
+    ("Il ne reste pas deux ou trois minutes avant la fermeture.",),
+    ("Il ne reste pas deux ou trois", "minutes avant la fermeture."),
+    ("Combien de minutes reste-t-il ? Il ne reste pas deux ou trois.",),
+    ("Combien de minutes reste-t-il ?", "Il ne reste pas deux ou trois."),
+], ids=[
+    "ordinary-factual", "temps", "minutes-one-segment", "minutes-split",
+    "question-one-segment", "question-split",
+])
+def test_negated_quantity_fragment_preserves_factual_controls(texts):
+    empty = reply()
+    result, calls = _negated_quantity_case(transcript(*texts), empty, empty)
+    assert result.status == "ok", result.errors
+    assert result.errors == []
+    assert result.observations == []
+    assert len(calls) == 1
+
+
+@pytest.mark.parametrize("grounded_repair", [False, True], ids=["empty", "grounded-repair"])
+def test_negated_quantity_fragment_preserves_named_absence(grounded_repair):
+    quote = "Il ne reste pas de sucre"
+    segment, = transcript(f"{quote}.")
+    empty = reply()
+    named = reply(item(quote, "sucre", None, None, None, operation="negation", qualifier="unknown"))
+    result, calls = _negated_quantity_case([segment], empty, named if grounded_repair else empty)
+    assert len(calls) == 2
+    assert result.attempts[0]["errors"] == [
+        f"Record the explicit inventory absence {quote!r} as negation, without inventing zero."
+    ]
+    if grounded_repair:
+        assert result.status == "ok", result.errors
+        sugar, = result.observations
+        assert (sugar.status, sugar.operation, sugar.product_spoken, sugar.quantity, sugar.unit) == (
+            "ok", "negation", "sucre", None, None,
+        )
+        span, = sugar.evidence
+        assert (span.segment_id, span.start, span.end, span.quote) == (
+            segment.segment_id, 0, len(quote), quote,
+        )
+    else:
+        assert result.status == "needs_review", result.errors
+        assert result.observations == []

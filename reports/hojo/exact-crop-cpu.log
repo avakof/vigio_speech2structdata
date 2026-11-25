@@ -1,0 +1,24 @@
+Unrecognized keys in `rope_scaling` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section', 'interleaved'}
+Unrecognized keys in `rope_scaling` for 'rope_type'='default': {'mrope_section', 'interleaved'}
+The following generation flags are not valid and may be ignored: ['top_p']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Setting `pad_token_id` to `eos_token_id`:151645 for open-end generation.
+Setting `pad_token_id` to `eos_token_id`:151645 for open-end generation.
+Setting `pad_token_id` to `eos_token_id`:151645 for open-end generation.
+       29.24 real       125.44 user        56.92 sys
+         12757434368  maximum resident set size
+                   0  average shared memory size
+                   0  average unshared data size
+                   0  average unshared stack size
+              952106  page reclaims
+                 152  page faults
+                   0  swaps
+                   0  block input operations
+                   0  block output operations
+                   0  messages sent
+                   0  messages received
+                   0  signals received
+                4537  voluntary context switches
+              107174  involuntary context switches
+       2190884679680  instructions retired
+        631403283493  cycles elapsed
+          3596576488  peak memory footprint

@@ -8,7 +8,8 @@ from .units import PACKAGE_UNITS, is_known_unit, normalize_unit
 
 _UNIT_WORD = re.compile(r"\b[^\W\d_]+\b")
 _CORRECTION = re.compile(r"(?:\b(?:pardon|je corrige|rectification|ou plutot|plutot)|\bnon(?=\s*[,;:]|\s*$))[\s,;:….-]*$")
-_ABSENCE = re.compile(r"\b(?:il ne reste|il n['’]y a|nous n['’]avons) (?:pas|plus) (?:de\s+|du\s+|d['’])\w+", re.I)
+_ABSENCE = re.compile(
+    r"\b(?:il ne reste|il n['’]y a|nous n['’]avons) (?:pas|plus) (?:de\s+|du\s+|d['’])(?P<noun>\w+)", re.I)
 
 
 @dataclass
@@ -102,6 +103,8 @@ def source_relation_problems(labels, context_labels, observations):
 
     for absent in _ABSENCE.finditer(source):
         if target_start is None or absent.end() <= target_start:
+            continue
+        if fold(absent["noun"]) == "temps":
             continue
         involved = [o for o in observations if any(
             span.segment_id in offsets and offsets[span.segment_id] + span.start < absent.end()

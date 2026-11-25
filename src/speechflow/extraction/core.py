@@ -16,6 +16,7 @@ from ..assets import DIGEST
 from .prompt import (PROMPT_VERSION, SYSTEM_PROMPT, PromptSegment, estimate_messages, estimate_tokens,
                      render_user, repair_message)
 from .schema import GENERATION_SCHEMA_VERSION, LLMOutput, generation_json_schema
+from .scope import unresolved_negated_counts
 from .text import fold
 from .validate import check_reply
 
@@ -324,6 +325,7 @@ def _extract(segments, *, run_id, settings, backend, expected_digest) -> Extract
             accepted = [o for o in accepted if o.observation_id not in set(check.replaced)]
         accepted.extend(check.observations)
 
+    errors.extend(unresolved_negated_counts(usable, accepted))
     review = any(o.status == "needs_review" for o in accepted)
     if failed_windows == len(windows):
         status = "error"

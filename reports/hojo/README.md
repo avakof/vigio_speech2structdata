@@ -136,3 +136,27 @@ Comparable 270-second windows staged 269,484,032 unique bytes with 24 workers an
 - [MPS inference records](mps.jsonl) and [raw stderr and process timings](mps.log)
 - [Original MPS grouped-SDPA failure](mps-sdpa-failed.log) and [placement before the abort](mps-sdpa-failed.jsonl)
 - [Grouped-SDPA primitive abort](mps-gqa-grouped-sdpa.log) and [repeated-KV eager primitive result](mps-gqa-repeated-kv-eager.jsonl)
+- [Machine-readable CPU and MPS feasibility summary](feasibility-summary.json)
+- [Segmented microphone and offline synthetic input acceptance](microphone.md)
+
+## Long recording diagnosis on CPU
+
+The original 25-second center reply retokenized to 200 tokens, repeated a claim about fish four times, and omitted the predeclared apples and pears observations. This suggests a generation loop near the configured cap. Hojo did not return its stop reason. Production decoding reproduced the same normalized center PCM hash before the experiment. The probe split the original core `[394112, 787712)` into disjoint halves with 3,200 samples of padding at each boundary, reused one CPU model, and kept the same beam size and generation settings. The second cut used the selected 30 ms low-RMS boundary only after the midpoint failed. [Original reproduction](../qa/real-full-long-reproducer.json), [ranges, hashes, keys, and full raw responses](long-cpu-bisection.jsonl), [stderr and process timings](long-cpu-bisection.log).
+
+| Cut sample | Expected phrase | Decoded phrase | Retokenized response length | Inference |
+| --- | --- | --- | ---: | ---: |
+| 590,912 | neuf kilos de pommes | neuf kilos de pain | 61 | 34.67 s |
+| 590,912 | cinq kilos de poires | cinq kilos de viande | 55 | 35.66 s |
+| 588,000 | neuf kilos de pommes | neuf kilos de pain | 63 | 31.43 s |
+| 588,000 | cinq kilos de poires | cinq kilos de voir | 53 | 27.76 s |
+
+The four shorter replies retokenized to 53–63 tokens, and both cuts substituted the two expected products. The substitution errors therefore persisted well below the configured cap. The probe completed with exit code 1, its result for a completed comparison with neither cut restoring both gold phrases. [Generation-loop review rule and regression evidence](generation-loop.md).
+
+The subsequent exact-crop diagnostic tested three missed phrases on each backend and recovered none. Both three-call runs completed, and each reply retokenized to 7–10 tokens. [Exact-crop input provenance and raw CPU/MPS results](exact-crops.md).
+
+```sh
+/usr/bin/time -l env HF_HUB_OFFLINE=1 TRANSFORMERS_OFFLINE=1 \
+  PYTORCH_ENABLE_MPS_FALLBACK=0 PYTHONUNBUFFERED=1 \
+  .venv/bin/python tools/hojo/bisect_long_cpu.py --run-model --low-rms-if-failed \
+  >reports/hojo/long-cpu-bisection.jsonl 2>reports/hojo/long-cpu-bisection.log
+```

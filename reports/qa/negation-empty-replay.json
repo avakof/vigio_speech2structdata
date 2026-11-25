@@ -1,0 +1,359 @@
+{
+  "archive": "reports/evaluation/semantic-audio-real.json",
+  "case": "synthetic-jacques-negation",
+  "mode": "Production extract and validator with caller-owned scripted backend. No inference.",
+  "archived_empty_reply": {
+    "model": "qwen3:8b",
+    "created_at": "2026-11-25T18:42:21.76581Z",
+    "message": {
+      "role": "assistant",
+      "content": "{\"language\":\"fr\",\"observations\":[]}"
+    },
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 2038379292,
+    "load_duration": 780576500,
+    "prompt_eval_count": 661,
+    "prompt_eval_cached_count": 0,
+    "prompt_eval_duration": 1010356000,
+    "eval_count": 9,
+    "eval_duration": 237799000
+  },
+  "archived_asr_scores": {
+    "gold_mentions": 1,
+    "covered_gold_mentions": 0,
+    "negation": {
+      "tp": 0,
+      "fp": 0,
+      "fn": 1,
+      "predicted": 0,
+      "expected": 1,
+      "precision": null,
+      "recall": 0.0
+    }
+  },
+  "replays": {
+    "fragment_with_independently_grounded_neighbor": {
+      "source_segments": [
+        {
+          "segment_id": "segment_6fd3158fe4e6ae3a2be823ce33f278a49d8040ea01c00e475a1cc8b03951b89e",
+          "source_id": "file_9aaa0ff0861c84bd312a4ffd7dfd172ca22f647b7a517e835db9eb5451dbc5da",
+          "ordinal": 0,
+          "input_start": 0,
+          "core_start": 512,
+          "core_end": 19968,
+          "input_end": 23168,
+          "raw": {
+            "key": "segment_6fd3158fe4e6ae3a2be823ce33f278a49d8040ea01c00e475a1cc8b03951b89e",
+            "text": "il ne reste pas deux ou trois"
+          },
+          "normalized_text": "il ne reste pas deux ou trois",
+          "status": "ok",
+          "errors": []
+        },
+        {
+          "segment_id": "qa-neighbor-seg-1",
+          "source_id": "file_9aaa0ff0861c84bd312a4ffd7dfd172ca22f647b7a517e835db9eb5451dbc5da",
+          "ordinal": 1,
+          "input_start": 32000,
+          "core_start": 32000,
+          "core_end": 48000,
+          "input_end": 48000,
+          "raw": {
+            "text": "Il reste douze bouteilles de lait."
+          },
+          "normalized_text": "Il reste douze bouteilles de lait.",
+          "status": "ok",
+          "errors": []
+        }
+      ],
+      "backend_calls": 1,
+      "status": "ok",
+      "errors": [],
+      "observations": [
+        {
+          "product_spoken": "lait",
+          "quantity_text": "douze",
+          "quantity": "12",
+          "quantity_max": null,
+          "qualifier": "exact",
+          "unit_spoken": "bouteilles",
+          "unit": "bouteille",
+          "packaging": null,
+          "location": null,
+          "operation": "count",
+          "evidence": [
+            {
+              "segment_id": "qa-neighbor-seg-1",
+              "start": 9,
+              "end": 33,
+              "quote": "douze bouteilles de lait"
+            }
+          ],
+          "correction_of": null,
+          "observation_id": "obs_1665127961ee442b456a31bf89383c2e819f60d49290443210d76f6b64919775",
+          "catalog_match": null,
+          "revision": 1,
+          "status": "ok",
+          "errors": []
+        }
+      ],
+      "attempts": [
+        {
+          "kind": "initial",
+          "content": "{\"language\": \"fr\", \"observations\": [{\"segment\": \"S2\", \"quote\": \"douze bouteilles de lait\", \"operation\": \"count\", \"product_spoken\": \"lait\", \"quantity_text\": \"douze\", \"quantity\": \"12\", \"qualifier\": \"exact\", \"unit_spoken\": \"bouteilles\", \"package\": null, \"location\": null, \"ref\": \"o1\", \"correction_of\": null}]}",
+          "user_message": "<transcript>\nSegments to extract:\n[S1] il ne reste pas deux ou trois\n[S2] Il reste douze bouteilles de lait.\n</transcript>",
+          "errors": []
+        }
+      ]
+    },
+    "archived_asr_fragment": {
+      "source_segments": [
+        {
+          "segment_id": "segment_6fd3158fe4e6ae3a2be823ce33f278a49d8040ea01c00e475a1cc8b03951b89e",
+          "source_id": "file_9aaa0ff0861c84bd312a4ffd7dfd172ca22f647b7a517e835db9eb5451dbc5da",
+          "ordinal": 0,
+          "input_start": 0,
+          "core_start": 512,
+          "core_end": 19968,
+          "input_end": 23168,
+          "raw": {
+            "key": "segment_6fd3158fe4e6ae3a2be823ce33f278a49d8040ea01c00e475a1cc8b03951b89e",
+            "text": "il ne reste pas deux ou trois"
+          },
+          "normalized_text": "il ne reste pas deux ou trois",
+          "status": "ok",
+          "errors": []
+        }
+      ],
+      "backend_calls": 1,
+      "status": "ok",
+      "errors": [],
+      "observations": [],
+      "attempts": [
+        {
+          "kind": "initial",
+          "content": "{\"language\":\"fr\",\"observations\":[]}",
+          "user_message": "<transcript>\nSegments to extract:\n[S1] il ne reste pas deux ou trois\n</transcript>",
+          "errors": []
+        }
+      ]
+    },
+    "ordinary_non_inventory_negation": {
+      "source_segments": [
+        {
+          "segment_id": "seg-0",
+          "source_id": "qa-source",
+          "ordinal": 0,
+          "input_start": 0,
+          "core_start": 0,
+          "core_end": 16000,
+          "input_end": 16000,
+          "raw": {
+            "text": "Le technicien ne reste pas dans le bâtiment."
+          },
+          "normalized_text": "Le technicien ne reste pas dans le bâtiment.",
+          "status": "ok",
+          "errors": []
+        }
+      ],
+      "backend_calls": 1,
+      "status": "ok",
+      "errors": [],
+      "observations": [],
+      "attempts": [
+        {
+          "kind": "initial",
+          "content": "{\"language\":\"fr\",\"observations\":[]}",
+          "user_message": "<transcript>\nSegments to extract:\n[S1] Le technicien ne reste pas dans le bâtiment.\n</transcript>",
+          "errors": []
+        }
+      ]
+    },
+    "complete_non_inventory_time_count": {
+      "source_segments": [
+        {
+          "segment_id": "seg-0",
+          "source_id": "qa-source",
+          "ordinal": 0,
+          "input_start": 0,
+          "core_start": 0,
+          "core_end": 16000,
+          "input_end": 16000,
+          "raw": {
+            "text": "Il ne reste pas deux ou trois jours avant la réunion."
+          },
+          "normalized_text": "Il ne reste pas deux ou trois jours avant la réunion.",
+          "status": "ok",
+          "errors": []
+        }
+      ],
+      "backend_calls": 1,
+      "status": "ok",
+      "errors": [],
+      "observations": [],
+      "attempts": [
+        {
+          "kind": "initial",
+          "content": "{\"language\":\"fr\",\"observations\":[]}",
+          "user_message": "<transcript>\nSegments to extract:\n[S1] Il ne reste pas deux ou trois jours avant la réunion.\n</transcript>",
+          "errors": []
+        }
+      ]
+    },
+    "non_inventory_absence_same_cue": {
+      "source_segments": [
+        {
+          "segment_id": "seg-0",
+          "source_id": "qa-source",
+          "ordinal": 0,
+          "input_start": 0,
+          "core_start": 0,
+          "core_end": 16000,
+          "input_end": 16000,
+          "raw": {
+            "text": "Il ne reste pas de temps avant la fermeture."
+          },
+          "normalized_text": "Il ne reste pas de temps avant la fermeture.",
+          "status": "ok",
+          "errors": []
+        }
+      ],
+      "backend_calls": 2,
+      "status": "needs_review",
+      "errors": [
+        "window 0: Record the explicit inventory absence 'Il ne reste pas de temps' as negation, without inventing zero.",
+        "window 0: Unresolved validation after the bounded repair: [\"Record the explicit inventory absence 'Il ne reste pas de temps' as negation, without inventing zero.\"]"
+      ],
+      "observations": [],
+      "attempts": [
+        {
+          "kind": "initial",
+          "content": "{\"language\":\"fr\",\"observations\":[]}",
+          "user_message": "<transcript>\nSegments to extract:\n[S1] Il ne reste pas de temps avant la fermeture.\n</transcript>",
+          "errors": [
+            "Record the explicit inventory absence 'Il ne reste pas de temps' as negation, without inventing zero."
+          ]
+        },
+        {
+          "kind": "repair",
+          "content": "{\"language\":\"fr\",\"observations\":[]}",
+          "user_message": "<transcript>\nSegments to extract:\n[S1] Il ne reste pas de temps avant la fermeture.\n</transcript>",
+          "errors": [
+            "Record the explicit inventory absence 'Il ne reste pas de temps' as negation, without inventing zero."
+          ]
+        }
+      ]
+    },
+    "grounded_inventory_empty_twice": {
+      "source_segments": [
+        {
+          "segment_id": "seg-0",
+          "source_id": "qa-source",
+          "ordinal": 0,
+          "input_start": 0,
+          "core_start": 0,
+          "core_end": 16000,
+          "input_end": 16000,
+          "raw": {
+            "text": "Il ne reste pas de sucre."
+          },
+          "normalized_text": "Il ne reste pas de sucre.",
+          "status": "ok",
+          "errors": []
+        }
+      ],
+      "backend_calls": 2,
+      "status": "needs_review",
+      "errors": [
+        "window 0: Record the explicit inventory absence 'Il ne reste pas de sucre' as negation, without inventing zero.",
+        "window 0: Unresolved validation after the bounded repair: [\"Record the explicit inventory absence 'Il ne reste pas de sucre' as negation, without inventing zero.\"]"
+      ],
+      "observations": [],
+      "attempts": [
+        {
+          "kind": "initial",
+          "content": "{\"language\":\"fr\",\"observations\":[]}",
+          "user_message": "<transcript>\nSegments to extract:\n[S1] Il ne reste pas de sucre.\n</transcript>",
+          "errors": [
+            "Record the explicit inventory absence 'Il ne reste pas de sucre' as negation, without inventing zero."
+          ]
+        },
+        {
+          "kind": "repair",
+          "content": "{\"language\":\"fr\",\"observations\":[]}",
+          "user_message": "<transcript>\nSegments to extract:\n[S1] Il ne reste pas de sucre.\n</transcript>",
+          "errors": [
+            "Record the explicit inventory absence 'Il ne reste pas de sucre' as negation, without inventing zero."
+          ]
+        }
+      ]
+    },
+    "grounded_inventory_archived_repair": {
+      "source_segments": [
+        {
+          "segment_id": "seg-0",
+          "source_id": "qa-source",
+          "ordinal": 0,
+          "input_start": 0,
+          "core_start": 0,
+          "core_end": 16000,
+          "input_end": 16000,
+          "raw": {
+            "text": "Il ne reste pas de sucre."
+          },
+          "normalized_text": "Il ne reste pas de sucre.",
+          "status": "ok",
+          "errors": []
+        }
+      ],
+      "backend_calls": 2,
+      "status": "ok",
+      "errors": [],
+      "observations": [
+        {
+          "product_spoken": "sucre",
+          "quantity_text": null,
+          "quantity": null,
+          "quantity_max": null,
+          "qualifier": "unknown",
+          "unit_spoken": null,
+          "unit": null,
+          "packaging": null,
+          "location": null,
+          "operation": "negation",
+          "evidence": [
+            {
+              "segment_id": "seg-0",
+              "start": 0,
+              "end": 24,
+              "quote": "Il ne reste pas de sucre"
+            }
+          ],
+          "correction_of": null,
+          "observation_id": "obs_f132360122721ef60fc0235ccffa5d012040e63497754520a5b01d4b89d18f01",
+          "catalog_match": null,
+          "revision": 1,
+          "status": "ok",
+          "errors": []
+        }
+      ],
+      "attempts": [
+        {
+          "kind": "initial",
+          "content": "{\"language\":\"fr\",\"observations\":[]}",
+          "user_message": "<transcript>\nSegments to extract:\n[S1] Il ne reste pas de sucre.\n</transcript>",
+          "errors": [
+            "Record the explicit inventory absence 'Il ne reste pas de sucre' as negation, without inventing zero."
+          ]
+        },
+        {
+          "kind": "repair",
+          "content": "{\"language\":\"fr\",\"observations\":[{\"segment\":\"S1\",\"quote\":\"Il ne reste pas de sucre\",\"more_evidence\":[],\"operation\":\"negation\",\"product_spoken\":\"sucre\",\"quantity_text\":null,\"quantity\":null,\"qualifier\": \"unknown\",\"unit_spoken\":null,\"package\":null,\"location\":null,\"ref\":\"o1\",\"correction_of\":null}]}",
+          "user_message": "<transcript>\nSegments to extract:\n[S1] Il ne reste pas de sucre.\n</transcript>",
+          "errors": []
+        }
+      ]
+    }
+  }
+}

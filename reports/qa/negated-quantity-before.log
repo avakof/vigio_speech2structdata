@@ -1,0 +1,250 @@
+$ PYTHONPATH=/var/folders/q8/_7ztc8bn4ybc9m23xt7dz_fc0000gn/T/speechflow-qa-negation-before.4aFwZRgoXa .venv/bin/python -m pytest -q -s tests/qa/test_semantics.py -k negated_quantity_fragment
+/var/folders/q8/_7ztc8bn4ybc9m23xt7dz_fc0000gn/T/speechflow-qa-negation-before.4aFwZRgoXa/speechflow/extraction/scope.py
+01d6cab28c6a59bf45e5b05bc8348c0c2d57d1522654398e2c1a5c4509f04586  /var/folders/q8/_7ztc8bn4ybc9m23xt7dz_fc0000gn/T/speechflow-qa-negation-before.4aFwZRgoXa/speechflow/extraction/core.py
+119e872e0c3dc56ebe3e8c6bc4b85844304d555aed64bfbbb4b44d6cc786cbfc  /var/folders/q8/_7ztc8bn4ybc9m23xt7dz_fc0000gn/T/speechflow-qa-negation-before.4aFwZRgoXa/speechflow/extraction/scope.py
+5b93569f6cfe00a92e33a2a730edb91a2fc9afce213016174565b241561900a9  /var/folders/q8/_7ztc8bn4ybc9m23xt7dz_fc0000gn/T/speechflow-qa-negation-before.4aFwZRgoXa/speechflow/extraction/relations.py
+{"segments": [{"segment_id": "segment_6fd3158fe4e6ae3a2be823ce33f278a49d8040ea01c00e475a1cc8b03951b89e", "source_id": "file_9aaa0ff0861c84bd312a4ffd7dfd172ca22f647b7a517e835db9eb5451dbc5da", "ordinal": 0, "input_start": 0, "core_start": 512, "core_end": 19968, "input_end": 23168, "raw": {"key": "segment_6fd3158fe4e6ae3a2be823ce33f278a49d8040ea01c00e475a1cc8b03951b89e", "text": "il ne reste pas deux ou trois"}, "normalized_text": "il ne reste pas deux ou trois", "status": "ok", "errors": []}], "status": "ok", "errors": [], "attempts": [{"kind": "initial", "window": 0, "content": "{\"language\":\"fr\",\"observations\":[]}", "errors": []}], "observations": []}
+F{"segments": [{"segment_id": "seg-0", "source_id": "qa-source", "ordinal": 0, "input_start": 0, "core_start": 0, "core_end": 16000, "input_end": 16000, "raw": {"text": "il ne reste pas quatre."}, "normalized_text": "il ne reste pas quatre.", "status": "ok", "errors": []}], "status": "ok", "errors": [], "attempts": [{"kind": "initial", "window": 0, "content": "{\"language\": \"fr\", \"observations\": []}", "errors": []}], "observations": []}
+F{"segments": [{"segment_id": "seg-0", "source_id": "qa-source", "ordinal": 0, "input_start": 0, "core_start": 0, "core_end": 16000, "input_end": 16000, "raw": {"text": "On reprend l’inventaire. Il ne reste pas six ou huit."}, "normalized_text": "On reprend l’inventaire. Il ne reste pas six ou huit.", "status": "ok", "errors": []}], "status": "ok", "errors": [], "attempts": [{"kind": "initial", "window": 0, "content": "{\"language\": \"fr\", \"observations\": []}", "errors": []}], "observations": []}
+F{"segments": [{"segment_id": "seg-0", "source_id": "qa-source", "ordinal": 0, "input_start": 0, "core_start": 0, "core_end": 16000, "input_end": 16000, "raw": {"text": "il ne reste pas deux ou trois"}, "normalized_text": "il ne reste pas deux ou trois", "status": "ok", "errors": []}, {"segment_id": "seg-1", "source_id": "qa-source", "ordinal": 1, "input_start": 16000, "core_start": 16000, "core_end": 32000, "input_end": 32000, "raw": {"text": "Il reste douze bouteilles de lait."}, "normalized_text": "Il reste douze bouteilles de lait.", "status": "ok", "errors": []}], "status": "ok", "errors": [], "attempts": [{"kind": "initial", "window": 0, "content": "{\"language\": \"fr\", \"observations\": [{\"segment\": \"S2\", \"quote\": \"douze bouteilles de lait\", \"operation\": \"count\", \"product_spoken\": \"lait\", \"quantity_text\": \"douze\", \"quantity\": \"12\", \"qualifier\": \"exact\", \"unit_spoken\": \"bouteilles\", \"package\": null, \"location\": null, \"ref\": \"o1\", \"correction_of\": null}]}", "errors": []}], "observations": [{"product_spoken": "lait", "quantity_text": "douze", "quantity": "12", "quantity_max": null, "qualifier": "exact", "unit_spoken": "bouteilles", "unit": "bouteille", "packaging": null, "location": null, "operation": "count", "evidence": [{"segment_id": "seg-1", "start": 9, "end": 33, "quote": "douze bouteilles de lait"}], "correction_of": null, "observation_id": "obs_4968eb1c8631f768495fd01dea367ffe111020423f83e95b1ca615b49ab6106e", "catalog_match": null, "revision": 1, "status": "ok", "errors": []}]}
+F{"segments": [{"segment_id": "seg-0", "source_id": "qa-source", "ordinal": 0, "input_start": 0, "core_start": 0, "core_end": 16000, "input_end": 16000, "raw": {"text": "il ne reste pas deux ou trois"}, "normalized_text": "il ne reste pas deux ou trois", "status": "ok", "errors": []}, {"segment_id": "seg-1", "source_id": "qa-source", "ordinal": 1, "input_start": 16000, "core_start": 16000, "core_end": 32000, "input_end": 32000, "raw": {"text": "Il reste douze bouteilles de lait."}, "normalized_text": "Il reste douze bouteilles de lait.", "status": "ok", "errors": []}], "status": "ok", "errors": [], "attempts": [{"kind": "initial", "window": 0, "content": "{\"language\": \"fr\", \"observations\": [{\"segment\": \"S2\", \"quote\": \"douze bouteilles de lait\", \"operation\": \"count\", \"product_spoken\": \"lait\", \"quantity_text\": \"douze\", \"quantity\": \"12\", \"qualifier\": \"exact\", \"unit_spoken\": \"bouteilles\", \"package\": null, \"location\": null, \"ref\": \"o1\", \"correction_of\": null}, {\"segment\": \"S9\", \"quote\": \"Deux kilos de farine\", \"operation\": \"count\", \"product_spoken\": \"farine\", \"quantity_text\": \"Deux\", \"quantity\": \"2\", \"qualifier\": \"exact\", \"unit_spoken\": \"kilos\", \"package\": null, \"location\": null, \"ref\": \"o2\", \"correction_of\": null}]}", "errors": ["o2: unknown segment label(s) ['S9']"]}, {"kind": "repair", "window": 0, "content": "{\"language\": \"fr\", \"observations\": [{\"segment\": \"S2\", \"quote\": \"douze bouteilles de lait\", \"operation\": \"count\", \"product_spoken\": \"lait\", \"quantity_text\": \"douze\", \"quantity\": \"12\", \"qualifier\": \"exact\", \"unit_spoken\": \"bouteilles\", \"package\": null, \"location\": null, \"ref\": \"o1\", \"correction_of\": null}]}", "errors": []}], "observations": [{"product_spoken": "lait", "quantity_text": "douze", "quantity": "12", "quantity_max": null, "qualifier": "exact", "unit_spoken": "bouteilles", "unit": "bouteille", "packaging": null, "location": null, "operation": "count", "evidence": [{"segment_id": "seg-1", "start": 9, "end": 33, "quote": "douze bouteilles de lait"}], "correction_of": null, "observation_id": "obs_4968eb1c8631f768495fd01dea367ffe111020423f83e95b1ca615b49ab6106e", "catalog_match": null, "revision": 1, "status": "ok", "errors": []}]}
+F{"segments": [{"segment_id": "seg-0", "source_id": "qa-source", "ordinal": 0, "input_start": 0, "core_start": 0, "core_end": 16000, "input_end": 16000, "raw": {"text": "Le technicien ne reste pas dans le bâtiment."}, "normalized_text": "Le technicien ne reste pas dans le bâtiment.", "status": "ok", "errors": []}], "status": "ok", "errors": [], "attempts": [{"kind": "initial", "window": 0, "content": "{\"language\": \"fr\", \"observations\": []}", "errors": []}], "observations": []}
+.{"segments": [{"segment_id": "seg-0", "source_id": "qa-source", "ordinal": 0, "input_start": 0, "core_start": 0, "core_end": 16000, "input_end": 16000, "raw": {"text": "Il ne reste pas de temps avant la fermeture."}, "normalized_text": "Il ne reste pas de temps avant la fermeture.", "status": "ok", "errors": []}], "status": "needs_review", "errors": ["window 0: Record the explicit inventory absence 'Il ne reste pas de temps' as negation, without inventing zero.", "window 0: Unresolved validation after the bounded repair: [\"Record the explicit inventory absence 'Il ne reste pas de temps' as negation, without inventing zero.\"]"], "attempts": [{"kind": "initial", "window": 0, "content": "{\"language\": \"fr\", \"observations\": []}", "errors": ["Record the explicit inventory absence 'Il ne reste pas de temps' as negation, without inventing zero."]}, {"kind": "repair", "window": 0, "content": "{\"language\": \"fr\", \"observations\": []}", "errors": ["Record the explicit inventory absence 'Il ne reste pas de temps' as negation, without inventing zero."]}], "observations": []}
+F{"segments": [{"segment_id": "seg-0", "source_id": "qa-source", "ordinal": 0, "input_start": 0, "core_start": 0, "core_end": 16000, "input_end": 16000, "raw": {"text": "Il ne reste pas deux ou trois minutes avant la fermeture."}, "normalized_text": "Il ne reste pas deux ou trois minutes avant la fermeture.", "status": "ok", "errors": []}], "status": "ok", "errors": [], "attempts": [{"kind": "initial", "window": 0, "content": "{\"language\": \"fr\", \"observations\": []}", "errors": []}], "observations": []}
+.{"segments": [{"segment_id": "seg-0", "source_id": "qa-source", "ordinal": 0, "input_start": 0, "core_start": 0, "core_end": 16000, "input_end": 16000, "raw": {"text": "Il ne reste pas deux ou trois"}, "normalized_text": "Il ne reste pas deux ou trois", "status": "ok", "errors": []}, {"segment_id": "seg-1", "source_id": "qa-source", "ordinal": 1, "input_start": 16000, "core_start": 16000, "core_end": 32000, "input_end": 32000, "raw": {"text": "minutes avant la fermeture."}, "normalized_text": "minutes avant la fermeture.", "status": "ok", "errors": []}], "status": "ok", "errors": [], "attempts": [{"kind": "initial", "window": 0, "content": "{\"language\": \"fr\", \"observations\": []}", "errors": []}], "observations": []}
+.{"segments": [{"segment_id": "seg-0", "source_id": "qa-source", "ordinal": 0, "input_start": 0, "core_start": 0, "core_end": 16000, "input_end": 16000, "raw": {"text": "Combien de minutes reste-t-il ? Il ne reste pas deux ou trois."}, "normalized_text": "Combien de minutes reste-t-il ? Il ne reste pas deux ou trois.", "status": "ok", "errors": []}], "status": "ok", "errors": [], "attempts": [{"kind": "initial", "window": 0, "content": "{\"language\": \"fr\", \"observations\": []}", "errors": []}], "observations": []}
+.{"segments": [{"segment_id": "seg-0", "source_id": "qa-source", "ordinal": 0, "input_start": 0, "core_start": 0, "core_end": 16000, "input_end": 16000, "raw": {"text": "Combien de minutes reste-t-il ?"}, "normalized_text": "Combien de minutes reste-t-il ?", "status": "ok", "errors": []}, {"segment_id": "seg-1", "source_id": "qa-source", "ordinal": 1, "input_start": 16000, "core_start": 16000, "core_end": 32000, "input_end": 32000, "raw": {"text": "Il ne reste pas deux ou trois."}, "normalized_text": "Il ne reste pas deux ou trois.", "status": "ok", "errors": []}], "status": "ok", "errors": [], "attempts": [{"kind": "initial", "window": 0, "content": "{\"language\": \"fr\", \"observations\": []}", "errors": []}], "observations": []}
+.{"segments": [{"segment_id": "seg-0", "source_id": "qa-source", "ordinal": 0, "input_start": 0, "core_start": 0, "core_end": 16000, "input_end": 16000, "raw": {"text": "Il ne reste pas de sucre."}, "normalized_text": "Il ne reste pas de sucre.", "status": "ok", "errors": []}], "status": "needs_review", "errors": ["window 0: Record the explicit inventory absence 'Il ne reste pas de sucre' as negation, without inventing zero.", "window 0: Unresolved validation after the bounded repair: [\"Record the explicit inventory absence 'Il ne reste pas de sucre' as negation, without inventing zero.\"]"], "attempts": [{"kind": "initial", "window": 0, "content": "{\"language\": \"fr\", \"observations\": []}", "errors": ["Record the explicit inventory absence 'Il ne reste pas de sucre' as negation, without inventing zero."]}, {"kind": "repair", "window": 0, "content": "{\"language\": \"fr\", \"observations\": []}", "errors": ["Record the explicit inventory absence 'Il ne reste pas de sucre' as negation, without inventing zero."]}], "observations": []}
+.{"segments": [{"segment_id": "seg-0", "source_id": "qa-source", "ordinal": 0, "input_start": 0, "core_start": 0, "core_end": 16000, "input_end": 16000, "raw": {"text": "Il ne reste pas de sucre."}, "normalized_text": "Il ne reste pas de sucre.", "status": "ok", "errors": []}], "status": "ok", "errors": [], "attempts": [{"kind": "initial", "window": 0, "content": "{\"language\": \"fr\", \"observations\": []}", "errors": ["Record the explicit inventory absence 'Il ne reste pas de sucre' as negation, without inventing zero."]}, {"kind": "repair", "window": 0, "content": "{\"language\": \"fr\", \"observations\": [{\"segment\": \"S1\", \"quote\": \"Il ne reste pas de sucre\", \"operation\": \"negation\", \"product_spoken\": \"sucre\", \"quantity_text\": null, \"quantity\": null, \"qualifier\": \"unknown\", \"unit_spoken\": null, \"package\": null, \"location\": null, \"ref\": \"o1\", \"correction_of\": null}]}", "errors": []}], "observations": [{"product_spoken": "sucre", "quantity_text": null, "quantity": null, "quantity_max": null, "qualifier": "unknown", "unit_spoken": null, "unit": null, "packaging": null, "location": null, "operation": "negation", "evidence": [{"segment_id": "seg-0", "start": 0, "end": 24, "quote": "Il ne reste pas de sucre"}], "correction_of": null, "observation_id": "obs_1b2e1054eb77d6694230c9cd5a4773a5fc5773665ea1b0e2c7439c35f8b2e0e7", "catalog_match": null, "revision": 1, "status": "ok", "errors": []}]}
+.
+=================================== FAILURES ===================================
+________________ test_negated_quantity_fragment_archived_empty _________________
+
+    def test_negated_quantity_fragment_archived_empty():
+        archive = Path(__file__).with_name("fixtures") / "negation-empty-archived.json"
+        record = json.loads(archive.read_text(encoding="utf-8"))
+        segment = TranscriptSegment.model_validate(record["segment"])
+        quote = "il ne reste pas deux ou trois"
+        assert segment.raw["text"] == segment.normalized_text == quote
+        initial = record["reply"]
+        assert initial["response_raw"]["message"]["content"] == initial["content"]
+        response = BackendReply(initial["content"], initial["done_reason"], raw=initial["response_raw"])
+        result, calls = _negated_quantity_case([segment], response, response)
+        assert result.observations == []
+        assert len(calls) == 1
+        assert result.attempts[0]["response_raw"] == initial["response_raw"]
+>       _assert_unresolved_negated_quantity(result, segment, quote)
+
+tests/qa/test_semantics.py:589: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+result = ExtractionResult(observations=[], status='ok', errors=[], attempts=[{'window': 0, 'run_id': 'qa-semantics', 'model': '....v1.prompt4', 'schema_version': 'inventory.v1.gen4', 'unload': {'attempted': False, 'reason': 'caller-owned backend'}})
+segment = TranscriptSegment(segment_id='segment_6fd3158fe4e6ae3a2be823ce33f278a49d8040ea01c00e475a1cc8b03951b89e', source_id='fi...9e', 'text': 'il ne reste pas deux ou trois'}, normalized_text='il ne reste pas deux ou trois', status='ok', errors=[])
+quote = 'il ne reste pas deux ou trois'
+
+    def _assert_unresolved_negated_quantity(result, segment, quote):
+        start = segment.normalized_text.index(quote)
+        end = start + len(quote)
+>       assert result.status == "needs_review", result.errors
+E       AssertionError: []
+E       assert 'ok' == 'needs_review'
+E         
+E         - needs_review
+E         + ok
+
+tests/qa/test_semantics.py:571: AssertionError
+___ test_negated_quantity_fragment_other_cardinals[-il ne reste pas quatre] ____
+
+prefix = '', fragment = 'il ne reste pas quatre'
+
+    @pytest.mark.parametrize("prefix, fragment", [
+        ("", "il ne reste pas quatre"),
+        ("On reprend l’inventaire. ", "Il ne reste pas six ou huit"),
+    ])
+    def test_negated_quantity_fragment_other_cardinals(prefix, fragment):
+        segment, = transcript(f"{prefix}{fragment}.")
+        empty = reply()
+        result, calls = _negated_quantity_case([segment], empty, empty)
+        assert result.observations == []
+        assert len(calls) == 1
+>       _assert_unresolved_negated_quantity(result, segment, fragment)
+
+tests/qa/test_semantics.py:602: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+result = ExtractionResult(observations=[], status='ok', errors=[], attempts=[{'window': 0, 'run_id': 'qa-semantics', 'model': '....v1.prompt4', 'schema_version': 'inventory.v1.gen4', 'unload': {'attempted': False, 'reason': 'caller-owned backend'}})
+segment = TranscriptSegment(segment_id='seg-0', source_id='qa-source', ordinal=0, input_start=0, core_start=0, core_end=16000, i..._end=16000, raw={'text': 'il ne reste pas quatre.'}, normalized_text='il ne reste pas quatre.', status='ok', errors=[])
+quote = 'il ne reste pas quatre'
+
+    def _assert_unresolved_negated_quantity(result, segment, quote):
+        start = segment.normalized_text.index(quote)
+        end = start + len(quote)
+>       assert result.status == "needs_review", result.errors
+E       AssertionError: []
+E       assert 'ok' == 'needs_review'
+E         
+E         - needs_review
+E         + ok
+
+tests/qa/test_semantics.py:571: AssertionError
+_ test_negated_quantity_fragment_other_cardinals[On reprend l\u2019inventaire. -Il ne reste pas six ou huit] _
+
+prefix = 'On reprend l’inventaire. ', fragment = 'Il ne reste pas six ou huit'
+
+    @pytest.mark.parametrize("prefix, fragment", [
+        ("", "il ne reste pas quatre"),
+        ("On reprend l’inventaire. ", "Il ne reste pas six ou huit"),
+    ])
+    def test_negated_quantity_fragment_other_cardinals(prefix, fragment):
+        segment, = transcript(f"{prefix}{fragment}.")
+        empty = reply()
+        result, calls = _negated_quantity_case([segment], empty, empty)
+        assert result.observations == []
+        assert len(calls) == 1
+>       _assert_unresolved_negated_quantity(result, segment, fragment)
+
+tests/qa/test_semantics.py:602: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+result = ExtractionResult(observations=[], status='ok', errors=[], attempts=[{'window': 0, 'run_id': 'qa-semantics', 'model': '....v1.prompt4', 'schema_version': 'inventory.v1.gen4', 'unload': {'attempted': False, 'reason': 'caller-owned backend'}})
+segment = TranscriptSegment(segment_id='seg-0', source_id='qa-source', ordinal=0, input_start=0, core_start=0, core_end=16000, i...te pas six ou huit.'}, normalized_text='On reprend l’inventaire. Il ne reste pas six ou huit.', status='ok', errors=[])
+quote = 'Il ne reste pas six ou huit'
+
+    def _assert_unresolved_negated_quantity(result, segment, quote):
+        start = segment.normalized_text.index(quote)
+        end = start + len(quote)
+>       assert result.status == "needs_review", result.errors
+E       AssertionError: []
+E       assert 'ok' == 'needs_review'
+E         
+E         - needs_review
+E         + ok
+
+tests/qa/test_semantics.py:571: AssertionError
+_ test_negated_quantity_fragment_preserves_neighbor_once_per_window[no-repair] _
+
+repair = False
+
+    @pytest.mark.parametrize("repair", [False, True], ids=["no-repair", "unrelated-repair"])
+    def test_negated_quantity_fragment_preserves_neighbor_once_per_window(repair):
+        fragment = "il ne reste pas deux ou trois"
+        milk_quote = "douze bouteilles de lait"
+        segments = transcript(fragment, f"Il reste {milk_quote}.")
+        milk = item(milk_quote, "lait", "douze", "12", "bouteilles", segment="S2")
+        if repair:
+            bad = item("Deux kilos de farine", "farine", "Deux", "2", "kilos", segment="S9", ref="o2")
+            responses = (reply(milk, bad), reply(milk))
+        else:
+            responses = (reply(milk), reply(milk))
+        result, calls = _negated_quantity_case(segments, *responses)
+        assert len(calls) == (2 if repair else 1)
+        assert [a["window"] for a in result.attempts] == [0] * len(calls)
+        assert [a["kind"] for a in result.attempts] == (["initial", "repair"] if repair else ["initial"])
+        observation, = result.observations
+        assert (observation.status, observation.product_spoken, observation.quantity, observation.unit) == (
+            "ok", "lait", "12", "bouteille",
+        )
+        span, = observation.evidence
+        assert span.segment_id == segments[1].segment_id
+        assert segments[1].normalized_text[span.start:span.end] == span.quote == milk_quote
+>       _assert_unresolved_negated_quantity(result, segments[0], fragment)
+
+tests/qa/test_semantics.py:627: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+result = ExtractionResult(observations=[ValidatedObservation(product_spoken='lait', quantity_text='douze', quantity='12', quant....v1.prompt4', 'schema_version': 'inventory.v1.gen4', 'unload': {'attempted': False, 'reason': 'caller-owned backend'}})
+segment = TranscriptSegment(segment_id='seg-0', source_id='qa-source', ordinal=0, input_start=0, core_start=0, core_end=16000, i...raw={'text': 'il ne reste pas deux ou trois'}, normalized_text='il ne reste pas deux ou trois', status='ok', errors=[])
+quote = 'il ne reste pas deux ou trois'
+
+    def _assert_unresolved_negated_quantity(result, segment, quote):
+        start = segment.normalized_text.index(quote)
+        end = start + len(quote)
+>       assert result.status == "needs_review", result.errors
+E       AssertionError: []
+E       assert 'ok' == 'needs_review'
+E         
+E         - needs_review
+E         + ok
+
+tests/qa/test_semantics.py:571: AssertionError
+_ test_negated_quantity_fragment_preserves_neighbor_once_per_window[unrelated-repair] _
+
+repair = True
+
+    @pytest.mark.parametrize("repair", [False, True], ids=["no-repair", "unrelated-repair"])
+    def test_negated_quantity_fragment_preserves_neighbor_once_per_window(repair):
+        fragment = "il ne reste pas deux ou trois"
+        milk_quote = "douze bouteilles de lait"
+        segments = transcript(fragment, f"Il reste {milk_quote}.")
+        milk = item(milk_quote, "lait", "douze", "12", "bouteilles", segment="S2")
+        if repair:
+            bad = item("Deux kilos de farine", "farine", "Deux", "2", "kilos", segment="S9", ref="o2")
+            responses = (reply(milk, bad), reply(milk))
+        else:
+            responses = (reply(milk), reply(milk))
+        result, calls = _negated_quantity_case(segments, *responses)
+        assert len(calls) == (2 if repair else 1)
+        assert [a["window"] for a in result.attempts] == [0] * len(calls)
+        assert [a["kind"] for a in result.attempts] == (["initial", "repair"] if repair else ["initial"])
+        observation, = result.observations
+        assert (observation.status, observation.product_spoken, observation.quantity, observation.unit) == (
+            "ok", "lait", "12", "bouteille",
+        )
+        span, = observation.evidence
+        assert span.segment_id == segments[1].segment_id
+        assert segments[1].normalized_text[span.start:span.end] == span.quote == milk_quote
+>       _assert_unresolved_negated_quantity(result, segments[0], fragment)
+
+tests/qa/test_semantics.py:627: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+result = ExtractionResult(observations=[ValidatedObservation(product_spoken='lait', quantity_text='douze', quantity='12', quant....v1.prompt4', 'schema_version': 'inventory.v1.gen4', 'unload': {'attempted': False, 'reason': 'caller-owned backend'}})
+segment = TranscriptSegment(segment_id='seg-0', source_id='qa-source', ordinal=0, input_start=0, core_start=0, core_end=16000, i...raw={'text': 'il ne reste pas deux ou trois'}, normalized_text='il ne reste pas deux ou trois', status='ok', errors=[])
+quote = 'il ne reste pas deux ou trois'
+
+    def _assert_unresolved_negated_quantity(result, segment, quote):
+        start = segment.normalized_text.index(quote)
+        end = start + len(quote)
+>       assert result.status == "needs_review", result.errors
+E       AssertionError: []
+E       assert 'ok' == 'needs_review'
+E         
+E         - needs_review
+E         + ok
+
+tests/qa/test_semantics.py:571: AssertionError
+_______ test_negated_quantity_fragment_preserves_factual_controls[temps] _______
+
+texts = ('Il ne reste pas de temps avant la fermeture.',)
+
+    @pytest.mark.parametrize("texts", [
+        ("Le technicien ne reste pas dans le bâtiment.",),
+        ("Il ne reste pas de temps avant la fermeture.",),
+        ("Il ne reste pas deux ou trois minutes avant la fermeture.",),
+        ("Il ne reste pas deux ou trois", "minutes avant la fermeture."),
+        ("Combien de minutes reste-t-il ? Il ne reste pas deux ou trois.",),
+        ("Combien de minutes reste-t-il ?", "Il ne reste pas deux ou trois."),
+    ], ids=[
+        "ordinary-factual", "temps", "minutes-one-segment", "minutes-split",
+        "question-one-segment", "question-split",
+    ])
+    def test_negated_quantity_fragment_preserves_factual_controls(texts):
+        empty = reply()
+        result, calls = _negated_quantity_case(transcript(*texts), empty, empty)
+>       assert result.status == "ok", result.errors
+E       AssertionError: ["window 0: Record the explicit inventory absence 'Il ne reste pas de temps' as negation, without inventing zero.", 'w...d repair: ["Record the explicit inventory absence \'Il ne reste pas de temps\' as negation, without inventing zero."]']
+E       assert 'needs_review' == 'ok'
+E         
+E         - ok
+E         + needs_review
+
+tests/qa/test_semantics.py:644: AssertionError
+=========================== short test summary info ============================
+FAILED tests/qa/test_semantics.py::test_negated_quantity_fragment_archived_empty
+FAILED tests/qa/test_semantics.py::test_negated_quantity_fragment_other_cardinals[-il ne reste pas quatre]
+FAILED tests/qa/test_semantics.py::test_negated_quantity_fragment_other_cardinals[On reprend l\u2019inventaire. -Il ne reste pas six ou huit]
+FAILED tests/qa/test_semantics.py::test_negated_quantity_fragment_preserves_neighbor_once_per_window[no-repair]
+FAILED tests/qa/test_semantics.py::test_negated_quantity_fragment_preserves_neighbor_once_per_window[unrelated-repair]
+FAILED tests/qa/test_semantics.py::test_negated_quantity_fragment_preserves_factual_controls[temps]
+6 failed, 7 passed, 45 deselected in 0.22s
+pytest exit 1

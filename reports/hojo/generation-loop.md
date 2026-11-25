@@ -8,7 +8,7 @@ Retokenized text length is a proxy. The wheel strips selected special markers an
 
 | Input | Segment | Extracted evidence |
 | --- | --- | --- |
-| Archived middle reply | Review, 200 tokens, 48-token period | Four independent 5 kg fish observations retained with review status |
+| Archived middle reply | Review, 200 tokens, 48-token period | Four 5 kg fish observations at distinct text spans retained with review status |
 | Two genuine-style repeated inventory utterances | Clear | Both occurrences retained at distinct text spans |
 | Unicode with a decomposed accent | Clear | Raw spelling preserved and the normalized accented evidence span resolved |
 | 200 tokens dominated by a short loop | Clear | Inventory observation retained as clear |
