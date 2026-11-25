@@ -1,0 +1,81 @@
+{
+  "profile_sha256": "9988d55bcfc6aa31054c514fb299ede34c952bd90b67475c5a64d9c2107a28d5",
+  "outside": "99.86.109.44",
+  "unsandboxed_tcp_443": true,
+  "mode": "file",
+  "server_command": [
+    "/usr/bin/sandbox-exec",
+    "-f",
+    "/Users/vakof/orca/vigio_speech2structdata/tools/offline/loopback.sb",
+    "/Users/vakof/orca/vigio_speech2structdata/.venv/bin/python",
+    "-I",
+    "/Users/vakof/orca/vigio_speech2structdata/tools/offline/probe.py",
+    "99.86.109.44",
+    "http://127.0.0.1:60915",
+    "/opt/homebrew/bin/ollama",
+    "serve"
+  ],
+  "app_command": [
+    "/usr/bin/sandbox-exec",
+    "-f",
+    "/Users/vakof/orca/vigio_speech2structdata/tools/offline/loopback.sb",
+    "/Users/vakof/orca/vigio_speech2structdata/.venv/bin/python",
+    "-I",
+    "/Users/vakof/orca/vigio_speech2structdata/tools/offline/probe.py",
+    "99.86.109.44",
+    "http://127.0.0.1:60916/api/version",
+    "/Users/vakof/orca/vigio_speech2structdata/.venv/bin/speechflow",
+    "run",
+    "/Users/vakof/.cache/speechflow/hojo-jacques.wav",
+    "--json",
+    "--offline",
+    "--out",
+    "outputs/offline/file-1795617065458883000/output",
+    "--database",
+    "outputs/offline/file-1795617065458883000/runs.sqlite3"
+  ],
+  "endpoint": "http://127.0.0.1:60916",
+  "result": "BLOCKED",
+  "ollama_version": "0.40.16",
+  "server_control": {
+    "pid": 3019,
+    "denied": {
+      "address": "99.86.109.44",
+      "port": 443,
+      "errno": 1,
+      "message": "[Errno 1] Operation not permitted"
+    },
+    "allowed": {
+      "url": "http://127.0.0.1:60915",
+      "status": 200,
+      "body": {
+        "control": true
+      }
+    },
+    "exec": [
+      "/opt/homebrew/bin/ollama",
+      "serve"
+    ]
+  },
+  "exit_code": 1,
+  "app_control": {
+    "pid": 3022,
+    "denied": {
+      "address": "99.86.109.44",
+      "port": 443,
+      "errno": 1,
+      "message": "[Errno 1] Operation not permitted"
+    },
+    "allowed": {
+      "url": "http://127.0.0.1:60916/api/version",
+      "status": 200,
+      "body": {
+        "version": "0.40.16"
+      }
+    },
+    "exec": [
+      "/Users/vakof/orca/vigio_speech2structdata/.venv/bin/speechflow",
+      "run"
+    ]
+  }
+}

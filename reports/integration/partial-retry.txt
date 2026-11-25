@@ -1,0 +1,6 @@
+first save: inserted needs_review 1 observations
+retry save: replaced
+stored: ok recovery files: []
+partial save: inserted needs_review 1 observations
+complete retry: replaced needs_review 2
+stored: [('needs_review', 2)]

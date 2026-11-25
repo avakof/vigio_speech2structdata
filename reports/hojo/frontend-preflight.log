@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/Users/vakof/orca/vigio_speech2structdata/tools/hojo/feasibility.py", line 195, in <module>
+    main()
+  File "/Users/vakof/orca/vigio_speech2structdata/tools/hojo/feasibility.py", line 160, in main
+    probe_frontend(args.bundle)
+  File "/Users/vakof/orca/vigio_speech2structdata/tools/hojo/feasibility.py", line 55, in probe_frontend
+    import numpy as np
+ModuleNotFoundError: No module named 'numpy'

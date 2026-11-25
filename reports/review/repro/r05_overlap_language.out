@@ -1,0 +1,17 @@
+(a1) single shared word 'de' across a 0-gap split: [('needs_review', ["Possible repeated boundary text 'de' in 3200 shared input samples with segment_8546c051f066702d455a84834b1d3f428e3344163b7ad321fb519ee8b88ed1bd. Both replies are preserved."]), ('needs_review', ["Possible repeated boundary text 'de' in 3200 shared input samples with segment_471a5f2f76d2127b95d3cf6e7e7aa8bccbdf8dbcd4ec65db4d21d3aeec854955. Both replies are preserved."])]
+(a2) unrelated words, shared 'lait' (legit two statements): [('needs_review', ["Possible repeated boundary text 'lait' in 3200 shared input samples with segment_8546c051f066702d455a84834b1d3f428e3344163b7ad321fb519ee8b88ed1bd. Both replies are preserved."]), ('needs_review', ["Possible repeated boundary text 'lait' in 3200 shared input samples with segment_471a5f2f76d2127b95d3cf6e7e7aa8bccbdf8dbcd4ec65db4d21d3aeec854955. Both replies are preserved."])]
+(a3) partial-word re-emission 'bouteil' / 'bouteilles': [('ok', []), ('ok', [])]
+(a4) same text, gap 1 s (no shared input): [('ok', []), ('ok', [])]
+== (b) identical text in overlapping padded inputs, same window (segments not pre-flagged)
+  repairable: []  reply_errors: []
+  obs_7391c3dbdb rev=1 ok           op=count      product='sucre' q=2 max=None exact unit=kg pack=None corr=None errors=[]
+  obs_dcd79dcbaa rev=1 ok           op=count      product='sucre' q=2 max=None exact unit=kg pack=None corr=None errors=[]
+== (b') same pair, second segment in a LATER window
+  repairable: []  reply_errors: []
+  obs_dcd79dcbaa rev=1 needs_review op=count      product='sucre' q=2 max=None exact unit=kg pack=None corr=None errors=['possible_overlap_duplicate_of:obs_7391c3dbdb08f7a8a34995e582e0096b9f6ae8b17f791e183c279ec98e530c9f']
+== (c) English transcript, model self-reports fr
+  repairable: []  reply_errors: []
+  obs_b25b140c3c rev=1 ok           op=count      product='flour' q=3 max=None exact unit=kg pack=None corr=None errors=[]
+== (c') Italian transcript, model self-reports fr
+  repairable: []  reply_errors: []
+  obs_3ded0f9ccb rev=1 ok           op=count      product='farina' q=3 max=None exact unit=kili pack=None corr=None errors=[]

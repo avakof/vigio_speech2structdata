@@ -1,0 +1,551 @@
+{
+  "$defs": {
+    "AudioSource": {
+      "additionalProperties": false,
+      "properties": {
+        "source_id": {
+          "title": "Source Id",
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "file",
+            "mic"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "digest": {
+          "title": "Digest",
+          "type": "string"
+        },
+        "name": {
+          "title": "Name",
+          "type": "string"
+        },
+        "native_rate": {
+          "exclusiveMinimum": 0,
+          "title": "Native Rate",
+          "type": "integer"
+        },
+        "native_channels": {
+          "exclusiveMinimum": 0,
+          "title": "Native Channels",
+          "type": "integer"
+        },
+        "sample_rate": {
+          "const": 16000,
+          "default": 16000,
+          "title": "Sample Rate",
+          "type": "integer"
+        },
+        "sample_count": {
+          "minimum": 0,
+          "title": "Sample Count",
+          "type": "integer"
+        },
+        "channel_mix": {
+          "title": "Channel Mix",
+          "type": "string"
+        }
+      },
+      "required": [
+        "source_id",
+        "kind",
+        "digest",
+        "name",
+        "native_rate",
+        "native_channels",
+        "sample_count",
+        "channel_mix"
+      ],
+      "title": "AudioSource",
+      "type": "object"
+    },
+    "EvidenceSpan": {
+      "additionalProperties": false,
+      "description": "Half-open Unicode character offsets into one segment's normalized_text.",
+      "properties": {
+        "segment_id": {
+          "title": "Segment Id",
+          "type": "string"
+        },
+        "start": {
+          "minimum": 0,
+          "title": "Start",
+          "type": "integer"
+        },
+        "end": {
+          "exclusiveMinimum": 0,
+          "title": "End",
+          "type": "integer"
+        },
+        "quote": {
+          "minLength": 1,
+          "title": "Quote",
+          "type": "string"
+        }
+      },
+      "required": [
+        "segment_id",
+        "start",
+        "end",
+        "quote"
+      ],
+      "title": "EvidenceSpan",
+      "type": "object"
+    },
+    "Packaging": {
+      "additionalProperties": false,
+      "properties": {
+        "count": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Count"
+        },
+        "unit": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Unit"
+        },
+        "per_package_quantity": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Per Package Quantity"
+        },
+        "per_package_unit": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Per Package Unit"
+        },
+        "total": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Total"
+        },
+        "total_unit": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Total Unit"
+        }
+      },
+      "title": "Packaging",
+      "type": "object"
+    },
+    "TranscriptSegment": {
+      "additionalProperties": false,
+      "properties": {
+        "segment_id": {
+          "title": "Segment Id",
+          "type": "string"
+        },
+        "source_id": {
+          "title": "Source Id",
+          "type": "string"
+        },
+        "ordinal": {
+          "minimum": 0,
+          "title": "Ordinal",
+          "type": "integer"
+        },
+        "input_start": {
+          "minimum": 0,
+          "title": "Input Start",
+          "type": "integer"
+        },
+        "core_start": {
+          "title": "Core Start",
+          "type": "integer"
+        },
+        "core_end": {
+          "title": "Core End",
+          "type": "integer"
+        },
+        "input_end": {
+          "title": "Input End",
+          "type": "integer"
+        },
+        "raw": {
+          "additionalProperties": true,
+          "title": "Raw",
+          "type": "object"
+        },
+        "normalized_text": {
+          "title": "Normalized Text",
+          "type": "string"
+        },
+        "status": {
+          "default": "ok",
+          "enum": [
+            "ok",
+            "no_speech",
+            "needs_review",
+            "error"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "errors": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Errors",
+          "type": "array"
+        }
+      },
+      "required": [
+        "segment_id",
+        "source_id",
+        "ordinal",
+        "input_start",
+        "core_start",
+        "core_end",
+        "input_end",
+        "raw",
+        "normalized_text"
+      ],
+      "title": "TranscriptSegment",
+      "type": "object"
+    },
+    "ValidatedObservation": {
+      "additionalProperties": false,
+      "properties": {
+        "product_spoken": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Product Spoken"
+        },
+        "quantity_text": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Quantity Text"
+        },
+        "quantity": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Quantity"
+        },
+        "quantity_max": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Quantity Max"
+        },
+        "qualifier": {
+          "default": "unknown",
+          "enum": [
+            "exact",
+            "approximate",
+            "range",
+            "unknown"
+          ],
+          "title": "Qualifier",
+          "type": "string"
+        },
+        "unit_spoken": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Unit Spoken"
+        },
+        "unit": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Unit"
+        },
+        "packaging": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Packaging"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "location": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Location"
+        },
+        "operation": {
+          "default": "count",
+          "enum": [
+            "count",
+            "correction",
+            "negation",
+            "unknown"
+          ],
+          "title": "Operation",
+          "type": "string"
+        },
+        "evidence": {
+          "items": {
+            "$ref": "#/$defs/EvidenceSpan"
+          },
+          "title": "Evidence",
+          "type": "array"
+        },
+        "correction_of": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Correction Of"
+        },
+        "observation_id": {
+          "title": "Observation Id",
+          "type": "string"
+        },
+        "catalog_match": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Catalog Match"
+        },
+        "revision": {
+          "default": 1,
+          "minimum": 1,
+          "title": "Revision",
+          "type": "integer"
+        },
+        "status": {
+          "default": "ok",
+          "enum": [
+            "ok",
+            "needs_review"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "errors": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Errors",
+          "type": "array"
+        }
+      },
+      "required": [
+        "observation_id"
+      ],
+      "title": "ValidatedObservation",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "run_id": {
+      "title": "Run Id",
+      "type": "string"
+    },
+    "processing_version": {
+      "title": "Processing Version",
+      "type": "string"
+    },
+    "schema_version": {
+      "default": "inventory.v1",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "mode": {
+      "enum": [
+        "transcribe",
+        "run",
+        "mic"
+      ],
+      "title": "Mode",
+      "type": "string"
+    },
+    "status": {
+      "enum": [
+        "ok",
+        "no_speech",
+        "needs_review",
+        "error"
+      ],
+      "title": "Status",
+      "type": "string"
+    },
+    "transcription_status": {
+      "enum": [
+        "ok",
+        "no_speech",
+        "needs_review",
+        "error",
+        "not_run"
+      ],
+      "title": "Transcription Status",
+      "type": "string"
+    },
+    "extraction_status": {
+      "enum": [
+        "ok",
+        "no_speech",
+        "needs_review",
+        "error",
+        "not_run"
+      ],
+      "title": "Extraction Status",
+      "type": "string"
+    },
+    "source": {
+      "$ref": "#/$defs/AudioSource"
+    },
+    "segments": {
+      "items": {
+        "$ref": "#/$defs/TranscriptSegment"
+      },
+      "title": "Segments",
+      "type": "array"
+    },
+    "observations": {
+      "items": {
+        "$ref": "#/$defs/ValidatedObservation"
+      },
+      "title": "Observations",
+      "type": "array"
+    },
+    "provenance": {
+      "additionalProperties": true,
+      "title": "Provenance",
+      "type": "object"
+    },
+    "metrics": {
+      "additionalProperties": true,
+      "title": "Metrics",
+      "type": "object"
+    },
+    "attempts": {
+      "items": {
+        "additionalProperties": true,
+        "type": "object"
+      },
+      "title": "Attempts",
+      "type": "array"
+    },
+    "errors": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Errors",
+      "type": "array"
+    }
+  },
+  "required": [
+    "run_id",
+    "processing_version",
+    "mode",
+    "status",
+    "transcription_status",
+    "extraction_status",
+    "source",
+    "segments",
+    "observations",
+    "provenance",
+    "metrics"
+  ],
+  "title": "RunManifest",
+  "type": "object"
+}

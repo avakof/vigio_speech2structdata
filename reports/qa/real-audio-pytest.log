@@ -1,0 +1,67 @@
+EEEEEEE                                                                  [100%]
+==================================== ERRORS ====================================
+_ ERROR at setup of test_codec_decodes_right_channel_and_preserves_source[wav] _
+E   StopIteration
+
+During handling of the above exception, another exception occurred:
+E   importlib.metadata.PackageNotFoundError: No package metadata was found for imageio-ffmpeg
+
+During handling of the above exception, another exception occurred:
+E   Failed: BLOCKED: install imageio-ffmpeg==0.6.0 with uv sync --frozen
+_ ERROR at setup of test_codec_decodes_right_channel_and_preserves_source[flac] _
+E   StopIteration
+
+During handling of the above exception, another exception occurred:
+E   importlib.metadata.PackageNotFoundError: No package metadata was found for imageio-ffmpeg
+
+During handling of the above exception, another exception occurred:
+E   Failed: BLOCKED: install imageio-ffmpeg==0.6.0 with uv sync --frozen
+_ ERROR at setup of test_codec_decodes_right_channel_and_preserves_source[mp3] _
+E   StopIteration
+
+During handling of the above exception, another exception occurred:
+E   importlib.metadata.PackageNotFoundError: No package metadata was found for imageio-ffmpeg
+
+During handling of the above exception, another exception occurred:
+E   Failed: BLOCKED: install imageio-ffmpeg==0.6.0 with uv sync --frozen
+_ ERROR at setup of test_codec_decodes_right_channel_and_preserves_source[m4a] _
+E   StopIteration
+
+During handling of the above exception, another exception occurred:
+E   importlib.metadata.PackageNotFoundError: No package metadata was found for imageio-ffmpeg
+
+During handling of the above exception, another exception occurred:
+E   Failed: BLOCKED: install imageio-ffmpeg==0.6.0 with uv sync --frozen
+___________ ERROR at setup of test_codec_corrupt_wav_and_spool_limit ___________
+E   StopIteration
+
+During handling of the above exception, another exception occurred:
+E   importlib.metadata.PackageNotFoundError: No package metadata was found for imageio-ffmpeg
+
+During handling of the above exception, another exception occurred:
+E   Failed: BLOCKED: install imageio-ffmpeg==0.6.0 with uv sync --frozen
+_____ ERROR at setup of test_real_silero_silence_and_speech_active_at_eof ______
+E   StopIteration
+
+During handling of the above exception, another exception occurred:
+E   importlib.metadata.PackageNotFoundError: No package metadata was found for imageio-ffmpeg
+
+During handling of the above exception, another exception occurred:
+E   Failed: BLOCKED: install imageio-ffmpeg==0.6.0 with uv sync --frozen
+_ ERROR at setup of test_real_silero_long_fixture_exercises_forced_chunk_boundaries _
+E   StopIteration
+
+During handling of the above exception, another exception occurred:
+E   importlib.metadata.PackageNotFoundError: No package metadata was found for imageio-ffmpeg
+
+During handling of the above exception, another exception occurred:
+E   Failed: BLOCKED: install imageio-ffmpeg==0.6.0 with uv sync --frozen
+=========================== short test summary info ============================
+ERROR tests/real_models/test_runtime.py::test_codec_decodes_right_channel_and_preserves_source[wav]
+ERROR tests/real_models/test_runtime.py::test_codec_decodes_right_channel_and_preserves_source[flac]
+ERROR tests/real_models/test_runtime.py::test_codec_decodes_right_channel_and_preserves_source[mp3]
+ERROR tests/real_models/test_runtime.py::test_codec_decodes_right_channel_and_preserves_source[m4a]
+ERROR tests/real_models/test_runtime.py::test_codec_corrupt_wav_and_spool_limit
+ERROR tests/real_models/test_runtime.py::test_real_silero_silence_and_speech_active_at_eof
+ERROR tests/real_models/test_runtime.py::test_real_silero_long_fixture_exercises_forced_chunk_boundaries
+5 deselected, 7 errors in 0.07s

@@ -1,0 +1,18 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/Users/vakof/orca/vigio_speech2structdata/src/speechflow/asr_process.py", line 23, in <module>
+    main(Path(sys.argv[1]), Path(sys.argv[2]), sys.argv[3], sys.argv[4])
+  File "/Users/vakof/orca/vigio_speech2structdata/src/speechflow/asr_process.py", line 18, in main
+    audio = transcribe_file(Path(source), settings)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/vakof/orca/vigio_speech2structdata/src/speechflow/audio/__init__.py", line 134, in transcribe_file
+    source = decode_file(path, pcm, settings.max_spool_bytes)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/vakof/orca/vigio_speech2structdata/src/speechflow/audio/decoding.py", line 70, in decode_file
+    ffmpeg_executable(), "-hide_banner", "-nostdin", "-nostats", "-loglevel", "info",
+    ^^^^^^^^^^^^^^^^^^^
+  File "/Users/vakof/orca/vigio_speech2structdata/src/speechflow/audio/decoding.py", line 45, in ffmpeg_executable
+    from imageio_ffmpeg import get_ffmpeg_exe
+ModuleNotFoundError: No module named 'imageio_ffmpeg'
+error: Audio process exited with code 1. See its diagnostic above.

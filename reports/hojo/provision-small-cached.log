@@ -1,0 +1,101 @@
+DEBUG Found workspace root: /Users/vakof/orca/vigio_speech2structdata
+DEBUG Adding root workspace member: /Users/vakof/orca/vigio_speech2structdata
+DEBUG Found workspace configuration at `/Users/vakof/orca/vigio_speech2structdata/pyproject.toml`
+DEBUG Searching for user configuration in: /Users/vakof/.config/uv/uv.toml
+DEBUG uv 0.13.9 (6b2d39dcc 2026-11-17 aarch64-apple-darwin)
+DEBUG Checking for Python interpreter at path `/Users/vakof/.cache/speechflow/hojo-env/bin/python`
+Using Python 3.12.16 environment at: /Users/vakof/.cache/speechflow/hojo-env
+DEBUG At least one requirement is not satisfied: psutil==7.2.2
+DEBUG Using request connect timeout of 10s and read timeout of 30s
+DEBUG Solving with installed Python version: 3.12.16
+DEBUG Solving with target Python version: >=3.12.16
+DEBUG Adding direct dependency: huggingface-hub>=0.36.0, <0.36.0+
+DEBUG Adding direct dependency: hf-xet>=1.2.0, <1.2.0+
+DEBUG Adding direct dependency: pydantic>=2.14.4, <2.14.4+
+DEBUG Adding direct dependency: psutil>=7.2.2, <7.2.2+
+DEBUG Searching for a compatible version of huggingface-hub (>=0.36.0, <0.36.0+)
+DEBUG Selecting: huggingface-hub==0.36.0 [installed] (installed)
+DEBUG Adding transitive dependency for huggingface-hub==0.36.0: filelock*
+DEBUG Adding transitive dependency for huggingface-hub==0.36.0: fsspec>=2023.5.0
+DEBUG Adding transitive dependency for huggingface-hub==0.36.0: packaging>=20.9
+DEBUG Adding transitive dependency for huggingface-hub==0.36.0: pyyaml>=5.1
+DEBUG Adding transitive dependency for huggingface-hub==0.36.0: requests*
+DEBUG Adding transitive dependency for huggingface-hub==0.36.0: tqdm>=4.42.1
+DEBUG Adding transitive dependency for huggingface-hub==0.36.0: typing-extensions>=3.7.4.3
+DEBUG Adding transitive dependency for huggingface-hub==0.36.0: hf-xet{platform_machine == 'aarch64' or platform_machine == 'amd64' or platform_machine == 'arm64' or platform_machine == 'x86_64'}>=1.1.3, <2.0.0
+DEBUG Searching for a compatible version of hf-xet (>=1.2.0, <1.2.0+)
+DEBUG Selecting: hf-xet==1.2.0 [installed] (installed)
+DEBUG Searching for a compatible version of hf-xet{platform_machine == 'aarch64' or platform_machine == 'amd64' or platform_machine == 'arm64' or platform_machine == 'x86_64'} (>=1.1.3, <2.0.0)
+DEBUG Selecting: hf-xet==1.2.0 [installed] (installed)
+DEBUG Adding transitive dependency for hf-xet==1.2.0: hf-xet==1.2.0
+DEBUG Adding transitive dependency for hf-xet==1.2.0: hf-xet{platform_machine == 'aarch64' or platform_machine == 'amd64' or platform_machine == 'arm64' or platform_machine == 'x86_64'}==1.2.0
+DEBUG Searching for a compatible version of hf-xet{platform_machine == 'aarch64' or platform_machine == 'amd64' or platform_machine == 'arm64' or platform_machine == 'x86_64'} (==1.2.0)
+DEBUG Selecting: hf-xet==1.2.0 [installed] (installed)
+DEBUG Searching for a compatible version of pydantic (>=2.14.4, <2.14.4+)
+DEBUG Selecting: pydantic==2.14.4 [compatible] (pydantic-2.14.4-py3-none-any.whl)
+DEBUG Adding transitive dependency for pydantic==2.14.4: annotated-types>=0.6.0
+DEBUG Adding transitive dependency for pydantic==2.14.4: pydantic-core>=2.50.5, <2.50.5+
+DEBUG Adding transitive dependency for pydantic==2.14.4: typing-extensions>=4.16.0
+DEBUG Adding transitive dependency for pydantic==2.14.4: typing-inspection>=0.4.4
+DEBUG Searching for a compatible version of psutil (>=7.2.2, <7.2.2+)
+DEBUG Selecting: psutil==7.2.2 [compatible] (psutil-7.2.2-cp36-abi3-macosx_11_0_arm64.whl)
+DEBUG Searching for a compatible version of pydantic-core (>=2.50.5, <2.50.5+)
+DEBUG Selecting: pydantic-core==2.50.5 [compatible] (pydantic_core-2.50.5-cp312-cp312-macosx_11_0_arm64.whl)
+DEBUG Adding transitive dependency for pydantic-core==2.50.5: typing-extensions>=4.16.0
+DEBUG Searching for a compatible version of filelock (*)
+DEBUG Selecting: filelock==4.3.1 [compatible] (filelock-4.3.1-py3-none-any.whl)
+DEBUG Searching for a compatible version of fsspec (>=2023.5.0)
+DEBUG Selecting: fsspec==2026.9.0 [compatible] (fsspec-2026.9.0-py3-none-any.whl)
+DEBUG Searching for a compatible version of packaging (>=20.9)
+DEBUG Selecting: packaging==26.4 [compatible] (packaging-26.4-py3-none-any.whl)
+DEBUG Searching for a compatible version of pyyaml (>=5.1)
+DEBUG Selecting: pyyaml==6.0.4 [compatible] (pyyaml-6.0.4-cp312-cp312-macosx_11_0_arm64.whl)
+DEBUG Searching for a compatible version of requests (*)
+DEBUG Selecting: requests==2.34.2 [compatible] (requests-2.34.2-py3-none-any.whl)
+DEBUG Adding transitive dependency for requests==2.34.2: charset-normalizer>=2, <4
+DEBUG Adding transitive dependency for requests==2.34.2: idna>=2.5, <4
+DEBUG Adding transitive dependency for requests==2.34.2: urllib3>=1.26, <3
+DEBUG Adding transitive dependency for requests==2.34.2: certifi>=2023.5.7
+DEBUG Searching for a compatible version of tqdm (>=4.42.1)
+DEBUG Selecting: tqdm==4.70.1 [compatible] (tqdm-4.70.1-py3-none-any.whl)
+DEBUG Searching for a compatible version of typing-extensions (>=4.16.0)
+DEBUG Selecting: typing-extensions==4.16.0 [compatible] (typing_extensions-4.16.0-py3-none-any.whl)
+DEBUG Searching for a compatible version of annotated-types (>=0.6.0)
+DEBUG Selecting: annotated-types==0.8.0 [compatible] (annotated_types-0.8.0-py3-none-any.whl)
+DEBUG Searching for a compatible version of typing-inspection (>=0.4.4)
+DEBUG Selecting: typing-inspection==0.4.5 [compatible] (typing_inspection-0.4.5-py3-none-any.whl)
+DEBUG Adding transitive dependency for typing-inspection==0.4.5: typing-extensions>=4.15.0
+DEBUG Searching for a compatible version of charset-normalizer (>=2, <4)
+DEBUG Selecting: charset-normalizer==3.5.3 [compatible] (charset_normalizer-3.5.3-cp312-cp312-macosx_10_13_universal2.whl)
+DEBUG Searching for a compatible version of idna (>=2.5, <4)
+DEBUG Selecting: idna==3.20 [compatible] (idna-3.20-py3-none-any.whl)
+DEBUG Searching for a compatible version of urllib3 (>=1.26, <3)
+DEBUG Selecting: urllib3==2.8.0 [compatible] (urllib3-2.8.0-py3-none-any.whl)
+DEBUG Searching for a compatible version of certifi (>=2023.5.7)
+DEBUG Selecting: certifi==2026.11.20 [compatible] (certifi-2026.11.20-py3-none-any.whl)
+DEBUG Tried 18 versions: annotated-types 1, certifi 1, charset-normalizer 1, filelock 1, fsspec 1, hf-xet 1, huggingface-hub 1, idna 1, packaging 1, psutil 1, pydantic 1, pydantic-core 1, pyyaml 1, requests 1, tqdm 1, typing-extensions 1, typing-inspection 1, urllib3 1
+DEBUG marker environment resolution took 0.003s
+Resolved 18 packages in 3ms
+DEBUG Registry requirement already cached: certifi==2026.11.20
+DEBUG Identified uncached distribution: filelock==4.3.1
+DEBUG Registry requirement already cached: tqdm==4.70.1
+DEBUG Registry requirement already cached: typing-extensions==4.16.0
+DEBUG Registry requirement already cached: psutil==7.2.2
+DEBUG Identified uncached distribution: charset-normalizer==3.5.3
+DEBUG Registry requirement already cached: pydantic-core==2.50.5
+DEBUG Registry requirement already cached: fsspec==2026.9.0
+DEBUG Registry requirement already cached: typing-inspection==0.4.5
+DEBUG Registry requirement already cached: packaging==26.4
+DEBUG Registry requirement already cached: idna==3.20
+DEBUG Requirement already installed: hf-xet==1.2.0
+DEBUG Registry requirement already cached: annotated-types==0.8.0
+DEBUG Registry requirement already cached: urllib3==2.8.0
+DEBUG Registry requirement already cached: pydantic==2.14.4
+DEBUG Requirement already installed: huggingface-hub==0.36.0
+DEBUG Registry requirement already cached: requests==2.34.2
+DEBUG Identified uncached distribution: pyyaml==6.0.4
+DEBUG Sending fresh GET request for: https://files.pythonhosted.org/packages/c7/30/efaabf2d135d11f32cbd4752f3b7df0d592894ee3ca252bbba013a7d5891/pyyaml-6.0.4-cp312-cp312-macosx_11_0_arm64.whl
+error: Failed to download `pyyaml==6.0.4`
+  cause: Network connectivity is disabled, but the requested data wasn't found in the cache: https://files.pythonhosted.org/packages/c7/30/efaabf2d135d11f32cbd4752f3b7df0d592894ee3ca252bbba013a7d5891/pyyaml-6.0.4-cp312-cp312-macosx_11_0_arm64.whl
+
+hint: `pyyaml` (v6.0.4) was included because `huggingface-hub` (v0.36.0) depends on `pyyaml`

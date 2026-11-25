@@ -1,0 +1,33 @@
+'deux virgule cinq'          -> value=2.5 max=None qualifier=exact
+'2,5'                        -> value=2.5 max=None qualifier=exact
+'douze'                      -> value=12 max=None qualifier=exact
+'soixante-dix'               -> value=70 max=None qualifier=exact
+'quatre-vingt-dix-sept'      -> value=97 max=None qualifier=exact
+'soixante et onze'           -> value=71 max=None qualifier=exact
+'mille deux cents'           -> value=1200 max=None qualifier=exact
+'1 000'                      -> value=1000 max=None qualifier=exact
+'1 500'                      -> value=1500 max=None qualifier=exact
+'une douzaine'               -> value=12 max=None qualifier=exact
+'une dizaine'                -> value=10 max=None qualifier=approximate
+'un demi'                    -> value=0.5 max=None qualifier=exact
+'un et demi'                 -> value=1.5 max=None qualifier=exact
+'un kilo et demi'            -> None
+'deux kilos cinq'            -> None
+'deux ou trois'              -> value=2 max=3 qualifier=range
+'entre deux et trois'        -> value=2 max=3 qualifier=range
+'environ trois'              -> value=3 max=None qualifier=approximate
+'à peu près cinq'            -> value=5 max=None qualifier=approximate
+'zéro'                       -> value=0 max=None qualifier=exact
+'aucun'                      -> None
+'une'                        -> value=1 max=None qualifier=exact
+'un'                         -> value=1 max=None qualifier=exact
+'trois quarts'               -> value=0.75 max=None qualifier=exact
+'un quart'                   -> value=0.25 max=None qualifier=exact
+'0,75'                       -> value=0.75 max=None qualifier=exact
+'2.5'                        -> value=2.5 max=None qualifier=exact
+'vingt-et-un'                -> value=21 max=None qualifier=exact
+'cent vingt'                 -> value=120 max=None qualifier=exact
+'deux cent cinquante'        -> value=250 max=None qualifier=exact
+'quelques'                   -> value=None max=None qualifier=unknown
+'plusieurs'                  -> value=None max=None qualifier=unknown
+'pas mal'                    -> value=None max=None qualifier=unknown

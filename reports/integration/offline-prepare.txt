@@ -1,0 +1,5 @@
+error: models are not ready (offline mode never downloads):
+  Missing or incomplete merged_full_model.safetensors (expected 11956909856 bytes)
+  Missing pinned qwen3:8b (expected 500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41, found None)
+  No package metadata was found for silero-vad
+Install dependencies with `uv sync --frozen`; this command needs network access for the first download, and the local Ollama service for the extractor model.

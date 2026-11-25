@@ -1,0 +1,4 @@
+Orca session e04e8453-60f5-4a76-bc1f-080beedeebaf (working, local Codex chat)
+Codex thread/session 01a2131e-c8de-7ba0-9b43-cbaef0edc579
+Rollout ~/.codex/sessions/2026/11/25/rollout-2026-11-25T15-31-54-01a2131e-c8de-7ba0-9b43-cbaef0edc579.jsonl
+Rollout turn_context gpt-6.2-sol high

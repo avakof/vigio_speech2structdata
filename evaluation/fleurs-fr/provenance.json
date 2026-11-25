@@ -1,0 +1,14 @@
+{
+  "source_url": "https://huggingface.co/datasets/google/fleurs/tree/70bb2e84b976b7e960aa89f1c648e09c59f894dd/data/fr_fr",
+  "archive": "data/fr_fr/audio/dev.tar.gz",
+  "tsv": "data/fr_fr/dev.tsv",
+  "tsv_sha256": "3e0b792358c1cb4a426fe1c18fc1571d5406b390d738a2ed1bfd3c8b9d28de44",
+  "selection": "first two regular WAV files in original archive order, chosen before inference",
+  "clip_count": 2,
+  "duration_s": 20.46,
+  "provenance": "Original audio bytes. Reference sentences and normalized text from pinned corpus TSV. FLEURS verified recordings against source sentences with additional evaluators (Conneau et al., section 2.1). No independent listening labels or clean/noisy condition labels.",
+  "license": "CC BY 4.0",
+  "license_url": "https://creativecommons.org/licenses/by/4.0/",
+  "authors": "Alexis Conneau, Min Ma, Simran Khanuja, Yu Zhang, Vera Axelrod, Siddharth Dalmia, Jason Riesa, Clara Rivera, Ankur Bapna (2022)",
+  "paper": "https://arxiv.org/abs/2205.12446"
+}

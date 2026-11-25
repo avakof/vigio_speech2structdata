@@ -1,0 +1,19 @@
+# Agent routing
+
+All development work ran in the current checkout, `/Users/vakof/orca/vigio_speech2structdata`, under Orca ADE 1.4.274. The repository began on an unborn `main`. Workers used disjoint paths. The integrator owned public contracts, model manifest, dependency lock, pipeline, integration and acceptance. Orca run `run_3d8c7e339af1` used at most three active workers. Model loads require the integrator's exclusive slot.
+
+| Role | Provider and effective model | Requested / recorded effort | Provider session | Orca session |
+|---|---|---|---|---|
+| Integrator | OpenAI Codex · gpt-6.2-astra | xhigh / xhigh | 01a21308-a0fb-79e0-8578-142793ef6b02 | b91cb6b2-44b1-4506-aaa2-3deccca4dc90 |
+| Independent architect | OpenAI Codex · gpt-6.2-astra | xhigh / xhigh | 01a21309-4f14-7a32-a64e-3149c10a5287 | c69b8766-aa30-442e-b766-73b3c2686b06 |
+| Audio and Hojo | OpenAI Codex · gpt-6.2-sol | high / high | 01a2130a-657d-7421-8af1-24f3ce8db31b | 8666ee97-35a9-4b30-b66f-8d4252fca38e |
+| Extraction | Anthropic Claude Code · claude-sonnet-5-5 | high / high per provider request | 8dfa5484-1eb7-490b-8548-e305c8ac6263 | abb9e5a4-928c-46c0-b348-68c0fe2bda51 |
+| CLI and persistence | Anthropic Claude Code · claude-sonnet-5-5 | high / high | edd4b6b4-5ea1-432e-9414-36420c2ada9d | f3c76094-c346-468f-90ea-082d2257566d |
+| Independent QA | OpenAI Codex · gpt-6.2-sol | high / high | 01a2131e-c8de-7ba0-9b43-cbaef0edc579 | e04e8453-60f5-4a76-bc1f-080beedeebaf |
+| Independent reviewer | Anthropic Claude Code · claude-opus-5-5 | high / high | 2061ab3a-a0af-4592-bb5b-8e25df20eb8a | 7d26416e-e5ee-4c68-bb42-5cca16f4830e |
+
+**Routing evidence.** The Codex CLI was 0.171.0 with an authenticated ChatGPT session. Claude Code 2.1.329 reported first-party authentication. The integrator and architect independently matched `CODEX_THREAD_ID` to the read-only `threads` row and the actual rollout `turn_context`. The initial architect turn was `01a21309-4f63-7f62-8672-f7dad8d16aad`. Its backend follow-up remained in the same provider session at turn `01a2131b-c55f-7263-8d7c-73bd331aa8fb`. The integrator's initial turn was `01a21308-a50d-7482-ad6a-13bcf9c74ed5`.
+
+The extraction worker reported a numeric effort tag of 10 and initially interpreted it as low. The installed orchestration guide directs workers to use named launch effort. Its dispatch and Claude request log both record high, and response records identify the requested Sonnet model. CLI/persistence recorded the named launch argument and provider model. The Astra/max relay (`01a21306-8f0b-7c63-bc9a-2d71c89eec5d`) supplied discovery, licensed clips, OS network-control evidence and user communication.
+
+Dispatches were `ctx_95f1443d1968` (architecture), `ctx_b4805671dbf7` (backend), `ctx_7b7c13bf9c73` (audio), `ctx_69cd1950b284` and `ctx_3c72523b7e7d` (extraction), `ctx_eb50cc5867cd` (CLI), and `ctx_a737e7f5a715` (QA).

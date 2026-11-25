@@ -1,0 +1,41 @@
+# speechflow settings. Every key is optional; omitted keys use the defaults in
+# speechflow.config.Settings, and unknown keys are rejected.
+# Use:  speechflow run audio.m4a --config examples/settings.toml
+# Command-line options (--offline, --backend, --database, mic --seconds/--device)
+# override this file. Relative paths resolve against the current directory;
+# "~" is expanded.
+
+# When true nothing is downloaded: missing assets are reported, never fetched.
+offline = false
+
+# Directory holding the prepared Hojo bundle (written by `speechflow models prepare`).
+hojo_dir = "~/.cache/speechflow/assets/hojo"
+
+# ASR backend: "cpu" is the verified baseline, "mps" runs on the Apple GPU.
+backend = "cpu"
+
+# Local extraction service; the address must be a numeric loopback URL.
+ollama_url = "http://127.0.0.1:11434"
+ollama_model = "qwen3:8b"
+
+# ASR input window in seconds including padding and overlap (at most 25).
+max_chunk_seconds = 25
+padding_ms = 200
+
+# Disk budget for bounded audio spooling, in bytes (default 1 GiB).
+max_spool_bytes = 1073741824
+
+# Microphone: seconds of audio the capture queue may hold, optional stop time
+# and input device (name or index). Leave mic_seconds and mic_device unset to
+# capture until interrupted from the default device.
+mic_queue_seconds = 15
+# mic_seconds = 60
+# mic_device = "MacBook Pro Microphone"
+
+# Extraction budgets.
+extraction_timeout = 120
+context_tokens = 8192
+output_tokens = 2048
+
+# SQLite history database (runs, segments, observations, corrections).
+database = "~/.local/share/speechflow/inventory.sqlite3"

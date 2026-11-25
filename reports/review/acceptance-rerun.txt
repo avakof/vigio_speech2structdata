@@ -1,0 +1,22 @@
+........................................................................ [ 40%]
+.........................F.............................................. [ 81%]
+.................................                                        [100%]
+=================================== FAILURES ===================================
+______________ test_missing_pipeline_module_reports_install_hint _______________
+
+tmp_path = PosixPath('/private/var/folders/q8/_7ztc8bn4ybc9m23xt7dz_fc0000gn/T/pytest-of-vakof/pytest-93/test_missing_pipeline_module_r0')
+audio = PosixPath('/private/var/folders/q8/_7ztc8bn4ybc9m23xt7dz_fc0000gn/T/pytest-of-vakof/pytest-93/test_missing_pipeline_module_r0/in.m4a')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x1073da780>
+capsys = <_pytest.capture.CaptureFixture object at 0x1073d94f0>
+
+    def test_missing_pipeline_module_reports_install_hint(tmp_path, audio, monkeypatch, capsys):
+        monkeypatch.setitem(sys.modules, "speechflow.pipeline", None)  # import raises ImportError
+        code, _, err = run(["run", audio, "--database", tmp_path / "d"], capsys)
+>       assert code == 3 and "uv sync --frozen" in err and "models prepare" in err
+E       assert (4 == 3)
+
+tests/persistence_own/test_own_cli.py:199: AssertionError
+=========================== short test summary info ============================
+FAILED tests/persistence_own/test_own_cli.py::test_missing_pipeline_module_reports_install_hint
+1 failed, 176 passed in 1.98s
+EXIT=1

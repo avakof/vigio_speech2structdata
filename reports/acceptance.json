@@ -1,0 +1,33 @@
+{
+  "state": "in_progress",
+  "host": {"architecture": "arm64", "chip": "Apple M3 Max", "ram_bytes": 51539607552, "macos": "27.2.1 (26B131)"},
+  "development_workflow": {
+    "distinct_astra_xhigh": {"status": "PASS", "evidence": ["docs/agent-routing.md"]},
+    "mixed_provider_specialists": {"status": "PASS", "evidence": ["docs/agent-routing.md", "reports/extraction/status.md", "reports/hojo/README.md", "reports/integration/post-extraction-fixes.txt"]},
+    "architecture_and_backend_review": {"status": "PASS", "evidence": ["docs/architecture.md", "docs/agent-routing.md", "reports/compatibility.md"]},
+    "independent_qa": {"status": "PASS", "detail": "Semantic and storage regressions reproduced, fixed and rerun. Real-model integration is tracked separately.", "evidence": ["reports/qa/initial-semantics.log", "reports/qa/initial-storage.log", "reports/integration/post-extraction-fixes.txt", "reports/integration/storage-fixes.txt"]},
+    "independent_review": {"status": "PASS", "detail": "Opus completed the initial implementation audit and reproduced partial retry and semantic limitations. The final runtime review is pending.", "evidence": ["reports/review/REVIEW.md", "reports/integration/partial-retry.txt", "reports/integration/post-review-tests.txt", "reports/extraction/r05_after.out"]},
+    "final_reasoner": {"status": "NOT RUN", "evidence": []}
+  },
+  "application_runtime": {
+    "installed_cli": {"status": "PASS", "evidence": ["reports/integration/installed-help.txt"]},
+    "arm64_dependency_install": {"status": "BLOCKED", "detail": "Wheel provisioning in progress", "evidence": ["uv.lock", "reports/integration/doctor.json", "reports/integration/uv-cache-contention.log"]},
+    "complete_pinned_assets": {"status": "BLOCKED", "detail": "Hojo merged weights and local qwen3:8b pull incomplete", "evidence": ["src/speechflow/model_manifest.json", "reports/integration/offline-prepare.txt"]},
+    "missing_assets_offline": {"status": "PASS", "evidence": ["reports/integration/offline-prepare.txt"]},
+    "silero_and_codec_checks": {"status": "BLOCKED", "evidence": ["reports/integration/doctor.json"]},
+    "hojo_cpu": {"status": "BLOCKED", "evidence": ["reports/hojo/README.md"]},
+    "hojo_mps": {"status": "BLOCKED", "evidence": ["reports/hojo/README.md"]},
+    "local_schema_extraction": {"status": "BLOCKED", "evidence": ["reports/extraction/status.md", "reports/qa/reference.cli.json"]},
+    "validated_exports_and_replay": {"status": "PASS", "detail": "Executable persistence, SQL, restart and export tests with fixture observations", "evidence": ["reports/integration/storage-fixes.txt"]},
+    "reference_semantics": {"status": "PASS", "detail": "Independent deterministic validation using scripted model replies", "evidence": ["reports/integration/post-extraction-fixes.txt"]},
+    "genuine_file_end_to_end": {"status": "BLOCKED", "evidence": ["reports/offline/file-attempt-1.stderr"]},
+    "long_boundary_and_no_loss": {"status": "NOT RUN", "evidence": []},
+    "offline_control_app_and_daemon": {"status": "PASS", "detail": "App, ASR child and dedicated Ollama all observed external EPERM and loopback HTTP 200. The host lacked native IPv6 routing outside the sandbox.", "evidence": ["reports/offline/child-controls.json"]},
+    "offline_file_inference": {"status": "BLOCKED", "evidence": ["reports/offline/file-attempt-1.json", "reports/offline/file-attempt-1.stderr"]},
+    "microphone_and_backpressure": {"status": "FAIL", "detail": "Reviewer exercised the mic entry point before the required file gate. Capture implementation pending.", "evidence": ["reports/review/repro/r04_mic_ipc.out"]},
+    "offline_microphone_inference": {"status": "NOT RUN", "evidence": []},
+    "french_wer": {"status": "BLOCKED", "detail": "NOT MEASURED. Two FLEURS recordings total 20.46 s.", "evidence": ["evaluation/fleurs-fr/provenance.json", "reports/qa/fleurs.cli.json"]},
+    "field_scores": {"status": "BLOCKED", "detail": "Real extractor unavailable", "evidence": ["reports/qa/reference.cli.json"]},
+    "runtime_performance": {"status": "NOT RUN", "evidence": []}
+  }
+}

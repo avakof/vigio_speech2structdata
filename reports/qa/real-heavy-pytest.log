@@ -1,0 +1,16 @@
+EEEE                                                                     [100%]
+==================================== ERRORS ====================================
+____ ERROR at setup of test_real_hojo_long_audio_boundary_content_and_tail _____
+E   Failed: BLOCKED: obtain the local heavy-model slot and set SPEECHFLOW_QA_MODEL_SLOT=1
+_ ERROR at setup of test_real_extractor_long_hojo_outputs_have_no_duplicate_observations _
+E   Failed: BLOCKED: obtain the local heavy-model slot and set SPEECHFLOW_QA_MODEL_SLOT=1
+_____ ERROR at setup of test_real_extractor_installed_cli_exact_transcript _____
+E   Failed: BLOCKED: obtain the local heavy-model slot and set SPEECHFLOW_QA_MODEL_SLOT=1
+____ ERROR at setup of test_real_file_installed_cli_offline_both_processes _____
+E   Failed: BLOCKED: obtain the local heavy-model slot and set SPEECHFLOW_QA_MODEL_SLOT=1
+=========================== short test summary info ============================
+ERROR tests/real_models/test_runtime.py::test_real_hojo_long_audio_boundary_content_and_tail
+ERROR tests/real_models/test_runtime.py::test_real_extractor_long_hojo_outputs_have_no_duplicate_observations
+ERROR tests/real_models/test_runtime.py::test_real_extractor_installed_cli_exact_transcript
+ERROR tests/real_models/test_runtime.py::test_real_file_installed_cli_offline_both_processes
+8 deselected, 4 errors in 0.06s

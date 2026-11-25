@@ -1,0 +1,14 @@
+$ .venv/bin/python -c "from speechflow.audio import capture_microphone"
+ImportError: cannot import name 'capture_microphone' from 'speechflow.audio' (/Users/vakof/orca/vigio_speech2structdata/src/speechflow/audio/__init__.py)
+EXIT=1 (direct import; tail masked it in capture)
+$ .venv/bin/speechflow mic --seconds 0.1 --out $T/out --database $T/db.sqlite3
+error: cannot import name 'capture_microphone' from 'speechflow.audio' (/Users/vakof/orca/vigio_speech2structdata/src/speechflow/audio/__init__.py)
+install dependencies with `uv sync --frozen`
+EXIT=3
+out dir contents:
+$ printf x > $T/a.ogg; speechflow transcribe $T/a.ogg
+error: Unsupported input 'a.ogg'. Use WAV, FLAC, MP3, or M4A.
+EXIT=4
+$ printf x > $T/a.wav; speechflow transcribe $T/a.wav (imageio-ffmpeg absent in .venv)
+error: Install the pinned imageio-ffmpeg package with uv sync --frozen
+EXIT=4

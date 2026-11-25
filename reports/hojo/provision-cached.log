@@ -1,0 +1,260 @@
+DEBUG Found workspace root: /Users/vakof/orca/vigio_speech2structdata
+DEBUG Adding root workspace member: /Users/vakof/orca/vigio_speech2structdata
+DEBUG Found workspace configuration at `/Users/vakof/orca/vigio_speech2structdata/pyproject.toml`
+DEBUG Searching for user configuration in: /Users/vakof/.config/uv/uv.toml
+DEBUG uv 0.13.9 (6b2d39dcc 2026-11-17 aarch64-apple-darwin)
+DEBUG Checking for Python interpreter at path `/Users/vakof/.cache/speechflow/hojo-env/bin/python`
+Using Python 3.12.16 environment at: /Users/vakof/.cache/speechflow/hojo-env
+DEBUG At least one requirement is not satisfied: numpy==1.26.4
+DEBUG Using request connect timeout of 10s and read timeout of 30s
+DEBUG Solving with installed Python version: 3.12.16
+DEBUG Solving with target Python version: >=3.12.16
+DEBUG Adding direct dependency: hojo-asr>=0.1.3, <0.1.3+
+DEBUG Adding direct dependency: torch>=2.5.1, <2.5.1+
+DEBUG Adding direct dependency: torchaudio>=2.5.1, <2.5.1+
+DEBUG Adding direct dependency: transformers>=4.57.3, <4.57.3+
+DEBUG Adding direct dependency: huggingface-hub>=0.36.0, <0.36.0+
+DEBUG Adding direct dependency: hf-xet>=1.2.0, <1.2.0+
+DEBUG Adding direct dependency: numpy>=1.26.4, <1.26.4+
+DEBUG Searching for a compatible version of hojo-asr (>=0.1.3, <0.1.3+)
+DEBUG Selecting: hojo-asr==0.1.3 [compatible] (hojo_asr-0.1.3-py3-none-any.whl)
+DEBUG Adding transitive dependency for hojo-asr==0.1.3: accelerate>=1.12.0, <1.12.0+
+DEBUG Adding transitive dependency for hojo-asr==0.1.3: huggingface-hub>=0.26.0
+DEBUG Adding transitive dependency for hojo-asr==0.1.3: langid>=1.1.6
+DEBUG Adding transitive dependency for hojo-asr==0.1.3: librosa>=0.11.0
+DEBUG Adding transitive dependency for hojo-asr==0.1.3: numpy>=1.26.4
+DEBUG Adding transitive dependency for hojo-asr==0.1.3: omegaconf>=2.3.0
+DEBUG Adding transitive dependency for hojo-asr==0.1.3: onnx>=1.19.1
+DEBUG Adding transitive dependency for hojo-asr==0.1.3: pyyaml>=6.0.3
+DEBUG Adding transitive dependency for hojo-asr==0.1.3: requests>=2.32.5
+DEBUG Adding transitive dependency for hojo-asr==0.1.3: safetensors>=0.7.0
+DEBUG Adding transitive dependency for hojo-asr==0.1.3: scipy>=1.15.3
+DEBUG Adding transitive dependency for hojo-asr==0.1.3: sentencepiece>=0.2.1
+DEBUG Adding transitive dependency for hojo-asr==0.1.3: soundfile>=0.13.1
+DEBUG Adding transitive dependency for hojo-asr==0.1.3: torch>=2.5.1, <2.6
+DEBUG Adding transitive dependency for hojo-asr==0.1.3: torchaudio>=2.5.1, <2.6
+DEBUG Adding transitive dependency for hojo-asr==0.1.3: tqdm>=4.67.1
+DEBUG Adding transitive dependency for hojo-asr==0.1.3: transformers>=4.57.3, <5.0.0
+DEBUG Adding transitive dependency for hojo-asr==0.1.3: openai-whisper>=20250625
+DEBUG Searching for a compatible version of torch (>=2.5.1, <2.5.1+)
+DEBUG Selecting: torch==2.5.1 [compatible] (torch-2.5.1-cp312-none-macosx_11_0_arm64.whl)
+DEBUG Adding transitive dependency for torch==2.5.1: filelock*
+DEBUG Adding transitive dependency for torch==2.5.1: typing-extensions>=4.8.0
+DEBUG Adding transitive dependency for torch==2.5.1: networkx*
+DEBUG Adding transitive dependency for torch==2.5.1: jinja2*
+DEBUG Adding transitive dependency for torch==2.5.1: fsspec*
+DEBUG Adding transitive dependency for torch==2.5.1: setuptools{python_full_version >= '3.12'}*
+DEBUG Adding transitive dependency for torch==2.5.1: sympy{python_full_version >= '3.9'}>=1.13.1, <1.13.1+
+DEBUG Searching for a compatible version of torchaudio (>=2.5.1, <2.5.1+)
+DEBUG Selecting: torchaudio==2.5.1 [compatible] (torchaudio-2.5.1-cp312-cp312-macosx_11_0_arm64.whl)
+DEBUG Adding transitive dependency for torchaudio==2.5.1: torch>=2.5.1, <2.5.1+
+DEBUG Searching for a compatible version of transformers (>=4.57.3, <4.57.3+)
+DEBUG Selecting: transformers==4.57.3 [compatible] (transformers-4.57.3-py3-none-any.whl)
+DEBUG Adding transitive dependency for transformers==4.57.3: filelock*
+DEBUG Adding transitive dependency for transformers==4.57.3: huggingface-hub>=0.34.0, <1.0
+DEBUG Adding transitive dependency for transformers==4.57.3: numpy>=1.17
+DEBUG Adding transitive dependency for transformers==4.57.3: packaging>=20.0
+DEBUG Adding transitive dependency for transformers==4.57.3: pyyaml>=5.1
+DEBUG Adding transitive dependency for transformers==4.57.3: regex<2019.12.17 | >=2019.12.17+
+DEBUG Adding transitive dependency for transformers==4.57.3: requests*
+DEBUG Adding transitive dependency for transformers==4.57.3: tokenizers>=0.22.0, <=0.23.0+
+DEBUG Adding transitive dependency for transformers==4.57.3: safetensors>=0.4.3
+DEBUG Adding transitive dependency for transformers==4.57.3: tqdm>=4.27
+DEBUG Searching for a compatible version of huggingface-hub (>=0.36.0, <0.36.0+)
+DEBUG Selecting: huggingface-hub==0.36.0 [installed] (installed)
+DEBUG Adding transitive dependency for huggingface-hub==0.36.0: filelock*
+DEBUG Adding transitive dependency for huggingface-hub==0.36.0: fsspec>=2023.5.0
+DEBUG Adding transitive dependency for huggingface-hub==0.36.0: packaging>=20.9
+DEBUG Adding transitive dependency for huggingface-hub==0.36.0: pyyaml>=5.1
+DEBUG Adding transitive dependency for huggingface-hub==0.36.0: requests*
+DEBUG Adding transitive dependency for huggingface-hub==0.36.0: tqdm>=4.42.1
+DEBUG Adding transitive dependency for huggingface-hub==0.36.0: typing-extensions>=3.7.4.3
+DEBUG Adding transitive dependency for huggingface-hub==0.36.0: hf-xet{platform_machine == 'aarch64' or platform_machine == 'amd64' or platform_machine == 'arm64' or platform_machine == 'x86_64'}>=1.1.3, <2.0.0
+DEBUG Searching for a compatible version of hf-xet (>=1.2.0, <1.2.0+)
+DEBUG Selecting: hf-xet==1.2.0 [installed] (installed)
+DEBUG Searching for a compatible version of hf-xet{platform_machine == 'aarch64' or platform_machine == 'amd64' or platform_machine == 'arm64' or platform_machine == 'x86_64'} (>=1.1.3, <2.0.0)
+DEBUG Selecting: hf-xet==1.2.0 [installed] (installed)
+DEBUG Adding transitive dependency for hf-xet==1.2.0: hf-xet==1.2.0
+DEBUG Adding transitive dependency for hf-xet==1.2.0: hf-xet{platform_machine == 'aarch64' or platform_machine == 'amd64' or platform_machine == 'arm64' or platform_machine == 'x86_64'}==1.2.0
+DEBUG Searching for a compatible version of hf-xet{platform_machine == 'aarch64' or platform_machine == 'amd64' or platform_machine == 'arm64' or platform_machine == 'x86_64'} (==1.2.0)
+DEBUG Selecting: hf-xet==1.2.0 [installed] (installed)
+DEBUG Searching for a compatible version of numpy (>=1.26.4, <1.26.4+)
+DEBUG Selecting: numpy==1.26.4 [compatible] (numpy-1.26.4-cp312-cp312-macosx_11_0_arm64.whl)
+DEBUG Searching for a compatible version of accelerate (>=1.12.0, <1.12.0+)
+DEBUG Selecting: accelerate==1.12.0 [compatible] (accelerate-1.12.0-py3-none-any.whl)
+DEBUG No `pyproject.toml` available for: langid==1.1.6
+DEBUG Adding transitive dependency for accelerate==1.12.0: numpy>=1.17
+DEBUG Adding transitive dependency for accelerate==1.12.0: packaging>=20.0
+DEBUG Adding transitive dependency for accelerate==1.12.0: psutil*
+DEBUG Adding transitive dependency for accelerate==1.12.0: pyyaml*
+DEBUG Adding transitive dependency for accelerate==1.12.0: torch>=2.0.0
+DEBUG Adding transitive dependency for accelerate==1.12.0: huggingface-hub>=0.21.0
+DEBUG Adding transitive dependency for accelerate==1.12.0: safetensors>=0.4.3
+DEBUG Searching for a compatible version of sympy{python_full_version >= '3.9'} (>=1.13.1, <1.13.1+)
+DEBUG Selecting: sympy==1.13.1 [compatible] (sympy-1.13.1-py3-none-any.whl)
+DEBUG No static `PKG-INFO` available for: langid==1.1.6 (PkgInfo(UnsupportedMetadataVersion("1.1")))
+DEBUG Adding transitive dependency for sympy==1.13.1: sympy==1.13.1
+DEBUG Adding transitive dependency for sympy==1.13.1: sympy{python_full_version >= '3.9'}==1.13.1
+DEBUG Searching for a compatible version of sympy (==1.13.1)
+DEBUG Selecting: sympy==1.13.1 [compatible] (sympy-1.13.1-py3-none-any.whl)
+DEBUG Using cached metadata for: langid==1.1.6
+DEBUG Found static `pyproject.toml` for: openai-whisper==20250625
+DEBUG Adding transitive dependency for sympy==1.13.1: mpmath>=1.1.0, <1.4
+DEBUG Searching for a compatible version of sympy{python_full_version >= '3.9'} (==1.13.1)
+DEBUG Selecting: sympy==1.13.1 [compatible] (sympy-1.13.1-py3-none-any.whl)
+DEBUG Adding transitive dependency for sympy==1.13.1: mpmath>=1.1.0, <1.4
+DEBUG Searching for a compatible version of langid (>=1.1.6)
+DEBUG Selecting: langid==1.1.6 [compatible] (langid-1.1.6.tar.gz)
+DEBUG Adding transitive dependency for langid==1.1.6: numpy*
+DEBUG Searching for a compatible version of librosa (>=0.11.0)
+DEBUG Selecting: librosa==1.0.1 [compatible] (librosa-1.0.1-py3-none-any.whl)
+DEBUG Adding transitive dependency for librosa==1.0.1: numba>=0.61.0
+DEBUG Adding transitive dependency for librosa==1.0.1: numpy>=2.1.0
+DEBUG Adding transitive dependency for librosa==1.0.1: scipy>=1.15.0
+DEBUG Adding transitive dependency for librosa==1.0.1: scikit-learn>=1.6.0
+DEBUG Adding transitive dependency for librosa==1.0.1: joblib>=1.2.0
+DEBUG Adding transitive dependency for librosa==1.0.1: decorator>=5.2.1
+DEBUG Adding transitive dependency for librosa==1.0.1: soundfile>=0.12.1
+DEBUG Adding transitive dependency for librosa==1.0.1: pooch>=1.7.0
+DEBUG Adding transitive dependency for librosa==1.0.1: soxr>=1.0.0
+DEBUG Adding transitive dependency for librosa==1.0.1: lazy-loader>=0.3
+DEBUG Adding transitive dependency for librosa==1.0.1: msgpack>=1.0.5
+DEBUG Recording unit propagation conflict of librosa from incompatibility of (librosa, numpy)
+DEBUG Searching for a compatible version of librosa (>=0.11.0, <=1.0.0)
+DEBUG Selecting: librosa==1.0.0 [compatible] (librosa-1.0.0-py3-none-any.whl)
+DEBUG Adding transitive dependency for librosa==1.0.0: numba>=0.61.0
+DEBUG Adding transitive dependency for librosa==1.0.0: numpy>=2.1.0
+DEBUG Adding transitive dependency for librosa==1.0.0: scipy>=1.15.0
+DEBUG Adding transitive dependency for librosa==1.0.0: scikit-learn>=1.6.0
+DEBUG Adding transitive dependency for librosa==1.0.0: joblib>=1.2
+DEBUG Adding transitive dependency for librosa==1.0.0: decorator>=5.2.1
+DEBUG Adding transitive dependency for librosa==1.0.0: soundfile>=0.12.1
+DEBUG Adding transitive dependency for librosa==1.0.0: pooch>=1.7
+DEBUG Adding transitive dependency for librosa==1.0.0: soxr>=1.0.0
+DEBUG Adding transitive dependency for librosa==1.0.0: lazy-loader>=0.3
+DEBUG Adding transitive dependency for librosa==1.0.0: msgpack>=1.0.5
+DEBUG Recording dependency conflict of librosa==1.0.0 from incompatibility of (librosa, numpy)
+DEBUG Searching for a compatible version of librosa (>=0.11.0, <=1.0.0rc0)
+DEBUG Selecting: librosa==0.11.0 [compatible] (librosa-0.11.0-py3-none-any.whl)
+DEBUG Adding transitive dependency for librosa==0.11.0: audioread>=2.1.9
+DEBUG Adding transitive dependency for librosa==0.11.0: numba>=0.51.0
+DEBUG Adding transitive dependency for librosa==0.11.0: numpy>=1.22.3
+DEBUG Adding transitive dependency for librosa==0.11.0: scipy>=1.6.0
+DEBUG Adding transitive dependency for librosa==0.11.0: scikit-learn>=1.1.0
+DEBUG Adding transitive dependency for librosa==0.11.0: joblib>=1.0
+DEBUG Adding transitive dependency for librosa==0.11.0: decorator>=4.3.0
+DEBUG Adding transitive dependency for librosa==0.11.0: soundfile>=0.12.1
+DEBUG Adding transitive dependency for librosa==0.11.0: pooch>=1.1
+DEBUG Adding transitive dependency for librosa==0.11.0: soxr>=0.3.2
+DEBUG Adding transitive dependency for librosa==0.11.0: typing-extensions>=4.1.1
+DEBUG Adding transitive dependency for librosa==0.11.0: lazy-loader>=0.1
+DEBUG Adding transitive dependency for librosa==0.11.0: msgpack>=1.0
+DEBUG Searching for a compatible version of omegaconf (>=2.3.0)
+DEBUG Selecting: omegaconf==2.4.0 [compatible] (omegaconf-2.4.0-py3-none-any.whl)
+DEBUG Adding transitive dependency for omegaconf==2.4.0: pyyaml>=5.1.0
+DEBUG Searching for a compatible version of onnx (>=1.19.1)
+DEBUG Selecting: onnx==1.23.2 [compatible] (onnx-1.23.2-cp312-abi3-macosx_13_0_universal2.whl)
+DEBUG Adding transitive dependency for onnx==1.23.2: numpy>=1.23.2
+DEBUG Adding transitive dependency for onnx==1.23.2: protobuf>=6.31.1
+DEBUG Adding transitive dependency for onnx==1.23.2: typing-extensions>=4.7.1
+DEBUG Adding transitive dependency for onnx==1.23.2: ml-dtypes>=0.5.4
+DEBUG Searching for a compatible version of pyyaml (>=6.0.3)
+DEBUG Selecting: pyyaml==6.0.4 [compatible] (pyyaml-6.0.4-cp312-cp312-macosx_11_0_arm64.whl)
+DEBUG Searching for a compatible version of requests (>=2.32.5)
+DEBUG Selecting: requests==2.34.2 [compatible] (requests-2.34.2-py3-none-any.whl)
+DEBUG Adding transitive dependency for requests==2.34.2: charset-normalizer>=2, <4
+DEBUG Adding transitive dependency for requests==2.34.2: idna>=2.5, <4
+DEBUG Adding transitive dependency for requests==2.34.2: urllib3>=1.26, <3
+DEBUG Adding transitive dependency for requests==2.34.2: certifi>=2023.5.7
+DEBUG Searching for a compatible version of safetensors (>=0.7.0)
+DEBUG Selecting: safetensors==0.8.0 [compatible] (safetensors-0.8.0-cp310-abi3-macosx_11_0_arm64.whl)
+DEBUG Searching for a compatible version of scipy (>=1.15.3)
+DEBUG Selecting: scipy==1.18.1 [compatible] (scipy-1.18.1-cp312-cp312-macosx_14_0_arm64.whl)
+DEBUG Adding transitive dependency for scipy==1.18.1: numpy>=2.0.0, <2.8
+DEBUG Recording dependency conflict of scipy==1.18.1 from incompatibility of (scipy, numpy)
+DEBUG Searching for a compatible version of scipy (>=1.15.3, <=1.18.0)
+DEBUG Selecting: scipy==1.18.0 [compatible] (scipy-1.18.0-cp312-cp312-macosx_14_0_arm64.whl)
+DEBUG Sending fresh GET request for: https://files.pythonhosted.org/packages/03/dc/200013a74641f8774664bbcd2346c695c05c2e300ea792adcb40a293eed0/soxr-1.1.0-cp312-abi3-macosx_11_0_arm64.whl.metadata
+WARN `soxr==1.1.0` needs to be downloaded from a registry
+DEBUG Sending fresh GET request for: https://files.pythonhosted.org/packages/9b/2d/11dd93d21e147a73ba22bd75c0b9208d3a2e0ec76d53170ce7d9029b1015/scipy-1.18.0-cp312-cp312-macosx_14_0_arm64.whl.metadata
+WARN `scipy==1.18.0` needs to be downloaded from a registry
+WARN scipy needs to be downloaded from a registry
+DEBUG Searching for a compatible version of scipy (>=1.15.3, <=1.18.0rc2)
+DEBUG Selecting: scipy==1.17.1 [compatible] (scipy-1.17.1-cp312-cp312-macosx_14_0_arm64.whl)
+DEBUG Sending fresh GET request for: https://files.pythonhosted.org/packages/cf/a9/599c28631bad314d219cf9ffd40e985b24d603fc8a2f4ccc5ae8419a535b/scipy-1.17.1-cp312-cp312-macosx_14_0_arm64.whl.metadata
+WARN `scipy==1.17.1` needs to be downloaded from a registry
+WARN scipy needs to be downloaded from a registry
+DEBUG Searching for a compatible version of scipy (>=1.15.3, <=1.17.0 | >=1.18.0rc1, <=1.18.0rc2)
+DEBUG Selecting: scipy==1.17.0 [compatible] (scipy-1.17.0-cp312-cp312-macosx_14_0_arm64.whl)
+DEBUG Sending fresh GET request for: https://files.pythonhosted.org/packages/e3/21/f6ec556c1e3b6ec4e088da667d9987bb77cc3ab3026511f427dc8451187d/scipy-1.17.0-cp312-cp312-macosx_14_0_arm64.whl.metadata
+WARN `scipy==1.17.0` needs to be downloaded from a registry
+WARN scipy needs to be downloaded from a registry
+DEBUG Searching for a compatible version of scipy (>=1.15.3, <=1.17.0rc2 | >=1.18.0rc1, <=1.18.0rc2)
+DEBUG Selecting: scipy==1.16.3 [compatible] (scipy-1.16.3-cp312-cp312-macosx_14_0_arm64.whl)
+DEBUG Sending fresh GET request for: https://files.pythonhosted.org/packages/96/5e/36bf3f0ac298187d1ceadde9051177d6a4fe4d507e8f59067dc9dd39e650/scipy-1.16.3-cp312-cp312-macosx_14_0_arm64.whl.metadata
+WARN `scipy==1.16.3` needs to be downloaded from a registry
+WARN scipy needs to be downloaded from a registry
+DEBUG Searching for a compatible version of scipy (>=1.15.3, <=1.16.2 | >=1.17.0rc1, <=1.17.0rc2 | >=1.18.0rc1, <=1.18.0rc2)
+DEBUG Selecting: scipy==1.16.2 [compatible] (scipy-1.16.2-cp312-cp312-macosx_14_0_arm64.whl)
+DEBUG Sending fresh GET request for: https://files.pythonhosted.org/packages/91/4d/281fddc3d80fd738ba86fd3aed9202331180b01e2c78eaae0642f22f7e83/scipy-1.16.2-cp312-cp312-macosx_14_0_arm64.whl.metadata
+WARN `scipy==1.16.2` needs to be downloaded from a registry
+DEBUG Sending fresh GET request for: https://files.pythonhosted.org/packages/0e/37/9f65178edfcc629377ce9a64fc09baebea18c80a9e57ae09a52edf84880b/scipy-1.16.1-cp312-cp312-macosx_14_0_arm64.whl.metadata
+WARN `scipy==1.16.1` needs to be downloaded from a registry
+DEBUG Sending fresh GET request for: https://files.pythonhosted.org/packages/1c/22/01d7ddb07cff937d4326198ec8d10831367a708c3da72dfd9b7ceaf13028/scipy-1.16.0-cp312-cp312-macosx_14_0_arm64.whl.metadata
+WARN `scipy==1.16.0` needs to be downloaded from a registry
+DEBUG Prefetched 5 `scipy` versions
+WARN scipy needs to be downloaded from a registry
+DEBUG Searching for a compatible version of scipy (>=1.15.3, <=1.16.1 | >=1.17.0rc1, <=1.17.0rc2 | >=1.18.0rc1, <=1.18.0rc2)
+DEBUG Selecting: scipy==1.16.1 [compatible] (scipy-1.16.1-cp312-cp312-macosx_14_0_arm64.whl)
+DEBUG Sending fresh GET request for: https://files.pythonhosted.org/packages/07/9c/0ddb0d0abdabe0d181c1793db51f02cd59e4901da6f9f7848e1f96759f0d/scipy-1.15.3-cp312-cp312-macosx_14_0_arm64.whl.metadata
+WARN scipy needs to be downloaded from a registry
+DEBUG Searching for a compatible version of scipy (>=1.15.3, <=1.16.0 | >=1.17.0rc1, <=1.17.0rc2 | >=1.18.0rc1, <=1.18.0rc2)
+DEBUG Selecting: scipy==1.16.0 [compatible] (scipy-1.16.0-cp312-cp312-macosx_14_0_arm64.whl)
+WARN `scipy==1.15.3` needs to be downloaded from a registry
+WARN scipy needs to be downloaded from a registry
+DEBUG Searching for a compatible version of scipy (>=1.15.3, <=1.16.0rc2 | >=1.17.0rc1, <=1.17.0rc2 | >=1.18.0rc1, <=1.18.0rc2)
+DEBUG Selecting: scipy==1.15.3 [compatible] (scipy-1.15.3-cp312-cp312-macosx_14_0_arm64.whl)
+DEBUG Sending fresh GET request for: https://files.pythonhosted.org/packages/1c/6b/5f05981a02fcb09d4edf01520edef7a143c5723b99cf08fdd93b464a30ae/scipy-1.18.0rc2-cp312-cp312-macosx_14_0_arm64.whl.metadata
+WARN scipy needs to be downloaded from a registry
+WARN `scipy==1.18.0rc2` needs to be downloaded from a registry
+DEBUG Searching for a compatible version of scipy (>=1.16.0rc1, <=1.16.0rc2 | >=1.17.0rc1, <=1.17.0rc2 | >=1.18.0rc1, <=1.18.0rc2)
+DEBUG Selecting: scipy==1.18.0rc2 [compatible] (scipy-1.18.0rc2-cp312-cp312-macosx_14_0_arm64.whl)
+WARN scipy needs to be downloaded from a registry
+DEBUG Searching for a compatible version of scipy (>=1.16.0rc1, <=1.16.0rc2 | >=1.17.0rc1, <=1.17.0rc2 | ==1.18.0rc1)
+DEBUG Selecting: scipy==1.18.0rc1 [compatible] (scipy-1.18.0rc1-cp312-cp312-macosx_14_0_arm64.whl)
+DEBUG Sending fresh GET request for: https://files.pythonhosted.org/packages/4c/8d/16881adc87ef451256c41dc773736718392ab9c07c38b668a717c4102f32/scipy-1.18.0rc1-cp312-cp312-macosx_14_0_arm64.whl.metadata
+WARN `scipy==1.18.0rc1` needs to be downloaded from a registry
+DEBUG Sending fresh GET request for: https://files.pythonhosted.org/packages/c2/30/2d04960b7db518a509f53d8bd0392bf54ca0a82af99b589e2096ca101218/scipy-1.17.0rc2-cp312-cp312-macosx_14_0_arm64.whl.metadata
+WARN `scipy==1.17.0rc2` needs to be downloaded from a registry
+DEBUG Prefetched 9 `scipy` versions
+WARN scipy needs to be downloaded from a registry
+DEBUG Searching for a compatible version of scipy (>=1.16.0rc1, <=1.16.0rc2 | >=1.17.0rc1, <=1.17.0rc2)
+DEBUG Selecting: scipy==1.17.0rc2 [compatible] (scipy-1.17.0rc2-cp312-cp312-macosx_14_0_arm64.whl)
+WARN scipy needs to be downloaded from a registry
+DEBUG Searching for a compatible version of scipy (>=1.16.0rc1, <=1.16.0rc2 | ==1.17.0rc1)
+DEBUG Selecting: scipy==1.17.0rc1 [compatible] (scipy-1.17.0rc1-cp312-cp312-macosx_14_0_arm64.whl)
+DEBUG Sending fresh GET request for: https://files.pythonhosted.org/packages/c2/3e/2e46b7be3d9eabb98744759ee40934cedc8d0db2c8661751f62599e2c79f/scipy-1.17.0rc1-cp312-cp312-macosx_14_0_arm64.whl.metadata
+WARN `scipy==1.17.0rc1` needs to be downloaded from a registry
+WARN scipy needs to be downloaded from a registry
+DEBUG Searching for a compatible version of scipy (>=1.16.0rc1, <=1.16.0rc2)
+DEBUG Selecting: scipy==1.16.0rc2 [compatible] (scipy-1.16.0rc2-cp312-cp312-macosx_14_0_arm64.whl)
+DEBUG Sending fresh GET request for: https://files.pythonhosted.org/packages/34/41/514f51b7352ed1e3a6d3b486effc3b5d30e104e0ed3032854458fe0ec811/scipy-1.16.0rc2-cp312-cp312-macosx_14_0_arm64.whl.metadata
+WARN `scipy==1.16.0rc2` needs to be downloaded from a registry
+WARN scipy needs to be downloaded from a registry
+DEBUG Sending fresh GET request for: https://files.pythonhosted.org/packages/af/ac/65c83e74254b5b6c24be86e1001d7696722ce8b349e78edf6381aaaf55a4/scipy-1.16.0rc1-cp312-cp312-macosx_14_0_arm64.whl.metadata
+DEBUG Searching for a compatible version of scipy (==1.16.0rc1)
+DEBUG Selecting: scipy==1.16.0rc1 [compatible] (scipy-1.16.0rc1-cp312-cp312-macosx_14_0_arm64.whl)
+WARN `scipy==1.16.0rc1` needs to be downloaded from a registry
+WARN scipy needs to be downloaded from a registry
+DEBUG Sending fresh GET request for: https://files.pythonhosted.org/packages/a4/98/e5c964526c929ef1f795d4c343b2ff98634ad2051bd2bbadfef9e772e413/scipy-1.15.2-cp312-cp312-macosx_14_0_arm64.whl.metadata
+WARN `scipy==1.15.2` needs to be downloaded from a registry
+DEBUG Sending fresh GET request for: https://files.pythonhosted.org/packages/c4/5e/b1b0124be8e76f87115f16b8915003eec4b7060298117715baf13f51942c/scipy-1.15.1-cp312-cp312-macosx_14_0_arm64.whl.metadata
+WARN `scipy==1.15.1` needs to be downloaded from a registry
+DEBUG Sending fresh GET request for: https://files.pythonhosted.org/packages/b1/07/4e69f6f7185915d77719bf226c1d554a4bb99f27cb92161fdd57b1434343/scipy-1.15.0-cp312-cp312-macosx_14_0_arm64.whl.metadata
+WARN `scipy==1.15.0` needs to be downloaded from a registry
+error: No solution found when resolving dependencies
+  cause: Because scipy>=1.18.1 depends on numpy>=2.0.0 and scipy>=1.15.3,<=1.18.0 needs to be downloaded from a registry, we can conclude that scipy>=1.15.3 depends on numpy>=2.0.0.
+         And because hojo-asr>=0.1.3 depends on scipy>=1.15.3, we can conclude that hojo-asr>=0.1.3 depends on numpy>=2.0.0.
+         And because you require hojo-asr==0.1.3 and numpy==1.26.4, we can conclude that your requirements are unsatisfiable.
+
+hint: Packages were unavailable because the network was disabled. When the network is disabled, registry packages may only be read from the cache.

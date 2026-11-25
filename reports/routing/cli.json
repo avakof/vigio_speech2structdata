@@ -1,0 +1,13 @@
+{
+  "role": "CLI / PERSISTENCE ENGINEER",
+  "requested": {
+    "model": "claude-sonnet-5-5",
+    "effort": "high"
+  },
+  "provider": "Anthropic via Claude Code claude-code_2-1-329_agent",
+  "model_id_reported_by_session": "claude-sonnet-5-5 (Sonnet 5.5)",
+  "claude_code_session_id": "edd4b6b4-5ea1-432e-9414-36420c2ada9d",
+  "orca_agent_session_id": "f3c76094-c346-468f-90ea-082d2257566d",
+  "dispatch_id": "ctx_eb50cc5867cd",
+  "env_CLAUDE_EFFORT": "high"
+}

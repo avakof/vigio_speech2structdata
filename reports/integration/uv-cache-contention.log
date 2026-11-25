@@ -1,0 +1,6 @@
+error: Failed to download `torch==2.5.1`
+  cause: Failed to acquire lock on the distribution cache
+  cause: Could not acquire lock
+  cause: Timeout (300s) when waiting for lock on `/Users/vakof/.cache/uv/wheels-v8/pypi/torch/2.5.1-cp312-none-macosx_11_0_arm64.lock` at `/Users/vakof/.cache/uv/wheels-v8/pypi/torch/2.5.1-cp312-none-macosx_11_0_arm64.lock`, is another uv process running? You can set `UV_LOCK_TIMEOUT` to increase the timeout.
+
+hint: `torch` (v2.5.1) was included because `speechflow` (v0.1.0) depends on `torch`

@@ -1,0 +1,7 @@
+E                                                                        [100%]
+==================================== ERRORS ====================================
+________ ERROR at setup of test_real_microphone_offline_after_file_gate ________
+E   Failed: BLOCKED: obtain the local heavy-model slot and set SPEECHFLOW_QA_MODEL_SLOT=1
+=========================== short test summary info ============================
+ERROR tests/real_models/test_runtime.py::test_real_microphone_offline_after_file_gate
+11 deselected, 1 error in 0.06s

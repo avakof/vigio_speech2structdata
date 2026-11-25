@@ -1,0 +1,265 @@
+{
+  "profile_sha256": "9988d55bcfc6aa31054c514fb299ede34c952bd90b67475c5a64d9c2107a28d5",
+  "outside": "99.86.109.115",
+  "unsandboxed_tcp_443": true,
+  "unsandboxed_ipv6_errno": 65,
+  "mode": "file",
+  "server_command": [
+    "/usr/bin/sandbox-exec",
+    "-f",
+    "/Users/vakof/orca/vigio_speech2structdata/tools/offline/loopback.sb",
+    "/Users/vakof/orca/vigio_speech2structdata/.venv/bin/python",
+    "-I",
+    "/Users/vakof/orca/vigio_speech2structdata/tools/offline/probe.py",
+    "99.86.109.115",
+    "http://127.0.0.1:62867",
+    "/opt/homebrew/bin/ollama",
+    "serve"
+  ],
+  "app_command": [
+    "/usr/bin/sandbox-exec",
+    "-f",
+    "/Users/vakof/orca/vigio_speech2structdata/tools/offline/loopback.sb",
+    "/Users/vakof/orca/vigio_speech2structdata/.venv/bin/python",
+    "-I",
+    "/Users/vakof/orca/vigio_speech2structdata/tools/offline/probe.py",
+    "99.86.109.115",
+    "http://127.0.0.1:62868/api/version",
+    "/Users/vakof/orca/vigio_speech2structdata/.venv/bin/speechflow",
+    "run",
+    "/Users/vakof/.cache/speechflow/hojo-jacques.wav",
+    "--json",
+    "--offline",
+    "--out",
+    "outputs/offline/file-1795618270797495000/output",
+    "--database",
+    "outputs/offline/file-1795618270797495000/runs.sqlite3"
+  ],
+  "endpoint": "http://127.0.0.1:62868",
+  "result": "BLOCKED",
+  "ollama_version": "0.40.16",
+  "server_control": {
+    "pid": 8732,
+    "denied": {
+      "address": "99.86.109.115",
+      "port": 443,
+      "errno": 1,
+      "message": "[Errno 1] Operation not permitted"
+    },
+    "ipv6": {
+      "address": "2606:4700:4700::1111",
+      "errno": 1
+    },
+    "allowed": {
+      "url": "http://127.0.0.1:62867",
+      "status": 200,
+      "body": {
+        "control": true
+      }
+    },
+    "exec": [
+      "/opt/homebrew/bin/ollama",
+      "serve"
+    ]
+  },
+  "preflight": {
+    "ready": false,
+    "checks": [
+      {
+        "name": "python",
+        "ok": true,
+        "required": true,
+        "detail": "3.12.16",
+        "fix": "uv python install 3.12 (the project pins 3.12)"
+      },
+      {
+        "name": "platform",
+        "ok": true,
+        "required": true,
+        "detail": "Darwin 27.2.1 arm64",
+        "fix": "the pinned environment targets native Apple Silicon macOS"
+      },
+      {
+        "name": "memory",
+        "ok": true,
+        "required": false,
+        "detail": "48.0 GiB physical",
+        "fix": ""
+      },
+      {
+        "name": "chip",
+        "ok": true,
+        "required": false,
+        "detail": "Apple M3 Max",
+        "fix": ""
+      },
+      {
+        "name": "dependency hojo-asr",
+        "ok": false,
+        "required": true,
+        "detail": "not installed",
+        "fix": "uv sync --frozen"
+      },
+      {
+        "name": "dependency torch",
+        "ok": false,
+        "required": true,
+        "detail": "not installed",
+        "fix": "uv sync --frozen"
+      },
+      {
+        "name": "dependency torchaudio",
+        "ok": false,
+        "required": true,
+        "detail": "not installed",
+        "fix": "uv sync --frozen"
+      },
+      {
+        "name": "dependency transformers",
+        "ok": false,
+        "required": true,
+        "detail": "not installed",
+        "fix": "uv sync --frozen"
+      },
+      {
+        "name": "dependency huggingface-hub",
+        "ok": false,
+        "required": true,
+        "detail": "not installed",
+        "fix": "uv sync --frozen"
+      },
+      {
+        "name": "dependency numpy",
+        "ok": false,
+        "required": true,
+        "detail": "not installed",
+        "fix": "uv sync --frozen"
+      },
+      {
+        "name": "dependency silero-vad",
+        "ok": false,
+        "required": true,
+        "detail": "not installed",
+        "fix": "uv sync --frozen"
+      },
+      {
+        "name": "dependency sounddevice",
+        "ok": false,
+        "required": true,
+        "detail": "not installed",
+        "fix": "uv sync --frozen"
+      },
+      {
+        "name": "dependency imageio-ffmpeg",
+        "ok": false,
+        "required": true,
+        "detail": "not installed",
+        "fix": "uv sync --frozen"
+      },
+      {
+        "name": "dependency pydantic",
+        "ok": true,
+        "required": true,
+        "detail": "2.14.4",
+        "fix": ""
+      },
+      {
+        "name": "dependency psutil",
+        "ok": false,
+        "required": true,
+        "detail": "not installed",
+        "fix": "uv sync --frozen"
+      },
+      {
+        "name": "configuration",
+        "ok": true,
+        "required": false,
+        "detail": "offline=True backend=cpu",
+        "fix": ""
+      },
+      {
+        "name": "database location",
+        "ok": true,
+        "required": true,
+        "detail": "/Users/vakof/.local/share/speechflow/inventory.sqlite3 (writable ancestor /Users/vakof/.local/share)",
+        "fix": "choose --database elsewhere"
+      },
+      {
+        "name": "disk free",
+        "ok": true,
+        "required": false,
+        "detail": "746.8 GiB near the database",
+        "fix": ""
+      },
+      {
+        "name": "database",
+        "ok": true,
+        "required": false,
+        "detail": "not created yet (created on first save)",
+        "fix": ""
+      }
+    ],
+    "assets": {
+      "available": true,
+      "report": {
+        "machine": "arm64",
+        "macos": "27.2.1",
+        "offline": true,
+        "hojo_revision": "aa1d0dfc369deb3b3235572fa151acd7b498481f",
+        "hojo_dir": "/Users/vakof/.cache/speechflow/assets/hojo",
+        "hojo_issues": [
+          "Missing or incomplete merged_full_model.safetensors (expected 11956909856 bytes)"
+        ],
+        "silero_error": "No package metadata was found for silero-vad",
+        "ollama_version": "0.40.16",
+        "extractor_digest": null,
+        "extractor_error": "Pinned qwen3:8b digest is unavailable"
+      }
+    }
+  },
+  "exit_code": 3,
+  "app_control": {
+    "pid": 8737,
+    "denied": {
+      "address": "99.86.109.115",
+      "port": 443,
+      "errno": 1,
+      "message": "[Errno 1] Operation not permitted"
+    },
+    "ipv6": {
+      "address": "2606:4700:4700::1111",
+      "errno": 1
+    },
+    "allowed": {
+      "url": "http://127.0.0.1:62868/api/version",
+      "status": 200,
+      "body": {
+        "version": "0.40.16"
+      }
+    },
+    "exec": [
+      "/Users/vakof/orca/vigio_speech2structdata/.venv/bin/speechflow",
+      "run"
+    ]
+  },
+  "asr_child_control": {
+    "pid": 8738,
+    "denied": {
+      "address": "99.86.109.115",
+      "port": 443,
+      "errno": 1,
+      "message": "[Errno 1] Operation not permitted"
+    },
+    "ipv6": {
+      "address": "2606:4700:4700::1111",
+      "errno": 1
+    },
+    "allowed": {
+      "url": "http://127.0.0.1:62868/api/version",
+      "status": 200,
+      "body": {
+        "version": "0.40.16"
+      }
+    }
+  }
+}

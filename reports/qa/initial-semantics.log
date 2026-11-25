@@ -1,0 +1,89 @@
+.....F.FFF...                                                            [100%]
+=================================== FAILURES ===================================
+_______ test_bare_correction_with_two_compatible_targets_requires_review _______
+
+    def test_bare_correction_with_two_compatible_targets_requires_review():
+        before, other, after = "Trois kilos de farine", "quatre kilos de sucre", "ou plutôt deux kilos"
+        result, _ = run(transcript(f"{before} et {other}.", after), reply(
+            item(before, "farine", "Trois", "3", "kilos"),
+            item(other, "sucre", "quatre", "4", "kilos", ref="o2"),
+            item(after, None, "deux", "2", "kilos", segment="S2", operation="correction",
+                 ref="o3", correction_of="o1"),
+        ))
+        new = result.observations[-1]
+>       assert new.status == "needs_review"
+E       AssertionError: assert 'ok' == 'needs_review'
+E         
+E         - needs_review
+E         + ok
+
+tests/qa/test_semantics.py:113: AssertionError
+_ test_schema_shaped_but_semantically_wrong_fields_require_review[Il reste vingt-deux kilos de farine-candidate1] _
+
+text = 'Il reste vingt-deux kilos de farine'
+candidate = {'segment': 'S1', 'quote': 'vingt-deux kilos de farine', 'operation': 'count', 'product_spoken': 'farine', ...}
+
+    @pytest.mark.parametrize("text, candidate", [
+        ("Il reste douze kilos de farine", item("douze kilos de farine", "farine", "ouze", "12", "kilos")),
+        ("Il reste vingt-deux kilos de farine", item("vingt-deux kilos de farine", "farine", "deux", "2", "kilos")),
+        ("Trois kilos de farine", item("Trois kilos de farine", "farine", "Trois", "3", "kilos",
+                                      location="réserve du sous-sol")),
+        ("Il ne reste pas de farine", item("Il ne reste pas de farine", "farine", None, None, None)),
+    ])
+    def test_schema_shaped_but_semantically_wrong_fields_require_review(text, candidate):
+        result, _ = run(transcript(text), reply(candidate))
+>       assert result.status == "needs_review"
+E       AssertionError: assert 'ok' == 'needs_review'
+E         
+E         - needs_review
+E         + ok
+
+tests/qa/test_semantics.py:126: AssertionError
+_ test_schema_shaped_but_semantically_wrong_fields_require_review[Trois kilos de farine-candidate2] _
+
+text = 'Trois kilos de farine'
+candidate = {'segment': 'S1', 'quote': 'Trois kilos de farine', 'operation': 'count', 'product_spoken': 'farine', ...}
+
+    @pytest.mark.parametrize("text, candidate", [
+        ("Il reste douze kilos de farine", item("douze kilos de farine", "farine", "ouze", "12", "kilos")),
+        ("Il reste vingt-deux kilos de farine", item("vingt-deux kilos de farine", "farine", "deux", "2", "kilos")),
+        ("Trois kilos de farine", item("Trois kilos de farine", "farine", "Trois", "3", "kilos",
+                                      location="réserve du sous-sol")),
+        ("Il ne reste pas de farine", item("Il ne reste pas de farine", "farine", None, None, None)),
+    ])
+    def test_schema_shaped_but_semantically_wrong_fields_require_review(text, candidate):
+        result, _ = run(transcript(text), reply(candidate))
+>       assert result.status == "needs_review"
+E       AssertionError: assert 'ok' == 'needs_review'
+E         
+E         - needs_review
+E         + ok
+
+tests/qa/test_semantics.py:126: AssertionError
+_ test_schema_shaped_but_semantically_wrong_fields_require_review[Il ne reste pas de farine-candidate3] _
+
+text = 'Il ne reste pas de farine'
+candidate = {'segment': 'S1', 'quote': 'Il ne reste pas de farine', 'operation': 'count', 'product_spoken': 'farine', ...}
+
+    @pytest.mark.parametrize("text, candidate", [
+        ("Il reste douze kilos de farine", item("douze kilos de farine", "farine", "ouze", "12", "kilos")),
+        ("Il reste vingt-deux kilos de farine", item("vingt-deux kilos de farine", "farine", "deux", "2", "kilos")),
+        ("Trois kilos de farine", item("Trois kilos de farine", "farine", "Trois", "3", "kilos",
+                                      location="réserve du sous-sol")),
+        ("Il ne reste pas de farine", item("Il ne reste pas de farine", "farine", None, None, None)),
+    ])
+    def test_schema_shaped_but_semantically_wrong_fields_require_review(text, candidate):
+        result, _ = run(transcript(text), reply(candidate))
+>       assert result.status == "needs_review"
+E       AssertionError: assert 'ok' == 'needs_review'
+E         
+E         - needs_review
+E         + ok
+
+tests/qa/test_semantics.py:126: AssertionError
+=========================== short test summary info ============================
+FAILED tests/qa/test_semantics.py::test_bare_correction_with_two_compatible_targets_requires_review
+FAILED tests/qa/test_semantics.py::test_schema_shaped_but_semantically_wrong_fields_require_review[Il reste vingt-deux kilos de farine-candidate1]
+FAILED tests/qa/test_semantics.py::test_schema_shaped_but_semantically_wrong_fields_require_review[Trois kilos de farine-candidate2]
+FAILED tests/qa/test_semantics.py::test_schema_shaped_but_semantically_wrong_fields_require_review[Il ne reste pas de farine-candidate3]
+4 failed, 9 passed in 0.07s

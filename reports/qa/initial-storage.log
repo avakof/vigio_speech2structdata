@@ -1,0 +1,30 @@
+.FF.                                                                     [100%]
+=================================== FAILURES ===================================
+_____________________ test_out_of_source_audio_is_rejected _____________________
+
+tmp_path = PosixPath('/private/var/folders/q8/_7ztc8bn4ybc9m23xt7dz_fc0000gn/T/pytest-of-vakof/pytest-86/test_out_of_source_audio_is_re0')
+
+    def test_out_of_source_audio_is_rejected(tmp_path):
+        bad = inventory()
+        bad.segments[2].input_end += 1
+>       with pytest.raises(persistence.IntegrityError):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE IntegrityError
+
+tests/qa/test_storage.py:102: Failed
+___________________ test_unevidenced_observation_is_rejected ___________________
+
+tmp_path = PosixPath('/private/var/folders/q8/_7ztc8bn4ybc9m23xt7dz_fc0000gn/T/pytest-of-vakof/pytest-86/test_unevidenced_observation_i0')
+
+    def test_unevidenced_observation_is_rejected(tmp_path):
+        bad = inventory()
+        bad.observations[0].evidence = []
+>       with pytest.raises(persistence.IntegrityError):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE IntegrityError
+
+tests/qa/test_storage.py:109: Failed
+=========================== short test summary info ============================
+FAILED tests/qa/test_storage.py::test_out_of_source_audio_is_rejected - Faile...
+FAILED tests/qa/test_storage.py::test_unevidenced_observation_is_rejected - F...
+2 failed, 2 passed in 0.26s

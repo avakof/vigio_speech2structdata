@@ -1,0 +1,31 @@
+{
+  "wheel": "hojo-asr 0.1.3",
+  "module": "hojo_asr/hojo_asr_model.py",
+  "source_sha256": "4934017f9c9bac16c5761475d3651c3152e65e596900f488a0d234fb47eb1490",
+  "loader_cls_constructor_calls": [
+    365
+  ],
+  "hook_definitions": {
+    "autocast_context": 97,
+    "encode_speech": 188
+  },
+  "hook_calls": {
+    "autocast_context": [
+      {
+        "caller": "encode_speech",
+        "line": 195
+      },
+      {
+        "caller": "run_infer",
+        "line": 318
+      }
+    ],
+    "encode_speech": [
+      {
+        "caller": "infer",
+        "line": 236
+      }
+    ]
+  },
+  "evidence": "Pinned wheel source, parsed with Python AST"
+}

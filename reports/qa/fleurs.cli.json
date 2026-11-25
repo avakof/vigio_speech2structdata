@@ -1,0 +1,411 @@
+{
+  "status": "error",
+  "manifest": "/Users/vakof/orca/vigio_speech2structdata/evaluation/fleurs-fr/manifest.jsonl",
+  "manifest_sha256": "b386291607189bca4d4e4bd11ad7d681da0d911d1d00a10ba5bdc92c40a64497",
+  "requested_cases": 2,
+  "requested_audio_cases": 2,
+  "elapsed_s": 0.000896,
+  "cases": [
+    {
+      "id": "10132087162443371989.wav",
+      "audio": "10132087162443371989.wav",
+      "source": "google/fleurs:fr_fr/validation",
+      "revision": "70bb2e84b976b7e960aa89f1c648e09c59f894dd",
+      "license": "CC-BY-4.0",
+      "sha256": "8bb53b14f4cc695c54a136a5db57e534344a225d81a6b5314ca6cdb0a12c7005",
+      "language": "fr",
+      "duration_s": 14.46,
+      "condition": "unspecified",
+      "synthetic": false,
+      "reference": [
+        "Il y a de nombreuses répercussions sociales et politiques telles que l'utilisation du système métrique, le passage de l'absolutisme au républicanisme, le nationalisme et la conviction que le pays appartient au peuple et non à un seul dirigeant."
+      ],
+      "expected_review": false,
+      "asr": {
+        "status": "BLOCKED",
+        "errors": [
+          "Missing or incomplete merged_full_model.safetensors (expected 11956909856 bytes)"
+        ],
+        "observations": []
+      },
+      "wer": {
+        "basis": "pinned FLEURS corpus verification, no independent listening labels",
+        "condition": "unspecified",
+        "duration_s": 14.46,
+        "reference_words": 38,
+        "hypothesis_words": 0,
+        "inference_completed": false,
+        "edits": null
+      }
+    },
+    {
+      "id": "10198958753510138668.wav",
+      "audio": "10198958753510138668.wav",
+      "source": "google/fleurs:fr_fr/validation",
+      "revision": "70bb2e84b976b7e960aa89f1c648e09c59f894dd",
+      "license": "CC-BY-4.0",
+      "sha256": "a9f2f1630034aae5bbe5273a25166d9ed1e92bedf4d613c7398fbda92b65ed12",
+      "language": "fr",
+      "duration_s": 6.0,
+      "condition": "unspecified",
+      "synthetic": false,
+      "reference": [
+        "Il n'avait pas non plus le pouvoir de déroger aux lois fiscales ni à celles sur les droits de douane entre les États."
+      ],
+      "expected_review": false,
+      "asr": {
+        "status": "BLOCKED",
+        "errors": [
+          "Missing or incomplete merged_full_model.safetensors (expected 11956909856 bytes)"
+        ],
+        "observations": []
+      },
+      "wer": {
+        "basis": "pinned FLEURS corpus verification, no independent listening labels",
+        "condition": "unspecified",
+        "duration_s": 6.0,
+        "reference_words": 23,
+        "hypothesis_words": 0,
+        "inference_completed": false,
+        "edits": null
+      }
+    }
+  ],
+  "wer": {
+    "normalization": "NFC, casefold, curly apostrophe to straight. Keep accents. Split on punctuation and whitespace except internal apostrophes and decimal separators. Keep number surface forms without expanding words or equating decimal comma and point. Concatenate ordered normalized segments. Repetitions count as insertions.",
+    "eligible_clips": 2,
+    "eligible_duration_s": 20.46,
+    "eligible_reference_words": 61,
+    "scored_clips": 0,
+    "scored_duration_s": 0,
+    "reference_words": 0,
+    "edits": null,
+    "wer": null,
+    "status": "NOT MEASURED",
+    "by_condition": {
+      "unspecified": {
+        "eligible_clips": 2,
+        "eligible_duration_s": 20.46,
+        "eligible_reference_words": 61,
+        "scored_clips": 0,
+        "scored_duration_s": 0,
+        "reference_words": 0,
+        "edits": null,
+        "wer": null,
+        "status": "NOT MEASURED"
+      }
+    }
+  },
+  "extraction": {
+    "alignment": "normalized product and chronological occurrence, including revisions",
+    "policy": "Only ok candidates score as predictions. Missing or misrecognized mentions contribute false negatives. Incorrect accepted fields contribute false positives.",
+    "reference": {
+      "gold_mentions": 0,
+      "returned_candidates": 0,
+      "accepted_candidates": 0,
+      "review_candidates": 0,
+      "covered_gold_mentions": 0,
+      "abstention_rate": null,
+      "gold_coverage": null,
+      "gold_uncovered_rate": null,
+      "cases_with_no_accepted_candidate": 0,
+      "positive_cases_with_no_accepted_candidate": 0,
+      "cases": 0,
+      "blocked_cases": 0,
+      "failed_cases": 0,
+      "completed_cases": 0,
+      "measurement_status": "NOT MEASURED",
+      "fields": {
+        "product_spoken": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "predicted": 0,
+          "expected": 0,
+          "precision": null,
+          "recall": null
+        },
+        "quantity": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "predicted": 0,
+          "expected": 0,
+          "precision": null,
+          "recall": null
+        },
+        "quantity_max": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "predicted": 0,
+          "expected": 0,
+          "precision": null,
+          "recall": null
+        },
+        "qualifier": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "predicted": 0,
+          "expected": 0,
+          "precision": null,
+          "recall": null
+        },
+        "unit": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "predicted": 0,
+          "expected": 0,
+          "precision": null,
+          "recall": null
+        },
+        "operation": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "predicted": 0,
+          "expected": 0,
+          "precision": null,
+          "recall": null
+        },
+        "location": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "predicted": 0,
+          "expected": 0,
+          "precision": null,
+          "recall": null
+        },
+        "negation": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "predicted": 0,
+          "expected": 0,
+          "precision": null,
+          "recall": null
+        },
+        "correction": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "predicted": 0,
+          "expected": 0,
+          "precision": null,
+          "recall": null
+        },
+        "packaging.count": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "predicted": 0,
+          "expected": 0,
+          "precision": null,
+          "recall": null
+        },
+        "packaging.unit": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "predicted": 0,
+          "expected": 0,
+          "precision": null,
+          "recall": null
+        },
+        "packaging.per_package_quantity": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "predicted": 0,
+          "expected": 0,
+          "precision": null,
+          "recall": null
+        },
+        "packaging.per_package_unit": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "predicted": 0,
+          "expected": 0,
+          "precision": null,
+          "recall": null
+        },
+        "packaging.total": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "predicted": 0,
+          "expected": 0,
+          "precision": null,
+          "recall": null
+        },
+        "packaging.total_unit": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "predicted": 0,
+          "expected": 0,
+          "precision": null,
+          "recall": null
+        }
+      }
+    },
+    "asr": {
+      "gold_mentions": 0,
+      "returned_candidates": 0,
+      "accepted_candidates": 0,
+      "review_candidates": 0,
+      "covered_gold_mentions": 0,
+      "abstention_rate": null,
+      "gold_coverage": null,
+      "gold_uncovered_rate": null,
+      "cases_with_no_accepted_candidate": 0,
+      "positive_cases_with_no_accepted_candidate": 0,
+      "cases": 0,
+      "blocked_cases": 0,
+      "failed_cases": 0,
+      "completed_cases": 0,
+      "measurement_status": "NOT MEASURED",
+      "fields": {
+        "product_spoken": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "predicted": 0,
+          "expected": 0,
+          "precision": null,
+          "recall": null
+        },
+        "quantity": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "predicted": 0,
+          "expected": 0,
+          "precision": null,
+          "recall": null
+        },
+        "quantity_max": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "predicted": 0,
+          "expected": 0,
+          "precision": null,
+          "recall": null
+        },
+        "qualifier": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "predicted": 0,
+          "expected": 0,
+          "precision": null,
+          "recall": null
+        },
+        "unit": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "predicted": 0,
+          "expected": 0,
+          "precision": null,
+          "recall": null
+        },
+        "operation": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "predicted": 0,
+          "expected": 0,
+          "precision": null,
+          "recall": null
+        },
+        "location": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "predicted": 0,
+          "expected": 0,
+          "precision": null,
+          "recall": null
+        },
+        "negation": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "predicted": 0,
+          "expected": 0,
+          "precision": null,
+          "recall": null
+        },
+        "correction": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "predicted": 0,
+          "expected": 0,
+          "precision": null,
+          "recall": null
+        },
+        "packaging.count": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "predicted": 0,
+          "expected": 0,
+          "precision": null,
+          "recall": null
+        },
+        "packaging.unit": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "predicted": 0,
+          "expected": 0,
+          "precision": null,
+          "recall": null
+        },
+        "packaging.per_package_quantity": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "predicted": 0,
+          "expected": 0,
+          "precision": null,
+          "recall": null
+        },
+        "packaging.per_package_unit": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "predicted": 0,
+          "expected": 0,
+          "precision": null,
+          "recall": null
+        },
+        "packaging.total": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "predicted": 0,
+          "expected": 0,
+          "precision": null,
+          "recall": null
+        },
+        "packaging.total_unit": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "predicted": 0,
+          "expected": 0,
+          "precision": null,
+          "recall": null
+        }
+      }
+    }
+  }
+}

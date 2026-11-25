@@ -1,0 +1,41 @@
+DEBUG Found workspace root: /Users/vakof/orca/vigio_speech2structdata
+DEBUG Adding root workspace member: /Users/vakof/orca/vigio_speech2structdata
+DEBUG Found workspace configuration at `/Users/vakof/orca/vigio_speech2structdata/pyproject.toml`
+DEBUG Searching for user configuration in: /Users/vakof/.config/uv/uv.toml
+DEBUG uv 0.13.9 (6b2d39dcc 2026-11-17 aarch64-apple-darwin)
+DEBUG Checking for Python interpreter at path `/Users/vakof/.cache/speechflow/hojo-env/bin/python`
+Using Python 3.12.16 environment at: /Users/vakof/.cache/speechflow/hojo-env
+INFO Waiting to acquire exclusive lock for `/Users/vakof/.cache/speechflow/hojo-env` at `/Users/vakof/.cache/speechflow/hojo-env/.lock`
+DEBUG At least one requirement is not satisfied: hf-xet==1.2.0
+DEBUG Using request connect timeout of 10s and read timeout of 30s
+DEBUG Solving with installed Python version: 3.12.16
+DEBUG Solving with target Python version: >=3.12.16
+DEBUG Adding direct dependency: huggingface-hub>=0.36.0, <0.36.0+
+DEBUG Adding direct dependency: hf-xet>=1.2.0, <1.2.0+
+DEBUG Found fresh response for: https://pypi.org/simple/hf-xet/
+DEBUG Found fresh response for: https://pypi.org/simple/huggingface-hub/
+DEBUG Searching for a compatible version of huggingface-hub (>=0.36.0, <0.36.0+)
+DEBUG Selecting: huggingface-hub==0.36.0 [compatible] (huggingface_hub-0.36.0-py3-none-any.whl)
+DEBUG Searching for a compatible version of hf-xet (>=1.2.0, <1.2.0+)
+DEBUG Selecting: hf-xet==1.2.0 [compatible] (hf_xet-1.2.0-cp37-abi3-macosx_11_0_arm64.whl)
+DEBUG Tried 2 versions: hf-xet 1, huggingface-hub 1
+DEBUG marker environment resolution took 0.003s
+Resolved 2 packages in 4ms
+DEBUG Identified uncached distribution: hf-xet==1.2.0
+DEBUG Identified uncached distribution: huggingface-hub==0.36.0
+DEBUG No cache entry for: https://files.pythonhosted.org/packages/cb/bd/1a875e0d592d447cbc02805fd3fe0f497714d6a2583f59d14fa9ebad96eb/huggingface_hub-0.36.0-py3-none-any.whl
+DEBUG Sending fresh GET request for: https://files.pythonhosted.org/packages/cb/bd/1a875e0d592d447cbc02805fd3fe0f497714d6a2583f59d14fa9ebad96eb/huggingface_hub-0.36.0-py3-none-any.whl
+DEBUG No cache entry for: https://files.pythonhosted.org/packages/7f/8c/c5becfa53234299bc2210ba314eaaae36c2875e0045809b82e40a9544f0c/hf_xet-1.2.0-cp37-abi3-macosx_11_0_arm64.whl
+DEBUG Sending fresh GET request for: https://files.pythonhosted.org/packages/7f/8c/c5becfa53234299bc2210ba314eaaae36c2875e0045809b82e40a9544f0c/hf_xet-1.2.0-cp37-abi3-macosx_11_0_arm64.whl
+DEBUG Transient request failure for `https://files.pythonhosted.org/packages/cb/bd/1a875e0d592d447cbc02805fd3fe0f497714d6a2583f59d14fa9ebad96eb/huggingface_hub-0.36.0-py3-none-any.whl`, retrying: error sending request for url (https://files.pythonhosted.org/packages/cb/bd/1a875e0d592d447cbc02805fd3fe0f497714d6a2583f59d14fa9ebad96eb/huggingface_hub-0.36.0-py3-none-any.whl)
+  Caused by: client error (Connect)
+  Caused by: operation timed out
+DEBUG Transient request failure for `https://files.pythonhosted.org/packages/7f/8c/c5becfa53234299bc2210ba314eaaae36c2875e0045809b82e40a9544f0c/hf_xet-1.2.0-cp37-abi3-macosx_11_0_arm64.whl`, retrying: error sending request for url (https://files.pythonhosted.org/packages/7f/8c/c5becfa53234299bc2210ba314eaaae36c2875e0045809b82e40a9544f0c/hf_xet-1.2.0-cp37-abi3-macosx_11_0_arm64.whl)
+  Caused by: client error (Connect)
+  Caused by: operation timed out
+Downloading hf-xet (2.6MiB)
+ Downloaded hf-xet
+Prepared 2 packages in 2m 36s
+Installed 2 packages in 15ms
+ + hf-xet==1.2.0
+ + huggingface-hub==0.36.0

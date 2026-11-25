@@ -1,0 +1,97 @@
+{
+  "unsandboxed_control": {
+    "name": "huggingface.co",
+    "external": "99.86.109.115",
+    "connected": true
+  },
+  "sandbox_profile_sha256": "9988d55bcfc6aa31054c514fb299ede34c952bd90b67475c5a64d9c2107a28d5",
+  "server_pid": 98649,
+  "server_preexec_control": {
+    "pid": 98649,
+    "denied": {
+      "address": "99.86.109.115",
+      "port": 443,
+      "errno": 1,
+      "message": "[Errno 1] Operation not permitted"
+    },
+    "allowed": {
+      "url": "http://127.0.0.1:11434/api/version",
+      "status": 200,
+      "body": {
+        "version": "0.40.16"
+      }
+    },
+    "exec": [
+      "/opt/homebrew/bin/ollama",
+      "serve"
+    ]
+  },
+  "client_and_exec_child_controls": [
+    {
+      "pid": 98652,
+      "denied": {
+        "address": "99.86.109.115",
+        "port": 443,
+        "errno": 1,
+        "message": "[Errno 1] Operation not permitted"
+      },
+      "allowed": {
+        "url": "http://127.0.0.1:58527/api/version",
+        "status": 200,
+        "body": {
+          "version": "0.40.16"
+        }
+      },
+      "exec": [
+        "/Users/vakof/.local/bin/python3",
+        "-I"
+      ]
+    },
+    {
+      "pid": 98652,
+      "denied": {
+        "address": "99.86.109.115",
+        "port": 443,
+        "errno": 1,
+        "message": "[Errno 1] Operation not permitted"
+      },
+      "allowed": {
+        "url": "http://127.0.0.1:58527/api/version",
+        "status": 200,
+        "body": {
+          "version": "0.40.16"
+        }
+      },
+      "exec": []
+    }
+  ],
+  "dedicated_endpoint": "http://127.0.0.1:58527/api/version",
+  "server_command": [
+    "/usr/bin/sandbox-exec",
+    "-f",
+    "/private/var/folders/q8/_7ztc8bn4ybc9m23xt7dz_fc0000gn/T/speechflow-handoff-rvwvlqfy/loopback.sb",
+    "/Users/vakof/.local/bin/python3",
+    "-I",
+    "/private/var/folders/q8/_7ztc8bn4ybc9m23xt7dz_fc0000gn/T/speechflow-handoff-rvwvlqfy/probe.py",
+    "99.86.109.115",
+    "http://127.0.0.1:11434/api/version",
+    "/opt/homebrew/bin/ollama",
+    "serve"
+  ],
+  "client_command": [
+    "/usr/bin/sandbox-exec",
+    "-f",
+    "/private/var/folders/q8/_7ztc8bn4ybc9m23xt7dz_fc0000gn/T/speechflow-handoff-rvwvlqfy/loopback.sb",
+    "/Users/vakof/.local/bin/python3",
+    "-I",
+    "/private/var/folders/q8/_7ztc8bn4ybc9m23xt7dz_fc0000gn/T/speechflow-handoff-rvwvlqfy/probe.py",
+    "99.86.109.115",
+    "http://127.0.0.1:58527/api/version",
+    "/Users/vakof/.local/bin/python3",
+    "-I",
+    "/private/var/folders/q8/_7ztc8bn4ybc9m23xt7dz_fc0000gn/T/speechflow-handoff-rvwvlqfy/probe.py",
+    "99.86.109.115",
+    "http://127.0.0.1:58527/api/version"
+  ],
+  "server_exit_after_sigterm": 0
+}

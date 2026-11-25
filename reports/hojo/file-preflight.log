@@ -1,0 +1,26 @@
+Traceback (most recent call last):
+  File "/Users/vakof/.local/share/uv/python/cpython-3.12.16-macos-aarch64-none/lib/python3.12/importlib/metadata/__init__.py", line 397, in from_name
+    return next(cls.discover(name=name))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+StopIteration
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/vakof/orca/vigio_speech2structdata/tools/hojo/file_probe.py", line 173, in <module>
+    main()
+  File "/Users/vakof/orca/vigio_speech2structdata/tools/hojo/file_probe.py", line 130, in main
+    emit("silero", **silero_provenance())
+                     ^^^^^^^^^^^^^^^^^^^
+  File "/Users/vakof/orca/vigio_speech2structdata/src/speechflow/audio/segmentation.py", line 24, in silero_provenance
+    "version": version("silero-vad"),
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/vakof/.local/share/uv/python/cpython-3.12.16-macos-aarch64-none/lib/python3.12/importlib/metadata/__init__.py", line 889, in version
+    return distribution(distribution_name).version
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/vakof/.local/share/uv/python/cpython-3.12.16-macos-aarch64-none/lib/python3.12/importlib/metadata/__init__.py", line 862, in distribution
+    return Distribution.from_name(distribution_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/vakof/.local/share/uv/python/cpython-3.12.16-macos-aarch64-none/lib/python3.12/importlib/metadata/__init__.py", line 399, in from_name
+    raise PackageNotFoundError(name)
+importlib.metadata.PackageNotFoundError: No package metadata was found for silero-vad

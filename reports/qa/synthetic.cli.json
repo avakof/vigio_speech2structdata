@@ -1,0 +1,751 @@
+{
+  "status": "error",
+  "manifest": "/Users/vakof/orca/vigio_speech2structdata/outputs/qa-fixtures/long-jacques.manifest.jsonl",
+  "manifest_sha256": "ee34f841c38c1cd2636fd304fa77aac0bacdff970538d94ff943b4b152332a45",
+  "requested_cases": 1,
+  "requested_audio_cases": 1,
+  "elapsed_s": 0.048684,
+  "cases": [
+    {
+      "id": "long-jacques-inventory",
+      "audio": "long-jacques.wav",
+      "source": "macOS say, Jacques, 160 words/min, trimmed quiet intervals",
+      "revision": null,
+      "license": null,
+      "sha256": "03293fee0a0826dd6359087582be59770998a18df193808c6ebda6b249ee8021",
+      "language": "fr",
+      "duration_s": 72.46,
+      "condition": "synthetic-joined-speech",
+      "synthetic": true,
+      "reference": [
+        "Je compte huit kilos de tomates. Pour continuer la vérification je retourne vers les étagères de la réserve pendant que mon collègue termine tranquillement la vérification du petit réfrigérateur. Je compte quatre kilos de carottes. Pour continuer la vérification je retourne vers les étagères de la réserve pendant que mon collègue termine tranquillement la vérification du petit réfrigérateur. Je compte six kilos de courgettes. Pour continuer la vérification je retourne vers les étagères de la réserve pendant que mon collègue termine tranquillement la vérification du petit réfrigérateur. Je compte neuf kilos de pommes. Pour continuer la vérification je retourne vers les étagères de la réserve pendant que mon collègue termine tranquillement la vérification du petit réfrigérateur. Je compte cinq kilos de poires. Pour continuer la vérification je retourne vers les étagères de la réserve pendant que mon collègue termine tranquillement la vérification du petit réfrigérateur. Je compte trois kilos de kiwis. Pour continuer la vérification je retourne vers les étagères de la réserve pendant que mon collègue termine tranquillement la vérification du petit réfrigérateur. Je compte sept kilos de citrons. Pour continuer la vérification je retourne vers les étagères de la réserve pendant que mon collègue termine tranquillement la vérification du petit réfrigérateur. Je compte deux kilos de gingembre."
+      ],
+      "expected_review": false,
+      "gold": [
+        {
+          "product_spoken": "tomates",
+          "quantity": "8",
+          "quantity_max": null,
+          "qualifier": "exact",
+          "unit": "kg",
+          "operation": "count",
+          "location": null,
+          "packaging": null,
+          "correction_of": null
+        },
+        {
+          "product_spoken": "carottes",
+          "quantity": "4",
+          "quantity_max": null,
+          "qualifier": "exact",
+          "unit": "kg",
+          "operation": "count",
+          "location": null,
+          "packaging": null,
+          "correction_of": null
+        },
+        {
+          "product_spoken": "courgettes",
+          "quantity": "6",
+          "quantity_max": null,
+          "qualifier": "exact",
+          "unit": "kg",
+          "operation": "count",
+          "location": null,
+          "packaging": null,
+          "correction_of": null
+        },
+        {
+          "product_spoken": "pommes",
+          "quantity": "9",
+          "quantity_max": null,
+          "qualifier": "exact",
+          "unit": "kg",
+          "operation": "count",
+          "location": null,
+          "packaging": null,
+          "correction_of": null
+        },
+        {
+          "product_spoken": "poires",
+          "quantity": "5",
+          "quantity_max": null,
+          "qualifier": "exact",
+          "unit": "kg",
+          "operation": "count",
+          "location": null,
+          "packaging": null,
+          "correction_of": null
+        },
+        {
+          "product_spoken": "kiwis",
+          "quantity": "3",
+          "quantity_max": null,
+          "qualifier": "exact",
+          "unit": "kg",
+          "operation": "count",
+          "location": null,
+          "packaging": null,
+          "correction_of": null
+        },
+        {
+          "product_spoken": "citrons",
+          "quantity": "7",
+          "quantity_max": null,
+          "qualifier": "exact",
+          "unit": "kg",
+          "operation": "count",
+          "location": null,
+          "packaging": null,
+          "correction_of": null
+        },
+        {
+          "product_spoken": "gingembre",
+          "quantity": "2",
+          "quantity_max": null,
+          "qualifier": "exact",
+          "unit": "kg",
+          "operation": "count",
+          "location": null,
+          "packaging": null,
+          "correction_of": null
+        }
+      ],
+      "reference_extraction": {
+        "status": "BLOCKED",
+        "errors": [
+          "Pinned qwen3:8b digest unavailable (found None)"
+        ],
+        "observations": [],
+        "scores": {
+          "gold_mentions": 8,
+          "returned_candidates": 0,
+          "accepted_candidates": 0,
+          "review_candidates": 0,
+          "covered_gold_mentions": 0,
+          "fields": {
+            "product_spoken": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 8,
+              "predicted": 0,
+              "expected": 8,
+              "precision": null,
+              "recall": 0.0
+            },
+            "quantity": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 8,
+              "predicted": 0,
+              "expected": 8,
+              "precision": null,
+              "recall": 0.0
+            },
+            "quantity_max": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "predicted": 0,
+              "expected": 0,
+              "precision": null,
+              "recall": null
+            },
+            "qualifier": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 8,
+              "predicted": 0,
+              "expected": 8,
+              "precision": null,
+              "recall": 0.0
+            },
+            "unit": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 8,
+              "predicted": 0,
+              "expected": 8,
+              "precision": null,
+              "recall": 0.0
+            },
+            "operation": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 8,
+              "predicted": 0,
+              "expected": 8,
+              "precision": null,
+              "recall": 0.0
+            },
+            "location": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "predicted": 0,
+              "expected": 0,
+              "precision": null,
+              "recall": null
+            },
+            "negation": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "predicted": 0,
+              "expected": 0,
+              "precision": null,
+              "recall": null
+            },
+            "correction": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "predicted": 0,
+              "expected": 0,
+              "precision": null,
+              "recall": null
+            },
+            "packaging.count": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "predicted": 0,
+              "expected": 0,
+              "precision": null,
+              "recall": null
+            },
+            "packaging.unit": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "predicted": 0,
+              "expected": 0,
+              "precision": null,
+              "recall": null
+            },
+            "packaging.per_package_quantity": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "predicted": 0,
+              "expected": 0,
+              "precision": null,
+              "recall": null
+            },
+            "packaging.per_package_unit": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "predicted": 0,
+              "expected": 0,
+              "precision": null,
+              "recall": null
+            },
+            "packaging.total": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "predicted": 0,
+              "expected": 0,
+              "precision": null,
+              "recall": null
+            },
+            "packaging.total_unit": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "predicted": 0,
+              "expected": 0,
+              "precision": null,
+              "recall": null
+            }
+          }
+        },
+        "review_decision_correct": null
+      },
+      "asr": {
+        "status": "BLOCKED",
+        "errors": [
+          "Missing or incomplete merged_full_model.safetensors (expected 11956909856 bytes)"
+        ],
+        "observations": []
+      },
+      "asr_extraction": {
+        "status": "BLOCKED",
+        "errors": [
+          "Pinned qwen3:8b digest unavailable (found None)"
+        ],
+        "observations": [],
+        "scores": {
+          "gold_mentions": 8,
+          "returned_candidates": 0,
+          "accepted_candidates": 0,
+          "review_candidates": 0,
+          "covered_gold_mentions": 0,
+          "fields": {
+            "product_spoken": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 8,
+              "predicted": 0,
+              "expected": 8,
+              "precision": null,
+              "recall": 0.0
+            },
+            "quantity": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 8,
+              "predicted": 0,
+              "expected": 8,
+              "precision": null,
+              "recall": 0.0
+            },
+            "quantity_max": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "predicted": 0,
+              "expected": 0,
+              "precision": null,
+              "recall": null
+            },
+            "qualifier": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 8,
+              "predicted": 0,
+              "expected": 8,
+              "precision": null,
+              "recall": 0.0
+            },
+            "unit": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 8,
+              "predicted": 0,
+              "expected": 8,
+              "precision": null,
+              "recall": 0.0
+            },
+            "operation": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 8,
+              "predicted": 0,
+              "expected": 8,
+              "precision": null,
+              "recall": 0.0
+            },
+            "location": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "predicted": 0,
+              "expected": 0,
+              "precision": null,
+              "recall": null
+            },
+            "negation": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "predicted": 0,
+              "expected": 0,
+              "precision": null,
+              "recall": null
+            },
+            "correction": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "predicted": 0,
+              "expected": 0,
+              "precision": null,
+              "recall": null
+            },
+            "packaging.count": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "predicted": 0,
+              "expected": 0,
+              "precision": null,
+              "recall": null
+            },
+            "packaging.unit": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "predicted": 0,
+              "expected": 0,
+              "precision": null,
+              "recall": null
+            },
+            "packaging.per_package_quantity": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "predicted": 0,
+              "expected": 0,
+              "precision": null,
+              "recall": null
+            },
+            "packaging.per_package_unit": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "predicted": 0,
+              "expected": 0,
+              "precision": null,
+              "recall": null
+            },
+            "packaging.total": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "predicted": 0,
+              "expected": 0,
+              "precision": null,
+              "recall": null
+            },
+            "packaging.total_unit": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "predicted": 0,
+              "expected": 0,
+              "precision": null,
+              "recall": null
+            }
+          }
+        }
+      }
+    }
+  ],
+  "wer": {
+    "normalization": "NFC, casefold, curly apostrophe to straight. Keep accents. Split on punctuation and whitespace except internal apostrophes and decimal separators. Keep number surface forms without expanding words or equating decimal comma and point. Concatenate ordered normalized segments. Repetitions count as insertions.",
+    "eligible_clips": 0,
+    "eligible_duration_s": 0,
+    "eligible_reference_words": 0,
+    "scored_clips": 0,
+    "scored_duration_s": 0,
+    "reference_words": 0,
+    "edits": null,
+    "wer": null,
+    "status": "NOT MEASURED",
+    "by_condition": {}
+  },
+  "extraction": {
+    "alignment": "normalized product and chronological occurrence, including revisions",
+    "policy": "Only ok candidates score as predictions. Missing or misrecognized mentions contribute false negatives. Incorrect accepted fields contribute false positives.",
+    "reference": {
+      "gold_mentions": 8,
+      "returned_candidates": 0,
+      "accepted_candidates": 0,
+      "review_candidates": 0,
+      "covered_gold_mentions": 0,
+      "abstention_rate": null,
+      "gold_coverage": 0.0,
+      "gold_uncovered_rate": 1.0,
+      "cases_with_no_accepted_candidate": 1,
+      "positive_cases_with_no_accepted_candidate": 1,
+      "cases": 1,
+      "blocked_cases": 1,
+      "failed_cases": 0,
+      "completed_cases": 0,
+      "measurement_status": "NOT MEASURED",
+      "fields": {
+        "product_spoken": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 8,
+          "predicted": 0,
+          "expected": 8,
+          "precision": null,
+          "recall": 0.0
+        },
+        "quantity": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 8,
+          "predicted": 0,
+          "expected": 8,
+          "precision": null,
+          "recall": 0.0
+        },
+        "quantity_max": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "predicted": 0,
+          "expected": 0,
+          "precision": null,
+          "recall": null
+        },
+        "qualifier": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 8,
+          "predicted": 0,
+          "expected": 8,
+          "precision": null,
+          "recall": 0.0
+        },
+        "unit": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 8,
+          "predicted": 0,
+          "expected": 8,
+          "precision": null,
+          "recall": 0.0
+        },
+        "operation": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 8,
+          "predicted": 0,
+          "expected": 8,
+          "precision": null,
+          "recall": 0.0
+        },
+        "location": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "predicted": 0,
+          "expected": 0,
+          "precision": null,
+          "recall": null
+        },
+        "negation": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "predicted": 0,
+          "expected": 0,
+          "precision": null,
+          "recall": null
+        },
+        "correction": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "predicted": 0,
+          "expected": 0,
+          "precision": null,
+          "recall": null
+        },
+        "packaging.count": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "predicted": 0,
+          "expected": 0,
+          "precision": null,
+          "recall": null
+        },
+        "packaging.unit": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "predicted": 0,
+          "expected": 0,
+          "precision": null,
+          "recall": null
+        },
+        "packaging.per_package_quantity": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "predicted": 0,
+          "expected": 0,
+          "precision": null,
+          "recall": null
+        },
+        "packaging.per_package_unit": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "predicted": 0,
+          "expected": 0,
+          "precision": null,
+          "recall": null
+        },
+        "packaging.total": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "predicted": 0,
+          "expected": 0,
+          "precision": null,
+          "recall": null
+        },
+        "packaging.total_unit": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "predicted": 0,
+          "expected": 0,
+          "precision": null,
+          "recall": null
+        }
+      }
+    },
+    "asr": {
+      "gold_mentions": 8,
+      "returned_candidates": 0,
+      "accepted_candidates": 0,
+      "review_candidates": 0,
+      "covered_gold_mentions": 0,
+      "abstention_rate": null,
+      "gold_coverage": 0.0,
+      "gold_uncovered_rate": 1.0,
+      "cases_with_no_accepted_candidate": 1,
+      "positive_cases_with_no_accepted_candidate": 1,
+      "cases": 1,
+      "blocked_cases": 1,
+      "failed_cases": 0,
+      "completed_cases": 0,
+      "measurement_status": "NOT MEASURED",
+      "fields": {
+        "product_spoken": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 8,
+          "predicted": 0,
+          "expected": 8,
+          "precision": null,
+          "recall": 0.0
+        },
+        "quantity": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 8,
+          "predicted": 0,
+          "expected": 8,
+          "precision": null,
+          "recall": 0.0
+        },
+        "quantity_max": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "predicted": 0,
+          "expected": 0,
+          "precision": null,
+          "recall": null
+        },
+        "qualifier": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 8,
+          "predicted": 0,
+          "expected": 8,
+          "precision": null,
+          "recall": 0.0
+        },
+        "unit": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 8,
+          "predicted": 0,
+          "expected": 8,
+          "precision": null,
+          "recall": 0.0
+        },
+        "operation": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 8,
+          "predicted": 0,
+          "expected": 8,
+          "precision": null,
+          "recall": 0.0
+        },
+        "location": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "predicted": 0,
+          "expected": 0,
+          "precision": null,
+          "recall": null
+        },
+        "negation": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "predicted": 0,
+          "expected": 0,
+          "precision": null,
+          "recall": null
+        },
+        "correction": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "predicted": 0,
+          "expected": 0,
+          "precision": null,
+          "recall": null
+        },
+        "packaging.count": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "predicted": 0,
+          "expected": 0,
+          "precision": null,
+          "recall": null
+        },
+        "packaging.unit": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "predicted": 0,
+          "expected": 0,
+          "precision": null,
+          "recall": null
+        },
+        "packaging.per_package_quantity": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "predicted": 0,
+          "expected": 0,
+          "precision": null,
+          "recall": null
+        },
+        "packaging.per_package_unit": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "predicted": 0,
+          "expected": 0,
+          "precision": null,
+          "recall": null
+        },
+        "packaging.total": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "predicted": 0,
+          "expected": 0,
+          "precision": null,
+          "recall": null
+        },
+        "packaging.total_unit": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "predicted": 0,
+          "expected": 0,
+          "precision": null,
+          "recall": null
+        }
+      }
+    }
+  }
+}

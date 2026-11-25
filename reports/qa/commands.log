@@ -1,0 +1,233 @@
+
+$ .venv/bin/python -m pytest -q tests/qa
+.......................................                                  [100%]
+39 passed in 0.31s
+exit 0
+
+$ .venv/bin/speechflow evaluate evaluation/fixtures/reference-fr.jsonl --offline --out outputs/qa-reference
+{
+  "status": "error",
+  "requested_cases": 14,
+  "requested_audio_cases": 0,
+  "wer": {
+    "eligible_clips": 0,
+    "eligible_duration_s": 0,
+    "eligible_reference_words": 0,
+    "scored_clips": 0,
+    "scored_duration_s": 0,
+    "reference_words": 0,
+    "edits": null,
+    "wer": null,
+    "status": "NOT MEASURED",
+    "by_condition": {}
+  },
+  "reference": {
+    "gold_mentions": 15,
+    "returned_candidates": 0,
+    "accepted_candidates": 0,
+    "review_candidates": 0,
+    "covered_gold_mentions": 0,
+    "abstention_rate": null,
+    "gold_coverage": 0.0,
+    "gold_uncovered_rate": 1.0,
+    "cases_with_no_accepted_candidate": 14,
+    "positive_cases_with_no_accepted_candidate": 11,
+    "cases": 14,
+    "blocked_cases": 14,
+    "failed_cases": 0,
+    "completed_cases": 0,
+    "measurement_status": "NOT MEASURED"
+  },
+  "asr": {
+    "gold_mentions": 0,
+    "returned_candidates": 0,
+    "accepted_candidates": 0,
+    "review_candidates": 0,
+    "covered_gold_mentions": 0,
+    "abstention_rate": null,
+    "gold_coverage": null,
+    "gold_uncovered_rate": null,
+    "cases_with_no_accepted_candidate": 0,
+    "positive_cases_with_no_accepted_candidate": 0,
+    "cases": 0,
+    "blocked_cases": 0,
+    "failed_cases": 0,
+    "completed_cases": 0,
+    "measurement_status": "NOT MEASURED"
+  },
+  "first_errors": [
+    null,
+    [
+      "Pinned qwen3:8b digest unavailable (found None)"
+    ],
+    null
+  ]
+}
+exit 12
+
+$ .venv/bin/speechflow evaluate evaluation/fleurs-fr/manifest.jsonl --offline --out outputs/qa-fleurs
+{
+  "status": "error",
+  "requested_cases": 2,
+  "requested_audio_cases": 2,
+  "wer": {
+    "eligible_clips": 2,
+    "eligible_duration_s": 20.46,
+    "eligible_reference_words": 61,
+    "scored_clips": 0,
+    "scored_duration_s": 0,
+    "reference_words": 0,
+    "edits": null,
+    "wer": null,
+    "status": "NOT MEASURED",
+    "by_condition": {
+      "unspecified": {
+        "eligible_clips": 2,
+        "eligible_duration_s": 20.46,
+        "eligible_reference_words": 61,
+        "scored_clips": 0,
+        "scored_duration_s": 0,
+        "reference_words": 0,
+        "edits": null,
+        "wer": null,
+        "status": "NOT MEASURED"
+      }
+    }
+  },
+  "reference": {
+    "gold_mentions": 0,
+    "returned_candidates": 0,
+    "accepted_candidates": 0,
+    "review_candidates": 0,
+    "covered_gold_mentions": 0,
+    "abstention_rate": null,
+    "gold_coverage": null,
+    "gold_uncovered_rate": null,
+    "cases_with_no_accepted_candidate": 0,
+    "positive_cases_with_no_accepted_candidate": 0,
+    "cases": 0,
+    "blocked_cases": 0,
+    "failed_cases": 0,
+    "completed_cases": 0,
+    "measurement_status": "NOT MEASURED"
+  },
+  "asr": {
+    "gold_mentions": 0,
+    "returned_candidates": 0,
+    "accepted_candidates": 0,
+    "review_candidates": 0,
+    "covered_gold_mentions": 0,
+    "abstention_rate": null,
+    "gold_coverage": null,
+    "gold_uncovered_rate": null,
+    "cases_with_no_accepted_candidate": 0,
+    "positive_cases_with_no_accepted_candidate": 0,
+    "cases": 0,
+    "blocked_cases": 0,
+    "failed_cases": 0,
+    "completed_cases": 0,
+    "measurement_status": "NOT MEASURED"
+  },
+  "first_errors": [
+    [
+      "Missing or incomplete merged_full_model.safetensors (expected 11956909856 bytes)"
+    ],
+    null,
+    null
+  ]
+}
+exit 12
+
+$ .venv/bin/speechflow evaluate outputs/qa-fixtures/long-jacques.manifest.jsonl --offline --out outputs/qa-synthetic
+{
+  "status": "error",
+  "requested_cases": 1,
+  "requested_audio_cases": 1,
+  "wer": {
+    "eligible_clips": 0,
+    "eligible_duration_s": 0,
+    "eligible_reference_words": 0,
+    "scored_clips": 0,
+    "scored_duration_s": 0,
+    "reference_words": 0,
+    "edits": null,
+    "wer": null,
+    "status": "NOT MEASURED",
+    "by_condition": {}
+  },
+  "reference": {
+    "gold_mentions": 8,
+    "returned_candidates": 0,
+    "accepted_candidates": 0,
+    "review_candidates": 0,
+    "covered_gold_mentions": 0,
+    "abstention_rate": null,
+    "gold_coverage": 0.0,
+    "gold_uncovered_rate": 1.0,
+    "cases_with_no_accepted_candidate": 1,
+    "positive_cases_with_no_accepted_candidate": 1,
+    "cases": 1,
+    "blocked_cases": 1,
+    "failed_cases": 0,
+    "completed_cases": 0,
+    "measurement_status": "NOT MEASURED"
+  },
+  "asr": {
+    "gold_mentions": 8,
+    "returned_candidates": 0,
+    "accepted_candidates": 0,
+    "review_candidates": 0,
+    "covered_gold_mentions": 0,
+    "abstention_rate": null,
+    "gold_coverage": 0.0,
+    "gold_uncovered_rate": 1.0,
+    "cases_with_no_accepted_candidate": 1,
+    "positive_cases_with_no_accepted_candidate": 1,
+    "cases": 1,
+    "blocked_cases": 1,
+    "failed_cases": 0,
+    "completed_cases": 0,
+    "measurement_status": "NOT MEASURED"
+  },
+  "first_errors": [
+    [
+      "Missing or incomplete merged_full_model.safetensors (expected 11956909856 bytes)"
+    ],
+    [
+      "Pinned qwen3:8b digest unavailable (found None)"
+    ],
+    [
+      "Pinned qwen3:8b digest unavailable (found None)"
+    ]
+  ]
+}
+exit 12
+
+$ .venv/bin/python tools/qa/make_long_french.py outputs/qa-fixtures/long-jacques.wav
+{
+  "duration_s": 72.46,
+  "sha256": "03293fee0a0826dd6359087582be59770998a18df193808c6ebda6b249ee8021",
+  "synthetic": true
+}
+
+$ .venv/bin/python -m pytest --collect-only -q tests/real_models
+tests/real_models/test_runtime.py::test_codec_decodes_right_channel_and_preserves_source[wav]
+tests/real_models/test_runtime.py::test_codec_decodes_right_channel_and_preserves_source[flac]
+tests/real_models/test_runtime.py::test_codec_decodes_right_channel_and_preserves_source[mp3]
+tests/real_models/test_runtime.py::test_codec_decodes_right_channel_and_preserves_source[m4a]
+tests/real_models/test_runtime.py::test_codec_corrupt_wav_and_spool_limit
+tests/real_models/test_runtime.py::test_real_silero_silence_and_speech_active_at_eof
+tests/real_models/test_runtime.py::test_real_silero_long_fixture_exercises_forced_chunk_boundaries
+tests/real_models/test_runtime.py::test_real_hojo_long_audio_boundary_content_and_tail
+tests/real_models/test_runtime.py::test_real_extractor_long_hojo_outputs_have_no_duplicate_observations
+tests/real_models/test_runtime.py::test_real_extractor_installed_cli_exact_transcript
+tests/real_models/test_runtime.py::test_real_file_installed_cli_offline_both_processes
+
+11/12 tests collected (1 deselected) in 0.04s
+exit 0
+
+$ .venv/bin/python -m pytest --collect-only -q tests/real_models -m microphone
+tests/real_models/test_runtime.py::test_real_microphone_offline_after_file_gate
+
+1/12 tests collected (11 deselected) in 0.04s
+exit 0

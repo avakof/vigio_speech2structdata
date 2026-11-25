@@ -1,0 +1,17 @@
+.venv/
+.pytest_cache/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.DS_Store
+.env
+dist/
+build/
+outputs/
+models/
+*.sqlite*
+*.wav
+*.flac
+*.m4a
+*.mp3
+*.safetensors

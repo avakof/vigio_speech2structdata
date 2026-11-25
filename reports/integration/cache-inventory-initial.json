@@ -1,0 +1,39 @@
+{
+  "volumes": [
+    "Macintosh HD",
+    "Recovery"
+  ],
+  "cache_roots_checked": [
+    "/Users/vakof/.cache/speechflow",
+    "/Users/vakof/.ollama/models"
+  ],
+  "exact_patterns": [
+    "merged_full_model.safetensors",
+    "c046a5a26c142f5aded7331d36892293a025f579e342a27861e80509afaca88d",
+    "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+    "sha256-500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+    "*Qwen3*8B*Q4_K_M*.gguf",
+    "8b",
+    "sha256-a3de86cd1c132c822487ededd47a324c50491393e6565cd14bafa40d0b8e686f",
+    "a3de86cd1c132c822487ededd47a324c50491393e6565cd14bafa40d0b8e686f"
+  ],
+  "cache_matches": [],
+  "spotlight_matches_in_scope": {
+    "merged_full_model.safetensors": [],
+    "c046a5a26c142f5aded7331d36892293a025f579e342a27861e80509afaca88d": [],
+    "sha256-a3de86cd1c132c822487ededd47a324c50491393e6565cd14bafa40d0b8e686f": []
+  },
+  "partial_assets": [
+    {
+      "name": "sha256-a3de86cd1c132c822487ededd47a324c50491393e6565cd14bafa40d0b8e686f-partial",
+      "logical_bytes": 5225374496,
+      "allocated_bytes": 235655168
+    },
+    {
+      "name": "merged_full_model.safetensors.incomplete",
+      "logical_bytes": 1297143,
+      "allocated_bytes": 2142208
+    }
+  ],
+  "scan_exit": 1
+}

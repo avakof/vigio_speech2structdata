@@ -1,0 +1,35 @@
+usage: speechflow [-h] [--config FILE] [--offline] [--backend {cpu,mps}]
+                  [--database FILE] [--json] [-q] [--debug]
+                  COMMAND ...
+
+Local French speech -> structured inventory data.
+
+positional arguments:
+  COMMAND
+    doctor             check machine, dependencies and assets (downloads
+                       nothing)
+    models             model asset management
+    transcribe         audio file -> transcript only
+    run                audio file -> transcript -> validated observations
+    mic                segmented microphone transcription and extraction
+    evaluate           score a JSONL evaluation manifest
+    export             re-render a stored run
+    runs               list stored runs
+    recover            commit recovery copies left by an interrupted save
+
+options:
+  -h, --help           show this help message and exit
+
+common options:
+  --config FILE        TOML settings file (default: $SPEECHFLOW_CONFIG, else
+                       built-in)
+  --offline            never download; report missing assets instead
+  --backend {cpu,mps}  ASR backend (overrides the settings file)
+  --database FILE      SQLite history database (overrides the settings file)
+  --json               print one machine-readable JSON document on stdout
+  -q, --quiet          print only the one-line result
+  --debug              show tracebacks for unexpected errors
+
+Exit codes: 0 ok, 1 internal error, 2 usage/config, 3 missing dependency or
+asset, 4 audio input/device, 5 database/export, 10 no_speech, 11 needs_review,
+12 run status error, 130 interrupted.

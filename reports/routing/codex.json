@@ -1,0 +1,88 @@
+{
+  "integrator": {
+    "thread_id": "01a21308-a0fb-79e0-8578-142793ef6b02",
+    "provider": "openai",
+    "model": "gpt-6.2-astra",
+    "effort": "xhigh",
+    "cwd": "/Users/vakof/orca/vigio_speech2structdata",
+    "rollout": "rollout-2026-11-25T15-07-43-01a21308-a0fb-79e0-8578-142793ef6b02.jsonl",
+    "turn_contexts": [
+      {
+        "model": "gpt-6.2-astra",
+        "effort": "xhigh",
+        "turn_id": "01a21308-a50d-7482-ad6a-13bcf9c74ed5",
+        "cwd": "/Users/vakof/orca/vigio_speech2structdata"
+      }
+    ]
+  },
+  "architect": {
+    "thread_id": "01a21309-4f14-7a32-a64e-3149c10a5287",
+    "provider": "openai",
+    "model": "gpt-6.2-astra",
+    "effort": "xhigh",
+    "cwd": "/Users/vakof/orca/vigio_speech2structdata",
+    "rollout": "rollout-2026-11-25T15-08-26-01a21309-4f14-7a32-a64e-3149c10a5287.jsonl",
+    "turn_contexts": [
+      {
+        "model": "gpt-6.2-astra",
+        "effort": "xhigh",
+        "turn_id": "01a21309-4f63-7f62-8672-f7dad8d16aad",
+        "cwd": "/Users/vakof/orca/vigio_speech2structdata"
+      },
+      {
+        "model": "gpt-6.2-astra",
+        "effort": "xhigh",
+        "turn_id": "01a2131b-c55f-7263-8d7c-73bd331aa8fb",
+        "cwd": "/Users/vakof/orca/vigio_speech2structdata"
+      }
+    ]
+  },
+  "audio": {
+    "thread_id": "01a2130a-657d-7421-8af1-24f3ce8db31b",
+    "provider": "openai",
+    "model": "gpt-6.2-sol",
+    "effort": "high",
+    "cwd": "/Users/vakof/orca/vigio_speech2structdata",
+    "rollout": "rollout-2026-11-25T15-09-38-01a2130a-657d-7421-8af1-24f3ce8db31b.jsonl",
+    "turn_contexts": [
+      {
+        "model": "gpt-6.2-sol",
+        "effort": "high",
+        "turn_id": "01a2130a-65da-7b30-89ab-2bc47ce51336",
+        "cwd": "/Users/vakof/orca/vigio_speech2structdata"
+      }
+    ]
+  },
+  "qa": {
+    "thread_id": "01a2131e-c8de-7ba0-9b43-cbaef0edc579",
+    "provider": "openai",
+    "model": "gpt-6.2-sol",
+    "effort": "high",
+    "cwd": "/Users/vakof/orca/vigio_speech2structdata",
+    "rollout": "rollout-2026-11-25T15-31-54-01a2131e-c8de-7ba0-9b43-cbaef0edc579.jsonl",
+    "turn_contexts": [
+      {
+        "model": "gpt-6.2-sol",
+        "effort": "high",
+        "turn_id": "01a2131e-c925-7be0-92fe-eb4a70663c09",
+        "cwd": "/Users/vakof/orca/vigio_speech2structdata"
+      }
+    ]
+  },
+  "relay": {
+    "thread_id": "01a21306-8f0b-7c63-bc9a-2d71c89eec5d",
+    "provider": "openai",
+    "model": "gpt-6.2-astra",
+    "effort": "max",
+    "cwd": "/Users/vakof/orca/vigio_speech2structdata",
+    "rollout": "rollout-2026-11-25T15-05-26-01a21306-8f0b-7c63-bc9a-2d71c89eec5d.jsonl",
+    "turn_contexts": [
+      {
+        "model": "gpt-6.2-astra",
+        "effort": "max",
+        "turn_id": "01a21306-8fb1-7832-9eb6-86d95ffb1183",
+        "cwd": "/Users/vakof/orca/vigio_speech2structdata"
+      }
+    ]
+  }
+}
