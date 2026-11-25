@@ -1,0 +1,239 @@
+{"unix_time": 1795638669.569955, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 34656, "kind": "pytest"}], "ollama_models": []}
+{"unix_time": 1795638671.624804, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 49936, "kind": "pytest"}, {"pid": 65101, "ppid": 65098, "rss_KiB": 209248, "kind": "CLI Hojo child"}], "ollama_models": []}
+{"unix_time": 1795638673.676491, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 49936, "kind": "pytest"}, {"pid": 65101, "ppid": 65098, "rss_KiB": 209248, "kind": "CLI Hojo child"}], "ollama_models": []}
+{"unix_time": 1795638675.734566, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 49936, "kind": "pytest"}, {"pid": 65101, "ppid": 65098, "rss_KiB": 209248, "kind": "CLI Hojo child"}], "ollama_models": []}
+{"unix_time": 1795638677.793232, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 49952, "kind": "pytest"}, {"pid": 65101, "ppid": 65098, "rss_KiB": 513200, "kind": "CLI Hojo child"}], "ollama_models": []}
+{"unix_time": 1795638679.8498821, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 49952, "kind": "pytest"}, {"pid": 65101, "ppid": 65098, "rss_KiB": 3071856, "kind": "CLI Hojo child"}], "ollama_models": []}
+{"unix_time": 1795638681.906028, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 49952, "kind": "pytest"}, {"pid": 65101, "ppid": 65098, "rss_KiB": 3071856, "kind": "CLI Hojo child"}], "ollama_models": []}
+{"unix_time": 1795638683.9626691, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 49984, "kind": "pytest"}, {"pid": 65101, "ppid": 65098, "rss_KiB": 3071856, "kind": "CLI Hojo child"}], "ollama_models": []}
+{"unix_time": 1795638686.0285308, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 49984, "kind": "pytest"}, {"pid": 65101, "ppid": 65098, "rss_KiB": 4875712, "kind": "CLI Hojo child"}], "ollama_models": []}
+{"unix_time": 1795638688.086101, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 49984, "kind": "pytest"}, {"pid": 65101, "ppid": 65098, "rss_KiB": 8130080, "kind": "CLI Hojo child"}], "ollama_models": []}
+{"unix_time": 1795638690.160043, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 49984, "kind": "pytest"}, {"pid": 65101, "ppid": 65098, "rss_KiB": 11191616, "kind": "CLI Hojo child"}], "ollama_models": []}
+{"unix_time": 1795638692.2178528, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 50000, "kind": "pytest"}, {"pid": 65101, "ppid": 65098, "rss_KiB": 12366640, "kind": "CLI Hojo child"}], "ollama_models": []}
+{"unix_time": 1795638694.286734, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 50000, "kind": "pytest"}, {"pid": 65101, "ppid": 65098, "rss_KiB": 12385968, "kind": "CLI Hojo child"}], "ollama_models": []}
+{"unix_time": 1795638696.343178, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 50000, "kind": "pytest"}], "ollama_models": []}
+{"unix_time": 1795638698.404347, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 50000, "kind": "pytest"}], "ollama_models": []}
+{"unix_time": 1795638700.477115, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 50000, "kind": "pytest"}], "ollama_models": ["qwen3:8b"]}
+{"unix_time": 1795638702.5475452, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 50000, "kind": "pytest"}], "ollama_models": ["qwen3:8b"]}
+{"unix_time": 1795638704.609237, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 50000, "kind": "pytest"}], "ollama_models": ["qwen3:8b"]}
+{"unix_time": 1795638706.6888, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 50000, "kind": "pytest"}], "ollama_models": ["qwen3:8b"]}
+{"unix_time": 1795638708.7626739, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 52320, "kind": "pytest"}, {"pid": 65280, "ppid": 65279, "rss_KiB": 207936, "kind": "CLI Hojo child"}], "ollama_models": []}
+{"unix_time": 1795638710.820736, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 52320, "kind": "pytest"}, {"pid": 65280, "ppid": 65279, "rss_KiB": 207936, "kind": "CLI Hojo child"}], "ollama_models": []}
+{"unix_time": 1795638712.878678, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 52320, "kind": "pytest"}, {"pid": 65280, "ppid": 65279, "rss_KiB": 207936, "kind": "CLI Hojo child"}], "ollama_models": []}
+{"unix_time": 1795638714.940894, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 52320, "kind": "pytest"}, {"pid": 65280, "ppid": 65279, "rss_KiB": 266240, "kind": "CLI Hojo child"}], "ollama_models": []}
+{"unix_time": 1795638716.993539, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 52320, "kind": "pytest"}, {"pid": 65280, "ppid": 65279, "rss_KiB": 1284256, "kind": "CLI Hojo child"}], "ollama_models": []}
+{"unix_time": 1795638719.04839, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 52320, "kind": "pytest"}, {"pid": 65280, "ppid": 65279, "rss_KiB": 3071680, "kind": "CLI Hojo child"}], "ollama_models": []}
+{"unix_time": 1795638721.1012201, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 52320, "kind": "pytest"}, {"pid": 65280, "ppid": 65279, "rss_KiB": 3071680, "kind": "CLI Hojo child"}], "ollama_models": []}
+{"unix_time": 1795638723.160792, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 52320, "kind": "pytest"}, {"pid": 65280, "ppid": 65279, "rss_KiB": 3071680, "kind": "CLI Hojo child"}], "ollama_models": []}
+{"unix_time": 1795638725.241628, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 52320, "kind": "pytest"}, {"pid": 65280, "ppid": 65279, "rss_KiB": 6111152, "kind": "CLI Hojo child"}], "ollama_models": []}
+{"unix_time": 1795638727.317313, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 52320, "kind": "pytest"}, {"pid": 65280, "ppid": 65279, "rss_KiB": 9022016, "kind": "CLI Hojo child"}], "ollama_models": []}
+{"unix_time": 1795638729.380097, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 52320, "kind": "pytest"}, {"pid": 65280, "ppid": 65279, "rss_KiB": 12404288, "kind": "CLI Hojo child"}], "ollama_models": []}
+{"unix_time": 1795638731.441196, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 52320, "kind": "pytest"}, {"pid": 65280, "ppid": 65279, "rss_KiB": 12364720, "kind": "CLI Hojo child"}], "ollama_models": []}
+{"unix_time": 1795638733.498224, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 52320, "kind": "pytest"}, {"pid": 65280, "ppid": 65279, "rss_KiB": 1439024, "kind": "CLI Hojo child"}], "ollama_models": []}
+{"unix_time": 1795638735.550089, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 52320, "kind": "pytest"}], "ollama_models": ["qwen3:8b"]}
+{"unix_time": 1795638737.611349, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 52320, "kind": "pytest"}], "ollama_models": ["qwen3:8b"]}
+{"unix_time": 1795638739.670641, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 52320, "kind": "pytest"}], "ollama_models": ["qwen3:8b"]}
+{"unix_time": 1795638741.727905, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 56336, "kind": "pytest"}], "ollama_models": []}
+{"unix_time": 1795638743.827381, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 56336, "kind": "pytest"}], "ollama_models": []}
+{"unix_time": 1795638745.884953, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 56336, "kind": "pytest"}], "ollama_models": []}
+{"unix_time": 1795638747.942173, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 236128, "kind": "pytest"}], "ollama_models": []}
+{"unix_time": 1795638749.9995048, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 402752, "kind": "pytest"}], "ollama_models": []}
+{"unix_time": 1795638752.060808, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 411600, "kind": "pytest"}], "ollama_models": []}
+{"unix_time": 1795638754.1184099, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 411600, "kind": "pytest"}], "ollama_models": []}
+{"unix_time": 1795638756.182029, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 1317392, "kind": "pytest"}], "ollama_models": []}
+{"unix_time": 1795638758.239805, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 3085328, "kind": "pytest"}], "ollama_models": []}
+{"unix_time": 1795638760.294802, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 3085328, "kind": "pytest"}], "ollama_models": []}
+{"unix_time": 1795638762.35283, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 3085328, "kind": "pytest"}], "ollama_models": []}
+{"unix_time": 1795638764.432117, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 5280864, "kind": "pytest"}], "ollama_models": []}
+{"unix_time": 1795638766.506528, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 5788144, "kind": "pytest"}], "ollama_models": []}
+{"unix_time": 1795638768.6112058, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 6184656, "kind": "pytest"}], "ollama_models": []}
+{"unix_time": 1795638770.702553, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 6704144, "kind": "pytest"}], "ollama_models": []}
+{"unix_time": 1795638772.797128, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 7212416, "kind": "pytest"}], "ollama_models": []}
+{"unix_time": 1795638774.9090948, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 7678528, "kind": "pytest"}], "ollama_models": []}
+{"unix_time": 1795638776.982602, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 8168208, "kind": "pytest"}], "ollama_models": []}
+{"unix_time": 1795638779.112092, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 8644992, "kind": "pytest"}], "ollama_models": []}
+{"unix_time": 1795638781.208831, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 9103216, "kind": "pytest"}], "ollama_models": []}
+{"unix_time": 1795638783.2941089, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 9583536, "kind": "pytest"}], "ollama_models": []}
+{"unix_time": 1795638785.404939, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 10050464, "kind": "pytest"}], "ollama_models": []}
+{"unix_time": 1795638787.4799008, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 10612800, "kind": "pytest"}], "ollama_models": []}
+{"unix_time": 1795638789.580683, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 11175072, "kind": "pytest"}], "ollama_models": []}
+{"unix_time": 1795638791.681121, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 11138224, "kind": "pytest"}], "ollama_models": []}
+{"unix_time": 1795638793.755189, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 11611616, "kind": "pytest"}], "ollama_models": []}
+{"unix_time": 1795638795.819204, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 11899264, "kind": "pytest"}], "ollama_models": []}
+{"unix_time": 1795638797.8830779, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 11925424, "kind": "pytest"}], "ollama_models": []}
+{"unix_time": 1795638799.945656, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 11934160, "kind": "pytest"}], "ollama_models": []}
+{"unix_time": 1795638802.0087512, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 11942848, "kind": "pytest"}], "ollama_models": []}
+{"unix_time": 1795638804.069399, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 11951536, "kind": "pytest"}], "ollama_models": []}
+{"unix_time": 1795638806.1315641, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 11960384, "kind": "pytest"}], "ollama_models": []}
+{"unix_time": 1795638808.198699, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 11969200, "kind": "pytest"}], "ollama_models": []}
+{"unix_time": 1795638810.260177, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 11977856, "kind": "pytest"}], "ollama_models": []}
+{"unix_time": 1795638812.320244, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 11986496, "kind": "pytest"}], "ollama_models": []}
+{"unix_time": 1795638814.384737, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 11998240, "kind": "pytest"}], "ollama_models": []}
+{"unix_time": 1795638816.4431, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 12025696, "kind": "pytest"}], "ollama_models": []}
+{"unix_time": 1795638818.511731, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 12255776, "kind": "pytest"}], "ollama_models": []}
+{"unix_time": 1795638820.5777578, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 12724448, "kind": "pytest"}], "ollama_models": []}
+{"unix_time": 1795638822.644053, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 13237184, "kind": "pytest"}], "ollama_models": []}
+{"unix_time": 1795638824.713248, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 13262352, "kind": "pytest"}], "ollama_models": []}
+{"unix_time": 1795638826.7839549, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 13281168, "kind": "pytest"}], "ollama_models": []}
+{"unix_time": 1795638828.851997, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 13303120, "kind": "pytest"}], "ollama_models": []}
+{"unix_time": 1795638830.919991, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 13325072, "kind": "pytest"}], "ollama_models": []}
+{"unix_time": 1795638832.98242, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 13347072, "kind": "pytest"}], "ollama_models": []}
+{"unix_time": 1795638835.0816221, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 12763072, "kind": "pytest"}], "ollama_models": []}
+{"unix_time": 1795638837.155982, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 12763072, "kind": "pytest"}], "ollama_models": []}
+{"unix_time": 1795638839.250772, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 12765584, "kind": "pytest"}], "ollama_models": []}
+{"unix_time": 1795638841.363132, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 12775632, "kind": "pytest"}], "ollama_models": []}
+{"unix_time": 1795638843.439014, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 12785680, "kind": "pytest"}], "ollama_models": []}
+{"unix_time": 1795638845.523094, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 12795728, "kind": "pytest"}], "ollama_models": []}
+{"unix_time": 1795638847.623551, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 12810800, "kind": "pytest"}], "ollama_models": []}
+{"unix_time": 1795638849.705804, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 12820848, "kind": "pytest"}], "ollama_models": []}
+{"unix_time": 1795638851.791111, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 12830896, "kind": "pytest"}], "ollama_models": []}
+{"unix_time": 1795638853.8930671, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 12840944, "kind": "pytest"}], "ollama_models": []}
+{"unix_time": 1795638855.9787111, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 12468880, "kind": "pytest"}], "ollama_models": []}
+{"unix_time": 1795638858.073092, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 12483952, "kind": "pytest"}], "ollama_models": []}
+{"unix_time": 1795638860.176654, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 12494000, "kind": "pytest"}], "ollama_models": []}
+{"unix_time": 1795638862.26299, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 12504048, "kind": "pytest"}], "ollama_models": []}
+{"unix_time": 1795638864.4188259, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 12003712, "kind": "pytest"}], "ollama_models": []}
+{"unix_time": 1795638866.528789, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 12095728, "kind": "pytest"}], "ollama_models": []}
+{"unix_time": 1795638868.600804, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 12153104, "kind": "pytest"}], "ollama_models": []}
+{"unix_time": 1795638870.670856, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 11909456, "kind": "pytest"}], "ollama_models": []}
+{"unix_time": 1795638872.737387, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 11917008, "kind": "pytest"}], "ollama_models": []}
+{"unix_time": 1795638874.801047, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 11924768, "kind": "pytest"}], "ollama_models": []}
+{"unix_time": 1795638876.873934, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 11932512, "kind": "pytest"}], "ollama_models": []}
+{"unix_time": 1795638878.935283, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 11940304, "kind": "pytest"}], "ollama_models": []}
+{"unix_time": 1795638880.998652, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 11948048, "kind": "pytest"}], "ollama_models": []}
+{"unix_time": 1795638883.0639, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 11955792, "kind": "pytest"}], "ollama_models": []}
+{"unix_time": 1795638885.171715, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 12004000, "kind": "pytest"}], "ollama_models": []}
+{"unix_time": 1795638887.2712, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 12055088, "kind": "pytest"}], "ollama_models": []}
+{"unix_time": 1795638889.363009, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 12043008, "kind": "pytest"}], "ollama_models": []}
+{"unix_time": 1795638891.448017, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 12118672, "kind": "pytest"}], "ollama_models": []}
+{"unix_time": 1795638893.5421472, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 12304464, "kind": "pytest"}], "ollama_models": []}
+{"unix_time": 1795638895.633734, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 12628000, "kind": "pytest"}], "ollama_models": []}
+{"unix_time": 1795638897.727127, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 12873056, "kind": "pytest"}], "ollama_models": []}
+{"unix_time": 1795638899.81967, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 13240336, "kind": "pytest"}], "ollama_models": []}
+{"unix_time": 1795638901.909838, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 13259232, "kind": "pytest"}], "ollama_models": []}
+{"unix_time": 1795638903.994858, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 13271776, "kind": "pytest"}], "ollama_models": []}
+{"unix_time": 1795638906.080847, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 13290592, "kind": "pytest"}], "ollama_models": []}
+{"unix_time": 1795638908.171489, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 13306272, "kind": "pytest"}], "ollama_models": []}
+{"unix_time": 1795638910.252994, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 13322032, "kind": "pytest"}], "ollama_models": []}
+{"unix_time": 1795638912.336342, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 13340880, "kind": "pytest"}], "ollama_models": []}
+{"unix_time": 1795638914.4197, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 13359696, "kind": "pytest"}], "ollama_models": []}
+{"unix_time": 1795638916.508182, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 13375376, "kind": "pytest"}], "ollama_models": []}
+{"unix_time": 1795638918.594005, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 13394192, "kind": "pytest"}], "ollama_models": []}
+{"unix_time": 1795638920.672813, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 13409872, "kind": "pytest"}], "ollama_models": []}
+{"unix_time": 1795638922.756499, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 13425552, "kind": "pytest"}], "ollama_models": []}
+{"unix_time": 1795638924.844453, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 13441248, "kind": "pytest"}], "ollama_models": []}
+{"unix_time": 1795638926.924056, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 13456928, "kind": "pytest"}], "ollama_models": []}
+{"unix_time": 1795638929.007498, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 13472608, "kind": "pytest"}], "ollama_models": []}
+{"unix_time": 1795638931.0935721, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 13488288, "kind": "pytest"}], "ollama_models": []}
+{"unix_time": 1795638933.189952, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 13503968, "kind": "pytest"}], "ollama_models": []}
+{"unix_time": 1795638935.324352, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 13516512, "kind": "pytest"}], "ollama_models": []}
+{"unix_time": 1795638937.419005, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 13270208, "kind": "pytest"}], "ollama_models": []}
+{"unix_time": 1795638939.52317, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 12523280, "kind": "pytest"}], "ollama_models": []}
+{"unix_time": 1795638941.644348, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 12689648, "kind": "pytest"}], "ollama_models": []}
+{"unix_time": 1795638943.7895858, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 12689648, "kind": "pytest"}], "ollama_models": []}
+{"unix_time": 1795638945.9168482, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 12689648, "kind": "pytest"}], "ollama_models": []}
+{"unix_time": 1795638948.0821362, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 12417936, "kind": "pytest"}], "ollama_models": []}
+{"unix_time": 1795638950.216108, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 12427344, "kind": "pytest"}], "ollama_models": []}
+{"unix_time": 1795638952.334796, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 12432048, "kind": "pytest"}], "ollama_models": []}
+{"unix_time": 1795638954.488224, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 12441456, "kind": "pytest"}], "ollama_models": []}
+{"unix_time": 1795638956.634669, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 11741088, "kind": "pytest"}], "ollama_models": []}
+{"unix_time": 1795638958.8049102, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 11900480, "kind": "pytest"}], "ollama_models": []}
+{"unix_time": 1795638960.899304, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 11916000, "kind": "pytest"}], "ollama_models": []}
+{"unix_time": 1795638962.973218, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 11930112, "kind": "pytest"}], "ollama_models": []}
+{"unix_time": 1795638965.078274, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 11939520, "kind": "pytest"}], "ollama_models": []}
+{"unix_time": 1795638967.1921139, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 11948928, "kind": "pytest"}], "ollama_models": []}
+{"unix_time": 1795638969.293528, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 11963040, "kind": "pytest"}], "ollama_models": []}
+{"unix_time": 1795638971.404922, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 11972448, "kind": "pytest"}], "ollama_models": []}
+{"unix_time": 1795638973.515906, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 11981856, "kind": "pytest"}], "ollama_models": []}
+{"unix_time": 1795638975.605488, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 11991264, "kind": "pytest"}], "ollama_models": []}
+{"unix_time": 1795638977.702378, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 12005376, "kind": "pytest"}], "ollama_models": []}
+{"unix_time": 1795638979.800809, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 12014784, "kind": "pytest"}], "ollama_models": []}
+{"unix_time": 1795638981.871103, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 11940432, "kind": "pytest"}], "ollama_models": []}
+{"unix_time": 1795638983.93536, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 11949472, "kind": "pytest"}], "ollama_models": []}
+{"unix_time": 1795638986.012352, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 11940272, "kind": "pytest"}], "ollama_models": []}
+{"unix_time": 1795638988.079366, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 11948976, "kind": "pytest"}], "ollama_models": []}
+{"unix_time": 1795638990.153735, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 11955504, "kind": "pytest"}], "ollama_models": []}
+{"unix_time": 1795638992.224075, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 11964272, "kind": "pytest"}], "ollama_models": []}
+{"unix_time": 1795638994.296184, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 11944768, "kind": "pytest"}], "ollama_models": []}
+{"unix_time": 1795638996.3726249, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 11977456, "kind": "pytest"}], "ollama_models": []}
+{"unix_time": 1795638998.446932, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 12004512, "kind": "pytest"}], "ollama_models": []}
+{"unix_time": 1795639000.518254, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 12011968, "kind": "pytest"}], "ollama_models": []}
+{"unix_time": 1795639002.587664, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 11999552, "kind": "pytest"}], "ollama_models": []}
+{"unix_time": 1795639004.6549928, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 12028448, "kind": "pytest"}], "ollama_models": []}
+{"unix_time": 1795639006.728606, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 12013664, "kind": "pytest"}], "ollama_models": []}
+{"unix_time": 1795639008.8010309, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 12021840, "kind": "pytest"}], "ollama_models": []}
+{"unix_time": 1795639010.862871, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 782336, "kind": "pytest"}], "ollama_models": []}
+{"unix_time": 1795639012.9225652, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 265936, "kind": "pytest"}], "ollama_models": []}
+{"unix_time": 1795639014.982864, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 263328, "kind": "pytest"}], "ollama_models": ["qwen3:8b"]}
+{"unix_time": 1795639017.072889, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 263328, "kind": "pytest"}], "ollama_models": ["qwen3:8b"]}
+{"unix_time": 1795639019.17222, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 263328, "kind": "pytest"}], "ollama_models": ["qwen3:8b"]}
+{"unix_time": 1795639021.236205, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 263328, "kind": "pytest"}], "ollama_models": ["qwen3:8b"]}
+{"unix_time": 1795639023.292344, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 263328, "kind": "pytest"}], "ollama_models": ["qwen3:8b"]}
+{"unix_time": 1795639025.3476999, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 263328, "kind": "pytest"}], "ollama_models": ["qwen3:8b"]}
+{"unix_time": 1795639027.4011462, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 263328, "kind": "pytest"}], "ollama_models": ["qwen3:8b"]}
+{"unix_time": 1795639029.474448, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 263328, "kind": "pytest"}], "ollama_models": ["qwen3:8b"]}
+{"unix_time": 1795639031.537707, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 264368, "kind": "pytest"}], "ollama_models": ["qwen3:8b"]}
+{"unix_time": 1795639033.620524, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 264368, "kind": "pytest"}], "ollama_models": ["qwen3:8b"]}
+{"unix_time": 1795639035.6970072, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 264368, "kind": "pytest"}], "ollama_models": ["qwen3:8b"]}
+{"unix_time": 1795639037.757545, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 264368, "kind": "pytest"}], "ollama_models": ["qwen3:8b"]}
+{"unix_time": 1795639039.8298209, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 267008, "kind": "pytest"}], "ollama_models": []}
+{"unix_time": 1795639041.9057548, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 267008, "kind": "pytest"}], "ollama_models": ["qwen3:8b"]}
+{"unix_time": 1795639043.984786, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 267008, "kind": "pytest"}], "ollama_models": ["qwen3:8b"]}
+{"unix_time": 1795639046.045183, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 267008, "kind": "pytest"}], "ollama_models": ["qwen3:8b"]}
+{"unix_time": 1795639048.127313, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 267008, "kind": "pytest"}], "ollama_models": ["qwen3:8b"]}
+{"unix_time": 1795639050.182177, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 267008, "kind": "pytest"}], "ollama_models": ["qwen3:8b"]}
+{"unix_time": 1795639052.255984, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 267008, "kind": "pytest"}], "ollama_models": ["qwen3:8b"]}
+{"unix_time": 1795639054.311716, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 267008, "kind": "pytest"}], "ollama_models": ["qwen3:8b"]}
+{"unix_time": 1795639056.378725, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 267008, "kind": "pytest"}], "ollama_models": ["qwen3:8b"]}
+{"unix_time": 1795639058.433068, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 267008, "kind": "pytest"}], "ollama_models": ["qwen3:8b"]}
+{"unix_time": 1795639060.506259, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 267008, "kind": "pytest"}], "ollama_models": ["qwen3:8b"]}
+{"unix_time": 1795639062.572682, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 267008, "kind": "pytest"}], "ollama_models": []}
+{"unix_time": 1795639064.655348, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 267008, "kind": "pytest"}], "ollama_models": ["qwen3:8b"]}
+{"unix_time": 1795639066.715411, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 267008, "kind": "pytest"}], "ollama_models": ["qwen3:8b"]}
+{"unix_time": 1795639068.790493, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 267008, "kind": "pytest"}], "ollama_models": ["qwen3:8b"]}
+{"unix_time": 1795639070.865709, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 267008, "kind": "pytest"}], "ollama_models": ["qwen3:8b"]}
+{"unix_time": 1795639072.928839, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 267008, "kind": "pytest"}], "ollama_models": ["qwen3:8b"]}
+{"unix_time": 1795639074.9943218, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 267008, "kind": "pytest"}], "ollama_models": ["qwen3:8b"]}
+{"unix_time": 1795639077.057033, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 267008, "kind": "pytest"}], "ollama_models": ["qwen3:8b"]}
+{"unix_time": 1795639079.140658, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 267008, "kind": "pytest"}], "ollama_models": ["qwen3:8b"]}
+{"unix_time": 1795639081.202692, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 267008, "kind": "pytest"}], "ollama_models": ["qwen3:8b"]}
+{"unix_time": 1795639083.2606301, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 267008, "kind": "pytest"}], "ollama_models": ["qwen3:8b"]}
+{"unix_time": 1795639085.316986, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 267008, "kind": "pytest"}], "ollama_models": []}
+{"unix_time": 1795639087.373465, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 267008, "kind": "pytest"}], "ollama_models": ["qwen3:8b"]}
+{"unix_time": 1795639089.4580421, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 267008, "kind": "pytest"}], "ollama_models": ["qwen3:8b"]}
+{"unix_time": 1795639091.568429, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 267008, "kind": "pytest"}], "ollama_models": ["qwen3:8b"]}
+{"unix_time": 1795639093.627313, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 267008, "kind": "pytest"}], "ollama_models": ["qwen3:8b"]}
+{"unix_time": 1795639095.683498, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 267008, "kind": "pytest"}], "ollama_models": []}
+{"unix_time": 1795639097.783645, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 267008, "kind": "pytest"}], "ollama_models": ["qwen3:8b"]}
+{"unix_time": 1795639099.8609579, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 267008, "kind": "pytest"}], "ollama_models": []}
+{"unix_time": 1795639101.928982, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 267008, "kind": "pytest"}], "ollama_models": ["qwen3:8b"]}
+{"unix_time": 1795639104.05467, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 267008, "kind": "pytest"}], "ollama_models": ["qwen3:8b"]}
+{"unix_time": 1795639106.115586, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 267008, "kind": "pytest"}], "ollama_models": ["qwen3:8b"]}
+{"unix_time": 1795639108.184315, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 267008, "kind": "pytest"}], "ollama_models": []}
+{"unix_time": 1795639110.245704, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 267008, "kind": "pytest"}], "ollama_models": ["qwen3:8b"]}
+{"unix_time": 1795639112.369985, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 267008, "kind": "pytest"}], "ollama_models": ["qwen3:8b"]}
+{"unix_time": 1795639114.492894, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 267008, "kind": "pytest"}], "ollama_models": ["qwen3:8b"]}
+{"unix_time": 1795639116.628296, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 267008, "kind": "pytest"}], "ollama_models": ["qwen3:8b"]}
+{"unix_time": 1795639118.684263, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 267008, "kind": "pytest"}], "ollama_models": ["qwen3:8b"]}
+{"unix_time": 1795639120.813694, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 267008, "kind": "pytest"}], "ollama_models": []}
+{"unix_time": 1795639122.8749042, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 267008, "kind": "pytest"}], "ollama_models": ["qwen3:8b"]}
+{"unix_time": 1795639124.929343, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 267008, "kind": "pytest"}], "ollama_models": []}
+{"unix_time": 1795639127.050852, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 267008, "kind": "pytest"}], "ollama_models": ["qwen3:8b"]}
+{"unix_time": 1795639129.1067772, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 267008, "kind": "pytest"}], "ollama_models": ["qwen3:8b"]}
+{"unix_time": 1795639131.163491, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 267120, "kind": "pytest"}, {"pid": 66788, "ppid": 66787, "rss_KiB": 38800, "kind": "CLI Hojo child"}], "ollama_models": []}
+{"unix_time": 1795639133.220066, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 267120, "kind": "pytest"}, {"pid": 66788, "ppid": 66787, "rss_KiB": 209824, "kind": "CLI Hojo child"}], "ollama_models": []}
+{"unix_time": 1795639135.2780511, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 267120, "kind": "pytest"}, {"pid": 66788, "ppid": 66787, "rss_KiB": 209824, "kind": "CLI Hojo child"}], "ollama_models": []}
+{"unix_time": 1795639137.3369422, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 266272, "kind": "pytest"}, {"pid": 66788, "ppid": 66787, "rss_KiB": 227168, "kind": "CLI Hojo child"}], "ollama_models": []}
+{"unix_time": 1795639139.395869, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 264416, "kind": "pytest"}, {"pid": 66788, "ppid": 66787, "rss_KiB": 525968, "kind": "CLI Hojo child"}], "ollama_models": []}
+{"unix_time": 1795639141.454716, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 260832, "kind": "pytest"}, {"pid": 66788, "ppid": 66787, "rss_KiB": 3070256, "kind": "CLI Hojo child"}], "ollama_models": []}
+{"unix_time": 1795639143.508435, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 260832, "kind": "pytest"}, {"pid": 66788, "ppid": 66787, "rss_KiB": 3070256, "kind": "CLI Hojo child"}], "ollama_models": []}
+{"unix_time": 1795639145.56368, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 260832, "kind": "pytest"}, {"pid": 66788, "ppid": 66787, "rss_KiB": 3070256, "kind": "CLI Hojo child"}], "ollama_models": []}
+{"unix_time": 1795639147.627826, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 260832, "kind": "pytest"}, {"pid": 66788, "ppid": 66787, "rss_KiB": 5590960, "kind": "CLI Hojo child"}], "ollama_models": []}
+{"unix_time": 1795639149.703939, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 260832, "kind": "pytest"}, {"pid": 66788, "ppid": 66787, "rss_KiB": 8802800, "kind": "CLI Hojo child"}], "ollama_models": []}
+{"unix_time": 1795639151.765802, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 260832, "kind": "pytest"}, {"pid": 66788, "ppid": 66787, "rss_KiB": 12452000, "kind": "CLI Hojo child"}], "ollama_models": []}
+{"unix_time": 1795639153.830879, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 260832, "kind": "pytest"}, {"pid": 66788, "ppid": 66787, "rss_KiB": 12375936, "kind": "CLI Hojo child"}], "ollama_models": []}
+{"unix_time": 1795639155.899644, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 260832, "kind": "pytest"}, {"pid": 66788, "ppid": 66787, "rss_KiB": 12402656, "kind": "CLI Hojo child"}], "ollama_models": []}
+{"unix_time": 1795639157.961399, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 259584, "kind": "pytest"}], "ollama_models": []}
+{"unix_time": 1795639160.090142, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 250800, "kind": "pytest"}], "ollama_models": []}
+{"unix_time": 1795639162.2236779, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 250800, "kind": "pytest"}], "ollama_models": []}
+{"unix_time": 1795639164.2966552, "processes": [{"pid": 65095, "ppid": 65076, "rss_KiB": 249936, "kind": "pytest"}], "ollama_models": []}

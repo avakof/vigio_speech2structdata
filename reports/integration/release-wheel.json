@@ -1,0 +1,8 @@
+{
+  "wheel": "speechflow-0.1.0-py3-none-any.whl",
+  "sha256": "5de67db21535ed5556db5a8d0ed5ecba7598838c8450e380bf5f8dcebe21b0b5",
+  "bytes": 95571,
+  "matched_package_files": 34,
+  "implementation_sha256": "23096a70df38af25f14f4275c9c0d0935f57d6d9a55ec421794a91906902e867",
+  "entrypoint": "speechflow.cli:main"
+}

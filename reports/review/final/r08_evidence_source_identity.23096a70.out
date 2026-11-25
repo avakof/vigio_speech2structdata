@@ -1,0 +1,10 @@
+current implementation_sha256: 23096a70df38af25f14f4275c9c0d0935f57d6d9a55ec421794a91906902e867
+f4744f576ab7 older     7 files: reports/evaluation/semantic-audio-real.json, reports/evaluation/synthetic-mps.json, reports/evaluation/synthetic-real-cli.json, reports/evaluation/synthetic-real.json, reports/integration/m4a-mps-manifest.json, reports/qa/final-real-cpu-replay-evidence.json, reports/qa/final-real-mps-replay-evidence.json
+e57cfaded674 older     6 files: reports/evaluation/fleurs-guarded-final.json, reports/evaluation/semantic-audio-reviewed.json, reports/evaluation/synthetic-guarded-final.json, reports/integration/guarded-wheel.json, reports/integration/m4a-guarded-final-manifest.json, reports/offline/fixture-guarded-final-manifest.json
+acf2f062305d older     2 files: reports/evaluation/fleurs-real.json, reports/offline/fixture-mic-manifest.json
+b06c967ee505 older     2 files: reports/integration/first-human-file.json, reports/integration/jacques-short-pause-before.json
+a8f697d01ac3 older     1 files: reports/integration/jacques-350-manifest.json
+009762f4d731 older     1 files: reports/integration/m4a-run-manifest.json
+94a4235b4d6b older     1 files: reports/offline/positive-file-manifest.json
+419c3d3c7553 older     1 files: reports/qa/real-full-jacques-first.json
+0cd8753367f4 older     1 files: reports/qa/real-full-jacques-replay.json

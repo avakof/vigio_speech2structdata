@@ -1,0 +1,482 @@
+{
+  "implementation_sha256": "23096a70df38af25f14f4275c9c0d0935f57d6d9a55ec421794a91906902e867",
+  "commands_checked": 11,
+  "evaluations": {
+    "synthetic-cpu": {
+      "evidence": "reports/evaluation/release-synthetic-cpu.json",
+      "sha256": "f171491d35634cadaa92bc01bf63288d8e6d36701a72b34db39b318bc85eaff3",
+      "elapsed_s": 345.141947,
+      "cases": [
+        {
+          "id": "long-jacques-inventory",
+          "input_sha256": "03293fee0a0826dd6359087582be59770998a18df193808c6ebda6b249ee8021",
+          "run_status": "needs_review",
+          "backend": "cpu",
+          "dtype": "encoder=float32,decoder=bfloat16",
+          "asr_s": 281.12533866698504,
+          "pipeline_s": 319.65380749999895
+        }
+      ],
+      "inventory": {
+        "gold_mentions": 8,
+        "returned_candidates": 7,
+        "accepted_candidates": 5,
+        "review_candidates": 2,
+        "covered_gold_mentions": 4,
+        "abstention_rate": 0.2857142857142857,
+        "fields": {
+          "product_spoken": {
+            "tp": 4,
+            "fp": 1,
+            "fn": 4,
+            "predicted": 5,
+            "expected": 8,
+            "precision": 0.8,
+            "recall": 0.5
+          },
+          "quantity": {
+            "tp": 4,
+            "fp": 1,
+            "fn": 4,
+            "predicted": 5,
+            "expected": 8,
+            "precision": 0.8,
+            "recall": 0.5
+          },
+          "unit": {
+            "tp": 4,
+            "fp": 1,
+            "fn": 4,
+            "predicted": 5,
+            "expected": 8,
+            "precision": 0.8,
+            "recall": 0.5
+          },
+          "negation": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 0,
+            "predicted": 0,
+            "expected": 0,
+            "precision": null,
+            "recall": null
+          },
+          "correction": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 0,
+            "predicted": 0,
+            "expected": 0,
+            "precision": null,
+            "recall": null
+          }
+        }
+      },
+      "assertions": {
+        "input_sha256": "03293fee0a0826dd6359087582be59770998a18df193808c6ebda6b249ee8021",
+        "anchors_sha256": "8eb15793f70a068342ef7d6d55e2e0ef2ab0dfe7cbd8cf6641ebc71522e1f81b",
+        "backend": "cpu",
+        "source_samples": 1159360,
+        "input_samples": [
+          397312,
+          400000,
+          374848
+        ],
+        "all_inputs_bounded": true,
+        "samples_after_final_core": 0,
+        "anchors": [
+          {
+            "phrase": "huit kilos de tomates",
+            "present": true
+          },
+          {
+            "phrase": "quatre kilos de carottes",
+            "present": true
+          },
+          {
+            "phrase": "six kilos de courgettes",
+            "present": true
+          },
+          {
+            "phrase": "neuf kilos de pommes",
+            "present": false
+          },
+          {
+            "phrase": "cinq kilos de poires",
+            "present": false
+          },
+          {
+            "phrase": "trois kilos de kiwis",
+            "present": false
+          },
+          {
+            "phrase": "sept kilos de citrons",
+            "present": false
+          },
+          {
+            "phrase": "deux kilos de gingembre",
+            "present": true
+          }
+        ],
+        "exact_anchors": 4,
+        "asr_assertion": "FAIL",
+        "first_content_failure": "neuf kilos de pommes",
+        "extraction_status": "needs_review",
+        "inventory_assertion": "FAIL"
+      }
+    },
+    "synthetic-mps": {
+      "evidence": "reports/evaluation/release-synthetic-mps.json",
+      "sha256": "cc9ac2ff95a19ea2a03bea3969c44fad268cf69c54feb0f224b19359333f2ead",
+      "elapsed_s": 170.07573,
+      "cases": [
+        {
+          "id": "long-jacques-inventory",
+          "input_sha256": "03293fee0a0826dd6359087582be59770998a18df193808c6ebda6b249ee8021",
+          "run_status": "ok",
+          "backend": "mps",
+          "dtype": "encoder=float32,decoder=bfloat16",
+          "asr_s": 97.47054258402204,
+          "pipeline_s": 141.94804716701037
+        }
+      ],
+      "inventory": {
+        "gold_mentions": 8,
+        "returned_candidates": 8,
+        "accepted_candidates": 6,
+        "review_candidates": 2,
+        "covered_gold_mentions": 4,
+        "abstention_rate": 0.25,
+        "fields": {
+          "product_spoken": {
+            "tp": 4,
+            "fp": 2,
+            "fn": 4,
+            "predicted": 6,
+            "expected": 8,
+            "precision": 0.6666666666666666,
+            "recall": 0.5
+          },
+          "quantity": {
+            "tp": 4,
+            "fp": 2,
+            "fn": 4,
+            "predicted": 6,
+            "expected": 8,
+            "precision": 0.6666666666666666,
+            "recall": 0.5
+          },
+          "unit": {
+            "tp": 4,
+            "fp": 2,
+            "fn": 4,
+            "predicted": 6,
+            "expected": 8,
+            "precision": 0.6666666666666666,
+            "recall": 0.5
+          },
+          "negation": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 0,
+            "predicted": 0,
+            "expected": 0,
+            "precision": null,
+            "recall": null
+          },
+          "correction": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 0,
+            "predicted": 0,
+            "expected": 0,
+            "precision": null,
+            "recall": null
+          }
+        }
+      },
+      "assertions": {
+        "input_sha256": "03293fee0a0826dd6359087582be59770998a18df193808c6ebda6b249ee8021",
+        "anchors_sha256": "8eb15793f70a068342ef7d6d55e2e0ef2ab0dfe7cbd8cf6641ebc71522e1f81b",
+        "backend": "mps",
+        "source_samples": 1159360,
+        "input_samples": [
+          397312,
+          400000,
+          374848
+        ],
+        "all_inputs_bounded": true,
+        "samples_after_final_core": 0,
+        "anchors": [
+          {
+            "phrase": "huit kilos de tomates",
+            "present": true
+          },
+          {
+            "phrase": "quatre kilos de carottes",
+            "present": true
+          },
+          {
+            "phrase": "six kilos de courgettes",
+            "present": true
+          },
+          {
+            "phrase": "neuf kilos de pommes",
+            "present": false
+          },
+          {
+            "phrase": "cinq kilos de poires",
+            "present": false
+          },
+          {
+            "phrase": "trois kilos de kiwis",
+            "present": false
+          },
+          {
+            "phrase": "sept kilos de citrons",
+            "present": false
+          },
+          {
+            "phrase": "deux kilos de gingembre",
+            "present": true
+          }
+        ],
+        "exact_anchors": 4,
+        "asr_assertion": "FAIL",
+        "first_content_failure": "neuf kilos de pommes",
+        "extraction_status": "needs_review",
+        "inventory_assertion": "FAIL"
+      }
+    },
+    "semantic": {
+      "evidence": "reports/evaluation/release-semantic.json",
+      "sha256": "3d8758740afc0da1ff93c255b2f1324b108a450e2ee812424d9a2fad6243d9d2",
+      "elapsed_s": 72.241926,
+      "cases": [
+        {
+          "id": "synthetic-jacques-negation",
+          "input_sha256": "7521d20069565288dec589bd4395171ce40428478a811e78afdd9432d1871ca8",
+          "run_status": "ok",
+          "backend": "cpu",
+          "dtype": "encoder=float32,decoder=bfloat16",
+          "asr_s": 6.788618708989816,
+          "pipeline_s": 25.690052999998443
+        },
+        {
+          "id": "synthetic-jacques-correction",
+          "input_sha256": "19912045e20067d7b73f643f889451eee4ba837f7797f232e3dc29585fadaf40",
+          "run_status": "ok",
+          "backend": "cpu",
+          "dtype": "encoder=float32,decoder=bfloat16",
+          "asr_s": 8.539709250006126,
+          "pipeline_s": 36.90598083299119
+        }
+      ],
+      "inventory": {
+        "gold_mentions": 3,
+        "returned_candidates": 2,
+        "accepted_candidates": 2,
+        "review_candidates": 0,
+        "covered_gold_mentions": 2,
+        "abstention_rate": 0.0,
+        "fields": {
+          "product_spoken": {
+            "tp": 2,
+            "fp": 0,
+            "fn": 1,
+            "predicted": 2,
+            "expected": 3,
+            "precision": 1.0,
+            "recall": 0.6666666666666666
+          },
+          "quantity": {
+            "tp": 2,
+            "fp": 0,
+            "fn": 0,
+            "predicted": 2,
+            "expected": 2,
+            "precision": 1.0,
+            "recall": 1.0
+          },
+          "unit": {
+            "tp": 2,
+            "fp": 0,
+            "fn": 0,
+            "predicted": 2,
+            "expected": 2,
+            "precision": 1.0,
+            "recall": 1.0
+          },
+          "negation": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 1,
+            "predicted": 0,
+            "expected": 1,
+            "precision": null,
+            "recall": 0.0
+          },
+          "correction": {
+            "tp": 1,
+            "fp": 0,
+            "fn": 0,
+            "predicted": 1,
+            "expected": 1,
+            "precision": 1.0,
+            "recall": 1.0
+          }
+        }
+      }
+    },
+    "fleurs": {
+      "evidence": "reports/evaluation/release-fleurs.json",
+      "sha256": "1b4d5084bbc2c10911e5a0efca6b9a8f71080d3ba809c553566dbb9daeae0137",
+      "elapsed_s": 81.3391,
+      "cases": [
+        {
+          "id": "10132087162443371989.wav",
+          "input_sha256": "8bb53b14f4cc695c54a136a5db57e534344a225d81a6b5314ca6cdb0a12c7005",
+          "run_status": "ok",
+          "backend": "cpu",
+          "dtype": "encoder=float32,decoder=bfloat16",
+          "asr_s": 30.929808167013107,
+          "pipeline_s": 46.36492491699755
+        },
+        {
+          "id": "10198958753510138668.wav",
+          "input_sha256": "a9f2f1630034aae5bbe5273a25166d9ed1e92bedf4d613c7398fbda92b65ed12",
+          "run_status": "ok",
+          "backend": "cpu",
+          "dtype": "encoder=float32,decoder=bfloat16",
+          "asr_s": 18.18523699999787,
+          "pipeline_s": 34.97097870797734
+        }
+      ],
+      "wer": {
+        "normalization": "NFC, casefold, curly apostrophe to straight. Keep accents. Split on punctuation and whitespace except internal apostrophes and decimal separators. Keep number surface forms without expanding words or equating decimal comma and point. Concatenate ordered normalized segments. Repetitions count as insertions.",
+        "eligible_clips": 2,
+        "eligible_duration_s": 20.46,
+        "eligible_reference_words": 61,
+        "scored_clips": 2,
+        "scored_duration_s": 20.46,
+        "reference_words": 61,
+        "edits": 2,
+        "wer": 0.03278688524590164,
+        "status": "MEASURED",
+        "by_condition": {
+          "unspecified": {
+            "eligible_clips": 2,
+            "eligible_duration_s": 20.46,
+            "eligible_reference_words": 61,
+            "scored_clips": 2,
+            "scored_duration_s": 20.46,
+            "reference_words": 61,
+            "edits": 2,
+            "wer": 0.03278688524590164,
+            "status": "MEASURED"
+          }
+        }
+      }
+    }
+  },
+  "offline": {
+    "fixture-mic": {
+      "evidence": "reports/offline/release-fixture-mic.json",
+      "external_ipv4_baseline": true,
+      "external_ipv6_baseline_errno": 0,
+      "verified_application_daemon_and_child": true,
+      "inference_checks": {
+        "pinned_silero": true,
+        "pinned_hojo": true,
+        "requested_device": true,
+        "hojo_ran": true,
+        "raw_hojo_responses": true,
+        "pinned_extractor": true,
+        "local_generation": true,
+        "accepted_observations": true,
+        "finalized": true,
+        "fixture_transport": true
+      },
+      "capture": {
+        "received_native_frames": 384000,
+        "processed_native_frames": 384000,
+        "known_lost_native_frames": 0,
+        "normalized_spooled_samples": 128000,
+        "capture_queue_peak_blocks_including_reserve": 1,
+        "asr_queue_peak_segments": 1
+      },
+      "end_of_speech_to_validated_s": 39.75566170900129,
+      "end_of_speech_to_durable_s": 39.76269745899481
+    },
+    "mps-file": {
+      "evidence": "reports/offline/release-mps-file.json",
+      "external_ipv4_baseline": true,
+      "external_ipv6_baseline_errno": 0,
+      "verified_application_daemon_and_child": true,
+      "inference_checks": {
+        "pinned_silero": true,
+        "pinned_hojo": true,
+        "requested_device": true,
+        "hojo_ran": true,
+        "raw_hojo_responses": true,
+        "pinned_extractor": true,
+        "local_generation": true,
+        "accepted_observations": true,
+        "finalized": true
+      }
+    }
+  },
+  "m4a": {
+    "sqlite": "outputs/release-m4a-cpu.sqlite3",
+    "run_id": "run_a7117dafcfc64a64273fadc72d6fc0ea1ea333766a7c850467d27d0e6f51ebd0",
+    "sql_facts": [
+      [
+        "lait",
+        "12",
+        "bouteille"
+      ],
+      [
+        "tomates",
+        "2.5",
+        "kg"
+      ]
+    ],
+    "cli_csv_sha256": "1975e9d0558f422192846a9708cae0da3ab62113b37aeb4f65d067bcfcb58204"
+  },
+  "replay": {
+    "cpu": {
+      "evidence": "reports/qa/release-real-cpu-replay-evidence.json",
+      "db_counts": {
+        "runs": 1,
+        "run_saves": 1,
+        "segments": 1,
+        "observations": 2,
+        "observation_evidence": 2
+      },
+      "five_matching_views": {
+        "run.json": "c555964c2296a2d408a5538eb818db68162f74720da6212cd366d3a54f568cbc",
+        "observations.csv": "208004a8ff251ac2ba439eb6e1292af659d929191804394ce3096a229efae390",
+        "segments.csv": "09e28db3488dae2ded1a960c1b7b213a8fa571362461a1de876fb2778a208b08",
+        "observations.txt": "5109e9c0d74139d815b30ba362b4093b3242d1909685366455aa3841b3fee635",
+        "segments.txt": "ac97db7eb2fa3ecca8ab7b776b015f7abb94d818ee54715a46a9458844607ee7"
+      }
+    },
+    "mps": {
+      "evidence": "reports/qa/release-real-mps-replay-evidence.json",
+      "db_counts": {
+        "runs": 1,
+        "run_saves": 1,
+        "segments": 1,
+        "observations": 2,
+        "observation_evidence": 2
+      },
+      "five_matching_views": {
+        "run.json": "fc71dd932168f357c161638389d8860410d84c48a2ad888b55c755891d3586e6",
+        "observations.csv": "126910d32efebf2a8e2ecda9aa23ba16048100c2657f189d413cd6492f98bdc6",
+        "segments.csv": "b6a1eab205a0aba986680004e07ba4cf5ffd6d663267217bf33978b7928ea694",
+        "observations.txt": "710ed224682f407490fb71e3a04026389d934eba985012a99752d13fbf736ff3",
+        "segments.txt": "9a76feb868300dfa9541c9bcf8b6548c658e9f7ab8aceda1e491a4a469e7d119"
+      }
+    }
+  }
+}

@@ -1,0 +1,106 @@
+Start UTC 2026-11-25T20:39:26Z
+2716290db0968d48a9272fd27effecd9657de3f0
+Python 3.12.16 (main, Nov 11 2026, 00:09:12) [Clang 23.1.3 ]
+Private SPEECHFLOW_CONFIG /private/var/folders/q8/_7ztc8bn4ybc9m23xt7dz_fc0000gn/T/speechflow-release-qa.np3U0JruUe/mps.toml
+backend = "mps"
+offline = true
+config permissions -rw-------
+Concurrent ASR processes before run
+backend mps Ollama URL http://127.0.0.1:11434
+Hojo revision aa1d0dfc369deb3b3235572fa151acd7b498481f asset size issues []
+Silero SHA-256 e1122837f4154c511485fe0b9c64455f7b929c96fbb8d79fbdb336383ebd3720
+Expected and present Ollama digest 500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41 500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41
+Ollama version {'version': '0.40.16'}
+Ollama loaded {'models': []}
+Package versions [('speechflow', '0.1.0'), ('hojo-asr', '0.1.3'), ('torch', '2.5.1'), ('torchaudio', '2.5.1'), ('silero-vad', '6.2.0'), ('transformers', '4.57.3'), ('pytest', '9.2.0'), ('imageio-ffmpeg', '0.6.0')]
+Implementation 23096a70df38af25f14f4275c9c0d0935f57d6d9a55ec421794a91906902e867
+Tracked source and test status at launch
+Production and test hashes before run
+5e79a1d852dcd92db5973a84652c6ee8de8839177b9327e55cb3ad0590c310ca  src/speechflow/__init__.py
+7fd35898a8bcbc74cb4319e329a3de8054f09a82f009f86d1588b16e9244d28b  src/speechflow/asr_process.py
+08e6246f52514a1c6ee0e81bfd5a4e6d6f13d7af6379b412a7519d50ff33f8e7  src/speechflow/assets.py
+2e87ed6638b415a1cf3e0fb232986105a85489e82b78c9abc43b7c9f9d906a42  src/speechflow/audio/__init__.py
+3b0f9c2d050e53075425e734d121047129b169e12dddcf486eeebe092718256b  src/speechflow/audio/capture_device.py
+b2b784dc0af3fda51ff2345a5d7216b97c0e4b204d161e0c995495d672a9d8b5  src/speechflow/audio/decoding.py
+6c9992de9ccce2e77fd97b1a23937381085f68f4a091e37ccf363055c25de3e2  src/speechflow/audio/hojo.py
+9ad05c7c3a712c199819b657b45cf4a0e2917dc38f8c533e582bbb4925571d60  src/speechflow/audio/microphone.py
+570d20598e3a9aef817db86ba836830f1ceed0c3bef7a7f275d14f23f3a2e3c2  src/speechflow/audio/resampling.py
+0e3b5f54b09be22b95aa7567655ae6aeb1bea85160e0eae5edcc412ec1b633c0  src/speechflow/audio/segmentation.py
+df4ee01b69ea142f126f1dad9d242f02b033b0159bf0048b6403306d63bbda4b  src/speechflow/cli.py
+ce7e1ae9c7b313f9094799ed443ad9b4966aa89a6ef10981f80467a8deadb14c  src/speechflow/config.py
+6e91bddecf73475e7138885ac78266e5cd2f8baf882697800909719a35193194  src/speechflow/contracts.py
+abc26562682ee3469e48951c50160a54352126284af2eeb0e981d56164d22af8  src/speechflow/evaluation.py
+8721c582872cf95ac0462aa6d09c85096e9e82264b172824a767c72fc5a2b27b  src/speechflow/extraction/__init__.py
+4e31d18ffb059bc1141f720ded1dba34c957a53b8d35b10a8cdb9a012e70f556  src/speechflow/extraction/backend.py
+ad7c1e7bb9a62412b925a823d93ba45f900ac11f16af1030b4be39a67112c1f1  src/speechflow/extraction/core.py
+c8a51e1ff834df883ec2992f5a67a3a55812ef5618d559ab79f3b239e312368a  src/speechflow/extraction/language.py
+893274d3d3086b647b84934d884c144ca59a4a66f77157d462e2f5a152325437  src/speechflow/extraction/numbers.py
+bbf2b9c842d53c01e93a645c382a0a3313eda383d1333f918c543e2ce1c25a0b  src/speechflow/extraction/prompt.py
+b00886eedc0661bccc3676e4a0c3340b201a61d8397dfedbbe3e421116f49919  src/speechflow/extraction/relations.py
+ae8347628c46e05c215e8c5ebf5c16eae87338fe70c12a243b019d9aae5187d5  src/speechflow/extraction/schema.py
+510eaa27ff2ef300be2a445483ac438eb109e2007657a88a2f7a4a9f3fb090a8  src/speechflow/extraction/schemas/inventory.v1.gen2.schema.json
+6333cfa0405970ecf67f36348f14d00e834d8370b561fb20fad4aa1957524388  src/speechflow/extraction/schemas/inventory.v1.gen3.schema.json
+9ebe115a9f26df8fb3843e75b78781a14775ff309b7bce0c5b4d82285225e7c0  src/speechflow/extraction/schemas/inventory.v1.gen4.schema.json
+d2dca2b29eb8fe08580a94770d69e4b8636b3a9bb2d4fbdd8883b91c6e1b43ca  src/speechflow/extraction/scope.py
+2467144231c00c63801151a7bf00614b3b6ef98c89612261ce4dbbc35f13fc65  src/speechflow/extraction/text.py
+61970133ea19f24e34b359bccd144fae5000ba3168740a4a9dd4477ee298d093  src/speechflow/extraction/units.py
+e8034d8fb6b0dff2601f41eae695555c5783bead432f134c63577d4085693f67  src/speechflow/extraction/validate.py
+5872249418a3ed8cf264ba1e52d99f981a4d355f0c62627cc9fa53969b12e4e7  src/speechflow/migrations/0001_initial.sql
+da0adaad3ccdbf82b57089b9dfaa2eff49d24f382b2a3dea34af67a71d08fff9  src/speechflow/migrations/__init__.py
+0d110c32ce27e5772d52af6eec300de18ccc0da531b30aa39d50133a715e8a1d  src/speechflow/model_manifest.json
+197dd952df0bdce2a33d619e1dc9e0aa2e3534b003bb96bc937a213ffed0936c  src/speechflow/persistence.py
+299c649ba66d4f59ee116d102eb6d25be207d9b84fda8458fede52a99c68b158  src/speechflow/pipeline.py
+65913670f9174419975594a88475635f264a1673efd54eee99e1016f8682b5db  tests/real_models/conftest.py
+3a3a0f64bd04edd2e35705fe7ec8abd994f2e701dffce16436fa6d2101bd90e7  tests/real_models/test_file_replay.py
+691aa3b9384acd79453953a6f34130e69ac4a41f8052b232a7ad83ef97328dbd  tests/real_models/test_runtime.py
+
+$ SPEECHFLOW_CONFIG=/private/var/folders/q8/_7ztc8bn4ybc9m23xt7dz_fc0000gn/T/speechflow-release-qa.np3U0JruUe/mps.toml SPEECHFLOW_QA_MODEL_SLOT=1 .venv/bin/python -m pytest -q -s tests/real_models/test_file_replay.py::test_real_file_installed_cli_replay --basetemp outputs/qa-release-mps-replay
+$ /Users/vakof/orca/vigio_speech2structdata/.venv/bin/speechflow run /Users/vakof/.cache/speechflow/hojo-jacques.wav --out /Users/vakof/orca/vigio_speech2structdata/outputs/qa-release-mps-replay/test_real_file_installed_cli_r0/first --json --offline --backend mps --database /Users/vakof/orca/vigio_speech2structdata/outputs/qa-release-mps-replay/test_real_file_installed_cli_r0/inventory.sqlite3
+$ /Users/vakof/orca/vigio_speech2structdata/.venv/bin/speechflow run /Users/vakof/.cache/speechflow/hojo-jacques.wav --out /Users/vakof/orca/vigio_speech2structdata/outputs/qa-release-mps-replay/test_real_file_installed_cli_r0/replay --json --offline --backend mps --database /Users/vakof/orca/vigio_speech2structdata/outputs/qa-release-mps-replay/test_real_file_installed_cli_r0/inventory.sqlite3
+$ /Users/vakof/orca/vigio_speech2structdata/.venv/bin/speechflow export run_dceb9f6df3fef6217c2d8d9f25185895fff002e332278b73b8df0fc6877fcf69 --format json --out /Users/vakof/orca/vigio_speech2structdata/outputs/qa-release-mps-replay/test_real_file_installed_cli_r0/exports --offline --backend mps --database /Users/vakof/orca/vigio_speech2structdata/outputs/qa-release-mps-replay/test_real_file_installed_cli_r0/inventory.sqlite3
+$ /Users/vakof/orca/vigio_speech2structdata/.venv/bin/speechflow export run_dceb9f6df3fef6217c2d8d9f25185895fff002e332278b73b8df0fc6877fcf69 --format csv --out /Users/vakof/orca/vigio_speech2structdata/outputs/qa-release-mps-replay/test_real_file_installed_cli_r0/exports --offline --backend mps --database /Users/vakof/orca/vigio_speech2structdata/outputs/qa-release-mps-replay/test_real_file_installed_cli_r0/inventory.sqlite3
+$ /Users/vakof/orca/vigio_speech2structdata/.venv/bin/speechflow export run_dceb9f6df3fef6217c2d8d9f25185895fff002e332278b73b8df0fc6877fcf69 --format table --out /Users/vakof/orca/vigio_speech2structdata/outputs/qa-release-mps-replay/test_real_file_installed_cli_r0/exports --offline --backend mps --database /Users/vakof/orca/vigio_speech2structdata/outputs/qa-release-mps-replay/test_real_file_installed_cli_r0/inventory.sqlite3
+.
+1 passed in 88.10s (0:01:28)
+Pytest exit 0
+Finish UTC 2026-11-25T20:40:55Z
+Ollama /api/ps {'models': []}
+Production and test hashes after run
+5e79a1d852dcd92db5973a84652c6ee8de8839177b9327e55cb3ad0590c310ca  src/speechflow/__init__.py
+7fd35898a8bcbc74cb4319e329a3de8054f09a82f009f86d1588b16e9244d28b  src/speechflow/asr_process.py
+08e6246f52514a1c6ee0e81bfd5a4e6d6f13d7af6379b412a7519d50ff33f8e7  src/speechflow/assets.py
+2e87ed6638b415a1cf3e0fb232986105a85489e82b78c9abc43b7c9f9d906a42  src/speechflow/audio/__init__.py
+3b0f9c2d050e53075425e734d121047129b169e12dddcf486eeebe092718256b  src/speechflow/audio/capture_device.py
+b2b784dc0af3fda51ff2345a5d7216b97c0e4b204d161e0c995495d672a9d8b5  src/speechflow/audio/decoding.py
+6c9992de9ccce2e77fd97b1a23937381085f68f4a091e37ccf363055c25de3e2  src/speechflow/audio/hojo.py
+9ad05c7c3a712c199819b657b45cf4a0e2917dc38f8c533e582bbb4925571d60  src/speechflow/audio/microphone.py
+570d20598e3a9aef817db86ba836830f1ceed0c3bef7a7f275d14f23f3a2e3c2  src/speechflow/audio/resampling.py
+0e3b5f54b09be22b95aa7567655ae6aeb1bea85160e0eae5edcc412ec1b633c0  src/speechflow/audio/segmentation.py
+df4ee01b69ea142f126f1dad9d242f02b033b0159bf0048b6403306d63bbda4b  src/speechflow/cli.py
+ce7e1ae9c7b313f9094799ed443ad9b4966aa89a6ef10981f80467a8deadb14c  src/speechflow/config.py
+6e91bddecf73475e7138885ac78266e5cd2f8baf882697800909719a35193194  src/speechflow/contracts.py
+abc26562682ee3469e48951c50160a54352126284af2eeb0e981d56164d22af8  src/speechflow/evaluation.py
+8721c582872cf95ac0462aa6d09c85096e9e82264b172824a767c72fc5a2b27b  src/speechflow/extraction/__init__.py
+4e31d18ffb059bc1141f720ded1dba34c957a53b8d35b10a8cdb9a012e70f556  src/speechflow/extraction/backend.py
+ad7c1e7bb9a62412b925a823d93ba45f900ac11f16af1030b4be39a67112c1f1  src/speechflow/extraction/core.py
+c8a51e1ff834df883ec2992f5a67a3a55812ef5618d559ab79f3b239e312368a  src/speechflow/extraction/language.py
+893274d3d3086b647b84934d884c144ca59a4a66f77157d462e2f5a152325437  src/speechflow/extraction/numbers.py
+bbf2b9c842d53c01e93a645c382a0a3313eda383d1333f918c543e2ce1c25a0b  src/speechflow/extraction/prompt.py
+b00886eedc0661bccc3676e4a0c3340b201a61d8397dfedbbe3e421116f49919  src/speechflow/extraction/relations.py
+ae8347628c46e05c215e8c5ebf5c16eae87338fe70c12a243b019d9aae5187d5  src/speechflow/extraction/schema.py
+510eaa27ff2ef300be2a445483ac438eb109e2007657a88a2f7a4a9f3fb090a8  src/speechflow/extraction/schemas/inventory.v1.gen2.schema.json
+6333cfa0405970ecf67f36348f14d00e834d8370b561fb20fad4aa1957524388  src/speechflow/extraction/schemas/inventory.v1.gen3.schema.json
+9ebe115a9f26df8fb3843e75b78781a14775ff309b7bce0c5b4d82285225e7c0  src/speechflow/extraction/schemas/inventory.v1.gen4.schema.json
+d2dca2b29eb8fe08580a94770d69e4b8636b3a9bb2d4fbdd8883b91c6e1b43ca  src/speechflow/extraction/scope.py
+2467144231c00c63801151a7bf00614b3b6ef98c89612261ce4dbbc35f13fc65  src/speechflow/extraction/text.py
+61970133ea19f24e34b359bccd144fae5000ba3168740a4a9dd4477ee298d093  src/speechflow/extraction/units.py
+e8034d8fb6b0dff2601f41eae695555c5783bead432f134c63577d4085693f67  src/speechflow/extraction/validate.py
+5872249418a3ed8cf264ba1e52d99f981a4d355f0c62627cc9fa53969b12e4e7  src/speechflow/migrations/0001_initial.sql
+da0adaad3ccdbf82b57089b9dfaa2eff49d24f382b2a3dea34af67a71d08fff9  src/speechflow/migrations/__init__.py
+0d110c32ce27e5772d52af6eec300de18ccc0da531b30aa39d50133a715e8a1d  src/speechflow/model_manifest.json
+197dd952df0bdce2a33d619e1dc9e0aa2e3534b003bb96bc937a213ffed0936c  src/speechflow/persistence.py
+299c649ba66d4f59ee116d102eb6d25be207d9b84fda8458fede52a99c68b158  src/speechflow/pipeline.py
+65913670f9174419975594a88475635f264a1673efd54eee99e1016f8682b5db  tests/real_models/conftest.py
+3a3a0f64bd04edd2e35705fe7ec8abd994f2e701dffce16436fa6d2101bd90e7  tests/real_models/test_file_replay.py
+691aa3b9384acd79453953a6f34130e69ac4a41f8052b232a7ad83ef97328dbd  tests/real_models/test_runtime.py
+QA stage complete

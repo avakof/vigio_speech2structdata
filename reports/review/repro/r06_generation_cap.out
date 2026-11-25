@@ -1,0 +1,5 @@
+200 distinct tokens (cap filled, no loop): tokens=200 warning=None
+16-token block x12 = 192 +8 (loop at 200 cap): tokens=200 warning='hojo_possible_generation_loop: 200 retokenized tokens near the configured 200-token cap and at least 3 consecutive copies of a 16-token block'
+4 s segment: feat_len~50 -> wheel cap 110; 16-token block x7 truncated at 110: tokens=110 warning=None
+short loop period 4 filling 200: tokens=200 warning=None
+wheel effective cap for N samples (12.5 Hz embeddings ~ N/1280): {1: 34, 2: 60, 4: 110, 6: 160, 8: 200, 25: 200}

@@ -15,3 +15,11 @@ The file source ID derives from the original file SHA-256. The mic source ID is 
 Quantity decimals serialize as base-ten strings. The upper bound encodes a range, and the qualifier distinguishes unknown and approximate values. Separate count and per-package fields support explicit totals. A correction appends a revision with its own stable observation ID, references the previous ID and preserves the original evidence. Missing or ambiguous targets remain reviewable.
 
 Each evidence span quotes the exact segment normalized text at its half-open Unicode code-point offsets. Raw attempts remain attached to the run. Stage status distinguishes a completed transcription-only request from finalized extraction.
+
+## Adding another extraction domain
+
+The installed CLI ships one inventory schema. A second domain is a versioned Python package change. It can reuse `transcribe_file`, `capture_microphone`, the ordered `TranscriptSegment` records, sample offsets, and `EvidenceSpan`. The `ChatBackend` protocol accepts messages and a generation schema independently of the audio source.
+
+1. Define the new candidate and validated observation in `src/speechflow/contracts.py`, give the public contract its own `SCHEMA_VERSION`, and publish its JSON Schema alongside `schemas/inventory.v1.json`. Keep the existing inventory schema readable for historical runs.
+2. Define the model reply and `GENERATION_SCHEMA_VERSION` in `extraction/schema.py`, publish the matching JSON under `extraction/schemas/`, and version the field instructions and examples with `PROMPT_VERSION` in `extraction/prompt.py`. In `extraction/validate.py` implement the domain's evidence and value checks. Adapt the domain fields in `extraction/core.py` used for carryover and repair reconciliation. These paths are relative to `src/speechflow/`.
+3. Thread the new observation type through `ExtractionResult` and `RunManifest`. Update `persistence.py` for manifest checks, SQLite inserts, CSV columns and terminal projections. Add the next numbered SQL migration alongside `migrations/0001_initial.sql` for any new stored fields or SQL views. Exercise old-run export and new-run replay, and supply the domain's expected fields and fixtures to `evaluation.py`. The new schema and implementation participate in processing identity.

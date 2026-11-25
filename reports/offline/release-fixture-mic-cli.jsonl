@@ -1,0 +1,31 @@
+{"pid": 67842, "parent_pid": 67835, "denied": {"address": "99.86.109.126", "port": 443, "errno": 1, "message": "[Errno 1] Operation not permitted"}, "ipv6": {"address": "2606:4700:4700::1111", "errno": 1}, "allowed": {"url": "http://127.0.0.1:51971/api/version", "status": 200, "body": {"version": "0.40.16"}}, "exec": ["/Users/vakof/orca/vigio_speech2structdata/.venv/bin/speechflow", "mic"]}
+{
+  "run_id": "run_7cddd99692f82313b339c3d96f31e2418b4c1cd7b16190f30e717ad5e238fa17",
+  "mode": "mic",
+  "status": "ok",
+  "transcription_status": "ok",
+  "extraction_status": "ok",
+  "processing_version": "processing_4529c03cbc9483161b1fae134f7562fcaf943db5355bd37663ecf2ea1aebca21",
+  "source": {
+    "source_id": "mic_0b6d9af7aa584d50ac6f78319bf35c26",
+    "kind": "mic",
+    "name": "SPEECHFLOW_QA_FILE_INPUT_ONLY",
+    "digest": "88a8702964064273ac419e486f875b7f88a0d4a52954a6caee172f59f61aed12"
+  },
+  "segments": 1,
+  "observations": 2,
+  "observations_needing_review": 0,
+  "errors": [],
+  "database": "/Users/vakof/orca/vigio_speech2structdata/outputs/release-offline/fixture-mic-1795639715191697000/runs.sqlite3",
+  "disposition": "inserted",
+  "generation": 1,
+  "files": [
+    "outputs/release-offline/fixture-mic-1795639715191697000/output/observations.csv",
+    "outputs/release-offline/fixture-mic-1795639715191697000/output/observations.txt",
+    "outputs/release-offline/fixture-mic-1795639715191697000/output/segments.csv",
+    "outputs/release-offline/fixture-mic-1795639715191697000/output/segments.txt",
+    "outputs/release-offline/fixture-mic-1795639715191697000/output/run.json"
+  ],
+  "exit_code": 0,
+  "end_of_speech_to_durable_output_s": 39.76269745899481
+}

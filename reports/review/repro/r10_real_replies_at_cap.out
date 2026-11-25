@@ -1,0 +1,10 @@
+synthetic-mps.json seg0 input=24.83s tokens=133 approx_wheel_cap=200 stored_status=ok current_guard=clear
+synthetic-mps.json seg1 input=25.00s tokens=107 approx_wheel_cap=200 stored_status=ok current_guard=clear
+synthetic-mps.json seg2 input=23.43s tokens=97 approx_wheel_cap=200 stored_status=ok current_guard=clear
+synthetic-guarded-final.json seg0 input=24.83s tokens=140 approx_wheel_cap=200 stored_status=ok current_guard=clear
+synthetic-guarded-final.json seg1 input=25.00s tokens=200 approx_wheel_cap=200 stored_status=needs_review current_guard=FLAG
+synthetic-guarded-final.json seg2 input=23.43s tokens=94 approx_wheel_cap=200 stored_status=ok current_guard=clear
+fleurs-guarded-final.json seg0 input=13.52s tokens=58 approx_wheel_cap=200 stored_status=ok current_guard=clear
+fleurs-guarded-final.json seg0 input=5.07s tokens=33 approx_wheel_cap=136 stored_status=ok current_guard=clear
+semantic-audio-reviewed.json seg0 input=1.45s tokens=7 approx_wheel_cap=46 stored_status=ok current_guard=clear
+semantic-audio-reviewed.json seg0 input=4.26s tokens=15 approx_wheel_cap=116 stored_status=ok current_guard=clear

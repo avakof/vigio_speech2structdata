@@ -1,0 +1,17 @@
+(a1) single shared word 'de' across a 0-gap split: [('ok', []), ('ok', [])]
+(a2) unrelated words, shared 'lait' (legit two statements): [('ok', []), ('ok', [])]
+(a3) partial-word re-emission 'bouteil' / 'bouteilles': [('ok', []), ('ok', [])]
+(a4) same text, gap 1 s (no shared input): [('ok', []), ('ok', [])]
+== (b) identical text in overlapping padded inputs, same window (segments not pre-flagged)
+  repairable: []  reply_errors: []
+  obs_7391c3dbdb rev=1 ok           op=count      product='sucre' q=2 max=None exact unit=kg pack=None corr=None errors=[]
+  obs_dcd79dcbaa rev=1 needs_review op=count      product='sucre' q=2 max=None exact unit=kg pack=None corr=None errors=['possible_overlap_duplicate_of:obs_7391c3dbdb08f7a8a34995e582e0096b9f6ae8b17f791e183c279ec98e530c9f']
+== (b') same pair, second segment in a LATER window
+  repairable: []  reply_errors: []
+  obs_dcd79dcbaa rev=1 needs_review op=count      product='sucre' q=2 max=None exact unit=kg pack=None corr=None errors=['possible_overlap_duplicate_of:obs_7391c3dbdb08f7a8a34995e582e0096b9f6ae8b17f791e183c279ec98e530c9f']
+== (c) English transcript, model self-reports fr
+  repairable: []  reply_errors: ['language_evidence:segment_471a5f2f76d2127b95d3cf6e7e7aa8bccbdf8dbcd4ec65db4d21d3aeec854955:en', 'language_disagreement:segment_471a5f2f76d2127b95d3cf6e7e7aa8bccbdf8dbcd4ec65db4d21d3aeec854955:model=fr,lexical=en']
+  obs_b25b140c3c rev=1 needs_review op=count      product='flour' q=3 max=None exact unit=kg pack=None corr=None errors=['language_evidence:segment_471a5f2f76d2127b95d3cf6e7e7aa8bccbdf8dbcd4ec65db4d21d3aeec854955:en', "language_disagreement:model=fr,lexical=['en']"]
+== (c') Italian transcript, model self-reports fr
+  repairable: []  reply_errors: ['language_evidence:segment_471a5f2f76d2127b95d3cf6e7e7aa8bccbdf8dbcd4ec65db4d21d3aeec854955:it', 'language_disagreement:segment_471a5f2f76d2127b95d3cf6e7e7aa8bccbdf8dbcd4ec65db4d21d3aeec854955:model=fr,lexical=it']
+  obs_3ded0f9ccb rev=1 needs_review op=count      product='farina' q=3 max=None exact unit=kili pack=None corr=None errors=['language_evidence:segment_471a5f2f76d2127b95d3cf6e7e7aa8bccbdf8dbcd4ec65db4d21d3aeec854955:it', "language_disagreement:model=fr,lexical=['it']", 'unit_not_recognized:kili']

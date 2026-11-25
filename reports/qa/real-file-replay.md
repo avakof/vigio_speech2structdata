@@ -1,12 +1,12 @@
 # Installed CLI file replay acceptance
 
-The [final real-model QA report](final-real-suite.md) records the frozen-source
+The [release real-model QA report](release-real-suite.md) records the frozen-source
 CPU and MPS runs and links the actual SQL, process and export receipts.
 
 | Backend | Final result | Evidence |
 | --- | --- | --- |
-| CPU | PASS as part of the independent CPU suite | [Command and SQL receipts](final-real-cpu-replay-evidence.json) |
-| MPS | PASS in a separate 87.74 s pytest run | [Command and SQL receipts](final-real-mps-replay-evidence.json) |
+| CPU | PASS as part of the independent CPU suite | [Command and SQL receipts](release-real-cpu-replay-evidence.json) |
+| MPS | PASS in a separate 88.10 s pytest run | [Command and SQL receipts](release-real-mps-replay-evidence.json) |
 
 The test uses the pinned synthetic Jacques recording
 `~/.cache/speechflow/hojo-jacques.wav`. It is 57,142 samples of mono PCM at

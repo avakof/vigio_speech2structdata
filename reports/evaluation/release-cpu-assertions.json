@@ -1,0 +1,52 @@
+{
+  "input_sha256": "03293fee0a0826dd6359087582be59770998a18df193808c6ebda6b249ee8021",
+  "anchors_sha256": "8eb15793f70a068342ef7d6d55e2e0ef2ab0dfe7cbd8cf6641ebc71522e1f81b",
+  "backend": "cpu",
+  "source_samples": 1159360,
+  "input_samples": [
+    397312,
+    400000,
+    374848
+  ],
+  "all_inputs_bounded": true,
+  "samples_after_final_core": 0,
+  "anchors": [
+    {
+      "phrase": "huit kilos de tomates",
+      "present": true
+    },
+    {
+      "phrase": "quatre kilos de carottes",
+      "present": true
+    },
+    {
+      "phrase": "six kilos de courgettes",
+      "present": true
+    },
+    {
+      "phrase": "neuf kilos de pommes",
+      "present": false
+    },
+    {
+      "phrase": "cinq kilos de poires",
+      "present": false
+    },
+    {
+      "phrase": "trois kilos de kiwis",
+      "present": false
+    },
+    {
+      "phrase": "sept kilos de citrons",
+      "present": false
+    },
+    {
+      "phrase": "deux kilos de gingembre",
+      "present": true
+    }
+  ],
+  "exact_anchors": 4,
+  "asr_assertion": "FAIL",
+  "first_content_failure": "neuf kilos de pommes",
+  "extraction_status": "needs_review",
+  "inventory_assertion": "FAIL"
+}

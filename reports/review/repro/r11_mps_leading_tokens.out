@@ -1,0 +1,7 @@
+same_input=True CPU first words='je compte huit kilos' | MPS first words='ACS huit kilos de' | common suffix words=0/87
+same_input=True CPU first words='les étagères de la' | MPS first words='selectors de la réserve' | common suffix words=0/122
+same_input=True CPU first words='je compte quatre kilos' | MPS first words='توقع refrigerateur je compte' | common suffix words=62/62
+reports/hojo/cpu.jsonl iter 1 'il reste deux virgule cinq kilos de tomates et douze bouteilles de lait'
+reports/hojo/cpu.jsonl iter 2 'il reste deux virgule cinq kilos de tomates et douze bouteilles de lait'
+reports/hojo/mps.jsonl iter 1 'Présence de deux virgule cinq kilos de tomates et douze bouteilles de lait'
+reports/hojo/mps.jsonl iter 2 'Présence de deux virgule cinq kilos de tomates et douze bouteilles de lait'

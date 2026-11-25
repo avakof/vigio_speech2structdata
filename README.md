@@ -15,6 +15,11 @@ blocked. CPU and MPS both ran the pinned Hojo checkpoint. The default CPU
 backend reproduced the full reference sentence in the short synthetic
 inventory test. [Acceptance report](reports/acceptance.json) · [Backend measurements](reports/compatibility.md)
 
+On the same French inputs, MPS sometimes changed or inserted words at the
+start of a segment, including one Arabic-script prefix. A backend can execute
+successfully while an exported count still needs comparison with the recording.
+Both backends recovered four of eight expected inventory phrases in the 72.46-second synthetic test. On a separate spoken negation, CPU Hojo lost the product name. These failures leave overall acceptance incomplete. [Paired transcripts](reports/review/repro/r11_mps_leading_tokens.out) · [Acceptance by gate](reports/acceptance.json)
+
 ## Setup
 
 ### 1. Install dependencies (network, no models)
@@ -248,6 +253,8 @@ SPEECHFLOW_QA_MODEL_SLOT=1 .venv/bin/python -m pytest -q tests/real_models
 .venv/bin/speechflow --offline evaluate evaluation/fixtures/reference-fr.jsonl --out outputs/reference
 .venv/bin/python tools/qa/make_long_french.py outputs/qa-fixtures/long-jacques.wav
 .venv/bin/speechflow --offline evaluate outputs/qa-fixtures/long-jacques.manifest.jsonl --out outputs/synthetic-real
+.venv/bin/python tools/qa/make_semantic_french.py outputs/qa-fixtures/semantic-fr
+.venv/bin/speechflow --offline evaluate outputs/qa-fixtures/semantic-fr/manifest.jsonl --out outputs/semantic-audio
 .venv/bin/python tools/offline/verify.py fixture-mic --audio "$HOME/.cache/speechflow/hojo-jacques.wav" --seconds 8 --out outputs/fixture-control
 ```
 

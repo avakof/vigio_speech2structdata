@@ -1,0 +1,43 @@
+{"unix_time": 1795639166.908714, "processes": [{"pid": 66861, "ppid": 65076, "rss_KiB": 29248, "kind": "pytest"}], "ollama_models": []}
+{"unix_time": 1795639168.9653592, "processes": [{"pid": 66861, "ppid": 65076, "rss_KiB": 49536, "kind": "pytest"}, {"pid": 66865, "ppid": 66864, "rss_KiB": 208592, "kind": "CLI Hojo child"}], "ollama_models": []}
+{"unix_time": 1795639171.02057, "processes": [{"pid": 66861, "ppid": 65076, "rss_KiB": 49536, "kind": "pytest"}, {"pid": 66865, "ppid": 66864, "rss_KiB": 208592, "kind": "CLI Hojo child"}], "ollama_models": []}
+{"unix_time": 1795639173.075328, "processes": [{"pid": 66861, "ppid": 65076, "rss_KiB": 49536, "kind": "pytest"}, {"pid": 66865, "ppid": 66864, "rss_KiB": 221520, "kind": "CLI Hojo child"}], "ollama_models": []}
+{"unix_time": 1795639175.131097, "processes": [{"pid": 66861, "ppid": 65076, "rss_KiB": 49552, "kind": "pytest"}, {"pid": 66865, "ppid": 66864, "rss_KiB": 484096, "kind": "CLI Hojo child"}], "ollama_models": []}
+{"unix_time": 1795639177.188082, "processes": [{"pid": 66861, "ppid": 65076, "rss_KiB": 49552, "kind": "pytest"}, {"pid": 66865, "ppid": 66864, "rss_KiB": 3086848, "kind": "CLI Hojo child"}], "ollama_models": []}
+{"unix_time": 1795639179.2456808, "processes": [{"pid": 66861, "ppid": 65076, "rss_KiB": 49552, "kind": "pytest"}, {"pid": 66865, "ppid": 66864, "rss_KiB": 3086848, "kind": "CLI Hojo child"}], "ollama_models": []}
+{"unix_time": 1795639181.3022342, "processes": [{"pid": 66861, "ppid": 65076, "rss_KiB": 49568, "kind": "pytest"}, {"pid": 66865, "ppid": 66864, "rss_KiB": 3086848, "kind": "CLI Hojo child"}], "ollama_models": []}
+{"unix_time": 1795639183.378496, "processes": [{"pid": 66861, "ppid": 65076, "rss_KiB": 36624, "kind": "pytest"}, {"pid": 66865, "ppid": 66864, "rss_KiB": 1061568, "kind": "CLI Hojo child"}], "ollama_models": []}
+{"unix_time": 1795639185.662457, "processes": [{"pid": 66861, "ppid": 65076, "rss_KiB": 33232, "kind": "pytest"}, {"pid": 66865, "ppid": 66864, "rss_KiB": 382672, "kind": "CLI Hojo child"}], "ollama_models": []}
+{"unix_time": 1795639187.7456481, "processes": [{"pid": 66861, "ppid": 65076, "rss_KiB": 16960, "kind": "pytest"}, {"pid": 66865, "ppid": 66864, "rss_KiB": 89952, "kind": "CLI Hojo child"}], "ollama_models": []}
+{"unix_time": 1795639189.825805, "processes": [{"pid": 66861, "ppid": 65076, "rss_KiB": 16896, "kind": "pytest"}, {"pid": 66865, "ppid": 66864, "rss_KiB": 90336, "kind": "CLI Hojo child"}], "ollama_models": []}
+{"unix_time": 1795639191.893195, "processes": [{"pid": 66861, "ppid": 65076, "rss_KiB": 17008, "kind": "pytest"}, {"pid": 66865, "ppid": 66864, "rss_KiB": 295072, "kind": "CLI Hojo child"}], "ollama_models": []}
+{"unix_time": 1795639193.973195, "processes": [{"pid": 66861, "ppid": 65076, "rss_KiB": 17120, "kind": "pytest"}, {"pid": 66865, "ppid": 66864, "rss_KiB": 507440, "kind": "CLI Hojo child"}], "ollama_models": []}
+{"unix_time": 1795639196.036779, "processes": [{"pid": 66861, "ppid": 65076, "rss_KiB": 17152, "kind": "pytest"}, {"pid": 66865, "ppid": 66864, "rss_KiB": 654032, "kind": "CLI Hojo child"}], "ollama_models": []}
+{"unix_time": 1795639198.101511, "processes": [{"pid": 66861, "ppid": 65076, "rss_KiB": 17168, "kind": "pytest"}, {"pid": 66865, "ppid": 66864, "rss_KiB": 791024, "kind": "CLI Hojo child"}], "ollama_models": []}
+{"unix_time": 1795639200.165709, "processes": [{"pid": 66861, "ppid": 65076, "rss_KiB": 17248, "kind": "pytest"}, {"pid": 66865, "ppid": 66864, "rss_KiB": 1089104, "kind": "CLI Hojo child"}], "ollama_models": []}
+{"unix_time": 1795639202.224648, "processes": [{"pid": 66861, "ppid": 65076, "rss_KiB": 17376, "kind": "pytest"}], "ollama_models": []}
+{"unix_time": 1795639204.2854888, "processes": [{"pid": 66861, "ppid": 65076, "rss_KiB": 17664, "kind": "pytest"}], "ollama_models": ["qwen3:8b"]}
+{"unix_time": 1795639206.393141, "processes": [{"pid": 66861, "ppid": 65076, "rss_KiB": 17792, "kind": "pytest"}], "ollama_models": ["qwen3:8b"]}
+{"unix_time": 1795639208.4928892, "processes": [{"pid": 66861, "ppid": 65076, "rss_KiB": 17824, "kind": "pytest"}], "ollama_models": ["qwen3:8b"]}
+{"unix_time": 1795639210.664651, "processes": [{"pid": 66861, "ppid": 65076, "rss_KiB": 30064, "kind": "pytest"}, {"pid": 66957, "ppid": 66956, "rss_KiB": 105712, "kind": "CLI Hojo child"}], "ollama_models": []}
+{"unix_time": 1795639212.727378, "processes": [{"pid": 66861, "ppid": 65076, "rss_KiB": 30080, "kind": "pytest"}, {"pid": 66957, "ppid": 66956, "rss_KiB": 208544, "kind": "CLI Hojo child"}], "ollama_models": []}
+{"unix_time": 1795639214.783051, "processes": [{"pid": 66861, "ppid": 65076, "rss_KiB": 30080, "kind": "pytest"}, {"pid": 66957, "ppid": 66956, "rss_KiB": 208544, "kind": "CLI Hojo child"}], "ollama_models": []}
+{"unix_time": 1795639216.8434958, "processes": [{"pid": 66861, "ppid": 65076, "rss_KiB": 30080, "kind": "pytest"}, {"pid": 66957, "ppid": 66956, "rss_KiB": 228816, "kind": "CLI Hojo child"}], "ollama_models": []}
+{"unix_time": 1795639218.8990889, "processes": [{"pid": 66861, "ppid": 65076, "rss_KiB": 30096, "kind": "pytest"}, {"pid": 66957, "ppid": 66956, "rss_KiB": 543728, "kind": "CLI Hojo child"}], "ollama_models": []}
+{"unix_time": 1795639220.953247, "processes": [{"pid": 66861, "ppid": 65076, "rss_KiB": 30096, "kind": "pytest"}, {"pid": 66957, "ppid": 66956, "rss_KiB": 3088880, "kind": "CLI Hojo child"}], "ollama_models": []}
+{"unix_time": 1795639223.0114849, "processes": [{"pid": 66861, "ppid": 65076, "rss_KiB": 30096, "kind": "pytest"}, {"pid": 66957, "ppid": 66956, "rss_KiB": 3088880, "kind": "CLI Hojo child"}], "ollama_models": []}
+{"unix_time": 1795639225.066297, "processes": [{"pid": 66861, "ppid": 65076, "rss_KiB": 30096, "kind": "pytest"}, {"pid": 66957, "ppid": 66956, "rss_KiB": 3088864, "kind": "CLI Hojo child"}], "ollama_models": []}
+{"unix_time": 1795639227.1328828, "processes": [{"pid": 66861, "ppid": 65076, "rss_KiB": 29952, "kind": "pytest"}, {"pid": 66957, "ppid": 66956, "rss_KiB": 1605760, "kind": "CLI Hojo child"}], "ollama_models": []}
+{"unix_time": 1795639229.202435, "processes": [{"pid": 66861, "ppid": 65076, "rss_KiB": 29952, "kind": "pytest"}, {"pid": 66957, "ppid": 66956, "rss_KiB": 341680, "kind": "CLI Hojo child"}], "ollama_models": []}
+{"unix_time": 1795639231.2619479, "processes": [{"pid": 66861, "ppid": 65076, "rss_KiB": 18368, "kind": "pytest"}, {"pid": 66957, "ppid": 66956, "rss_KiB": 242528, "kind": "CLI Hojo child"}], "ollama_models": []}
+{"unix_time": 1795639233.324234, "processes": [{"pid": 66861, "ppid": 65076, "rss_KiB": 18368, "kind": "pytest"}, {"pid": 66957, "ppid": 66956, "rss_KiB": 510800, "kind": "CLI Hojo child"}], "ollama_models": []}
+{"unix_time": 1795639235.381151, "processes": [{"pid": 66861, "ppid": 65076, "rss_KiB": 18368, "kind": "pytest"}, {"pid": 66957, "ppid": 66956, "rss_KiB": 671280, "kind": "CLI Hojo child"}], "ollama_models": []}
+{"unix_time": 1795639237.434908, "processes": [{"pid": 66861, "ppid": 65076, "rss_KiB": 18368, "kind": "pytest"}, {"pid": 66957, "ppid": 66956, "rss_KiB": 809824, "kind": "CLI Hojo child"}], "ollama_models": []}
+{"unix_time": 1795639239.491869, "processes": [{"pid": 66861, "ppid": 65076, "rss_KiB": 18368, "kind": "pytest"}, {"pid": 66957, "ppid": 66956, "rss_KiB": 855808, "kind": "CLI Hojo child"}], "ollama_models": []}
+{"unix_time": 1795639241.550693, "processes": [{"pid": 66861, "ppid": 65076, "rss_KiB": 18384, "kind": "pytest"}, {"pid": 66957, "ppid": 66956, "rss_KiB": 1090336, "kind": "CLI Hojo child"}], "ollama_models": []}
+{"unix_time": 1795639243.605093, "processes": [{"pid": 66861, "ppid": 65076, "rss_KiB": 18384, "kind": "pytest"}], "ollama_models": []}
+{"unix_time": 1795639245.666173, "processes": [{"pid": 66861, "ppid": 65076, "rss_KiB": 18384, "kind": "pytest"}], "ollama_models": ["qwen3:8b"]}
+{"unix_time": 1795639247.7233589, "processes": [{"pid": 66861, "ppid": 65076, "rss_KiB": 18512, "kind": "pytest"}], "ollama_models": ["qwen3:8b"]}
+{"unix_time": 1795639249.800436, "processes": [{"pid": 66861, "ppid": 65076, "rss_KiB": 18528, "kind": "pytest"}], "ollama_models": ["qwen3:8b"]}
+{"unix_time": 1795639251.858187, "processes": [{"pid": 66861, "ppid": 65076, "rss_KiB": 18560, "kind": "pytest"}], "ollama_models": ["qwen3:8b"]}
+{"unix_time": 1795639253.937042, "processes": [{"pid": 66861, "ppid": 65076, "rss_KiB": 18560, "kind": "pytest"}], "ollama_models": ["qwen3:8b"]}

@@ -1,10 +1,11 @@
 # Independent QA on the target Mac
 
-The [final serial CPU suite and MPS replay report](final-real-suite.md) records
+The [release serial CPU suite and MPS replay report](release-real-suite.md) records
 the current real-model outcome, including the raw long-file and replay
 evidence. See the [acceptance register](../acceptance.json) for the broader
 integration results and the [real file replay page](real-file-replay.md) for
-the CLI and SQLite acceptance procedure.
+the CLI and SQLite acceptance procedure. The [previous real-model run](final-real-suite.md)
+records the earlier implementation.
 
 The CPU suite recorded 10 passes and two long-file content failures. The
 CPU and MPS short-file replays, exact-transcript evaluation and sandboxed

@@ -1,0 +1,166 @@
+{
+  "ready": true,
+  "checks": [
+    {
+      "name": "python",
+      "ok": true,
+      "required": true,
+      "detail": "3.12.16",
+      "fix": "uv python install 3.12 (the project pins 3.12)"
+    },
+    {
+      "name": "platform",
+      "ok": true,
+      "required": true,
+      "detail": "Darwin 27.2.1 arm64",
+      "fix": "the pinned environment targets native Apple Silicon macOS"
+    },
+    {
+      "name": "memory",
+      "ok": true,
+      "required": false,
+      "detail": "48.0 GiB physical",
+      "fix": ""
+    },
+    {
+      "name": "chip",
+      "ok": true,
+      "required": false,
+      "detail": "Apple M3 Max",
+      "fix": ""
+    },
+    {
+      "name": "dependency hojo-asr",
+      "ok": true,
+      "required": true,
+      "detail": "0.1.3 (pinned)",
+      "fix": ""
+    },
+    {
+      "name": "dependency torch",
+      "ok": true,
+      "required": true,
+      "detail": "2.5.1 (pinned)",
+      "fix": ""
+    },
+    {
+      "name": "dependency torchaudio",
+      "ok": true,
+      "required": true,
+      "detail": "2.5.1 (pinned)",
+      "fix": ""
+    },
+    {
+      "name": "dependency transformers",
+      "ok": true,
+      "required": true,
+      "detail": "4.57.3 (pinned)",
+      "fix": ""
+    },
+    {
+      "name": "dependency huggingface-hub",
+      "ok": true,
+      "required": true,
+      "detail": "0.36.2",
+      "fix": ""
+    },
+    {
+      "name": "dependency numpy",
+      "ok": true,
+      "required": true,
+      "detail": "1.26.4 (pinned)",
+      "fix": ""
+    },
+    {
+      "name": "dependency silero-vad",
+      "ok": true,
+      "required": true,
+      "detail": "6.2.0 (pinned)",
+      "fix": ""
+    },
+    {
+      "name": "dependency sounddevice",
+      "ok": true,
+      "required": true,
+      "detail": "0.5.3 (pinned)",
+      "fix": ""
+    },
+    {
+      "name": "dependency soundfile",
+      "ok": true,
+      "required": true,
+      "detail": "0.14.0 (pinned)",
+      "fix": ""
+    },
+    {
+      "name": "dependency scipy",
+      "ok": true,
+      "required": true,
+      "detail": "1.17.1 (pinned)",
+      "fix": ""
+    },
+    {
+      "name": "dependency imageio-ffmpeg",
+      "ok": true,
+      "required": true,
+      "detail": "0.6.0 (pinned)",
+      "fix": ""
+    },
+    {
+      "name": "dependency pydantic",
+      "ok": true,
+      "required": true,
+      "detail": "2.14.4",
+      "fix": ""
+    },
+    {
+      "name": "dependency psutil",
+      "ok": true,
+      "required": true,
+      "detail": "7.2.2",
+      "fix": ""
+    },
+    {
+      "name": "configuration",
+      "ok": true,
+      "required": false,
+      "detail": "offline=True backend=cpu",
+      "fix": ""
+    },
+    {
+      "name": "database location",
+      "ok": true,
+      "required": true,
+      "detail": "/Users/vakof/.local/share/speechflow/inventory.sqlite3 (writable ancestor /Users/vakof/.local/share)",
+      "fix": "choose --database elsewhere"
+    },
+    {
+      "name": "disk free",
+      "ok": true,
+      "required": false,
+      "detail": "712.0 GiB near the database",
+      "fix": ""
+    },
+    {
+      "name": "database",
+      "ok": true,
+      "required": false,
+      "detail": "not created yet (created on first save)",
+      "fix": ""
+    }
+  ],
+  "assets": {
+    "available": true,
+    "report": {
+      "machine": "arm64",
+      "macos": "27.2.1",
+      "offline": true,
+      "hojo_revision": "aa1d0dfc369deb3b3235572fa151acd7b498481f",
+      "hojo_dir": "/Users/vakof/.cache/speechflow/assets/hojo",
+      "hojo_issues": [],
+      "silero_sha256": "e1122837f4154c511485fe0b9c64455f7b929c96fbb8d79fbdb336383ebd3720",
+      "ollama_version": "0.40.16",
+      "extractor_digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41"
+    }
+  }
+}

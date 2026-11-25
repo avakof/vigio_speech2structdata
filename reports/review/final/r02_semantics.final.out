@@ -1,0 +1,62 @@
+== tomatoes/milk
+  repairable: []  reply_errors: []
+  obs_811eaa24b1 rev=1 ok           op=count      product='tomates' q=2.5 max=None exact unit=kg pack=None corr=None errors=[]
+  obs_936af7ce2e rev=1 ok           op=count      product='lait' q=12 max=None exact unit=bouteille pack=None corr=None errors=[]
+== same-segment correction
+  repairable: []  reply_errors: []
+  obs_43cb69da12 rev=1 ok           op=count      product='farine' q=3 max=None exact unit=kg pack=None corr=None errors=[]
+  obs_2e65005760 rev=2 ok           op=correction product='farine' q=2 max=None exact unit=kg pack=None corr=obs_43cb69da12 errors=[]
+== next-segment correction
+  repairable: []  reply_errors: []
+  obs_43cb69da12 rev=1 ok           op=count      product='farine' q=3 max=None exact unit=kg pack=None corr=None errors=[]
+  obs_65647f5b73 rev=2 ok           op=correction product='farine' q=2 max=None exact unit=kg pack=None corr=obs_43cb69da12 errors=[]
+== cartons unknown contents
+  repairable: []  reply_errors: []
+  obs_aaa7dfc48f rev=1 ok           op=count      product='lait' q=2 max=None exact unit=carton pack={'count': '2', 'unit': 'carton'} corr=None errors=[]
+== cartons of twelve
+  repairable: []  reply_errors: []
+  obs_743620c92a rev=1 ok           op=count      product=None q=2 max=None exact unit=carton pack={'count': '2', 'unit': 'carton', 'per_package_quantity': '12', 'per_package_unit': 'bouteille', 'total': '24', 'total_unit': 'bouteille'} corr=None errors=[]
+== negation
+  repairable: []  reply_errors: []
+  obs_b5dfcfb30d rev=1 ok           op=negation   product='beurre' q=None max=None unknown unit=None pack=None corr=None errors=[]
+== comparative 'plus de dix' as count
+  repairable: []  reply_errors: []
+  obs_2eb9fedc61 rev=1 needs_review op=count      product='vin' q=10 max=None approximate unit=bouteille pack=None corr=None errors=['lower_bound_not_representable', 'count_conflicts_with_source_context']
+== restrictive ne...que (not negation)
+  repairable: []  reply_errors: []
+  obs_e6763b730c rev=1 ok           op=count      product='sucre' q=2 max=None exact unit=kg pack=None corr=None errors=[]
+== negated quantity then restatement
+  repairable: []  reply_errors: []
+  obs_a243cb88a7 rev=1 needs_review op=count      product='riz' q=3 max=None exact unit=kg pack=None corr=None errors=['negation_cue_in_evidence_but_operation_count', 'count_conflicts_with_source_context']
+  obs_d523cf9c81 rev=2 needs_review op=correction product='riz' q=2 max=None exact unit=None pack=None corr=obs_a243cb88a7 errors=['unit_missing']
+== injection text quoted as count
+  repairable: []  reply_errors: []
+  obs_11ce968cb0 rev=1 ok           op=count      product='caviar' q=3 max=None exact unit=kg pack=None corr=None errors=[]
+== unsupported language (model says en)
+  repairable: []  reply_errors: ['unsupported_language:en', 'language_evidence:segment_471a5f2f76d2127b95d3cf6e7e7aa8bccbdf8dbcd4ec65db4d21d3aeec854955:en']
+  obs_dcb0f31fe2 rev=1 needs_review op=count      product='flour' q=None max=None unknown unit=kg pack=None corr=None errors=['unsupported_language:en', 'language_evidence:segment_471a5f2f76d2127b95d3cf6e7e7aa8bccbdf8dbcd4ec65db4d21d3aeec854955:en', "quantity_text 'three' not understood", 'quantity_missing']
+== unsupported language (model lies fr)
+  repairable: []  reply_errors: ['language_evidence:segment_471a5f2f76d2127b95d3cf6e7e7aa8bccbdf8dbcd4ec65db4d21d3aeec854955:en', 'language_disagreement:segment_471a5f2f76d2127b95d3cf6e7e7aa8bccbdf8dbcd4ec65db4d21d3aeec854955:model=fr,lexical=en']
+  obs_dcb0f31fe2 rev=1 needs_review op=count      product='flour' q=None max=None unknown unit=kg pack=None corr=None errors=['language_evidence:segment_471a5f2f76d2127b95d3cf6e7e7aa8bccbdf8dbcd4ec65db4d21d3aeec854955:en', "language_disagreement:model=fr,lexical=['en']", "quantity_text 'three' not understood", 'quantity_missing']
+== identical utterances in overlapping padded inputs (gap=0)
+  repairable: []  reply_errors: []
+  obs_7391c3dbdb rev=1 ok           op=count      product='sucre' q=2 max=None exact unit=kg pack=None corr=None errors=[]
+  obs_dcd79dcbaa rev=1 needs_review op=count      product='sucre' q=2 max=None exact unit=kg pack=None corr=None errors=['possible_overlap_duplicate_of:obs_7391c3dbdb08f7a8a34995e582e0096b9f6ae8b17f791e183c279ec98e530c9f']
+== identical utterances 3 s apart
+  repairable: []  reply_errors: []
+  obs_7391c3dbdb rev=1 ok           op=count      product='sucre' q=2 max=None exact unit=kg pack=None corr=None errors=[]
+  obs_dcd79dcbaa rev=1 ok           op=count      product='sucre' q=2 max=None exact unit=kg pack=None corr=None errors=[]
+== ambiguous bare correction
+  repairable: []  reply_errors: []
+  obs_43cb69da12 rev=1 ok           op=count      product='farine' q=3 max=None exact unit=kg pack=None corr=None errors=[]
+  obs_32c290ab34 rev=1 ok           op=count      product='sucre' q=4 max=None exact unit=kg pack=None corr=None errors=[]
+  obs_65647f5b73 rev=1 needs_review op=correction product=None q=2 max=None exact unit=kg pack=None corr=None errors=["correction_target_ambiguous:o2:candidates ['o1', 'o2']"]
+== sacs de vingt kilos (mass total)
+  repairable: []  reply_errors: []
+  obs_9d6d40f8c0 rev=1 ok           op=count      product='farine' q=2 max=None exact unit=sac pack={'count': '2', 'unit': 'sac', 'per_package_quantity': '20', 'per_package_unit': 'kg', 'total': '40', 'total_unit': 'kg'} corr=None errors=[]
+== un kilo et demi
+  repairable: []  reply_errors: []
+  obs_edbe655d01 rev=1 needs_review op=count      product='beurre' q=None max=None unknown unit=kg pack=None corr=None errors=["quantity_text 'Un kilo et demi' not understood", 'quantity_missing']
+== 'sans gluten' false negation cue
+  repairable: []  reply_errors: []
+  obs_a243cb88a7 rev=1 needs_review op=count      product='pâtes sans gluten' q=2 max=None exact unit=kg pack=None corr=None errors=['negation_cue_in_evidence_but_operation_count', 'count_conflicts_with_source_context']

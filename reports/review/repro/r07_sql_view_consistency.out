@@ -1,0 +1,8 @@
+== reports/offline/positive-file.json: db=True out=True result=PASS
+  runs: [('run_e0e63322efa7', 'ok', 1)] integrity: ok
+  observations: [('2.5', 'kg', 'ok'), ('12', 'bouteille', 'ok')] evidence rows: 2 raw keys: [['key', 'text']]
+  CONSISTENT
+== reports/offline/fixture-mic.json: db=True out=True result=PASS
+  runs: [('run_0cf184aedf0f', 'ok', 1)] integrity: ok
+  observations: [('2.5', 'kg', 'ok'), ('12', 'bouteille', 'ok')] evidence rows: 2 raw keys: [['key', 'text']]
+  CONSISTENT

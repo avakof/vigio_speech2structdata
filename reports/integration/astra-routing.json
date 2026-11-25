@@ -14,7 +14,7 @@
       "cwd": "/Users/vakof/orca/vigio_speech2structdata"
     },
     "context_latest_at_check": {
-      "turn_id": "01a21308-a50d-7482-ad6a-13bcf9c74ed5",
+      "turn_id": "01a214a2-db1d-7190-a61d-d6b6c9375866",
       "model": "gpt-6.2-astra",
       "effort": "xhigh",
       "cwd": "/Users/vakof/orca/vigio_speech2structdata"
@@ -36,7 +36,7 @@
       "cwd": "/Users/vakof/orca/vigio_speech2structdata"
     },
     "context_latest_at_check": {
-      "turn_id": "01a213ee-2d62-7ab0-86f4-a2be72d16275",
+      "turn_id": "01a214a3-5888-7c02-93c5-0f6659e84ec0",
       "model": "gpt-6.2-astra",
       "effort": "xhigh",
       "cwd": "/Users/vakof/orca/vigio_speech2structdata"

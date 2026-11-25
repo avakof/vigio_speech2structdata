@@ -1,0 +1,29 @@
+{
+  "run_id": "run_b69c71b21db89cab5dfce7219f3ee5f00f52e6293c127c509d2138e0ae4ea96d",
+  "mode": "transcribe",
+  "status": "ok",
+  "transcription_status": "ok",
+  "extraction_status": "not_run",
+  "processing_version": "processing_4857bd8cc43d26214bb2056ea33cc80ab478dede4915d737aac1af23b31e5b17",
+  "source": {
+    "source_id": "file_87d58ea4b4b3d4b9548c4fe2cd5c1ec02f50f42cf1f9c445d2817d77912ab450",
+    "kind": "file",
+    "name": "jacques-near-cap.m4a",
+    "digest": "b76bf204ad5832e5d44a53b0662676ec0c50dcb3b14f881ac0a652e4fa7cc714"
+  },
+  "segments": 2,
+  "observations": 0,
+  "observations_needing_review": 0,
+  "errors": [],
+  "database": "/Users/vakof/orca/vigio_speech2structdata/outputs/release-m4a-mps.sqlite3",
+  "disposition": "inserted",
+  "generation": 1,
+  "files": [
+    "outputs/release-m4a-mps/observations.csv",
+    "outputs/release-m4a-mps/observations.txt",
+    "outputs/release-m4a-mps/segments.csv",
+    "outputs/release-m4a-mps/segments.txt",
+    "outputs/release-m4a-mps/run.json"
+  ],
+  "exit_code": 0
+}

@@ -1,0 +1,313 @@
+{
+  "implementation_sha256": "23096a70df38af25f14f4275c9c0d0935f57d6d9a55ec421794a91906902e867",
+  "cpu": {
+    "pytest_exit": 1,
+    "pytest_summary": "2 failed, 10 passed, 1 deselected in 495.04s (0:08:15)",
+    "failures": [
+      "tests/real_models/test_runtime.py::test_real_hojo_long_audio_boundary_content_and_tail",
+      "tests/real_models/test_runtime.py::test_real_extractor_long_hojo_outputs_have_no_duplicate_observations"
+    ],
+    "source_hash_count": 37,
+    "source_hash_list_sha256": "0a012f1dd0313513101e72624433e15c9f28232210fbe136c6a088edb5553709",
+    "working_tree_implementation_sha256": "23096a70df38af25f14f4275c9c0d0935f57d6d9a55ec421794a91906902e867",
+    "process_samples": 239,
+    "samples_with_ollama": 55,
+    "samples_with_cli_hojo_and_default_ollama": 0,
+    "max_cli_hojo_children": 1,
+    "ollama_idle_after": true,
+    "replay": {
+      "database": "outputs/qa-release-real/test_real_file_installed_cli_r0/inventory.sqlite3",
+      "database_quick_check": [
+        "ok"
+      ],
+      "run_id": "run_cbc8a904728846599a9b01d921e66de883bcaaafb4d8c3a48b44021fc49f7336",
+      "processing_version": "processing_fad4c9a220c79b09770a84142e9efcebf8d55bc5475a28a02b700fe60888b0db",
+      "generation": 1,
+      "physical_counts": {
+        "runs": 1,
+        "segments": 1,
+        "observations": 2,
+        "observation_evidence": 2
+      },
+      "save_events": [
+        "inserted",
+        "duplicate"
+      ],
+      "seconds": [
+        37.89,
+        33.31
+      ],
+      "pid": [
+        65098,
+        65279
+      ],
+      "transcript": "il reste deux virgule cinq kilos de tomates et douze bouteilles de lait",
+      "normalized_transcript": "il reste deux virgule cinq kilos de tomates et douze bouteilles de lait",
+      "segment_id": "segment_11897747f9dd4e72d465f8fc6e0743d329e9be275bb458ec3c267d9d1e42389f",
+      "sample_bounds": [
+        0,
+        57142,
+        1024,
+        57142
+      ],
+      "observations": [
+        [
+          "tomates",
+          "2.5",
+          "kg",
+          "ok"
+        ],
+        [
+          "lait",
+          "12",
+          "bouteille",
+          "ok"
+        ]
+      ],
+      "dtype": "encoder=float32,decoder=bfloat16"
+    }
+  },
+  "mps": {
+    "pytest_exit": 0,
+    "pytest_summary": "1 passed in 88.10s (0:01:28)",
+    "failures": [],
+    "source_hash_count": 37,
+    "source_hash_list_sha256": "0a012f1dd0313513101e72624433e15c9f28232210fbe136c6a088edb5553709",
+    "working_tree_implementation_sha256": "23096a70df38af25f14f4275c9c0d0935f57d6d9a55ec421794a91906902e867",
+    "process_samples": 43,
+    "samples_with_ollama": 8,
+    "samples_with_cli_hojo_and_default_ollama": 0,
+    "max_cli_hojo_children": 1,
+    "ollama_idle_after": true,
+    "replay": {
+      "database": "outputs/qa-release-mps-replay/test_real_file_installed_cli_r0/inventory.sqlite3",
+      "database_quick_check": [
+        "ok"
+      ],
+      "run_id": "run_dceb9f6df3fef6217c2d8d9f25185895fff002e332278b73b8df0fc6877fcf69",
+      "processing_version": "processing_5eb08a903be96fa75f6062930a42747f7845fd82c8b6994573356828ab940fda",
+      "generation": 1,
+      "physical_counts": {
+        "runs": 1,
+        "segments": 1,
+        "observations": 2,
+        "observation_evidence": 2
+      },
+      "save_events": [
+        "inserted",
+        "duplicate"
+      ],
+      "seconds": [
+        43.07,
+        44.47
+      ],
+      "pid": [
+        66864,
+        66956
+      ],
+      "transcript": "Présence de deux virgule cinq kilos de tomates et douze bouteilles de lait",
+      "normalized_transcript": "Présence de deux virgule cinq kilos de tomates et douze bouteilles de lait",
+      "segment_id": "segment_11897747f9dd4e72d465f8fc6e0743d329e9be275bb458ec3c267d9d1e42389f",
+      "sample_bounds": [
+        0,
+        57142,
+        1024,
+        57142
+      ],
+      "observations": [
+        [
+          "tomates",
+          "2.5",
+          "kg",
+          "ok"
+        ],
+        [
+          "lait",
+          "12",
+          "bouteille",
+          "ok"
+        ]
+      ],
+      "dtype": "encoder=float32,decoder=bfloat16"
+    }
+  },
+  "reference": {
+    "report": "outputs/qa-release-real/test_real_extractor_installed_0/evaluation.json",
+    "manifest_sha256": "1423b90929bafaa7e09243ddb09556abfbc2f1eb178bbbed73663774e7ca23d3",
+    "wall_seconds": 91.134388,
+    "scores": {
+      "gold_mentions": 16,
+      "returned_candidates": 19,
+      "accepted_candidates": 16,
+      "review_candidates": 3,
+      "covered_gold_mentions": 16,
+      "abstention_rate": 0.15789473684210525,
+      "gold_coverage": 1.0,
+      "gold_uncovered_rate": 0.0,
+      "cases_with_no_accepted_candidate": 3,
+      "positive_cases_with_no_accepted_candidate": 0,
+      "cases": 15,
+      "blocked_cases": 0,
+      "failed_cases": 0,
+      "completed_cases": 15,
+      "measurement_status": "MEASURED",
+      "fields": {
+        "product_spoken": {
+          "tp": 15,
+          "fp": 0,
+          "fn": 0,
+          "predicted": 15,
+          "expected": 15,
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        "quantity": {
+          "tp": 15,
+          "fp": 0,
+          "fn": 0,
+          "predicted": 15,
+          "expected": 15,
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        "quantity_max": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "predicted": 1,
+          "expected": 1,
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        "qualifier": {
+          "tp": 16,
+          "fp": 0,
+          "fn": 0,
+          "predicted": 16,
+          "expected": 16,
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        "unit": {
+          "tp": 15,
+          "fp": 0,
+          "fn": 0,
+          "predicted": 15,
+          "expected": 15,
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        "operation": {
+          "tp": 16,
+          "fp": 0,
+          "fn": 0,
+          "predicted": 16,
+          "expected": 16,
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        "location": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "predicted": 1,
+          "expected": 1,
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        "negation": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "predicted": 1,
+          "expected": 1,
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        "correction": {
+          "tp": 2,
+          "fp": 0,
+          "fn": 0,
+          "predicted": 2,
+          "expected": 2,
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        "packaging.count": {
+          "tp": 2,
+          "fp": 0,
+          "fn": 0,
+          "predicted": 2,
+          "expected": 2,
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        "packaging.unit": {
+          "tp": 2,
+          "fp": 0,
+          "fn": 0,
+          "predicted": 2,
+          "expected": 2,
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        "packaging.per_package_quantity": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "predicted": 1,
+          "expected": 1,
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        "packaging.per_package_unit": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "predicted": 1,
+          "expected": 1,
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        "packaging.total": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "predicted": 1,
+          "expected": 1,
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        "packaging.total_unit": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "predicted": 1,
+          "expected": 1,
+          "precision": 1.0,
+          "recall": 1.0
+        }
+      }
+    }
+  },
+  "seatbelt_file": {
+    "receipt": "outputs/qa-release-real/test_real_file_installed_cli_o0/offline/file-1795639130384784000/verification.json",
+    "run_id": "run_cbc8a904728846599a9b01d921e66de883bcaaafb4d8c3a48b44021fc49f7336",
+    "status": "ok",
+    "seconds": 33.25035679200664,
+    "observations": [
+      [
+        "tomates",
+        "2.5",
+        "kg",
+        "ok"
+      ],
+      [
+        "lait",
+        "12",
+        "bouteille",
+        "ok"
+      ]
+    ]
+  }
+}

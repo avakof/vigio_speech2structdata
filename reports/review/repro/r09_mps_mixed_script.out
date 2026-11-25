@@ -1,0 +1,4 @@
+segment 0 status=ok assess='fr' scripts=['LATIN'] head='ACS huit kilos de tomates pour continuer la vérification je retourne v'
+segment 1 status=ok assess='fr' scripts=['LATIN'] head='selectors de la réserve pendant que mon collègue termine tranquillemen'
+segment 2 status=ok assess='fr' scripts=['ARABIC', 'LATIN'] head='توقع refrigerateur je compte quatre kilos de citron pour continuer la '
+accepted ok observations: [('tomates', '8', 'kg', '4b612756'), ('carottes', '4', 'kg', '4b612756'), ('courgettes', '6', 'kg', '4b612756'), ('citron', '4', 'kg', '300ec0e2'), ('citron', '7', 'kg', '300ec0e2'), ('gingembre', '2', 'kg', '300ec0e2')]

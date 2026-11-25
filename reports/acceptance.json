@@ -1,5 +1,8 @@
 {
-  "state": "in_progress",
+  "state": "incomplete",
+  "overall_status": "FAIL",
+  "development_workflow_status": "PASS",
+  "application_runtime_status": "FAIL",
   "host": {
     "architecture": "arm64",
     "chip": "Apple M3 Max",
@@ -33,7 +36,7 @@
     },
     "independent_qa": {
       "status": "PASS",
-      "detail": "Independent GPT QA reproduced extraction and persistence defects with scripted generation and reran its fixes. On frozen source it executed the full native CPU real-model suite and the separate MPS replay. The two retained CPU failures both concern long-file recognition and inventory content.",
+      "detail": "Independent Sol/high QA reproduced validator and persistence defects, checked their fixes, ran the release CPU suite and the separate MPS replay, and preserved both required long-content failures. The two backend replay databases each contain exactly one generation and identical re-exports.",
       "evidence": [
         "reports/qa/initial-semantics.log",
         "reports/qa/initial-storage.log",
@@ -45,12 +48,26 @@
         "reports/integration/final-qa-tests.txt",
         "reports/qa/final-real-suite.md",
         "reports/qa/final-real-cpu.log",
-        "reports/qa/final-real-mps.log"
+        "reports/qa/final-real-mps.log",
+        "reports/integration/release-qa.txt",
+        "reports/qa/release-real-suite.md",
+        "reports/qa/release-real-cpu.log",
+        "reports/qa/release-real-mps.log",
+        "reports/integration/release-verification.json"
       ]
     },
-    "independent_review": {
+    "final_reasoner": {
       "status": "PASS",
-      "detail": "Opus completed the initial implementation audit and reproduced partial retry and semantic limitations. The final runtime review is pending.",
+      "detail": "The original independent Astra/xhigh returned its signed decision on commit 2716290 and verified the package, receipts, fresh databases, exports, French evaluation metrics and runtime gates. The same dispatch completed after a temporary quota interruption. Its workflow verdict is PASS and its full application verdict is FAIL.",
+      "evidence": [
+        "reports/review/architect-final.md",
+        "reports/review/architect-release-dispatch.json",
+        "reports/integration/astra-routing.json"
+      ]
+    },
+    "initial_opus_audit": {
+      "status": "PASS",
+      "detail": "The independent Opus/high reviewer audited the initial implementation and reproduced partial retry and semantic defects, with before/after checks from the integrator.",
       "evidence": [
         "reports/review/REVIEW.md",
         "reports/integration/partial-retry.txt",
@@ -58,9 +75,17 @@
         "reports/extraction/r05_after.out"
       ]
     },
-    "final_reasoner": {
-      "status": "NOT RUN",
-      "evidence": []
+    "independent_review": {
+      "status": "PASS",
+      "detail": "The original Claude Opus/high reviewer examined implementation and raw results, independently reproduced the dynamic output-limit failure, then verified its repair through the production inference entry point. Its final addenda distinguish four paired opening-word discrepancies from two unpaired M4A segments and report the matched-embedding prefill results.",
+      "evidence": [
+        "reports/review/FINAL.md",
+        "reports/review/final/acceptance-final.txt",
+        "reports/review/repro/r07_sql_view_consistency.out",
+        "reports/review/repro/r11_mps_leading_tokens.out",
+        "reports/review/final/acceptance-23096a70.txt",
+        "reports/review/repro/r06b_entry_path_cap.out"
+      ]
     }
   },
   "application_runtime": {
@@ -71,7 +96,9 @@
         "reports/integration/doctor-final.json",
         "reports/integration/final-build.log",
         "reports/integration/final-wheel.json",
-        "reports/integration/final-default-tests.txt"
+        "reports/integration/final-default-tests.txt",
+        "reports/integration/guarded-wheel.json",
+        "reports/integration/release-wheel.json"
       ]
     },
     "arm64_dependency_install": {
@@ -92,7 +119,9 @@
         "reports/integration/doctor-provisioned.json",
         "reports/integration/prepare-provisioned-offline.json",
         "reports/integration/prepare-provisioned.json",
-        "reports/integration/prepare-final.json"
+        "reports/integration/prepare-final.json",
+        "reports/integration/release-doctor.json",
+        "reports/integration/release-prepare.json"
       ]
     },
     "missing_assets_offline": {
@@ -114,7 +143,8 @@
       "status": "PASS",
       "detail": "Five tests using native FFmpeg 7.1 covered WAV, FLAC, MP3 and M4A, stereo right-channel retention, resampling, corrupt WAV and spool limits.",
       "evidence": [
-        "reports/integration/codec-runtime.txt"
+        "reports/integration/codec-runtime.txt",
+        "reports/qa/release-real-cpu.log"
       ]
     },
     "silero_segmentation": {
@@ -123,7 +153,8 @@
       "evidence": [
         "reports/integration/native-audio-tests.txt",
         "reports/integration/silence-cli.json",
-        "reports/integration/fleurs-vad.json"
+        "reports/integration/fleurs-vad.json",
+        "reports/qa/release-real-cpu.log"
       ]
     },
     "hojo_cpu": {
@@ -131,18 +162,24 @@
       "detail": "Both 3.571375 s Jacques iterations returned the complete expected French sentence with CPU float32 audio and bfloat16 decoder parameters. Model load 7.370 s, first 6.808 s, warm 8.751 s. Each inference exercised both compatibility hooks.",
       "evidence": [
         "reports/hojo/cpu.jsonl",
-        "reports/hojo/cpu.log"
+        "reports/hojo/cpu.log",
+        "reports/hojo/generation-cap-cpu.jsonl",
+        "reports/evaluation/release-synthetic-cpu.json",
+        "reports/qa/release-real-cpu.log"
       ]
     },
     "hojo_mps": {
       "status": "PASS",
-      "detail": "Full checkpoint ran twice with fallback disabled after selecting eager attention on this decoder instance. The first native SDPA route aborted on 32 query heads versus 8 KV heads. Eager model load 16.526 s, first inference 27.339 s, second 6.761 s. Both MPS results correctly recognized the quantities and products and rendered “Il reste” as “Présence de”.",
+      "detail": "Execution gate. The real checkpoint ran on MPS with eager decoder attention, mixed checkpoint dtypes and fallback disabled after native SDPA aborted. The short repeat preserved the two inventory values. Fidelity of leading words failed on paired inputs and is tracked separately.",
       "evidence": [
         "reports/hojo/mps-sdpa-failed.log",
         "reports/hojo/mps-gqa-grouped-sdpa.log",
         "reports/hojo/mps-gqa-repeated-kv-eager.jsonl",
         "reports/hojo/mps.jsonl",
-        "reports/hojo/mps.log"
+        "reports/hojo/mps.log",
+        "reports/hojo/generation-cap-mps.jsonl",
+        "reports/evaluation/release-synthetic-mps.json",
+        "reports/qa/release-real-mps.log"
       ]
     },
     "local_schema_extraction": {
@@ -155,7 +192,9 @@
         "reports/extraction/run-001/production/inventory.json",
         "reports/extraction/run-001/revalidation.json",
         "reports/extraction/run-002/summary.json",
-        "reports/extraction/run-002/revalidation.json"
+        "reports/extraction/run-002/revalidation.json",
+        "reports/evaluation/release-reference-independent.json",
+        "reports/qa/release-real-cpu.log"
       ]
     },
     "validated_exports_and_replay": {
@@ -169,7 +208,10 @@
         "reports/integration/output-lock-suite.txt",
         "reports/examples/jacques/sqlite-export-check.json",
         "reports/qa/final-real-cpu-replay-evidence.json",
-        "reports/qa/final-real-mps-replay-evidence.json"
+        "reports/qa/final-real-mps-replay-evidence.json",
+        "reports/integration/release-verification.json",
+        "reports/qa/release-real-cpu-replay-evidence.json",
+        "reports/qa/release-real-mps-replay-evidence.json"
       ]
     },
     "reference_semantics": {
@@ -193,12 +235,15 @@
         "reports/integration/first-human-cli.json",
         "reports/integration/first-human-file.json",
         "evaluation/fleurs-fr/provenance.json",
-        "reports/integration/jacques-350-manifest.json"
+        "reports/integration/jacques-350-manifest.json",
+        "reports/offline/release-mps-file-manifest.json",
+        "reports/qa/release-real-offline-file.json",
+        "reports/integration/release-verification.json"
       ]
     },
     "long_boundary_and_no_loss": {
       "status": "FAIL",
-      "detail": "Independent 72.46 s CPU run had 3 bounded real ASR inputs (largest 400,000 samples), two forced core boundaries and zero unflushed tail samples. Hojo recognized 4/8 exact gold inventory phrases. Both real long-content and end-to-end-observation assertions failed.",
+      "detail": "Full source coverage was verified across three bounded inputs on the unchanged 72.46 s recording. CPU and MPS each recovered four of the eight exact phrases. The original long-content and inventory assertions failed, including an incorrect accepted 4 kg lemon row on CPU. Bisection and six isolated calls on three missed source phrases did not recover the target products.",
       "evidence": [
         "reports/qa/real-full-long-analysis.json",
         "reports/qa/real-full-long-hojo.json",
@@ -210,7 +255,17 @@
         "reports/hojo/generation-loop.md",
         "reports/qa/final-real-long-analysis.json",
         "reports/qa/final-real-long-hojo.json",
-        "reports/qa/final-real-long-qwen.json"
+        "reports/qa/final-real-long-qwen.json",
+        "reports/hojo/exact-crops.md",
+        "reports/evaluation/long-cpu-assertions.json",
+        "reports/evaluation/synthetic-mps.json",
+        "reports/evaluation/long-mps-assertions.json",
+        "reports/qa/release-real-cpu.log",
+        "reports/qa/release-real-long-analysis.json",
+        "reports/evaluation/release-synthetic-cpu.json",
+        "reports/evaluation/release-synthetic-mps.json",
+        "reports/evaluation/release-cpu-assertions.json",
+        "reports/evaluation/release-mps-assertions.json"
       ]
     },
     "offline_control_app_and_daemon": {
@@ -219,7 +274,10 @@
       "evidence": [
         "reports/offline/child-controls.json",
         "reports/offline/controlled-native-file.json",
-        "reports/offline/positive-file.json"
+        "reports/offline/positive-file.json",
+        "reports/qa/release-real-offline-file.json",
+        "reports/offline/release-mps-file.json",
+        "reports/offline/release-fixture-mic.json"
       ]
     },
     "offline_file_inference": {
@@ -229,7 +287,9 @@
         "reports/offline/positive-file-receipt.json",
         "reports/offline/positive-file.json",
         "reports/offline/positive-file-manifest.json",
-        "reports/qa/final-real-offline-file.json"
+        "reports/qa/final-real-offline-file.json",
+        "reports/qa/release-real-offline-file.json",
+        "reports/offline/release-mps-file.json"
       ]
     },
     "microphone_and_backpressure": {
@@ -237,8 +297,11 @@
       "detail": "Segmented microphone capture is implemented. Thirteen injected-frame tests exercised real Silero, native-rate conversion, the bounded callback queue and controlled stops with retained audio. The ASR callable in these transport tests was injected. Actual device queue and end-of-speech latency are separate gates.",
       "evidence": [
         "reports/hojo/microphone-injected-pytest.log",
-        "reports/integration/mic-resampler-check.json"
-      ]
+        "reports/integration/mic-resampler-check.json",
+        "reports/offline/release-fixture-mic.json",
+        "reports/integration/release-verification.json"
+      ],
+      "scope": "File-fed callback transport and injected saturation tests. Physical hardware behavior is a separate blocked gate."
     },
     "offline_microphone_inference": {
       "status": "BLOCKED",
@@ -254,7 +317,10 @@
       "evidence": [
         "evaluation/fleurs-fr/provenance.json",
         "evaluation/fleurs-fr/manifest.jsonl",
-        "reports/evaluation/fleurs-real.json"
+        "reports/evaluation/fleurs-real.json",
+        "reports/evaluation/fleurs-guarded-final.json",
+        "reports/evaluation/release-fleurs.json",
+        "reports/integration/release-verification.json"
       ]
     },
     "field_scores": {
@@ -263,8 +329,11 @@
       "evidence": [
         "reports/evaluation/reference-final.json",
         "reports/evaluation/reference-prompt4.json",
-        "reports/evaluation/reference-baseline.json"
-      ]
+        "reports/evaluation/reference-baseline.json",
+        "reports/evaluation/release-reference-independent.json",
+        "reports/qa/release-real-cpu.log"
+      ],
+      "scope": "Measurement on curated development reference transcripts. It does not certify end-to-end field accuracy."
     },
     "runtime_performance": {
       "status": "PASS",
@@ -274,8 +343,13 @@
         "reports/hojo/cpu.jsonl",
         "reports/hojo/mps.jsonl",
         "reports/integration/jacques-350-manifest.json",
-        "reports/offline/positive-file.json"
-      ]
+        "reports/offline/positive-file.json",
+        "reports/evaluation/release-synthetic-cpu.json",
+        "reports/evaluation/release-synthetic-mps.json",
+        "reports/offline/release-fixture-mic-manifest.json",
+        "reports/integration/release-verification.json"
+      ],
+      "scope": "Measured durations, memory and real-time factors. The measured file runs took longer than their input duration. Live throughput is unverified."
     },
     "production_reference_acceptance": {
       "status": "PASS",
@@ -288,12 +362,14 @@
         "reports/qa/real-qwen-independent-comparison.json",
         "reports/extraction/run-002/summary.json",
         "reports/evaluation/repair-rerun-comparison.json",
-        "reports/evaluation/repair-rerun.json"
+        "reports/evaluation/repair-rerun.json",
+        "reports/evaluation/release-reference-independent.json",
+        "reports/qa/release-real-cpu.log"
       ]
     },
     "end_to_end_field_scores": {
       "status": "PASS",
-      "detail": "Installed CPU evaluation completed the unchanged 72.46 s synthetic eight-count file on frozen source. Products, quantities and units each had 4 true positives, 1 false positive, 4 false negatives (precision 0.80 and recall 0.50). Two of seven candidates abstained. The same source reference yielded 8/8 with no abstentions. No negation or correction appeared in this gold. This gate records measurement; the separate content gate failed.",
+      "detail": "Installed CLI field scoring on the 72.46 s inventory recording. CPU 4/8 gold, 2/7 candidates held. MPS 4/8 gold, 2/8 candidates held. Both used the unchanged eight gold observations. The separate short semantic cases supply correction and negation denominators. An empty reviewable extraction on the missing sugar contributes a false negative despite emitting zero candidate rows.",
       "synthetic_long": {
         "gold_mentions": 8,
         "returned_candidates": 7,
@@ -353,8 +429,237 @@
       "evidence": [
         "reports/evaluation/synthetic-real.json",
         "reports/evaluation/synthetic-real-cli.json",
-        "reports/qa/real-full-long-analysis.json"
-      ]
+        "reports/qa/real-full-long-analysis.json",
+        "reports/evaluation/semantic-audio-real.json",
+        "reports/qa/semantic-audio-fr.md",
+        "reports/evaluation/semantic-audio-reviewed.json",
+        "reports/evaluation/synthetic-guarded-final.json",
+        "reports/evaluation/release-synthetic-cpu.json",
+        "reports/evaluation/release-synthetic-mps.json",
+        "reports/evaluation/release-semantic.json",
+        "reports/integration/release-verification.json"
+      ],
+      "semantic_audio": {
+        "cases": 2,
+        "gold_mentions": 3,
+        "accepted_candidates": 2,
+        "review_candidates": 0,
+        "abstention_rate": 0.0,
+        "fields": {
+          "product_spoken": {
+            "tp": 2,
+            "fp": 0,
+            "fn": 1,
+            "predicted": 2,
+            "expected": 3,
+            "precision": 1.0,
+            "recall": 0.6666666666666666
+          },
+          "quantity": {
+            "tp": 2,
+            "fp": 0,
+            "fn": 0,
+            "predicted": 2,
+            "expected": 2,
+            "precision": 1.0,
+            "recall": 1.0
+          },
+          "unit": {
+            "tp": 2,
+            "fp": 0,
+            "fn": 0,
+            "predicted": 2,
+            "expected": 2,
+            "precision": 1.0,
+            "recall": 1.0
+          },
+          "negation": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 1,
+            "predicted": 0,
+            "expected": 1,
+            "precision": null,
+            "recall": 0.0
+          },
+          "correction": {
+            "tp": 1,
+            "fp": 0,
+            "fn": 0,
+            "predicted": 1,
+            "expected": 1,
+            "precision": 1.0,
+            "recall": 1.0
+          }
+        }
+      },
+      "release_measurements": {
+        "synthetic-cpu": {
+          "gold_mentions": 8,
+          "returned_candidates": 7,
+          "accepted_candidates": 5,
+          "review_candidates": 2,
+          "covered_gold_mentions": 4,
+          "abstention_rate": 0.2857142857142857,
+          "fields": {
+            "product_spoken": {
+              "tp": 4,
+              "fp": 1,
+              "fn": 4,
+              "predicted": 5,
+              "expected": 8,
+              "precision": 0.8,
+              "recall": 0.5
+            },
+            "quantity": {
+              "tp": 4,
+              "fp": 1,
+              "fn": 4,
+              "predicted": 5,
+              "expected": 8,
+              "precision": 0.8,
+              "recall": 0.5
+            },
+            "unit": {
+              "tp": 4,
+              "fp": 1,
+              "fn": 4,
+              "predicted": 5,
+              "expected": 8,
+              "precision": 0.8,
+              "recall": 0.5
+            },
+            "negation": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "predicted": 0,
+              "expected": 0,
+              "precision": null,
+              "recall": null
+            },
+            "correction": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "predicted": 0,
+              "expected": 0,
+              "precision": null,
+              "recall": null
+            }
+          }
+        },
+        "synthetic-mps": {
+          "gold_mentions": 8,
+          "returned_candidates": 8,
+          "accepted_candidates": 6,
+          "review_candidates": 2,
+          "covered_gold_mentions": 4,
+          "abstention_rate": 0.25,
+          "fields": {
+            "product_spoken": {
+              "tp": 4,
+              "fp": 2,
+              "fn": 4,
+              "predicted": 6,
+              "expected": 8,
+              "precision": 0.6666666666666666,
+              "recall": 0.5
+            },
+            "quantity": {
+              "tp": 4,
+              "fp": 2,
+              "fn": 4,
+              "predicted": 6,
+              "expected": 8,
+              "precision": 0.6666666666666666,
+              "recall": 0.5
+            },
+            "unit": {
+              "tp": 4,
+              "fp": 2,
+              "fn": 4,
+              "predicted": 6,
+              "expected": 8,
+              "precision": 0.6666666666666666,
+              "recall": 0.5
+            },
+            "negation": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "predicted": 0,
+              "expected": 0,
+              "precision": null,
+              "recall": null
+            },
+            "correction": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "predicted": 0,
+              "expected": 0,
+              "precision": null,
+              "recall": null
+            }
+          }
+        },
+        "semantic": {
+          "gold_mentions": 3,
+          "returned_candidates": 2,
+          "accepted_candidates": 2,
+          "review_candidates": 0,
+          "covered_gold_mentions": 2,
+          "abstention_rate": 0.0,
+          "fields": {
+            "product_spoken": {
+              "tp": 2,
+              "fp": 0,
+              "fn": 1,
+              "predicted": 2,
+              "expected": 3,
+              "precision": 1.0,
+              "recall": 0.6666666666666666
+            },
+            "quantity": {
+              "tp": 2,
+              "fp": 0,
+              "fn": 0,
+              "predicted": 2,
+              "expected": 2,
+              "precision": 1.0,
+              "recall": 1.0
+            },
+            "unit": {
+              "tp": 2,
+              "fp": 0,
+              "fn": 0,
+              "predicted": 2,
+              "expected": 2,
+              "precision": 1.0,
+              "recall": 1.0
+            },
+            "negation": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 1,
+              "predicted": 0,
+              "expected": 1,
+              "precision": null,
+              "recall": 0.0
+            },
+            "correction": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0,
+              "predicted": 1,
+              "expected": 1,
+              "precision": 1.0,
+              "recall": 1.0
+            }
+          }
+        }
+      }
     },
     "positive_inventory_file": {
       "status": "PASS",
@@ -365,12 +670,14 @@
         "reports/integration/vad-short-pauses.json",
         "reports/integration/jacques-350-cli.json",
         "reports/integration/jacques-350-manifest.json",
-        "reports/examples/jacques/sqlite-export-check.json"
+        "reports/examples/jacques/sqlite-export-check.json",
+        "reports/integration/release-m4a-cpu-manifest.json",
+        "reports/integration/release-verification.json"
       ]
     },
     "physical_microphone": {
       "status": "BLOCKED",
-      "detail": "User explicitly chose file input only. The default MacBook Pro Microphone was enumerated as 48 kHz mono; no physical input was opened and no playback was performed.",
+      "detail": "User chose file input only. A default 48 kHz mono device was enumerated. No physical microphone was opened, no microphone permission was requested, and no audio was played aloud.",
       "evidence": [
         "reports/integration/mic-device-discovery.json",
         "docs/agent-routing.md"
@@ -390,7 +697,12 @@
         "reports/offline/fixture-mic.json",
         "reports/offline/fixture-mic-cli.json",
         "reports/offline/fixture-mic-manifest.json",
-        "reports/hojo/fixture-input-self-test.json"
+        "reports/hojo/fixture-input-self-test.json",
+        "reports/offline/fixture-guarded-final.json",
+        "reports/offline/fixture-guarded-final-manifest.json",
+        "reports/offline/release-fixture-mic.json",
+        "reports/offline/release-fixture-mic-manifest.json",
+        "reports/integration/release-verification.json"
       ]
     },
     "m4a_installed_commands": {
@@ -401,7 +713,12 @@
         "reports/integration/m4a-run-manifest.json",
         "reports/integration/m4a-exports.json",
         "reports/integration/m4a-mps-cli.json",
-        "reports/integration/m4a-mps-manifest.json"
+        "reports/integration/m4a-mps-manifest.json",
+        "reports/integration/m4a-guarded-final-manifest.json",
+        "reports/integration/release-m4a-cpu-manifest.json",
+        "reports/integration/release-m4a-mps-manifest.json",
+        "reports/integration/release-m4a-export.csv",
+        "reports/integration/release-verification.json"
       ]
     },
     "source_sample_coverage": {
@@ -410,7 +727,65 @@
       "evidence": [
         "reports/qa/real-full-long-analysis.json",
         "reports/qa/real-full-long-hojo.json",
-        "reports/evaluation/synthetic-real.json"
+        "reports/evaluation/synthetic-real.json",
+        "reports/evaluation/release-cpu-assertions.json",
+        "reports/evaluation/release-mps-assertions.json"
+      ]
+    },
+    "spoken_correction": {
+      "status": "PASS",
+      "detail": "The installed CPU evaluation on predeclared synthetic audio retained the 3 kg flour count and linked its 2 kg correction as revision 2 with evidence for each. Quantities and units 2/2; linked correction 1/1.",
+      "evidence": [
+        "evaluation/fixtures/semantic-audio-fr.jsonl",
+        "reports/evaluation/semantic-audio-real.json",
+        "reports/evaluation/semantic-audio-reviewed.json",
+        "reports/evaluation/release-semantic.json"
+      ]
+    },
+    "spoken_negation": {
+      "status": "FAIL",
+      "detail": "The predeclared sugar negation was present in the reference extraction. In audio Hojo returned “il ne reste pas deux ou trois” and omitted sugar. No negation observation was accepted, giving 0/1 recall and undefined precision. On current final source the returned clause is explicitly needs_review with source span [0,29), an empty list and one reply. Review cannot recover the omitted product.",
+      "evidence": [
+        "evaluation/fixtures/semantic-audio-fr.jsonl",
+        "reports/evaluation/semantic-audio-real.json",
+        "reports/evaluation/semantic-audio-reviewed.json",
+        "reports/qa/negated-quantity-regression.md",
+        "reports/evaluation/release-semantic.json"
+      ]
+    },
+    "user_supplied_file": {
+      "status": "BLOCKED",
+      "detail": "The user chose to supply files and no path or attachment has arrived. A private Git-ignored output directory is ready. The published tests used licensed human recordings and labeled system-voice fixtures.",
+      "evidence": [
+        "docs/agent-routing.md",
+        "reports/review/architect-release-dispatch.json"
+      ]
+    },
+    "mps_leading_word_fidelity": {
+      "status": "FAIL",
+      "detail": "Four distinct matched WAV inputs (one short French utterance, three long-file ranges) showed different CPU and MPS openings. The short CPU “il reste” became “Présence de” on MPS, and one long MPS prefix included Arabic script. The M4A comparison is unpaired. The CPU default and raw multilingual text are preserved. The exact affected population is unknown. With identical CPU-computed embeddings, eager CPU and MPS ranked the same first eight tokens with a 6.125 leading margin. Completed beam winners still opened differently in native end-to-end generation. The cause remains unresolved.",
+      "evidence": [
+        "reports/review/FINAL.md",
+        "reports/review/repro/r11_mps_leading_tokens.out",
+        "reports/evaluation/synthetic-mps.json",
+        "reports/hojo/mps.jsonl",
+        "reports/hojo/generation-prefill-cpu.jsonl",
+        "reports/hojo/generation-prefill-mps.jsonl",
+        "reports/hojo/generation-cap-mps.jsonl",
+        "reports/hojo/generation-cap-cpu.jsonl",
+        "reports/offline/release-mps-file-manifest.json",
+        "reports/evaluation/release-synthetic-mps.json"
+      ]
+    },
+    "generation_limit_review": {
+      "status": "PASS",
+      "detail": "The adapter observes max_new_tokens and returned beam length per call. At the full budget, it routes the unchanged response to review. Without returned IDs it uses a separately identified retokenization proxy. The 25 s CPU recording reached 200/200 with no EOS. The 3.571375 s clip ended with EOS at 23/100 on CPU and 25/100 on MPS. The real cap hit was on CPU; weight-free tests independently exercised the MPS-shared paths.",
+      "evidence": [
+        "reports/hojo/generation-loop.md",
+        "reports/hojo/generation-cap-cpu.jsonl",
+        "reports/hojo/generation-cap-mps.jsonl",
+        "reports/hojo/generation-cap-pytest.log",
+        "reports/review/repro/r06b_entry_path_cap.out"
       ]
     }
   },
@@ -482,6 +857,133 @@
       "exit": 0,
       "result": "1 passed in 87.74 s. Positive inventory, same-backend replay, committed records and exports.",
       "evidence": "reports/qa/final-real-mps.log"
+    },
+    {
+      "command": ".venv/bin/speechflow --offline --json --backend cpu evaluate outputs/qa-fixtures/semantic-fr/manifest.jsonl --out outputs/semantic-fr-final",
+      "exit": 0,
+      "result": "Measurement completed in 83.76 s. Linked correction recovered, sugar negation missed.",
+      "evidence": "reports/evaluation/semantic-audio-real.json"
+    },
+    {
+      "command": ".venv/bin/python tools/qa/score_long_evaluation.py reports/evaluation/synthetic-real.json outputs/qa-fixtures/long-jacques.anchors.json",
+      "exit": 1,
+      "evidence": "reports/evaluation/long-cpu-assertions.json"
+    },
+    {
+      "command": ".venv/bin/speechflow --offline --json --backend cpu evaluate outputs/qa-fixtures/semantic-fr/manifest.jsonl --out outputs/semantic-fr-guarded",
+      "exit": 11,
+      "result": "100.08 s. One unsupported product held at run level with no invented row. One linked correction recovered.",
+      "evidence": "reports/evaluation/semantic-audio-reviewed.json"
+    },
+    {
+      "command": "PYTORCH_ENABLE_MPS_FALLBACK=0 .venv/bin/speechflow --offline --json --backend mps evaluate outputs/qa-fixtures/long-jacques.manifest.jsonl --out outputs/synthetic-mps",
+      "exit": 11,
+      "evidence": "reports/evaluation/synthetic-mps.json"
+    },
+    {
+      "command": ".venv/bin/python tools/qa/score_long_evaluation.py reports/evaluation/synthetic-mps.json outputs/qa-fixtures/long-jacques.anchors.json",
+      "exit": 1,
+      "evidence": "reports/evaluation/long-mps-assertions.json"
+    },
+    {
+      "command": ".venv/bin/python -m pytest -q",
+      "exit": 0,
+      "result": "299 passed, 13 deselected on release source 23096a70",
+      "evidence": "reports/integration/release-default.txt"
+    },
+    {
+      "command": ".venv/bin/python -m pytest -q tests/qa",
+      "exit": 0,
+      "result": "80 passed on release source 23096a70",
+      "evidence": "reports/integration/release-qa.txt"
+    },
+    {
+      "command": "SPEECHFLOW_QA_MODEL_SLOT=1 .venv/bin/python -m pytest -q -s tests/real_models --basetemp outputs/qa-release-real",
+      "exit": 1,
+      "result": "10 passed, two long-content failures, one physical capture test deselected in 495.04 s.",
+      "evidence": "reports/qa/release-real-cpu.log"
+    },
+    {
+      "command": "SPEECHFLOW_CONFIG=/private/var/folders/q8/_7ztc8bn4ybc9m23xt7dz_fc0000gn/T/speechflow-release-qa.np3U0JruUe/mps.toml SPEECHFLOW_QA_MODEL_SLOT=1 .venv/bin/python -m pytest -q -s tests/real_models/test_file_replay.py::test_real_file_installed_cli_replay --basetemp outputs/qa-release-mps-replay",
+      "exit": 0,
+      "result": "1 passed in 88.10 s. Two independent installed CLI processes yielded one committed generation and five byte-identical exports.",
+      "evidence": "reports/qa/release-real-mps.log"
+    },
+    {
+      "command": "PYTORCH_ENABLE_MPS_FALLBACK=0 .venv/bin/speechflow --offline --json --backend mps evaluate outputs/qa-fixtures/long-jacques.manifest.jsonl --out outputs/release-synthetic-mps",
+      "exit": 11,
+      "elapsed_s": 170.184,
+      "evidence": "reports/evaluation/release-synthetic-mps.json"
+    },
+    {
+      "command": ".venv/bin/python tools/qa/score_long_evaluation.py reports/evaluation/release-synthetic-mps.json outputs/qa-fixtures/long-jacques.anchors.json",
+      "exit": 1,
+      "elapsed_s": 0.154,
+      "evidence": "reports/evaluation/release-mps-assertions.json"
+    },
+    {
+      "command": ".venv/bin/speechflow --offline --json --backend cpu evaluate outputs/qa-fixtures/semantic-fr/manifest.jsonl --out outputs/release-semantic",
+      "exit": 11,
+      "elapsed_s": 72.346,
+      "evidence": "reports/evaluation/release-semantic.json"
+    },
+    {
+      "command": ".venv/bin/speechflow --offline --json --backend cpu evaluate evaluation/fleurs-fr/manifest.jsonl --out outputs/release-fleurs",
+      "exit": 0,
+      "elapsed_s": 81.444,
+      "evidence": "reports/evaluation/release-fleurs.json"
+    },
+    {
+      "command": ".venv/bin/speechflow --offline --json --backend cpu run outputs/acceptance-inputs/jacques-inventory.m4a --out outputs/release-m4a-cpu --database outputs/release-m4a-cpu.sqlite3",
+      "exit": 0,
+      "elapsed_s": 33.674,
+      "evidence": "reports/integration/release-m4a-cpu-cli.json"
+    },
+    {
+      "command": ".venv/bin/speechflow --offline export run_a7117dafcfc64a64273fadc72d6fc0ea1ea333766a7c850467d27d0e6f51ebd0 --database outputs/release-m4a-cpu.sqlite3 --format csv",
+      "exit": 0,
+      "elapsed_s": 0.105,
+      "evidence": "reports/integration/release-m4a-export.csv"
+    },
+    {
+      "command": "PYTORCH_ENABLE_MPS_FALLBACK=0 .venv/bin/speechflow --offline --json --backend mps transcribe outputs/acceptance-inputs/jacques-near-cap.m4a --out outputs/release-m4a-mps --database outputs/release-m4a-mps.sqlite3",
+      "exit": 0,
+      "elapsed_s": 61.095,
+      "evidence": "reports/integration/release-m4a-mps-cli.json"
+    },
+    {
+      "command": ".venv/bin/python tools/offline/verify.py fixture-mic --audio /Users/vakof/.cache/speechflow/hojo-jacques.wav --seconds 8 --backend cpu --out outputs/release-offline",
+      "exit": 0,
+      "elapsed_s": 46.443,
+      "evidence": "reports/offline/release-fixture-mic-receipt.json"
+    },
+    {
+      "command": "PYTORCH_ENABLE_MPS_FALLBACK=0 .venv/bin/python tools/offline/verify.py file --audio /Users/vakof/.cache/speechflow/hojo-jacques.wav --backend mps --out outputs/release-offline",
+      "exit": 0,
+      "elapsed_s": 37.315,
+      "evidence": "reports/offline/release-mps-file-receipt.json"
+    },
+    {
+      "command": ".venv/bin/speechflow --offline --json --backend cpu evaluate outputs/qa-fixtures/long-jacques.manifest.jsonl --out outputs/release-synthetic-cpu",
+      "exit": 11,
+      "elapsed_s": 345.305,
+      "evidence": "reports/evaluation/release-synthetic-cpu.json"
+    },
+    {
+      "command": ".venv/bin/python tools/qa/score_long_evaluation.py reports/evaluation/release-synthetic-cpu.json outputs/qa-fixtures/long-jacques.anchors.json",
+      "exit": 1,
+      "elapsed_s": 0.145,
+      "evidence": "reports/evaluation/release-cpu-assertions.json"
+    },
+    {
+      "command": ".venv/bin/speechflow --offline --json doctor",
+      "exit": 0,
+      "evidence": "reports/integration/release-doctor.json"
+    },
+    {
+      "command": ".venv/bin/speechflow --offline --json models prepare",
+      "exit": 0,
+      "evidence": "reports/integration/release-prepare.json"
     }
   ],
   "evaluation_scope": {
@@ -491,6 +993,29 @@
     "long_inventory": "Synthetic macOS Jacques, 72.46 s; eight predeclared timed phrases.",
     "file_fed_microphone": "Digital fixture, real inference, no hardware access.",
     "physical_device": "User selected file input only.",
-    "private_audio": "At the time of this snapshot no user recording had arrived."
+    "private_audio": "The user-facing relay confirmed at closure that no private file or path had arrived. Incoming recordings have a reserved Git-ignored output directory."
+  },
+  "production_source_commit": "2716290db0968d48a9272fd27effecd9657de3f0",
+  "production_implementation_sha256": "23096a70df38af25f14f4275c9c0d0935f57d6d9a55ec421794a91906902e867",
+  "release_evidence": {
+    "package_source_commit": "2716290db0968d48a9272fd27effecd9657de3f0",
+    "implementation_sha256": "23096a70df38af25f14f4275c9c0d0935f57d6d9a55ec421794a91906902e867",
+    "raw_commands": "reports/integration/release-commands.jsonl",
+    "cross_checks": "reports/integration/release-verification.json",
+    "independent_qa": "reports/qa/release-real-suite.md",
+    "independent_opus": "reports/review/FINAL.md",
+    "prior_measurements": "Reports without a release prefix include initial failures and earlier fingerprints. Release-prefixed raw receipts and their processing provenance identify the frozen application.",
+    "final_astra_dispatch": "reports/review/architect-release-dispatch.json",
+    "independent_architect": "reports/review/architect-final.md"
+  },
+  "gate_totals": {
+    "development_workflow": {
+      "PASS": 7
+    },
+    "application_runtime": {
+      "PASS": 27,
+      "FAIL": 3,
+      "BLOCKED": 4
+    }
   }
 }
