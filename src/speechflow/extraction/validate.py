@@ -20,6 +20,7 @@ from decimal import Decimal
 from ..contracts import EvidenceSpan, Packaging, TranscriptSegment, ValidatedObservation, stable_id
 from .language import assess as assess_language
 from .numbers import dec_str, parse_quantity
+from .scope import check_quantity_scope, negation_cue
 from .schema import LLMObservation, LLMOutput
 from .text import fold, locate
 from .units import PACKAGE_UNITS, compatible, convert, dimension, is_known_unit, normalize_unit
@@ -70,27 +71,6 @@ def _contained(inner: ValidatedObservation, outer: ValidatedObservation) -> bool
 def _same_values(a: ValidatedObservation, b: ValidatedObservation) -> bool:
     return (a.operation, a.quantity, a.unit, a.quantity_max, fold(a.product_spoken or "")) == \
            (b.operation, b.quantity, b.unit, b.quantity_max, fold(b.product_spoken or ""))
-
-
-# ------------------------------------------------------------------ negation / comparatives
-_NEG = re.compile(
-    r"(?<![\w-])(n y a (plus|pas|aucun|aucune|rien)|ne reste (plus|pas|rien)|n en (reste|avons|a) (plus|pas|aucun)|"
-    r"n (avons|ai|a|est) (plus|pas)|plus (de|du|des|d|un|une|aucun|aucune|rien)|pas (de|d|du|des)|aucun|aucune|"
-    r"rien|sans|epuise\w*|rupture)(?![\w-])")
-
-
-def _negation_cue(joined: str) -> str | None:
-    """'negation' if a negation cue is present; 'comparative' for 'plus de <number>'; else None."""
-    found = None
-    for m in _NEG.finditer(joined):
-        if m.group(0).startswith("plus d"):
-            tail = joined[m.end():].split()
-            if any((p := parse_quantity(" ".join(tail[:n]))) is not None and p.value is not None
-                   for n in (3, 2, 1) if len(tail) >= n):
-                found = found or "comparative"
-                continue
-        return "negation"
-    return found
 
 
 # ------------------------------------------------------------------ main entry
@@ -288,7 +268,7 @@ def _build(item: LLMObservation, evidence: list[EvidenceSpan], contiguous: bool,
 
     # --- operation vs. actual evidence (negation, comparatives) ---
     operation = item.operation
-    cue = _negation_cue(joined)
+    cue = negation_cue(joined)
     if operation == "negation":
         if cue != "negation":
             errors.append("negation_not_in_evidence" if cue is None else "negation_cue_is_comparative")
@@ -304,6 +284,12 @@ def _build(item: LLMObservation, evidence: list[EvidenceSpan], contiguous: bool,
             errors.append("lower_bound_not_representable")
             if qualifier == "exact":
                 qualifier = "approximate"
+    if operation in ("count", "correction") and quantity_text and quantity is not None and unit_spoken:
+        problem = check_quantity_scope(
+            evidence, segment_index, labels, product if product_in_evidence else None,
+            quantity_text, unit_spoken, operation)
+        if problem:
+            errors.append(problem)
     if operation == "unknown":
         errors.append("operation_unknown")
     if operation == "count":

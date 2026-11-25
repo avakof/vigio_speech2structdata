@@ -220,3 +220,99 @@ def test_prompt_like_transcript_is_data_and_cannot_authorize_unsupported_output(
     assert "Ignore previous instructions" in calls[0][0][1]["content"]
     assert "Ignore previous instructions" not in calls[0][0][0]["content"]
     assert result.status == "error" and not result.observations
+
+
+def _run_evidence_scope_case(texts, candidate):
+    segments = transcript(*texts)
+    scripted = reply(candidate)
+    result, calls = run(segments, scripted, scripted)
+    assert 1 <= len(calls) <= 2
+    assert result.attempts[0]["content"] == scripted.content
+    for observation in result.observations:
+        for span in observation.evidence:
+            source = next(s.normalized_text for s in segments if s.segment_id == span.segment_id)
+            assert source[span.start:span.end] == span.quote
+    print(json.dumps({
+        "transcript_segments": texts,
+        "scripted_reply": json.loads(scripted.content),
+        "result_status": result.status,
+        "result_errors": result.errors,
+        "observations": [o.model_dump(mode="json") for o in result.observations],
+    }, ensure_ascii=False))
+    return [o for o in result.observations if o.status == "ok"]
+
+
+def test_evidence_scope_negation_cannot_be_hidden_by_trimming_the_quote():
+    accepted = _run_evidence_scope_case(
+        ("Il ne reste pas deux kilos de sucre.",),
+        item("deux kilos de sucre", "sucre", "deux", "2", "kilos"),
+    )
+    assert not any(o.operation == "count" for o in accepted)
+
+
+@pytest.mark.parametrize("quote", ["trois kilos de farine", "environ trois kilos de farine"],
+                         ids=["trimmed-quote", "trimmed-quantity-text"])
+def test_evidence_scope_approximation_cannot_be_returned_as_exact(quote):
+    accepted = _run_evidence_scope_case(
+        ("Il reste environ trois kilos de farine.",),
+        item(quote, "farine", "trois", "3", "kilos"),
+    )
+    for observation in accepted:
+        assert (observation.quantity, observation.qualifier) == ("3", "approximate")
+        assert any("environ trois" in span.quote for span in observation.evidence)
+
+
+@pytest.mark.parametrize("quote", ["cinq kilos de farine", "entre deux et cinq kilos de farine"],
+                         ids=["trimmed-quote", "trimmed-quantity-text"])
+def test_evidence_scope_range_cannot_be_reduced_to_its_second_endpoint(quote):
+    accepted = _run_evidence_scope_case(
+        ("Il reste entre deux et cinq kilos de farine.",),
+        item(quote, "farine", "cinq", "5", "kilos"),
+    )
+    for observation in accepted:
+        assert (observation.quantity, observation.quantity_max, observation.qualifier) == ("2", "5", "range")
+        assert any("entre deux et cinq" in span.quote for span in observation.evidence)
+
+
+@pytest.mark.parametrize("text, unit", [
+    ("Trois kilos de farine et cinq kilos de sucre", "kilos"),
+    ("Trois kilos de farine et cinq grammes de sucre", "grammes"),
+], ids=["same-unit", "different-units"])
+def test_evidence_scope_product_cannot_borrow_quantity_and_unit_from_another_clause(text, unit):
+    accepted = _run_evidence_scope_case((text,), item(text, "farine", "cinq", "5", unit))
+    assert not accepted
+
+
+@pytest.mark.parametrize("texts, candidate, expected", [
+    (("Ce matin il reste trois kilos de farine et cinq kilos de sucre.",),
+     item("trois kilos de farine", "farine", "trois", "3", "kilos"),
+     ("farine", "3", None, "kg", "exact")),
+    (("Il reste vingt et un kilos de farine.",),
+     item("vingt et un kilos de farine", "farine", "vingt et un", "21", "kilos"),
+     ("farine", "21", None, "kg", "exact")),
+    (("Il reste entre deux et cinq kilos de farine.",),
+     item("entre deux et cinq kilos de farine", "farine", "entre deux et cinq", "2", "kilos",
+          qualifier="range"),
+     ("farine", "2", "5", "kg", "range")),
+    (("On a deux kilos d'herbes et épices.",),
+     item("deux kilos d'herbes et épices", "herbes et épices", "deux", "2", "kilos"),
+     ("herbes et épices", "2", None, "kg", "exact")),
+    (("Il reste deux virgule", "cinq kilos de tomates."),
+     item("deux virgule", "tomates", "deux virgule cinq", "2.5", "kilos",
+          more_evidence=[{"segment": "S2", "quote": "cinq kilos de tomates"}]),
+     ("tomates", "2.5", None, "kg", "exact")),
+    (("Il ne reste pas deux kilos de sucre. Il reste cinq kilos de sucre.",),
+     item("cinq kilos de sucre", "sucre", "cinq", "5", "kilos"),
+     ("sucre", "5", None, "kg", "exact")),
+    (("Il ne reste pas de sucre, mais il reste deux kilos de farine.",),
+     item("deux kilos de farine", "farine", "deux", "2", "kilos"),
+     ("farine", "2", None, "kg", "exact")),
+], ids=["narrow-single-clause", "compound-number-et", "range-et", "product-et", "two-segments",
+        "positive-after-negative-sentence", "positive-after-mais"])
+def test_evidence_scope_preserves_valid_counts(texts, candidate, expected):
+    accepted = _run_evidence_scope_case(texts, candidate)
+    observation, = accepted
+    assert observation.operation == "count"
+    assert (observation.product_spoken, observation.quantity, observation.quantity_max,
+            observation.unit, observation.qualifier) == expected
+    assert len(observation.evidence) == len(texts)

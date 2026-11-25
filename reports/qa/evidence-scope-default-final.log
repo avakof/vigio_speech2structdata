@@ -1,0 +1,11 @@
+dea55c023424165011541b0677ba1688550ccf54218edfbf2852fcf1bdfd5f1a  src/speechflow/extraction/scope.py
+6bcc0ff105cbcb43cfd190822414ab674d90bc84e0f704f1620dcbaa3ee4b8f3  src/speechflow/extraction/validate.py
+893274d3d3086b647b84934d884c144ca59a4a66f77157d462e2f5a152325437  src/speechflow/extraction/numbers.py
+
+$ .venv/bin/python -m pytest -q
+........................................................................ [ 27%]
+........................................................................ [ 55%]
+........................................................................ [ 83%]
+...........................................                              [100%]
+259 passed, 12 deselected in 5.23s
+exit 0
