@@ -74,11 +74,14 @@
       ]
     },
     "complete_pinned_assets": {
-      "status": "BLOCKED",
-      "detail": "The entire qwen3:8b artifact and publisher manifest verified on the Mac. Only Hojo merged_full_model.safetensors is still being acquired.",
+      "status": "PASS",
+      "detail": "Installed doctor reported ready. Both online-capable and explicit offline models prepare verified all 11 required Hojo files, the Silero JIT hash, the pinned Ollama manifest and every required blob. Their output was byte-identical.",
       "evidence": [
         "src/speechflow/model_manifest.json",
-        "reports/integration/offline-prepare.txt"
+        "reports/hojo/weight-stage-40.log",
+        "reports/integration/doctor-provisioned.json",
+        "reports/integration/prepare-provisioned-offline.json",
+        "reports/integration/prepare-provisioned.json"
       ]
     },
     "missing_assets_offline": {
@@ -113,16 +116,18 @@
       ]
     },
     "hojo_cpu": {
-      "status": "BLOCKED",
+      "status": "NOT RUN",
       "evidence": [
         "reports/hojo/README.md"
-      ]
+      ],
+      "detail": "All pinned assets verified. Real backend feasibility pending."
     },
     "hojo_mps": {
-      "status": "BLOCKED",
+      "status": "NOT RUN",
       "evidence": [
         "reports/hojo/README.md"
-      ]
+      ],
+      "detail": "All pinned assets verified. Real backend feasibility pending."
     },
     "local_schema_extraction": {
       "status": "PASS",
